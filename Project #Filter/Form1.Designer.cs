@@ -37,19 +37,20 @@
             videoToolStripMenuItem = new ToolStripMenuItem();
             typeToolStripMenuItem1 = new ToolStripMenuItem();
             lenghtToolStripMenuItem = new ToolStripMenuItem();
+            customToolStripMenuItem = new ToolStripMenuItem();
+            containsToolStripMenuItem = new ToolStripMenuItem();
             othersToolStripMenuItem = new ToolStripMenuItem();
             iMGPDFToolStripMenuItem = new ToolStripMenuItem();
             toPDFToolStripMenuItem = new ToolStripMenuItem();
             toICOToolStripMenuItem = new ToolStripMenuItem();
-            zIPToolStripMenuItem = new ToolStripMenuItem();
-            unpackingToolStripMenuItem = new ToolStripMenuItem();
-            packToolStripMenuItem = new ToolStripMenuItem();
-            crackToolStripMenuItem = new ToolStripMenuItem();
             downloadToolStripMenuItem1 = new ToolStripMenuItem();
             videoToolStripMenuItem2 = new ToolStripMenuItem();
             youTubeToolStripMenuItem = new ToolStripMenuItem();
             filesToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
+            saveFileDialog1 = new SaveFileDialog();
+            mP4ToolStripMenuItem = new ToolStripMenuItem();
+            toMP3ToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -62,7 +63,7 @@
             // 
             // filterToolStripMenuItem
             // 
-            filterToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nameToolStripMenuItem, typeToolStripMenuItem, sizeToolStripMenuItem, videoToolStripMenuItem });
+            filterToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nameToolStripMenuItem, typeToolStripMenuItem, sizeToolStripMenuItem, videoToolStripMenuItem, customToolStripMenuItem });
             filterToolStripMenuItem.Name = "filterToolStripMenuItem";
             resources.ApplyResources(filterToolStripMenuItem, "filterToolStripMenuItem");
             filterToolStripMenuItem.MouseHover += filterToolStripMenuItem_MouseHover;
@@ -103,9 +104,20 @@
             resources.ApplyResources(lenghtToolStripMenuItem, "lenghtToolStripMenuItem");
             lenghtToolStripMenuItem.Click += lenghtToolStripMenuItem_Click;
             // 
+            // customToolStripMenuItem
+            // 
+            customToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { containsToolStripMenuItem });
+            customToolStripMenuItem.Name = "customToolStripMenuItem";
+            resources.ApplyResources(customToolStripMenuItem, "customToolStripMenuItem");
+            // 
+            // containsToolStripMenuItem
+            // 
+            containsToolStripMenuItem.Name = "containsToolStripMenuItem";
+            resources.ApplyResources(containsToolStripMenuItem, "containsToolStripMenuItem");
+            // 
             // othersToolStripMenuItem
             // 
-            othersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iMGPDFToolStripMenuItem, zIPToolStripMenuItem });
+            othersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iMGPDFToolStripMenuItem, mP4ToolStripMenuItem });
             othersToolStripMenuItem.Name = "othersToolStripMenuItem";
             resources.ApplyResources(othersToolStripMenuItem, "othersToolStripMenuItem");
             // 
@@ -119,32 +131,13 @@
             // 
             toPDFToolStripMenuItem.Name = "toPDFToolStripMenuItem";
             resources.ApplyResources(toPDFToolStripMenuItem, "toPDFToolStripMenuItem");
+            toPDFToolStripMenuItem.Click += toPDFToolStripMenuItem_Click;
             // 
             // toICOToolStripMenuItem
             // 
             toICOToolStripMenuItem.Name = "toICOToolStripMenuItem";
             resources.ApplyResources(toICOToolStripMenuItem, "toICOToolStripMenuItem");
-            // 
-            // zIPToolStripMenuItem
-            // 
-            zIPToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { unpackingToolStripMenuItem, packToolStripMenuItem, crackToolStripMenuItem });
-            zIPToolStripMenuItem.Name = "zIPToolStripMenuItem";
-            resources.ApplyResources(zIPToolStripMenuItem, "zIPToolStripMenuItem");
-            // 
-            // unpackingToolStripMenuItem
-            // 
-            unpackingToolStripMenuItem.Name = "unpackingToolStripMenuItem";
-            resources.ApplyResources(unpackingToolStripMenuItem, "unpackingToolStripMenuItem");
-            // 
-            // packToolStripMenuItem
-            // 
-            packToolStripMenuItem.Name = "packToolStripMenuItem";
-            resources.ApplyResources(packToolStripMenuItem, "packToolStripMenuItem");
-            // 
-            // crackToolStripMenuItem
-            // 
-            crackToolStripMenuItem.Name = "crackToolStripMenuItem";
-            resources.ApplyResources(crackToolStripMenuItem, "crackToolStripMenuItem");
+            toICOToolStripMenuItem.Click += toICOToolStripMenuItem_Click;
             // 
             // downloadToolStripMenuItem1
             // 
@@ -175,6 +168,18 @@
             pictureBox1.Image = Properties.Resources.Martin_Berube_Animal_Sheep_256;
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
+            // 
+            // mP4ToolStripMenuItem
+            // 
+            mP4ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toMP3ToolStripMenuItem });
+            mP4ToolStripMenuItem.Name = "mP4ToolStripMenuItem";
+            resources.ApplyResources(mP4ToolStripMenuItem, "mP4ToolStripMenuItem");
+            // 
+            // toMP3ToolStripMenuItem
+            // 
+            toMP3ToolStripMenuItem.Name = "toMP3ToolStripMenuItem";
+            resources.ApplyResources(toMP3ToolStripMenuItem, "toMP3ToolStripMenuItem");
+            toMP3ToolStripMenuItem.Click += toMP3ToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -207,15 +212,16 @@
         private ToolStripMenuItem iMGPDFToolStripMenuItem;
         private ToolStripMenuItem toPDFToolStripMenuItem;
         private ToolStripMenuItem toICOToolStripMenuItem;
-        private ToolStripMenuItem zIPToolStripMenuItem;
-        private ToolStripMenuItem unpackingToolStripMenuItem;
-        private ToolStripMenuItem packToolStripMenuItem;
-        private ToolStripMenuItem crackToolStripMenuItem;
         private ToolStripMenuItem downloadToolStripMenuItem1;
         private ToolStripMenuItem videoToolStripMenuItem2;
         private ToolStripMenuItem youTubeToolStripMenuItem;
         private ToolStripMenuItem filesToolStripMenuItem;
         private PictureBox pictureBox1;
         private ToolStripMenuItem sizeToolStripMenuItem;
+        private SaveFileDialog saveFileDialog1;
+        private ToolStripMenuItem customToolStripMenuItem;
+        private ToolStripMenuItem containsToolStripMenuItem;
+        private ToolStripMenuItem mP4ToolStripMenuItem;
+        private ToolStripMenuItem toMP3ToolStripMenuItem;
     }
 }

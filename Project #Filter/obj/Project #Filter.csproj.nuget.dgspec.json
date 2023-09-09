@@ -40,9 +40,13 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
-            "NReco.PdfGenerator": {
+            "Magick.NET-Q16-AnyCPU": {
               "target": "Package",
-              "version": "[1.2.1, )"
+              "version": "[13.2.0, )"
+            },
+            "NAudio": {
+              "target": "Package",
+              "version": "[2.2.1, )"
             },
             "NReco.VideoInfo": {
               "target": "Package",
@@ -51,6 +55,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "PdfSharp": {
+              "target": "Package",
+              "version": "[1.50.5147, )"
             },
             "log4net": {
               "target": "Package",

@@ -1,5 +1,10 @@
 using Newtonsoft.Json;
 using NReco.VideoInfo;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
+using System.Text;
+using ImageMagick;
+using NAudio.Wave;
 
 namespace Project__Filter
 {
@@ -193,5 +198,125 @@ namespace Project__Filter
                 }
             }
         }
+
+        private void toPDFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Register the CodePagesEncodingProvider instance
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
+            // Create a FolderBrowserDialog to request the path of the folder containing the images.
+            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+            folderBrowserDialog1.Description = "Select the folder containing the images";
+            folderBrowserDialog1.ShowDialog();
+
+            // If the folder path is not an empty string, get all image files in the folder.
+            if (folderBrowserDialog1.SelectedPath != "")
+            {
+                string[] imageFiles = Directory.GetFiles(folderBrowserDialog1.SelectedPath, "*.jpg");
+
+                // Create a PDF document
+                PdfDocument doc = new PdfDocument();
+
+                // Add an image to each page of the PDF document
+                foreach (string imageFile in imageFiles)
+                {
+                    PdfPage page = doc.AddPage();
+                    XGraphics gfx = XGraphics.FromPdfPage(page);
+                    using (XImage image = XImage.FromFile(imageFile))
+                    {
+                        // Get the size of the PDF page
+                        double pageWidth = page.Width;
+                        double pageHeight = page.Height;
+
+                        // Get the size of the image
+                        double imageWidth = image.PixelWidth;
+                        double imageHeight = image.PixelHeight;
+
+                        // Calculate the scaling factor to fit the image within the page
+                        double scale = Math.Min(pageWidth / imageWidth, pageHeight / imageHeight);
+
+                        // Calculate the new size of the image
+                        double scaledImageWidth = imageWidth * scale;
+                        double scaledImageHeight = imageHeight * scale;
+
+                        // Draw the image centered on the page
+                        gfx.DrawImage(image, (pageWidth - scaledImageWidth) / 2, (pageHeight - scaledImageHeight) / 2, scaledImageWidth, scaledImageHeight);
+                    }
+                }
+
+                // Save and close the PDF document
+                string pdfFileName = Path.Combine(folderBrowserDialog1.SelectedPath, "images.pdf");
+                doc.Save(pdfFileName);
+                doc.Close();
+
+                // Delete the images from the selected folder
+                foreach (string imageFile in imageFiles)
+                {
+                    File.Delete(imageFile);
+                }
+            }
+        }
+
+        private void toICOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Create a FolderBrowserDialog to request the path of the folder containing the images.
+            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+            folderBrowserDialog1.Description = "Select the folder containing the images";
+            folderBrowserDialog1.ShowDialog();
+
+            // If the folder path is not an empty string, get all image files in the folder.
+            if (folderBrowserDialog1.SelectedPath != "")
+            {
+                string[] imageFiles = Directory.GetFiles(folderBrowserDialog1.SelectedPath, "*.jpg");
+
+                // Convert each image to an ICO file
+                foreach (string imageFile in imageFiles)
+                {
+                    using (MagickImage image = new MagickImage(imageFile))
+                    {
+                        // Resize the image if its width or height exceeds 256 pixels
+                        if (image.Width > 256 || image.Height > 256)
+                        {
+                            image.Resize(256, 256);
+                        }
+
+                        string icoFileName = Path.ChangeExtension(imageFile, ".ico");
+                        image.Write(icoFileName);
+                    }
+                }
+            }
+        }
+
+
+        private void toMP3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Create an OpenFileDialog to request the path of the MP4 file.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "MP4 Files|*.mp4";
+            openFileDialog1.Title = "Select an MP4 File";
+            openFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string, open it for conversion.
+            if (openFileDialog1.FileName != "")
+            {
+                // Get the directory of the selected MP4 file
+                string directoryPath = Path.GetDirectoryName(openFileDialog1.FileName);
+
+                // Create a path for the MP3 file in the same directory as the MP4 file
+                string mp3FileName = Path.GetFileNameWithoutExtension(openFileDialog1.FileName) + ".mp3";
+                string mp3FilePath = Path.Combine(directoryPath, mp3FileName);
+
+                // Convert the MP4 file to an MP3 file
+                using (MediaFoundationReader reader = new MediaFoundationReader(openFileDialog1.FileName))
+                {
+                    MediaFoundationEncoder.EncodeToMp3(reader, mp3FilePath);
+                }
+
+                // Delete the original MP4 file
+                File.Delete(openFileDialog1.FileName);
+            }
+        }
+
+
     }
 }
