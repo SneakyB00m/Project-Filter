@@ -133,6 +133,12 @@
   <data name="typeToolStripMenuItem.Text" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="sizeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="sizeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
   <data name="nameToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 22</value>
   </data>
@@ -3518,6 +3524,12 @@
     <value>filesToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;filesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sizeToolStripMenuItem.Name" xml:space="preserve">
+    <value>sizeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;sizeToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

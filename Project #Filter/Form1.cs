@@ -87,5 +87,40 @@ namespace Project__Filter
                 MessageBox.Show("\nDone");
             }
         }
+
+        private void sizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedDirectory = folderBrowserDialog.SelectedPath;
+                string filterDirectory = Path.Combine(selectedDirectory, "filter");
+                Directory.CreateDirectory(filterDirectory);
+
+                var files = Directory.GetFiles(selectedDirectory);
+                foreach (var file in files)
+                {
+                    FileInfo fileInfo = new FileInfo(file);
+                    long sizeInMB = fileInfo.Length / (1024 * 1024);
+
+                    string sizeFolder;
+                    if (sizeInMB > 1000)
+                        sizeFolder = "More than 1GB";
+                    else if (sizeInMB > 500)
+                        sizeFolder = "500MB to 1GB";
+                    else if (sizeInMB > 250)
+                        sizeFolder = "250MB to 500MB";
+                    else
+                        sizeFolder = "Less than 250MB";
+
+                    string destinationDirectory = Path.Combine(filterDirectory, sizeFolder);
+                    Directory.CreateDirectory(destinationDirectory);
+
+                    string fileName = Path.GetFileName(file);
+                    string destinationPath = Path.Combine(destinationDirectory, fileName);
+                    File.Move(file, destinationPath);
+                }
+            }
+        }
     }
 }
