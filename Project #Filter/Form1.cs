@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
-using MediaInfo;
-using System.Diagnostics;
+using NReco.VideoInfo;
 
 namespace Project__Filter
 {
@@ -158,8 +157,8 @@ namespace Project__Filter
                     string durationFolder;
                     try
                     {
-                        var ffMpeg = new FFMpegConverter();
-                        var videoInfo = ffMpeg.GetVideoInfo(file);
+                        var ffProbe = new FFProbe();
+                        var videoInfo = ffProbe.GetMediaInfo(file);
                         double durationInSeconds = videoInfo.Duration.TotalSeconds;
 
                         if (durationInSeconds >= 3600)

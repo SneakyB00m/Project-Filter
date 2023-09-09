@@ -26,14 +26,6 @@
           }
         }
       },
-      "NReco/2.0.3": {
-        "runtime": {
-          "lib/net40/NReco.dll": {
-            "assemblyVersion": "2.0.3.0",
-            "fileVersion": "2.0.3.0"
-          }
-        }
-      },
       "NReco.PdfGenerator/1.2.1": {
         "runtime": {
           "lib/netstandard2.0/NReco.PdfGenerator.dll": {
@@ -45,14 +37,6 @@
       "NReco.VideoInfo/1.2.0": {
         "runtime": {
           "lib/netstandard2.0/NReco.VideoInfo.dll": {
-            "assemblyVersion": "1.2.0.0",
-            "fileVersion": "1.2.0.0"
-          }
-        }
-      },
-      "NReco.VideoInfo.LT/1.2.0": {
-        "runtime": {
-          "lib/netstandard2.0/NReco.VideoInfo.LT.dll": {
             "assemblyVersion": "1.2.0.0",
             "fileVersion": "1.2.0.0"
           }
@@ -166,13 +150,6 @@
       "path": "newtonsoft.json/13.0.3",
       "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
-    "NReco/2.0.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-JNuKMEh/8LlbaZgknKKvhpY3Ws2zT3s25aqA1MpuT5kogGn0GYDEpYjA5rh7YY82SjWdOSL4yD16N6ljvRehMA==",
-      "path": "nreco/2.0.3",
-      "hashPath": "nreco.2.0.3.nupkg.sha512"
-    },
     "NReco.PdfGenerator/1.2.1": {
       "type": "package",
       "serviceable": true,
@@ -186,13 +163,6 @@
       "sha512": "sha512-ImMkJusg6R02fk0vpmo9qOwd6uDSn7Sfm6sEEHCtBh9EPfczLYfMavBHPgXbCooaE/YIKwytLN0TAbkrc1jl9g==",
       "path": "nreco.videoinfo/1.2.0",
       "hashPath": "nreco.videoinfo.1.2.0.nupkg.sha512"
-    },
-    "NReco.VideoInfo.LT/1.2.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-TxIpLw0BMe6Y9BqBXutluoulfxd+ytTPInfOfLHv1G7QCNEZzpDri62qo5EU2wLZu1Xpn2P8/zJXr53x9Z5QDA==",
-      "path": "nreco.videoinfo.lt/1.2.0",
-      "hashPath": "nreco.videoinfo.lt.1.2.0.nupkg.sha512"
     },
     "System.Configuration.ConfigurationManager/4.5.0": {
       "type": "package",

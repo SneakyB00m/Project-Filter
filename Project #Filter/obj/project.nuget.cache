@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FtavX+KtbqUKt7loV4uFX0B3707Vmwpas2D5BFzAxo7GVwP58PEUnmWGOtj1v/f6J8/d4g4l+7hudD+/yqHtNg==",
+  "dgSpecHash": "E+dMzsi0FuPb794CC1ejh3SDF9RybUj0VefA1q6lo7XY6OQXUw4YTBqWNsIo3kJ1beGshWUBLjXUoZigWZG9pw==",
   "success": true,
   "projectFilePath": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Project #Filter.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,6 @@
     "C:\\Users\\Alan_\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\nreco.pdfgenerator\\1.2.1\\nreco.pdfgenerator.1.2.1.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\nreco.videoinfo\\1.2.0\\nreco.videoinfo.1.2.0.nupkg.sha512",
-    "C:\\Users\\Alan_\\.nuget\\packages\\nreco.videoinfo.lt\\1.2.0\\nreco.videoinfo.lt.1.2.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\system.configuration.configurationmanager\\4.5.0\\system.configuration.configurationmanager.4.5.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\system.security.accesscontrol\\4.5.0\\system.security.accesscontrol.4.5.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\system.security.cryptography.protecteddata\\4.5.0\\system.security.cryptography.protecteddata.4.5.0.nupkg.sha512",

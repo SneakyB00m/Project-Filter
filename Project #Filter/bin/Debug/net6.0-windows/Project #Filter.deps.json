@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "Project #Filter/1.0.0": {
         "dependencies": {
-          "MediaInfo.Wrapper": "21.9.3",
+          "NReco.PdfGenerator": "1.2.1",
+          "NReco.VideoInfo": "1.2.0",
           "Newtonsoft.Json": "13.0.3",
           "log4net": "2.0.15"
         },
@@ -27,20 +28,6 @@
           }
         }
       },
-      "MediaInfo.Native/21.9.1": {},
-      "MediaInfo.Wrapper/21.9.3": {
-        "dependencies": {
-          "MediaInfo.Native": "21.9.1",
-          "System.Memory": "4.5.4",
-          "System.ValueTuple": "4.5.0"
-        },
-        "runtime": {
-          "lib/net45/MediaInfo.Wrapper.dll": {
-            "assemblyVersion": "21.9.3.0",
-            "fileVersion": "21.9.3.0"
-          }
-        }
-      },
       "Microsoft.NETCore.Platforms/2.0.0": {},
       "Newtonsoft.Json/13.0.3": {
         "runtime": {
@@ -50,13 +37,28 @@
           }
         }
       },
+      "NReco.PdfGenerator/1.2.1": {
+        "runtime": {
+          "lib/netstandard2.0/NReco.PdfGenerator.dll": {
+            "assemblyVersion": "1.2.1.0",
+            "fileVersion": "1.2.1.0"
+          }
+        }
+      },
+      "NReco.VideoInfo/1.2.0": {
+        "runtime": {
+          "lib/netstandard2.0/NReco.VideoInfo.dll": {
+            "assemblyVersion": "1.2.0.0",
+            "fileVersion": "1.2.0.0"
+          }
+        }
+      },
       "System.Configuration.ConfigurationManager/4.5.0": {
         "dependencies": {
           "System.Security.Cryptography.ProtectedData": "4.5.0",
           "System.Security.Permissions": "4.5.0"
         }
       },
-      "System.Memory/4.5.4": {},
       "System.Security.AccessControl/4.5.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0",
@@ -73,8 +75,7 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0"
         }
-      },
-      "System.ValueTuple/4.5.0": {}
+      }
     }
   },
   "libraries": {
@@ -90,20 +91,6 @@
       "path": "log4net/2.0.15",
       "hashPath": "log4net.2.0.15.nupkg.sha512"
     },
-    "MediaInfo.Native/21.9.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-bBYJ9o91fqCknO4LJMnWu6H0eQMDgg9Yz1l9dbfSWEfS87Gkw5uYX4iJgyUPDhnjor101gnu3YXTRTv4c9vCzA==",
-      "path": "mediainfo.native/21.9.1",
-      "hashPath": "mediainfo.native.21.9.1.nupkg.sha512"
-    },
-    "MediaInfo.Wrapper/21.9.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-AZlz+r/NcLf5hFYC8ygGGOD9u5qpln9jusLqbNvmxWACekozaXrqXZT7gA/HzytagwDPNCEQvkfMJHfiVtKeMQ==",
-      "path": "mediainfo.wrapper/21.9.3",
-      "hashPath": "mediainfo.wrapper.21.9.3.nupkg.sha512"
-    },
     "Microsoft.NETCore.Platforms/2.0.0": {
       "type": "package",
       "serviceable": true,
@@ -118,19 +105,26 @@
       "path": "newtonsoft.json/13.0.3",
       "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
+    "NReco.PdfGenerator/1.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YONMIaSBJO/0FKcXMyO1KZWc83IqfrbBKw5fcRxrwgxzv5r89rh/Z6r7ukuJmx+ra3m6jz6gmaEYXFWV3dKTmg==",
+      "path": "nreco.pdfgenerator/1.2.1",
+      "hashPath": "nreco.pdfgenerator.1.2.1.nupkg.sha512"
+    },
+    "NReco.VideoInfo/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ImMkJusg6R02fk0vpmo9qOwd6uDSn7Sfm6sEEHCtBh9EPfczLYfMavBHPgXbCooaE/YIKwytLN0TAbkrc1jl9g==",
+      "path": "nreco.videoinfo/1.2.0",
+      "hashPath": "nreco.videoinfo.1.2.0.nupkg.sha512"
+    },
     "System.Configuration.ConfigurationManager/4.5.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-UIFvaFfuKhLr9u5tWMxmVoDPkFeD+Qv8gUuap4aZgVGYSYMdERck4OhLN/2gulAc0nYTEigWXSJNNWshrmxnng==",
       "path": "system.configuration.configurationmanager/4.5.0",
       "hashPath": "system.configuration.configurationmanager.4.5.0.nupkg.sha512"
-    },
-    "System.Memory/4.5.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
-      "path": "system.memory/4.5.4",
-      "hashPath": "system.memory.4.5.4.nupkg.sha512"
     },
     "System.Security.AccessControl/4.5.0": {
       "type": "package",
@@ -159,13 +153,6 @@
       "sha512": "sha512-U77HfRXlZlOeIXd//Yoj6Jnk8AXlbeisf1oq1os+hxOGVnuG+lGSfGqTwTZBoORFF6j/0q7HXIl8cqwQ9aUGqQ==",
       "path": "system.security.principal.windows/4.5.0",
       "hashPath": "system.security.principal.windows.4.5.0.nupkg.sha512"
-    },
-    "System.ValueTuple/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
-      "path": "system.valuetuple/4.5.0",
-      "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
     }
   }
 }
