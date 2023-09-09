@@ -33,8 +33,8 @@
             filterToolStripMenuItem = new ToolStripMenuItem();
             nameToolStripMenuItem = new ToolStripMenuItem();
             typeToolStripMenuItem = new ToolStripMenuItem();
+            sizeToolStripMenuItem = new ToolStripMenuItem();
             videoToolStripMenuItem = new ToolStripMenuItem();
-            nameToolStripMenuItem1 = new ToolStripMenuItem();
             typeToolStripMenuItem1 = new ToolStripMenuItem();
             lenghtToolStripMenuItem = new ToolStripMenuItem();
             othersToolStripMenuItem = new ToolStripMenuItem();
@@ -50,7 +50,6 @@
             youTubeToolStripMenuItem = new ToolStripMenuItem();
             filesToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
-            sizeToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -80,26 +79,29 @@
             resources.ApplyResources(typeToolStripMenuItem, "typeToolStripMenuItem");
             typeToolStripMenuItem.Click += typeToolStripMenuItem_Click;
             // 
+            // sizeToolStripMenuItem
+            // 
+            sizeToolStripMenuItem.Name = "sizeToolStripMenuItem";
+            resources.ApplyResources(sizeToolStripMenuItem, "sizeToolStripMenuItem");
+            sizeToolStripMenuItem.Click += sizeToolStripMenuItem_Click;
+            // 
             // videoToolStripMenuItem
             // 
-            videoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nameToolStripMenuItem1, typeToolStripMenuItem1, lenghtToolStripMenuItem });
+            videoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { typeToolStripMenuItem1, lenghtToolStripMenuItem });
             videoToolStripMenuItem.Name = "videoToolStripMenuItem";
             resources.ApplyResources(videoToolStripMenuItem, "videoToolStripMenuItem");
-            // 
-            // nameToolStripMenuItem1
-            // 
-            nameToolStripMenuItem1.Name = "nameToolStripMenuItem1";
-            resources.ApplyResources(nameToolStripMenuItem1, "nameToolStripMenuItem1");
             // 
             // typeToolStripMenuItem1
             // 
             typeToolStripMenuItem1.Name = "typeToolStripMenuItem1";
             resources.ApplyResources(typeToolStripMenuItem1, "typeToolStripMenuItem1");
+            typeToolStripMenuItem1.Click += typeToolStripMenuItem1_Click;
             // 
             // lenghtToolStripMenuItem
             // 
             lenghtToolStripMenuItem.Name = "lenghtToolStripMenuItem";
             resources.ApplyResources(lenghtToolStripMenuItem, "lenghtToolStripMenuItem");
+            lenghtToolStripMenuItem.Click += lenghtToolStripMenuItem_Click;
             // 
             // othersToolStripMenuItem
             // 
@@ -173,12 +175,6 @@
             pictureBox1.Image = Properties.Resources.Martin_Berube_Animal_Sheep_256;
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
-            // 
-            // sizeToolStripMenuItem
-            // 
-            sizeToolStripMenuItem.Name = "sizeToolStripMenuItem";
-            resources.ApplyResources(sizeToolStripMenuItem, "sizeToolStripMenuItem");
-            sizeToolStripMenuItem.Click += sizeToolStripMenuItem_Click;
             // 
             // Form1
             // 

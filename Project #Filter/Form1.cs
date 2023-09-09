@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using MediaInfo;
 
 namespace Project__Filter
 {
@@ -121,6 +122,78 @@ namespace Project__Filter
                     File.Move(file, destinationPath);
                 }
             }
+        }
+
+        private void typeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedDirectory = folderBrowserDialog.SelectedPath;
+                var files = Directory.GetFiles(selectedDirectory);
+                foreach (var file in files)
+                {
+                    string extension = Path.GetExtension(file).TrimStart('.').ToLower();
+                    string destinationDirectory = Path.Combine(selectedDirectory, extension);
+                    Directory.CreateDirectory(destinationDirectory);
+
+                    string fileName = Path.GetFileName(file);
+                    string destinationPath = Path.Combine(destinationDirectory, fileName);
+                    File.Move(file, destinationPath);
+                }
+            }
+        }
+
+        private void lenghtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedDirectory = folderBrowserDialog.SelectedPath;
+
+                var files = Directory.GetFiles(selectedDirectory);
+                foreach (var file in files)
+                {
+                    string durationFolder;
+                    try
+                    {
+                        var mediaInfo = new MediaInfo.MediaInfo();
+                        mediaInfo.Open(file);
+                        double durationInSeconds = mediaInfo.Get(StreamKind.Video, 0, "Duration") != "" ? double.Parse(mediaInfo.Get(StreamKind.Video, 0, "Duration")) / 1000 : 0;
+                        mediaInfo.Close();
+
+                        if (durationInSeconds >= 3600)
+                            durationFolder = "1 hour or more";
+                        else if (durationInSeconds >= 3000)
+                            durationFolder = "50 min or more";
+                        else if (durationInSeconds >= 2400)
+                            durationFolder = "40 min or more";
+                        else if (durationInSeconds >= 1800)
+                            durationFolder = "30 min or more";
+                        else if (durationInSeconds >= 1200)
+                            durationFolder = "20 min or more";
+                        else if (durationInSeconds >= 600)
+                            durationFolder = "10 min or more";
+                        else if (durationInSeconds >= 300)
+                            durationFolder = "5 min or more";
+                        else
+                            durationFolder = "Less than 5 min";
+                    }
+                    catch
+                    {
+                        // Unable to get the duration, put in the undefined folder
+                        durationFolder = "Undefined";
+                    }
+
+                    string destinationDirectory = Path.Combine(selectedDirectory, durationFolder);
+                    Directory.CreateDirectory(destinationDirectory);
+
+                    string fileName = Path.GetFileName(file);
+                    string destinationPath = Path.Combine(destinationDirectory, fileName);
+                    File.Move(file, destinationPath);
+                }
+            }
+
         }
     }
 }

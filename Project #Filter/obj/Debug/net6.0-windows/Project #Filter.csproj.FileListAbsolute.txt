@@ -20,3 +20,4 @@ E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Pr
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.genruntimeconfig.cache
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\ref\Project #Filter.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Properties.Resources.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\MediaInfo.Wrapper.dll
