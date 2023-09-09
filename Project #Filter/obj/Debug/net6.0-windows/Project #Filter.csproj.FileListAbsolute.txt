@@ -7,7 +7,6 @@ E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\lo
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.csproj.AssemblyReference.cache
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Form1.resources
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Form2.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.csproj.GenerateResource.cache
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.GeneratedMSBuildEditorConfig.editorconfig
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.AssemblyInfoInputs.cache
