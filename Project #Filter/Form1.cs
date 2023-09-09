@@ -287,36 +287,38 @@ namespace Project__Filter
             }
         }
 
-
         private void toMP3ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Create an OpenFileDialog to request the path of the MP4 file.
+            // Create an OpenFileDialog to request the path of the MP4 files.
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "MP4 Files|*.mp4";
-            openFileDialog1.Title = "Select an MP4 File";
+            openFileDialog1.Title = "Select MP4 Files";
+            openFileDialog1.Multiselect = true;
             openFileDialog1.ShowDialog();
 
-            // If the file name is not an empty string, open it for conversion.
-            if (openFileDialog1.FileName != "")
+            // If the file names are not empty, open them for conversion.
+            if (openFileDialog1.FileNames.Length > 0)
             {
-                // Get the directory of the selected MP4 file
-                string directoryPath = Path.GetDirectoryName(openFileDialog1.FileName);
-
-                // Create a path for the MP3 file in the same directory as the MP4 file
-                string mp3FileName = Path.GetFileNameWithoutExtension(openFileDialog1.FileName) + ".mp3";
-                string mp3FilePath = Path.Combine(directoryPath, mp3FileName);
-
-                // Convert the MP4 file to an MP3 file
-                using (MediaFoundationReader reader = new MediaFoundationReader(openFileDialog1.FileName))
+                // Convert each MP4 file to an MP3 file
+                foreach (string mp4FilePath in openFileDialog1.FileNames)
                 {
-                    MediaFoundationEncoder.EncodeToMp3(reader, mp3FilePath);
-                }
+                    // Get the directory of the selected MP4 file
+                    string directoryPath = Path.GetDirectoryName(mp4FilePath);
 
-                // Delete the original MP4 file
-                File.Delete(openFileDialog1.FileName);
+                    // Create a path for the MP3 file in the same directory as the MP4 file
+                    string mp3FileName = Path.GetFileNameWithoutExtension(mp4FilePath) + ".mp3";
+                    string mp3FilePath = Path.Combine(directoryPath, mp3FileName);
+
+                    // Convert the MP4 file to an MP3 file
+                    using (MediaFoundationReader reader = new MediaFoundationReader(mp4FilePath))
+                    {
+                        MediaFoundationEncoder.EncodeToMp3(reader, mp3FilePath);
+                    }
+
+                    // Delete the original MP4 file
+                    File.Delete(mp4FilePath);
+                }
             }
         }
-
-
     }
 }
