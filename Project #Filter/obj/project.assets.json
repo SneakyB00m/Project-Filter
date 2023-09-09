@@ -18,30 +18,6 @@
           }
         }
       },
-      "MediaInfo.Native/21.9.1": {
-        "type": "package",
-        "build": {
-          "build/_._": {}
-        }
-      },
-      "MediaInfo.Wrapper/21.9.3": {
-        "type": "package",
-        "dependencies": {
-          "MediaInfo.Native": "21.9.1",
-          "System.Memory": "4.5.4",
-          "System.ValueTuple": "4.5.0"
-        },
-        "compile": {
-          "lib/net45/MediaInfo.Wrapper.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net45/MediaInfo.Wrapper.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.NETCore.Platforms/2.0.0": {
         "type": "package",
         "compile": {
@@ -64,6 +40,45 @@
           }
         }
       },
+      "NReco.PdfGenerator/1.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NReco.PdfGenerator.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/NReco.PdfGenerator.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NReco.VideoInfo/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NReco.VideoInfo.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/NReco.VideoInfo.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NReco.VideoInfo.LT/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NReco.VideoInfo.LT.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/NReco.VideoInfo.LT.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Configuration.ConfigurationManager/4.5.0": {
         "type": "package",
         "dependencies": {
@@ -77,15 +92,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
-        }
-      },
-      "System.Memory/4.5.4": {
-        "type": "package",
-        "compile": {
-          "ref/netcoreapp2.1/_._": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/_._": {}
         }
       },
       "System.Security.AccessControl/4.5.0": {
@@ -163,15 +169,6 @@
             "rid": "win"
           }
         }
-      },
-      "System.ValueTuple/4.5.0": {
-        "type": "package",
-        "compile": {
-          "ref/netcoreapp2.0/_._": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.0/_._": {}
-        }
       }
     }
   },
@@ -200,46 +197,6 @@
         "log4net.2.0.15.nupkg.sha512",
         "log4net.nuspec",
         "package-icon.png"
-      ]
-    },
-    "MediaInfo.Native/21.9.1": {
-      "sha512": "bBYJ9o91fqCknO4LJMnWu6H0eQMDgg9Yz1l9dbfSWEfS87Gkw5uYX4iJgyUPDhnjor101gnu3YXTRTv4c9vCzA==",
-      "type": "package",
-      "path": "mediainfo.native/21.9.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/History_Curl.txt",
-        "build/History_MediaInfo.txt",
-        "build/History_OpenSSL.md",
-        "build/MediaInfo.Native.targets",
-        "build/native/x64/MediaInfo.dll",
-        "build/native/x64/libcrypto-3-x64.dll",
-        "build/native/x64/libcurl.dll",
-        "build/native/x64/libssl-3-x64.dll",
-        "build/native/x86/MediaInfo.dll",
-        "build/native/x86/libcrypto-3.dll",
-        "build/native/x86/libcurl.dll",
-        "build/native/x86/libssl-3.dll",
-        "mediainfo.native.21.9.1.nupkg.sha512",
-        "mediainfo.native.nuspec"
-      ]
-    },
-    "MediaInfo.Wrapper/21.9.3": {
-      "sha512": "AZlz+r/NcLf5hFYC8ygGGOD9u5qpln9jusLqbNvmxWACekozaXrqXZT7gA/HzytagwDPNCEQvkfMJHfiVtKeMQ==",
-      "type": "package",
-      "path": "mediainfo.wrapper/21.9.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE",
-        "MediaInfo_90x90.png",
-        "lib/net40/MediaInfo.Wrapper.dll",
-        "lib/net40/MediaInfo.Wrapper.xml",
-        "lib/net45/MediaInfo.Wrapper.dll",
-        "lib/net45/MediaInfo.Wrapper.xml",
-        "mediainfo.wrapper.21.9.3.nupkg.sha512",
-        "mediainfo.wrapper.nuspec"
       ]
     },
     "Microsoft.NETCore.Platforms/2.0.0": {
@@ -289,6 +246,51 @@
         "packageIcon.png"
       ]
     },
+    "NReco.PdfGenerator/1.2.1": {
+      "sha512": "YONMIaSBJO/0FKcXMyO1KZWc83IqfrbBKw5fcRxrwgxzv5r89rh/Z6r7ukuJmx+ra3m6jz6gmaEYXFWV3dKTmg==",
+      "type": "package",
+      "path": "nreco.pdfgenerator/1.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/NReco.PdfGenerator.dll",
+        "lib/net45/NReco.PdfGenerator.xml",
+        "lib/netstandard2.0/NReco.PdfGenerator.dll",
+        "lib/netstandard2.0/NReco.PdfGenerator.xml",
+        "nreco.pdfgenerator.1.2.1.nupkg.sha512",
+        "nreco.pdfgenerator.nuspec"
+      ]
+    },
+    "NReco.VideoInfo/1.2.0": {
+      "sha512": "ImMkJusg6R02fk0vpmo9qOwd6uDSn7Sfm6sEEHCtBh9EPfczLYfMavBHPgXbCooaE/YIKwytLN0TAbkrc1jl9g==",
+      "type": "package",
+      "path": "nreco.videoinfo/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/NReco.VideoInfo.dll",
+        "lib/net45/NReco.VideoInfo.xml",
+        "lib/netstandard2.0/NReco.VideoInfo.dll",
+        "lib/netstandard2.0/NReco.VideoInfo.xml",
+        "nreco.videoinfo.1.2.0.nupkg.sha512",
+        "nreco.videoinfo.nuspec"
+      ]
+    },
+    "NReco.VideoInfo.LT/1.2.0": {
+      "sha512": "TxIpLw0BMe6Y9BqBXutluoulfxd+ytTPInfOfLHv1G7QCNEZzpDri62qo5EU2wLZu1Xpn2P8/zJXr53x9Z5QDA==",
+      "type": "package",
+      "path": "nreco.videoinfo.lt/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/NReco.VideoInfo.LT.dll",
+        "lib/net45/NReco.VideoInfo.LT.xml",
+        "lib/netstandard2.0/NReco.VideoInfo.LT.dll",
+        "lib/netstandard2.0/NReco.VideoInfo.LT.xml",
+        "nreco.videoinfo.lt.1.2.0.nupkg.sha512",
+        "nreco.videoinfo.lt.nuspec"
+      ]
+    },
     "System.Configuration.ConfigurationManager/4.5.0": {
       "sha512": "UIFvaFfuKhLr9u5tWMxmVoDPkFeD+Qv8gUuap4aZgVGYSYMdERck4OhLN/2gulAc0nYTEigWXSJNNWshrmxnng==",
       "type": "package",
@@ -306,29 +308,6 @@
         "ref/netstandard2.0/System.Configuration.ConfigurationManager.xml",
         "system.configuration.configurationmanager.4.5.0.nupkg.sha512",
         "system.configuration.configurationmanager.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "System.Memory/4.5.4": {
-      "sha512": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
-      "type": "package",
-      "path": "system.memory/4.5.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/System.Memory.dll",
-        "lib/net461/System.Memory.xml",
-        "lib/netcoreapp2.1/_._",
-        "lib/netstandard1.1/System.Memory.dll",
-        "lib/netstandard1.1/System.Memory.xml",
-        "lib/netstandard2.0/System.Memory.dll",
-        "lib/netstandard2.0/System.Memory.xml",
-        "ref/netcoreapp2.1/_._",
-        "system.memory.4.5.4.nupkg.sha512",
-        "system.memory.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
@@ -479,55 +458,13 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "System.ValueTuple/4.5.0": {
-      "sha512": "okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
-      "type": "package",
-      "path": "system.valuetuple/4.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net461/System.ValueTuple.dll",
-        "lib/net461/System.ValueTuple.xml",
-        "lib/net47/System.ValueTuple.dll",
-        "lib/net47/System.ValueTuple.xml",
-        "lib/netcoreapp2.0/_._",
-        "lib/netstandard1.0/System.ValueTuple.dll",
-        "lib/netstandard1.0/System.ValueTuple.xml",
-        "lib/netstandard2.0/_._",
-        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
-        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.xml",
-        "lib/uap10.0.16299/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net461/System.ValueTuple.dll",
-        "ref/net47/System.ValueTuple.dll",
-        "ref/netcoreapp2.0/_._",
-        "ref/netstandard2.0/_._",
-        "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
-        "ref/uap10.0.16299/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.valuetuple.4.5.0.nupkg.sha512",
-        "system.valuetuple.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "MediaInfo.Wrapper >= 21.9.3",
+      "NReco.PdfGenerator >= 1.2.1",
+      "NReco.VideoInfo >= 1.2.0",
+      "NReco.VideoInfo.LT >= 1.2.0",
       "Newtonsoft.Json >= 13.0.3",
       "log4net >= 2.0.15"
     ]
@@ -571,9 +508,17 @@
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
         "dependencies": {
-          "MediaInfo.Wrapper": {
+          "NReco.PdfGenerator": {
             "target": "Package",
-            "version": "[21.9.3, )"
+            "version": "[1.2.1, )"
+          },
+          "NReco.VideoInfo": {
+            "target": "Package",
+            "version": "[1.2.0, )"
+          },
+          "NReco.VideoInfo.LT": {
+            "target": "Package",
+            "version": "[1.2.0, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -606,17 +551,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'MediaInfo.Wrapper 21.9.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "MediaInfo.Wrapper",
-      "targetGraphs": [
-        "net6.0-windows7.0"
-      ]
-    }
-  ]
+  }
 }

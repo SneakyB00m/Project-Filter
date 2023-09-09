@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using MediaInfo;
+using System.Diagnostics;
 
 namespace Project__Filter
 {
@@ -157,10 +158,9 @@ namespace Project__Filter
                     string durationFolder;
                     try
                     {
-                        var mediaInfo = new MediaInfo.MediaInfo();
-                        mediaInfo.Open(file);
-                        double durationInSeconds = mediaInfo.Get(StreamKind.Video, 0, "Duration") != "" ? double.Parse(mediaInfo.Get(StreamKind.Video, 0, "Duration")) / 1000 : 0;
-                        mediaInfo.Close();
+                        var ffMpeg = new FFMpegConverter();
+                        var videoInfo = ffMpeg.GetVideoInfo(file);
+                        double durationInSeconds = videoInfo.Duration.TotalSeconds;
 
                         if (durationInSeconds >= 3600)
                             durationFolder = "1 hour or more";
@@ -193,7 +193,6 @@ namespace Project__Filter
                     File.Move(file, destinationPath);
                 }
             }
-
         }
     }
 }
