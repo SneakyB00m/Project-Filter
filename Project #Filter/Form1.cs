@@ -199,6 +199,11 @@ namespace Project__Filter
             }
         }
 
+        private void containsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void toPDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Register the CodePagesEncodingProvider instance
@@ -319,6 +324,11 @@ namespace Project__Filter
                     File.Delete(mp4FilePath);
                 }
             }
+        }
+
+        private void othersToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Properties.Resources.Gartoon_Team_Gartoon_Misc_Gtk_Convert_256;
         }
     }
 }

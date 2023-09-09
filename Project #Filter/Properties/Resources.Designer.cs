@@ -63,6 +63,16 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Gartoon_Team_Gartoon_Misc_Gtk_Convert_256 {
+            get {
+                object obj = ResourceManager.GetObject("Gartoon-Team-Gartoon-Misc-Gtk-Convert.256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Martin_Berube_Animal_Sheep_256 {
             get {
                 object obj = ResourceManager.GetObject("Martin-Berube-Animal-Sheep.256", resourceCulture);

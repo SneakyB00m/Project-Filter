@@ -110,12 +110,14 @@
             // 
             containsToolStripMenuItem.Name = "containsToolStripMenuItem";
             resources.ApplyResources(containsToolStripMenuItem, "containsToolStripMenuItem");
+            containsToolStripMenuItem.Click += containsToolStripMenuItem_Click;
             // 
             // othersToolStripMenuItem
             // 
             othersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iMGPDFToolStripMenuItem, mP4ToolStripMenuItem });
             othersToolStripMenuItem.Name = "othersToolStripMenuItem";
             resources.ApplyResources(othersToolStripMenuItem, "othersToolStripMenuItem");
+            othersToolStripMenuItem.MouseHover += othersToolStripMenuItem_MouseHover;
             // 
             // iMGPDFToolStripMenuItem
             // 
