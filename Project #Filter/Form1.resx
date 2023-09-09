@@ -122,49 +122,49 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="nameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>116, 22</value>
   </data>
   <data name="nameToolStripMenuItem.Text" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="typeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>116, 22</value>
   </data>
   <data name="typeToolStripMenuItem.Text" xml:space="preserve">
     <value>Type</value>
   </data>
   <data name="sizeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>116, 22</value>
   </data>
   <data name="sizeToolStripMenuItem.Text" xml:space="preserve">
     <value>Size</value>
   </data>
   <data name="typeToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>111, 22</value>
   </data>
   <data name="typeToolStripMenuItem1.Text" xml:space="preserve">
     <value>Type</value>
   </data>
   <data name="lenghtToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>111, 22</value>
   </data>
   <data name="lenghtToolStripMenuItem.Text" xml:space="preserve">
     <value>Lenght</value>
   </data>
   <data name="videoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>116, 22</value>
   </data>
   <data name="videoToolStripMenuItem.Text" xml:space="preserve">
     <value>Video</value>
   </data>
   <data name="containsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>121, 22</value>
   </data>
   <data name="containsToolStripMenuItem.Text" xml:space="preserve">
     <value>Contains</value>
   </data>
   <data name="customToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>116, 22</value>
   </data>
   <data name="customToolStripMenuItem.Text" xml:space="preserve">
     <value>Custom</value>
@@ -188,7 +188,7 @@
     <value>To ICO</value>
   </data>
   <data name="iMGPDFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>112, 22</value>
   </data>
   <data name="iMGPDFToolStripMenuItem.Text" xml:space="preserve">
     <value>Images</value>
@@ -200,7 +200,7 @@
     <value>To MP3</value>
   </data>
   <data name="mP4ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>112, 22</value>
   </data>
   <data name="mP4ToolStripMenuItem.Text" xml:space="preserve">
     <value>Videos</value>

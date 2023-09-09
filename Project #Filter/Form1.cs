@@ -201,8 +201,47 @@ namespace Project__Filter
 
         private void containsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Create an InputBox to request the text to search for.
+            string searchText = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "Default", -1, -1);
 
+            // Create a FolderBrowserDialog to request the path of the folder to check.
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedDirectory = folderBrowserDialog.SelectedPath;
+                string filterDirectory = Path.Combine(selectedDirectory, "filter");
+                Directory.CreateDirectory(filterDirectory);
+
+                var files = Directory.GetFiles(selectedDirectory);
+                foreach (var file in files)
+                {
+                    // Read the contents of the file
+                    string fileContents = File.ReadAllText(file);
+
+                    // Check if the file contains the search text
+                    if (fileContents.Contains(searchText))
+                    {
+                        string destinationDirectory = Path.Combine(filterDirectory, "Contains");
+                        Directory.CreateDirectory(destinationDirectory);
+
+                        string fileName = Path.GetFileName(file);
+                        string destinationPath = Path.Combine(destinationDirectory, fileName);
+                        File.Move(file, destinationPath);
+                    }
+                    else
+                    {
+                        string destinationDirectory = Path.Combine(filterDirectory, "Does not contain");
+                        Directory.CreateDirectory(destinationDirectory);
+
+                        string fileName = Path.GetFileName(file);
+                        string destinationPath = Path.Combine(destinationDirectory, fileName);
+                        File.Move(file, destinationPath);
+                    }
+                }
+            }
         }
+
+
 
         private void toPDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
