@@ -215,16 +215,15 @@ namespace Project__Filter
                 var files = Directory.GetFiles(selectedDirectory);
                 foreach (var file in files)
                 {
-                    // Read the contents of the file
-                    string fileContents = File.ReadAllText(file);
+                    // Get the file name
+                    string fileName = Path.GetFileName(file);
 
-                    // Check if the file contains the search text
-                    if (fileContents.Contains(searchText))
+                    // Check if the file name contains the search text
+                    if (fileName.Contains(searchText))
                     {
-                        string destinationDirectory = Path.Combine(filterDirectory, "Contains");
+                        string destinationDirectory = Path.Combine(filterDirectory, searchText);
                         Directory.CreateDirectory(destinationDirectory);
 
-                        string fileName = Path.GetFileName(file);
                         string destinationPath = Path.Combine(destinationDirectory, fileName);
                         File.Move(file, destinationPath);
                     }
@@ -233,15 +232,12 @@ namespace Project__Filter
                         string destinationDirectory = Path.Combine(filterDirectory, "Does not contain");
                         Directory.CreateDirectory(destinationDirectory);
 
-                        string fileName = Path.GetFileName(file);
                         string destinationPath = Path.Combine(destinationDirectory, fileName);
                         File.Move(file, destinationPath);
                     }
                 }
             }
         }
-
-
 
         private void toPDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
