@@ -43,21 +43,17 @@
             iMGPDFToolStripMenuItem = new ToolStripMenuItem();
             toPDFToolStripMenuItem = new ToolStripMenuItem();
             toICOToolStripMenuItem = new ToolStripMenuItem();
-            downloadToolStripMenuItem1 = new ToolStripMenuItem();
-            videoToolStripMenuItem2 = new ToolStripMenuItem();
-            youTubeToolStripMenuItem = new ToolStripMenuItem();
-            filesToolStripMenuItem = new ToolStripMenuItem();
-            pictureBox1 = new PictureBox();
-            saveFileDialog1 = new SaveFileDialog();
             mP4ToolStripMenuItem = new ToolStripMenuItem();
             toMP3ToolStripMenuItem = new ToolStripMenuItem();
+            pictureBox1 = new PictureBox();
+            saveFileDialog1 = new SaveFileDialog();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { filterToolStripMenuItem, othersToolStripMenuItem, downloadToolStripMenuItem1 });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { filterToolStripMenuItem, othersToolStripMenuItem });
             resources.ApplyResources(menuStrip1, "menuStrip1");
             menuStrip1.Name = "menuStrip1";
             // 
@@ -139,36 +135,6 @@
             resources.ApplyResources(toICOToolStripMenuItem, "toICOToolStripMenuItem");
             toICOToolStripMenuItem.Click += toICOToolStripMenuItem_Click;
             // 
-            // downloadToolStripMenuItem1
-            // 
-            downloadToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { videoToolStripMenuItem2, filesToolStripMenuItem });
-            downloadToolStripMenuItem1.Name = "downloadToolStripMenuItem1";
-            resources.ApplyResources(downloadToolStripMenuItem1, "downloadToolStripMenuItem1");
-            // 
-            // videoToolStripMenuItem2
-            // 
-            videoToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { youTubeToolStripMenuItem });
-            videoToolStripMenuItem2.Name = "videoToolStripMenuItem2";
-            resources.ApplyResources(videoToolStripMenuItem2, "videoToolStripMenuItem2");
-            // 
-            // youTubeToolStripMenuItem
-            // 
-            youTubeToolStripMenuItem.Name = "youTubeToolStripMenuItem";
-            resources.ApplyResources(youTubeToolStripMenuItem, "youTubeToolStripMenuItem");
-            // 
-            // filesToolStripMenuItem
-            // 
-            filesToolStripMenuItem.Name = "filesToolStripMenuItem";
-            resources.ApplyResources(filesToolStripMenuItem, "filesToolStripMenuItem");
-            // 
-            // pictureBox1
-            // 
-            resources.ApplyResources(pictureBox1, "pictureBox1");
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Image = Properties.Resources.Martin_Berube_Animal_Sheep_256;
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.TabStop = false;
-            // 
             // mP4ToolStripMenuItem
             // 
             mP4ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toMP3ToolStripMenuItem });
@@ -180,6 +146,14 @@
             toMP3ToolStripMenuItem.Name = "toMP3ToolStripMenuItem";
             resources.ApplyResources(toMP3ToolStripMenuItem, "toMP3ToolStripMenuItem");
             toMP3ToolStripMenuItem.Click += toMP3ToolStripMenuItem_Click;
+            // 
+            // pictureBox1
+            // 
+            resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox1.Image = Properties.Resources.Martin_Berube_Animal_Sheep_256;
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -212,10 +186,6 @@
         private ToolStripMenuItem iMGPDFToolStripMenuItem;
         private ToolStripMenuItem toPDFToolStripMenuItem;
         private ToolStripMenuItem toICOToolStripMenuItem;
-        private ToolStripMenuItem downloadToolStripMenuItem1;
-        private ToolStripMenuItem videoToolStripMenuItem2;
-        private ToolStripMenuItem youTubeToolStripMenuItem;
-        private ToolStripMenuItem filesToolStripMenuItem;
         private PictureBox pictureBox1;
         private ToolStripMenuItem sizeToolStripMenuItem;
         private SaveFileDialog saveFileDialog1;
