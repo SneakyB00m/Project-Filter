@@ -63,6 +63,26 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Combine {
+            get {
+                object obj = ResourceManager.GetObject("Combine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Extract {
+            get {
+                object obj = ResourceManager.GetObject("Extract", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gartoon_Team_Gartoon_Misc_Gtk_Convert_256 {
             get {
                 object obj = ResourceManager.GetObject("Gartoon-Team-Gartoon-Misc-Gtk-Convert.256", resourceCulture);

@@ -122,37 +122,37 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="nameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>116, 22</value>
   </data>
   <data name="nameToolStripMenuItem.Text" xml:space="preserve">
     <value>A to Z</value>
   </data>
   <data name="typeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>116, 22</value>
   </data>
   <data name="typeToolStripMenuItem.Text" xml:space="preserve">
     <value>Type</value>
   </data>
   <data name="sizeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>116, 22</value>
   </data>
   <data name="sizeToolStripMenuItem.Text" xml:space="preserve">
     <value>Size</value>
   </data>
   <data name="typeToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>111, 22</value>
   </data>
   <data name="typeToolStripMenuItem1.Text" xml:space="preserve">
     <value>Type</value>
   </data>
   <data name="lenghtToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>111, 22</value>
   </data>
   <data name="lenghtToolStripMenuItem.Text" xml:space="preserve">
     <value>Lenght</value>
   </data>
   <data name="videoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>116, 22</value>
   </data>
   <data name="videoToolStripMenuItem.Text" xml:space="preserve">
     <value>Video</value>
@@ -188,7 +188,7 @@
     <value>Similar</value>
   </data>
   <data name="customToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>116, 22</value>
   </data>
   <data name="customToolStripMenuItem.Text" xml:space="preserve">
     <value>Custom</value>
@@ -236,13 +236,13 @@
     <value>Converter</value>
   </data>
   <data name="toFolderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>122, 22</value>
   </data>
   <data name="toFolderToolStripMenuItem.Text" xml:space="preserve">
     <value>To Folder</value>
   </data>
   <data name="fromZIPToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>122, 22</value>
   </data>
   <data name="fromZIPToolStripMenuItem.Text" xml:space="preserve">
     <value>From ZIP</value>
@@ -260,7 +260,7 @@
     <value>Extract</value>
   </data>
   <data name="pDFsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="pDFsToolStripMenuItem.Text" xml:space="preserve">
     <value>PDFs</value>
@@ -3577,6 +3577,12 @@
   <data name="&gt;&gt;toFolderToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;fromZIPToolStripMenuItem.Name" xml:space="preserve">
+    <value>fromZIPToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;fromZIPToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;combineToolStripMenuItem.Name" xml:space="preserve">
     <value>combineToolStripMenuItem</value>
   </data>
@@ -3594,12 +3600,6 @@
   </data>
   <data name="&gt;&gt;saveFileDialog1.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fromZIPToolStripMenuItem.Name" xml:space="preserve">
-    <value>fromZIPToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;fromZIPToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

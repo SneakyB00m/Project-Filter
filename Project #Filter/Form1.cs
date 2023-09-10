@@ -673,5 +673,14 @@ namespace Project__Filter
             }
         }
 
+        private void extractToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Properties.Resources.Extract;
+        }
+
+        private void combineToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Properties.Resources.Combine;
+        }
     }
 }

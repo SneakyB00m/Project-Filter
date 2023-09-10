@@ -52,11 +52,11 @@
             extractToolStripMenuItem = new ToolStripMenuItem();
             fileToolStripMenuItem = new ToolStripMenuItem();
             toFolderToolStripMenuItem = new ToolStripMenuItem();
+            fromZIPToolStripMenuItem = new ToolStripMenuItem();
             combineToolStripMenuItem = new ToolStripMenuItem();
             pDFsToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             saveFileDialog1 = new SaveFileDialog();
-            fromZIPToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -188,6 +188,7 @@
             extractToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
             extractToolStripMenuItem.Name = "extractToolStripMenuItem";
             resources.ApplyResources(extractToolStripMenuItem, "extractToolStripMenuItem");
+            extractToolStripMenuItem.MouseHover += extractToolStripMenuItem_MouseHover;
             // 
             // fileToolStripMenuItem
             // 
@@ -201,11 +202,18 @@
             resources.ApplyResources(toFolderToolStripMenuItem, "toFolderToolStripMenuItem");
             toFolderToolStripMenuItem.Click += toFolderToolStripMenuItem_Click;
             // 
+            // fromZIPToolStripMenuItem
+            // 
+            fromZIPToolStripMenuItem.Name = "fromZIPToolStripMenuItem";
+            resources.ApplyResources(fromZIPToolStripMenuItem, "fromZIPToolStripMenuItem");
+            fromZIPToolStripMenuItem.Click += fromZIPToolStripMenuItem_Click;
+            // 
             // combineToolStripMenuItem
             // 
             combineToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pDFsToolStripMenuItem });
             combineToolStripMenuItem.Name = "combineToolStripMenuItem";
             resources.ApplyResources(combineToolStripMenuItem, "combineToolStripMenuItem");
+            combineToolStripMenuItem.MouseHover += combineToolStripMenuItem_MouseHover;
             // 
             // pDFsToolStripMenuItem
             // 
@@ -220,12 +228,6 @@
             pictureBox1.Image = Properties.Resources.Martin_Berube_Animal_Sheep_256;
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
-            // 
-            // fromZIPToolStripMenuItem
-            // 
-            fromZIPToolStripMenuItem.Name = "fromZIPToolStripMenuItem";
-            resources.ApplyResources(fromZIPToolStripMenuItem, "fromZIPToolStripMenuItem");
-            fromZIPToolStripMenuItem.Click += fromZIPToolStripMenuItem_Click;
             // 
             // Form1
             // 
