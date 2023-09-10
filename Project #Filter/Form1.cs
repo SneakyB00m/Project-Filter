@@ -5,6 +5,8 @@ using PdfSharp.Pdf;
 using System.Text;
 using ImageMagick;
 using NAudio.Wave;
+using PdfSharp.Pdf.IO;
+using System.Diagnostics;
 
 namespace Project__Filter
 {
@@ -47,22 +49,23 @@ namespace Project__Filter
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 string selectedDirectory = folderBrowserDialog.SelectedPath;
-                string filterDirectory = Path.Combine(selectedDirectory, "filter");
-                Directory.CreateDirectory(filterDirectory);
+                int fileCount = 0;
 
                 var files = Directory.GetFiles(selectedDirectory);
                 foreach (var file in files)
                 {
                     string fileName = Path.GetFileName(file);
                     char firstLetter = char.ToUpper(fileName[0]);
-                    string subDirectory = Path.Combine(filterDirectory, firstLetter.ToString());
+                    string subDirectory = Path.Combine(selectedDirectory, firstLetter.ToString());
                     Directory.CreateDirectory(subDirectory);
 
                     string destinationPath = Path.Combine(subDirectory, fileName);
                     File.Move(file, destinationPath);
+                    fileCount++;
                 }
-                MessageBox.Show("\nDone");
+                MessageBox.Show($"Done! Successfully moved {fileCount} files.");
             }
+
         }
 
         private void filterToolStripMenuItem_MouseHover(object sender, EventArgs e)
@@ -76,22 +79,23 @@ namespace Project__Filter
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 string selectedDirectory = folderBrowserDialog.SelectedPath;
-                string filterDirectory = Path.Combine(selectedDirectory, "filter");
-                Directory.CreateDirectory(filterDirectory);
+                int fileCount = 0;
 
                 var files = Directory.GetFiles(selectedDirectory);
                 foreach (var file in files)
                 {
                     string extension = Path.GetExtension(file).TrimStart('.').ToLower();
-                    string destinationDirectory = Path.Combine(filterDirectory, extension);
+                    string destinationDirectory = Path.Combine(selectedDirectory, extension);
                     Directory.CreateDirectory(destinationDirectory);
 
                     string fileName = Path.GetFileName(file);
                     string destinationPath = Path.Combine(destinationDirectory, fileName);
                     File.Move(file, destinationPath);
+                    fileCount++;
                 }
-                MessageBox.Show("\nDone");
+                MessageBox.Show($"Done! Successfully moved {fileCount} files.");
             }
+
         }
 
         private void sizeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -100,8 +104,7 @@ namespace Project__Filter
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 string selectedDirectory = folderBrowserDialog.SelectedPath;
-                string filterDirectory = Path.Combine(selectedDirectory, "filter");
-                Directory.CreateDirectory(filterDirectory);
+                int fileCount = 0;
 
                 var files = Directory.GetFiles(selectedDirectory);
                 foreach (var file in files)
@@ -119,13 +122,15 @@ namespace Project__Filter
                     else
                         sizeFolder = "Less than 250MB";
 
-                    string destinationDirectory = Path.Combine(filterDirectory, sizeFolder);
+                    string destinationDirectory = Path.Combine(selectedDirectory, sizeFolder);
                     Directory.CreateDirectory(destinationDirectory);
 
                     string fileName = Path.GetFileName(file);
                     string destinationPath = Path.Combine(destinationDirectory, fileName);
                     File.Move(file, destinationPath);
+                    fileCount++;
                 }
+                MessageBox.Show($"Done! Successfully moved {fileCount} files based on their sizes.");
             }
         }
 
@@ -135,6 +140,8 @@ namespace Project__Filter
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 string selectedDirectory = folderBrowserDialog.SelectedPath;
+                int fileCount = 0;
+
                 var files = Directory.GetFiles(selectedDirectory);
                 foreach (var file in files)
                 {
@@ -145,8 +152,11 @@ namespace Project__Filter
                     string fileName = Path.GetFileName(file);
                     string destinationPath = Path.Combine(destinationDirectory, fileName);
                     File.Move(file, destinationPath);
+                    fileCount++;
                 }
+                MessageBox.Show($"Done! Successfully moved {fileCount} files based on their extensions.");
             }
+
         }
 
         private void lenghtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -155,6 +165,7 @@ namespace Project__Filter
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 string selectedDirectory = folderBrowserDialog.SelectedPath;
+                int fileCount = 0;
 
                 var files = Directory.GetFiles(selectedDirectory);
                 foreach (var file in files)
@@ -195,8 +206,11 @@ namespace Project__Filter
                     string fileName = Path.GetFileName(file);
                     string destinationPath = Path.Combine(destinationDirectory, fileName);
                     File.Move(file, destinationPath);
+                    fileCount++;
                 }
+                MessageBox.Show($"Done! Successfully moved {fileCount} files based on their durations.");
             }
+
         }
 
         private void containsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -209,8 +223,7 @@ namespace Project__Filter
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 string selectedDirectory = folderBrowserDialog.SelectedPath;
-                string filterDirectory = Path.Combine(selectedDirectory, "filter");
-                Directory.CreateDirectory(filterDirectory);
+                int fileCount = 0;
 
                 var files = Directory.GetFiles(selectedDirectory);
                 foreach (var file in files)
@@ -221,21 +234,185 @@ namespace Project__Filter
                     // Check if the file name contains the search text
                     if (fileName.Contains(searchText))
                     {
-                        string destinationDirectory = Path.Combine(filterDirectory, searchText);
+                        string destinationDirectory = Path.Combine(selectedDirectory, searchText);
                         Directory.CreateDirectory(destinationDirectory);
 
                         string destinationPath = Path.Combine(destinationDirectory, fileName);
                         File.Move(file, destinationPath);
+                        fileCount++;
                     }
                     else
                     {
-                        string destinationDirectory = Path.Combine(filterDirectory, "Does not contain");
+                        string destinationDirectory = Path.Combine(selectedDirectory, "Does not contain");
                         Directory.CreateDirectory(destinationDirectory);
 
                         string destinationPath = Path.Combine(destinationDirectory, fileName);
                         File.Move(file, destinationPath);
+                        fileCount++;
                     }
                 }
+                MessageBox.Show($"Done! Successfully moved {fileCount} files based on whether they contain the search text.");
+            }
+        }
+
+        private void notContainsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Create an InputBox to request the text to search for.
+            string searchText = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "Default", -1, -1);
+
+            // Create a FolderBrowserDialog to request the path of the folder to check.
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedDirectory = folderBrowserDialog.SelectedPath;
+                int fileCount = 0;
+
+                var files = Directory.GetFiles(selectedDirectory);
+                foreach (var file in files)
+                {
+                    // Get the file name
+                    string fileName = Path.GetFileName(file);
+
+                    // Check if the file name contains the search text
+                    if (!fileName.Contains(searchText))
+                    {
+                        string destinationDirectory = Path.Combine(selectedDirectory, searchText);
+                        Directory.CreateDirectory(destinationDirectory);
+
+                        string destinationPath = Path.Combine(destinationDirectory, fileName);
+                        File.Move(file, destinationPath);
+                        fileCount++;
+                    }
+                    else
+                    {
+                        string destinationDirectory = Path.Combine(selectedDirectory, "Contains");
+                        Directory.CreateDirectory(destinationDirectory);
+
+                        string destinationPath = Path.Combine(destinationDirectory, fileName);
+                        File.Move(file, destinationPath);
+                        fileCount++;
+                    }
+                }
+                MessageBox.Show($"Done! Successfully moved {fileCount} files based on whether they do not contain the search text.");
+            }
+        }
+
+        private void nameToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            // Create a FolderBrowserDialog to request the path of the folder to check.
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedDirectory = folderBrowserDialog.SelectedPath;
+                int fileCount = 0;
+
+                var files = Directory.GetFiles(selectedDirectory);
+                foreach (var file in files)
+                {
+                    // Get the file name
+                    string fileName = Path.GetFileNameWithoutExtension(file);
+
+                    // Check if the file name is similar to any other file name
+                    bool isSimilar = false;
+                    foreach (var otherFile in files)
+                    {
+                        if (otherFile == file) continue;
+
+                        string otherFileName = Path.GetFileNameWithoutExtension(otherFile);
+                        int distance = LevenshteinDistance(fileName, otherFileName);
+
+                        if (distance <= 3)  // You can adjust this threshold as needed
+                        {
+                            isSimilar = true;
+                            break;
+                        }
+                    }
+
+                    // If the file name is similar to any other file name, move the file to a new directory
+                    if (isSimilar)
+                    {
+                        string destinationDirectory = Path.Combine(selectedDirectory, "Similar");
+                        Directory.CreateDirectory(destinationDirectory);
+
+                        string destinationPath = Path.Combine(destinationDirectory, Path.GetFileName(file));
+                        File.Move(file, destinationPath);
+                        fileCount++;
+                    }
+                }
+                MessageBox.Show($"Done! Successfully moved {fileCount} files with similar names.");
+            }
+        }
+
+        private int LevenshteinDistance(string a, string b)
+        {
+            int lenA = a.Length;
+            int lenB = b.Length;
+            var distances = new int[lenA + 1, lenB + 1];
+
+            for (int i = 0; i <= lenA; i++)
+                distances[i, 0] = i;
+
+            for (int j = 0; j <= lenB; j++)
+                distances[0, j] = j;
+
+            for (int i = 1; i <= lenA; i++)
+            {
+                for (int j = 1; j <= lenB; j++)
+                {
+                    int cost = (b[j - 1] == a[i - 1]) ? 0 : 1;
+
+                    distances[i, j] = Math.Min(
+                        Math.Min(distances[i - 1, j] + 1, distances[i, j - 1] + 1),
+                        distances[i - 1, j - 1] + cost);
+                }
+            }
+
+            return distances[lenA, lenB];
+        }
+
+        private void dateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Create a FolderBrowserDialog to request the path of the folder to check.
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedDirectory = folderBrowserDialog.SelectedPath;
+                int fileCount = 0;
+
+                var files = Directory.GetFiles(selectedDirectory);
+                foreach (var file in files)
+                {
+                    // Get the creation time of the file
+                    DateTime creationTime = File.GetCreationTime(file);
+
+                    // Check if the creation time is similar to any other file's creation time
+                    bool isSimilar = false;
+                    foreach (var otherFile in files)
+                    {
+                        if (otherFile == file) continue;
+
+                        DateTime otherCreationTime = File.GetCreationTime(otherFile);
+                        TimeSpan difference = creationTime - otherCreationTime;
+
+                        if (Math.Abs(difference.TotalDays) <= 7)  // You can adjust this threshold as needed
+                        {
+                            isSimilar = true;
+                            break;
+                        }
+                    }
+
+                    // If the creation time is similar to any other file's creation time, move the file to a new directory
+                    if (isSimilar)
+                    {
+                        string destinationDirectory = Path.Combine(selectedDirectory, "Similar Dates");
+                        Directory.CreateDirectory(destinationDirectory);
+
+                        string destinationPath = Path.Combine(destinationDirectory, Path.GetFileName(file));
+                        File.Move(file, destinationPath);
+                        fileCount++;
+                    }
+                }
+                MessageBox.Show($"Done! Successfully moved {fileCount} files with similar dates.");
             }
         }
 
@@ -289,10 +466,19 @@ namespace Project__Filter
                 doc.Save(pdfFileName);
                 doc.Close();
 
-                // Delete the images from the selected folder
-                foreach (string imageFile in imageFiles)
+                // Ask before deleting the images from the selected folder
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete all images?", "Confirm Delete", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    File.Delete(imageFile);
+                    foreach (string imageFile in imageFiles)
+                    {
+                        File.Delete(imageFile);
+                    }
+                    MessageBox.Show($"Done! Successfully moved {imageFiles.Length} images to {pdfFileName} and deleted them.");
+                }
+                else
+                {
+                    MessageBox.Show($"Done! Successfully moved {imageFiles.Length} images to {pdfFileName}. The images were not deleted.");
                 }
             }
         }
@@ -308,6 +494,7 @@ namespace Project__Filter
             if (folderBrowserDialog1.SelectedPath != "")
             {
                 string[] imageFiles = Directory.GetFiles(folderBrowserDialog1.SelectedPath, "*.jpg");
+                int fileCount = 0;
 
                 // Convert each image to an ICO file
                 foreach (string imageFile in imageFiles)
@@ -322,9 +509,26 @@ namespace Project__Filter
 
                         string icoFileName = Path.ChangeExtension(imageFile, ".ico");
                         image.Write(icoFileName);
+                        fileCount++;
                     }
                 }
+
+                // Ask before deleting the original images
+                DialogResult dialogResult = MessageBox.Show("Do you want to delete the original images?", "Confirm Delete", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    foreach (string imageFile in imageFiles)
+                    {
+                        File.Delete(imageFile);
+                    }
+                    MessageBox.Show($"Done! Successfully converted {fileCount} images to ICO format and deleted the original images.");
+                }
+                else
+                {
+                    MessageBox.Show($"Done! Successfully converted {fileCount} images to ICO format. The original images were not deleted.");
+                }
             }
+
         }
 
         private void toMP3ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -339,6 +543,8 @@ namespace Project__Filter
             // If the file names are not empty, open them for conversion.
             if (openFileDialog1.FileNames.Length > 0)
             {
+                int fileCount = 0;
+
                 // Convert each MP4 file to an MP3 file
                 foreach (string mp4FilePath in openFileDialog1.FileNames)
                 {
@@ -353,17 +559,119 @@ namespace Project__Filter
                     using (MediaFoundationReader reader = new MediaFoundationReader(mp4FilePath))
                     {
                         MediaFoundationEncoder.EncodeToMp3(reader, mp3FilePath);
+                        fileCount++;
                     }
+                }
 
-                    // Delete the original MP4 file
-                    File.Delete(mp4FilePath);
+                // Ask before deleting the original MP4 files
+                DialogResult dialogResult = MessageBox.Show("Do you want to delete the original MP4 files?", "Confirm Delete", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    foreach (string mp4FilePath in openFileDialog1.FileNames)
+                    {
+                        File.Delete(mp4FilePath);
+                    }
+                    MessageBox.Show($"Done! Successfully converted {fileCount} files to MP3 format and deleted the original MP4 files.");
+                }
+                else
+                {
+                    MessageBox.Show($"Done! Successfully converted {fileCount} files to MP3 format. The original MP4 files were not deleted.");
                 }
             }
+
         }
 
         private void othersToolStripMenuItem_MouseHover(object sender, EventArgs e)
         {
             pictureBox1.Image = Properties.Resources.Gartoon_Team_Gartoon_Misc_Gtk_Convert_256;
         }
+
+        private void toFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedDirectory = folderBrowserDialog.SelectedPath;
+                string newFolder = Path.Combine(selectedDirectory, "Extracted");
+                Directory.CreateDirectory(newFolder);
+
+                var allDirectories = Directory.GetDirectories(selectedDirectory, "*", SearchOption.AllDirectories);
+                int fileCount = 0;
+                foreach (var directory in allDirectories)
+                {
+                    var files = Directory.GetFiles(directory);
+                    foreach (var file in files)
+                    {
+                        string fileName = Path.GetFileName(file);
+                        string destinationPath = Path.Combine(newFolder, fileName);
+                        File.Move(file, destinationPath);
+                        fileCount++;
+                    }
+                }
+                MessageBox.Show($"Done! Successfully moved {fileCount} files to the new folder.");
+            }
+        }
+
+        private void fromZIPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pDFsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Register the CodePagesEncodingProvider instance
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
+            // Create an OpenFileDialog to request the path of the PDF files.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "PDF Files|*.pdf";
+            openFileDialog1.Title = "Select PDF Files";
+            openFileDialog1.Multiselect = true;
+            openFileDialog1.ShowDialog();
+
+            // If the file names are not empty, open them for merging.
+            if (openFileDialog1.FileNames.Length > 0)
+            {
+                // Create a new PDF document
+                PdfDocument outputDocument = new PdfDocument();
+                int fileCount = 0;
+
+                // Iterate through the selected files
+                foreach (string pdfFile in openFileDialog1.FileNames)
+                {
+                    // Open the document to import pages from it.
+                    PdfDocument inputDocument = PdfReader.Open(pdfFile, PdfDocumentOpenMode.Import);
+
+                    // Iterate through the pages
+                    int count = inputDocument.PageCount;
+                    for (int idx = 0; idx < count; idx++)
+                    {
+                        PdfPage page = inputDocument.Pages[idx];
+                        outputDocument.AddPage(page);
+                    }
+                    fileCount++;
+                }
+
+                // Save the document in the same directory as the selected files...
+                string filename = Path.Combine(Path.GetDirectoryName(openFileDialog1.FileNames[0]), "Merged.pdf");
+                outputDocument.Save(filename);
+
+                // Ask before deleting the original PDF files
+                DialogResult dialogResult = MessageBox.Show("Do you want to delete the original PDF files?", "Confirm Delete", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    foreach (string pdfFile in openFileDialog1.FileNames)
+                    {
+                        File.Delete(pdfFile);
+                    }
+                    MessageBox.Show($"Done! Successfully merged {fileCount} PDF and deleted the original files.");
+                }
+                else
+                {
+                    MessageBox.Show($"Done! Successfully merged {fileCount} PDF files. The original files were not deleted.");
+                }
+            }
+        }
+
     }
 }
