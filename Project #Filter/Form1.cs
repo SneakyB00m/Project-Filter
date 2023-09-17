@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
+using SharpCompress.Readers;
 
 namespace Project__Filter
 {
@@ -228,6 +229,9 @@ namespace Project__Filter
                 string selectedDirectory = folderBrowserDialog.SelectedPath;
                 int fileCount = 0;
 
+                // Ask the user if they want to move the files that do not contain the search text
+                DialogResult dialogResult = MessageBox.Show("Do you want to move the files that do not contain the search text?", "Confirm Move", MessageBoxButtons.YesNo);
+
                 var files = Directory.GetFiles(selectedDirectory);
                 foreach (var file in files)
                 {
@@ -244,7 +248,7 @@ namespace Project__Filter
                         File.Move(file, destinationPath);
                         fileCount++;
                     }
-                    else
+                    else if (dialogResult == DialogResult.Yes)
                     {
                         string destinationDirectory = Path.Combine(selectedDirectory, "Does not contain");
                         Directory.CreateDirectory(destinationDirectory);
@@ -256,6 +260,7 @@ namespace Project__Filter
                 }
                 MessageBox.Show($"Done! Successfully moved {fileCount} files based on whether they contain the search text.");
             }
+
         }
 
         private void notContainsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -617,7 +622,39 @@ namespace Project__Filter
 
         private void fromZIPToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Create an OpenFileDialog to request the path of the archive files.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Archive Files|*.zip;*.rar;*.7z";
+            openFileDialog1.Title = "Select Archive Files";
+            openFileDialog1.Multiselect = true;
+            openFileDialog1.ShowDialog();
 
+            // If the file names are not empty, open them for extraction.
+            if (openFileDialog1.FileNames.Length > 0)
+            {
+                // Iterate through the selected files
+                foreach (string archiveFile in openFileDialog1.FileNames)
+                {
+                    // Create a directory with the same name as the archive file
+                    string directoryPath = Path.Combine(Path.GetDirectoryName(archiveFile), Path.GetFileNameWithoutExtension(archiveFile));
+                    Directory.CreateDirectory(directoryPath);
+
+                    // Open the archive file for reading
+                    using (Stream stream = File.OpenRead(archiveFile))
+                    {
+                        var reader = SharpCompress.Readers.ReaderFactory.Open(stream);
+                        while (reader.MoveToNextEntry())
+                        {
+                            if (!reader.Entry.IsDirectory)
+                            {
+                                reader.WriteEntryToDirectory(directoryPath, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = true, Overwrite = true });
+                            }
+                        }
+                    }
+                }
+
+                MessageBox.Show($"Done! Successfully extracted {openFileDialog1.FileNames.Length} archive files.");
+            }
         }
 
         private void extractToolStripMenuItem_MouseHover(object sender, EventArgs e)

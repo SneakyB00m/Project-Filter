@@ -43,3 +43,4 @@ E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\NA
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\NAudio.WinMM.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\itextsharp.dll
+E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\SharpCompress.dll

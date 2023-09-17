@@ -313,6 +313,15 @@
           }
         }
       },
+      "SharpCompress/0.33.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SharpCompress.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/SharpCompress.dll": {}
+        }
+      },
       "System.Configuration.ConfigurationManager/4.5.0": {
         "type": "package",
         "dependencies": {
@@ -747,6 +756,22 @@
         "pdfsharp.nuspec"
       ]
     },
+    "SharpCompress/0.33.0": {
+      "sha512": "FlHfpTAADzaSlVCBF33iKJk9UhOr3Xj+r5LXbW2GzqYr0SrhiOf6shLX2LC2fqs7g7d+YlwKbBXqWFtb+e7icw==",
+      "type": "package",
+      "path": "sharpcompress/0.33.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/SharpCompress.dll",
+        "lib/net6.0/SharpCompress.dll",
+        "lib/net7.0/SharpCompress.dll",
+        "lib/netstandard2.0/SharpCompress.dll",
+        "lib/netstandard2.1/SharpCompress.dll",
+        "sharpcompress.0.33.0.nupkg.sha512",
+        "sharpcompress.nuspec"
+      ]
+    },
     "System.Configuration.ConfigurationManager/4.5.0": {
       "sha512": "UIFvaFfuKhLr9u5tWMxmVoDPkFeD+Qv8gUuap4aZgVGYSYMdERck4OhLN/2gulAc0nYTEigWXSJNNWshrmxnng==",
       "type": "package",
@@ -938,6 +963,7 @@
       "NReco.VideoInfo >= 1.2.0",
       "Newtonsoft.Json >= 13.0.3",
       "PdfSharp >= 1.50.5147",
+      "SharpCompress >= 0.33.0",
       "iTextSharp >= 5.5.13.3",
       "log4net >= 2.0.15"
     ]
@@ -1000,6 +1026,10 @@
           "PdfSharp": {
             "target": "Package",
             "version": "[1.50.5147, )"
+          },
+          "SharpCompress": {
+            "target": "Package",
+            "version": "[0.33.0, )"
           },
           "iTextSharp": {
             "target": "Package",
