@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Project #Filter.csproj": {}
+    "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Project #Filter.csproj": {}
   },
   "projects": {
-    "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Project #Filter.csproj": {
+    "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Project #Filter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Project #Filter.csproj",
+        "projectUniqueName": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Project #Filter.csproj",
         "projectName": "Project #Filter",
-        "projectPath": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Project #Filter.csproj",
-        "packagesPath": "C:\\Users\\Alan_\\.nuget\\packages\\",
-        "outputPath": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\obj\\",
+        "projectPath": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Project #Filter.csproj",
+        "packagesPath": "C:\\Users\\alan_\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Alan_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\alan_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -88,7 +92,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
