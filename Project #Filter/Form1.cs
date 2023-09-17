@@ -670,9 +670,6 @@ namespace Project__Filter
 
         private void simpleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Register the CodePagesEncodingProvider instance
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-
             // Create an OpenFileDialog to request the path of the PDF files.
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "PDF Files|*.pdf";
@@ -690,7 +687,7 @@ namespace Project__Filter
                 string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Simple Merged.pdf");
 
                 // Initialize a new PDF document
-                Document document = new Document();
+                iTextSharp.text.Document document = new iTextSharp.text.Document();
                 PdfCopy copy = new PdfCopy(document, new FileStream(filename, FileMode.Create));
 
                 // Open the document
@@ -699,18 +696,6 @@ namespace Project__Filter
                 // Iterate through the selected files
                 foreach (string pdfFile in sortedFileNames)
                 {
-                    // Create a temporary PDF with the file name
-                    Document tempDocument = new Document();
-                    PdfWriter.GetInstance(tempDocument, new FileStream("temp.pdf", FileMode.Create));
-                    tempDocument.Open();
-                    tempDocument.Add(new Paragraph(Path.GetFileName(pdfFile)));
-                    tempDocument.Close();
-
-                    // Merge the temporary PDF with file name
-                    iTextSharp.text.pdf.PdfReader readerTemp = new iTextSharp.text.pdf.PdfReader("temp.pdf");
-                    copy.AddPage(copy.GetImportedPage(readerTemp, 1));
-                    readerTemp.Close();
-
                     // Open the document to import pages from it.
                     iTextSharp.text.pdf.PdfReader reader = new iTextSharp.text.pdf.PdfReader(pdfFile);
                     int n = reader.NumberOfPages;
@@ -725,9 +710,6 @@ namespace Project__Filter
                     reader.Close();
                 }
 
-                // Delete temporary file
-                File.Delete("temp.pdf");
-
                 // Close the output document
                 document.Close();
 
@@ -739,11 +721,11 @@ namespace Project__Filter
                     {
                         File.Delete(pdfFile);
                     }
-                    MessageBox.Show($"Done! Successfully merged {sortedFileNames.Count()} PDF and deleted the original files.");
+                    MessageBox.Show($"Done! Successfully merged {sortedFileNames.Count()} PDF files into {filename} and deleted the original files.");
                 }
                 else
                 {
-                    MessageBox.Show($"Done! Successfully merged {sortedFileNames.Count()} PDF files. The original files were not deleted.");
+                    MessageBox.Show($"Done! Successfully merged {sortedFileNames.Count()} PDF files into {filename}. The original files were not deleted.");
                 }
             }
         }
