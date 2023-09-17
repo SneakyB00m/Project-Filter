@@ -687,7 +687,7 @@ namespace Project__Filter
                 var sortedFileNames = openFileDialog1.FileNames.OrderBy(name => name);
 
                 // Save the document in the same directory as the selected files...
-                string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Merged.pdf");
+                string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Simple Merged.pdf");
 
                 // Initialize a new PDF document
                 Document document = new Document();
@@ -793,7 +793,7 @@ namespace Project__Filter
                 }
 
                 // Save the document in the same directory as the selected files...
-                string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Merged.pdf");
+                string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Title Merged.pdf");
                 outputDocument.Save(filename);
 
                 // Ask before deleting the original PDF files
