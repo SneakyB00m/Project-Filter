@@ -57,6 +57,9 @@
             pDFsToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             saveFileDialog1 = new SaveFileDialog();
+            toJPGToolStripMenuItem = new ToolStripMenuItem();
+            withTitleToolStripMenuItem = new ToolStripMenuItem();
+            simpleToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -155,7 +158,7 @@
             // 
             // iMGPDFToolStripMenuItem
             // 
-            iMGPDFToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toPDFToolStripMenuItem, toICOToolStripMenuItem });
+            iMGPDFToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toPDFToolStripMenuItem, toICOToolStripMenuItem, toJPGToolStripMenuItem });
             iMGPDFToolStripMenuItem.Name = "iMGPDFToolStripMenuItem";
             resources.ApplyResources(iMGPDFToolStripMenuItem, "iMGPDFToolStripMenuItem");
             // 
@@ -217,9 +220,9 @@
             // 
             // pDFsToolStripMenuItem
             // 
+            pDFsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { simpleToolStripMenuItem, withTitleToolStripMenuItem });
             pDFsToolStripMenuItem.Name = "pDFsToolStripMenuItem";
             resources.ApplyResources(pDFsToolStripMenuItem, "pDFsToolStripMenuItem");
-            pDFsToolStripMenuItem.Click += pDFsToolStripMenuItem_Click;
             // 
             // pictureBox1
             // 
@@ -228,6 +231,24 @@
             pictureBox1.Image = Properties.Resources.Martin_Berube_Animal_Sheep_256;
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
+            // 
+            // toJPGToolStripMenuItem
+            // 
+            toJPGToolStripMenuItem.Name = "toJPGToolStripMenuItem";
+            resources.ApplyResources(toJPGToolStripMenuItem, "toJPGToolStripMenuItem");
+            toJPGToolStripMenuItem.Click += toJPGToolStripMenuItem_Click;
+            // 
+            // withTitleToolStripMenuItem
+            // 
+            withTitleToolStripMenuItem.Name = "withTitleToolStripMenuItem";
+            resources.ApplyResources(withTitleToolStripMenuItem, "withTitleToolStripMenuItem");
+            withTitleToolStripMenuItem.Click += withTitleToolStripMenuItem_Click;
+            // 
+            // simpleToolStripMenuItem
+            // 
+            simpleToolStripMenuItem.Name = "simpleToolStripMenuItem";
+            resources.ApplyResources(simpleToolStripMenuItem, "simpleToolStripMenuItem");
+            simpleToolStripMenuItem.Click += simpleToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -277,5 +298,8 @@
         private ToolStripMenuItem nameToolStripMenuItem2;
         private ToolStripMenuItem dateToolStripMenuItem;
         private ToolStripMenuItem fromZIPToolStripMenuItem;
+        private ToolStripMenuItem toJPGToolStripMenuItem;
+        private ToolStripMenuItem simpleToolStripMenuItem;
+        private ToolStripMenuItem withTitleToolStripMenuItem;
     }
 }

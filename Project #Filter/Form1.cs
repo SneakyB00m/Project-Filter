@@ -7,6 +7,7 @@ using ImageMagick;
 using NAudio.Wave;
 using PdfSharp.Pdf.IO;
 using System.Diagnostics;
+using System;
 
 namespace Project__Filter
 {
@@ -617,7 +618,27 @@ namespace Project__Filter
 
         }
 
-        private void pDFsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void extractToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Properties.Resources.Extract;
+        }
+
+        private void combineToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Properties.Resources.Combine;
+        }
+
+        private void toJPGToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void withTitleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Register the CodePagesEncodingProvider instance
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -636,9 +657,18 @@ namespace Project__Filter
                 PdfDocument outputDocument = new PdfDocument();
                 int fileCount = 0;
 
+                // Sort the file names
+                var sortedFileNames = openFileDialog1.FileNames.OrderBy(name => name);
+
                 // Iterate through the selected files
-                foreach (string pdfFile in openFileDialog1.FileNames)
+                foreach (string pdfFile in sortedFileNames)
                 {
+                    // Add a new page with the file name
+                    PdfPage fileNamePage = outputDocument.AddPage();
+                    XGraphics gfx = XGraphics.FromPdfPage(fileNamePage);
+                    XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+                    gfx.DrawString(Path.GetFileName(pdfFile), font, XBrushes.Black, new XRect(0, 0, fileNamePage.Width, fileNamePage.Height), XStringFormats.Center);
+
                     // Open the document to import pages from it.
                     PdfDocument inputDocument = PdfReader.Open(pdfFile, PdfDocumentOpenMode.Import);
 
@@ -653,14 +683,14 @@ namespace Project__Filter
                 }
 
                 // Save the document in the same directory as the selected files...
-                string filename = Path.Combine(Path.GetDirectoryName(openFileDialog1.FileNames[0]), "Merged.pdf");
+                string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Merged.pdf");
                 outputDocument.Save(filename);
 
                 // Ask before deleting the original PDF files
                 DialogResult dialogResult = MessageBox.Show("Do you want to delete the original PDF files?", "Confirm Delete", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    foreach (string pdfFile in openFileDialog1.FileNames)
+                    foreach (string pdfFile in sortedFileNames)
                     {
                         File.Delete(pdfFile);
                     }
@@ -671,16 +701,6 @@ namespace Project__Filter
                     MessageBox.Show($"Done! Successfully merged {fileCount} PDF files. The original files were not deleted.");
                 }
             }
-        }
-
-        private void extractToolStripMenuItem_MouseHover(object sender, EventArgs e)
-        {
-            pictureBox1.Image = Properties.Resources.Extract;
-        }
-
-        private void combineToolStripMenuItem_MouseHover(object sender, EventArgs e)
-        {
-            pictureBox1.Image = Properties.Resources.Combine;
         }
     }
 }
