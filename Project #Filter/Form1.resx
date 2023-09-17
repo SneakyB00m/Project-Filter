@@ -139,50 +139,32 @@
   <data name="sizeToolStripMenuItem.Text" xml:space="preserve">
     <value>Size</value>
   </data>
-  <data name="typeToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
-  <data name="typeToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Type</value>
-  </data>
-  <data name="lenghtToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
-  <data name="lenghtToolStripMenuItem.Text" xml:space="preserve">
-    <value>Lenght</value>
-  </data>
-  <data name="videoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 22</value>
-  </data>
-  <data name="videoToolStripMenuItem.Text" xml:space="preserve">
-    <value>Video</value>
-  </data>
   <data name="containsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="containsToolStripMenuItem.Text" xml:space="preserve">
     <value>Contains</value>
   </data>
   <data name="notContainsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="notContainsToolStripMenuItem.Text" xml:space="preserve">
     <value>Not Contains</value>
   </data>
   <data name="nameToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="nameToolStripMenuItem2.Text" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="dateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="dateToolStripMenuItem.Text" xml:space="preserve">
     <value>Date</value>
   </data>
   <data name="similarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="similarToolStripMenuItem.Text" xml:space="preserve">
     <value>Similar</value>
@@ -192,6 +174,24 @@
   </data>
   <data name="customToolStripMenuItem.Text" xml:space="preserve">
     <value>Custom</value>
+  </data>
+  <data name="typeToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="typeToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="lenghtToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="lenghtToolStripMenuItem.Text" xml:space="preserve">
+    <value>Lenght</value>
+  </data>
+  <data name="videoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 22</value>
+  </data>
+  <data name="videoToolStripMenuItem.Text" xml:space="preserve">
+    <value>Videos</value>
   </data>
   <data name="filterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>

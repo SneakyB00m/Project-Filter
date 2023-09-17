@@ -72,7 +72,7 @@
             // 
             // filterToolStripMenuItem
             // 
-            filterToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nameToolStripMenuItem, typeToolStripMenuItem, sizeToolStripMenuItem, videoToolStripMenuItem, customToolStripMenuItem });
+            filterToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nameToolStripMenuItem, typeToolStripMenuItem, sizeToolStripMenuItem, customToolStripMenuItem, videoToolStripMenuItem });
             filterToolStripMenuItem.Name = "filterToolStripMenuItem";
             resources.ApplyResources(filterToolStripMenuItem, "filterToolStripMenuItem");
             filterToolStripMenuItem.MouseHover += filterToolStripMenuItem_MouseHover;
@@ -229,7 +229,6 @@
             pDFsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { simpleToolStripMenuItem, withTitleToolStripMenuItem });
             pDFsToolStripMenuItem.Name = "pDFsToolStripMenuItem";
             resources.ApplyResources(pDFsToolStripMenuItem, "pDFsToolStripMenuItem");
-            pDFsToolStripMenuItem.Click += pDFsToolStripMenuItem_Click;
             // 
             // simpleToolStripMenuItem
             // 

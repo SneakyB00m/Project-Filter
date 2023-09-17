@@ -632,6 +632,39 @@ namespace Project__Filter
 
         private void toJPGToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedDirectory = folderBrowserDialog.SelectedPath;
+                int fileCount = 0;
+
+                var files = Directory.GetFiles(selectedDirectory, "*.webp");
+                foreach (var file in files)
+                {
+                    using (MagickImage image = new MagickImage(file))
+                    {
+                        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file);
+                        string destinationPath = Path.Combine(selectedDirectory, fileNameWithoutExtension + ".jpg");
+                        image.Write(destinationPath);
+                        fileCount++;
+                    }
+                }
+
+                // Ask before deleting the original webp files
+                DialogResult dialogResult = MessageBox.Show("Do you want to delete the original WebP files?", "Confirm Delete", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    foreach (string webpFile in files)
+                    {
+                        File.Delete(webpFile);
+                    }
+                    MessageBox.Show($"Done! Successfully converted {fileCount} WebP files to JPG and deleted the original files.");
+                }
+                else
+                {
+                    MessageBox.Show($"Done! Successfully converted {fileCount} WebP files to JPG. The original files were not deleted.");
+                }
+            }
 
         }
 
@@ -780,9 +813,5 @@ namespace Project__Filter
             }
         }
 
-        private void pDFsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
