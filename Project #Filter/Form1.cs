@@ -686,6 +686,14 @@ namespace Project__Filter
                 // Save the document in the same directory as the selected files...
                 string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Simple Merged.pdf");
 
+                // Check if a file with the same name already exists and change the name accordingly
+                int count = 2;
+                while (File.Exists(filename))
+                {
+                    filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), $"Simple Merged ({count}).pdf");
+                    count++;
+                }
+
                 // Initialize a new PDF document
                 iTextSharp.text.Document document = new iTextSharp.text.Document();
                 PdfCopy copy = new PdfCopy(document, new FileStream(filename, FileMode.Create));
@@ -745,12 +753,22 @@ namespace Project__Filter
             // If the file names are not empty, open them for merging.
             if (openFileDialog1.FileNames.Length > 0)
             {
-                // Create a new PDF document
-                PdfSharp.Pdf.PdfDocument outputDocument = new PdfSharp.Pdf.PdfDocument();
-                int fileCount = 0;
-
                 // Sort the file names
                 var sortedFileNames = openFileDialog1.FileNames.OrderBy(name => name);
+
+                // Save the document in the same directory as the selected files...
+                string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Title Merged.pdf");
+
+                // Check if a file with the same name already exists and change the name accordingly
+                int count = 2;
+                while (File.Exists(filename))
+                {
+                    filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), $"Title Merged ({count}).pdf");
+                    count++;
+                }
+
+                // Initialize a new PDF document
+                PdfSharp.Pdf.PdfDocument outputDocument = new PdfSharp.Pdf.PdfDocument();
 
                 // Iterate through the selected files
                 foreach (string pdfFile in sortedFileNames)
@@ -765,17 +783,15 @@ namespace Project__Filter
                     PdfSharp.Pdf.PdfDocument inputDocument = PdfSharp.Pdf.IO.PdfReader.Open(pdfFile, PdfDocumentOpenMode.Import);
 
                     // Iterate through the pages
-                    int count = inputDocument.PageCount;
-                    for (int idx = 0; idx < count; idx++)
+                    int pageCount = inputDocument.PageCount;
+                    for (int idx = 0; idx < pageCount; idx++)
                     {
                         PdfSharp.Pdf.PdfPage page = inputDocument.Pages[idx];
                         outputDocument.AddPage(page);
                     }
-                    fileCount++;
                 }
 
-                // Save the document in the same directory as the selected files...
-                string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Title Merged.pdf");
+                // Save and close the PDF document
                 outputDocument.Save(filename);
 
                 // Ask before deleting the original PDF files
@@ -786,14 +802,13 @@ namespace Project__Filter
                     {
                         File.Delete(pdfFile);
                     }
-                    MessageBox.Show($"Done! Successfully merged {fileCount} PDF and deleted the original files.");
+                    MessageBox.Show($"Done! Successfully merged {sortedFileNames.Count()} PDF files into {filename} and deleted the original files.");
                 }
                 else
                 {
-                    MessageBox.Show($"Done! Successfully merged {fileCount} PDF files. The original files were not deleted.");
+                    MessageBox.Show($"Done! Successfully merged {sortedFileNames.Count()} PDF files into {filename}. The original files were not deleted.");
                 }
             }
         }
-
     }
 }
