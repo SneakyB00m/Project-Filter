@@ -121,17 +121,143 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="nameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 22</value>
+  </data>
+  <data name="nameToolStripMenuItem.Text" xml:space="preserve">
+    <value>A to Z</value>
+  </data>
+  <data name="typeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 22</value>
+  </data>
+  <data name="typeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="sizeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 22</value>
+  </data>
+  <data name="sizeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="typeToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="typeToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="lenghtToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="lenghtToolStripMenuItem.Text" xml:space="preserve">
+    <value>Lenght</value>
+  </data>
+  <data name="videoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 22</value>
+  </data>
+  <data name="videoToolStripMenuItem.Text" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="containsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="containsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Contains</value>
+  </data>
+  <data name="notContainsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="notContainsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Not Contains</value>
+  </data>
+  <data name="nameToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 22</value>
+  </data>
+  <data name="nameToolStripMenuItem2.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="dateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 22</value>
+  </data>
+  <data name="dateToolStripMenuItem.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="similarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="similarToolStripMenuItem.Text" xml:space="preserve">
+    <value>Similar</value>
+  </data>
+  <data name="customToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 22</value>
+  </data>
+  <data name="customToolStripMenuItem.Text" xml:space="preserve">
+    <value>Custom</value>
+  </data>
   <data name="filterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
   </data>
   <data name="filterToolStripMenuItem.Text" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="toPDFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 22</value>
+  </data>
+  <data name="toPDFToolStripMenuItem.Text" xml:space="preserve">
+    <value>To PDF</value>
+  </data>
+  <data name="toICOToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 22</value>
+  </data>
+  <data name="toICOToolStripMenuItem.Text" xml:space="preserve">
+    <value>To ICO</value>
+  </data>
+  <data name="toJPGToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 22</value>
+  </data>
+  <data name="toJPGToolStripMenuItem.Text" xml:space="preserve">
+    <value>To JPG</value>
+  </data>
+  <data name="iMGPDFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 22</value>
+  </data>
+  <data name="iMGPDFToolStripMenuItem.Text" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="toMP3ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 22</value>
+  </data>
+  <data name="toMP3ToolStripMenuItem.Text" xml:space="preserve">
+    <value>To MP3</value>
+  </data>
+  <data name="mP4ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 22</value>
+  </data>
+  <data name="mP4ToolStripMenuItem.Text" xml:space="preserve">
+    <value>Videos</value>
+  </data>
   <data name="othersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 20</value>
   </data>
   <data name="othersToolStripMenuItem.Text" xml:space="preserve">
     <value>Converter</value>
+  </data>
+  <data name="toFolderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 22</value>
+  </data>
+  <data name="toFolderToolStripMenuItem.Text" xml:space="preserve">
+    <value>To Folder</value>
+  </data>
+  <data name="fromZIPToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 22</value>
+  </data>
+  <data name="fromZIPToolStripMenuItem.Text" xml:space="preserve">
+    <value>From ZIP</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 22</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>File</value>
   </data>
   <data name="extractToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 20</value>
@@ -188,126 +314,6 @@
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="nameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="nameToolStripMenuItem.Text" xml:space="preserve">
-    <value>A to Z</value>
-  </data>
-  <data name="typeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="typeToolStripMenuItem.Text" xml:space="preserve">
-    <value>Type</value>
-  </data>
-  <data name="sizeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="sizeToolStripMenuItem.Text" xml:space="preserve">
-    <value>Size</value>
-  </data>
-  <data name="videoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="videoToolStripMenuItem.Text" xml:space="preserve">
-    <value>Video</value>
-  </data>
-  <data name="typeToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="typeToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Type</value>
-  </data>
-  <data name="lenghtToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="lenghtToolStripMenuItem.Text" xml:space="preserve">
-    <value>Lenght</value>
-  </data>
-  <data name="customToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="customToolStripMenuItem.Text" xml:space="preserve">
-    <value>Custom</value>
-  </data>
-  <data name="containsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="containsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Contains</value>
-  </data>
-  <data name="notContainsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="notContainsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Not Contains</value>
-  </data>
-  <data name="similarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="similarToolStripMenuItem.Text" xml:space="preserve">
-    <value>Similar</value>
-  </data>
-  <data name="nameToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="nameToolStripMenuItem2.Text" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="dateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="dateToolStripMenuItem.Text" xml:space="preserve">
-    <value>Date</value>
-  </data>
-  <data name="iMGPDFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="iMGPDFToolStripMenuItem.Text" xml:space="preserve">
-    <value>Images</value>
-  </data>
-  <data name="toPDFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="toPDFToolStripMenuItem.Text" xml:space="preserve">
-    <value>To PDF</value>
-  </data>
-  <data name="toICOToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="toICOToolStripMenuItem.Text" xml:space="preserve">
-    <value>To ICO</value>
-  </data>
-  <data name="mP4ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="mP4ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Videos</value>
-  </data>
-  <data name="toMP3ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="toMP3ToolStripMenuItem.Text" xml:space="preserve">
-    <value>To MP3</value>
-  </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="toFolderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 22</value>
-  </data>
-  <data name="toFolderToolStripMenuItem.Text" xml:space="preserve">
-    <value>To Folder</value>
-  </data>
-  <data name="fromZIPToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 22</value>
-  </data>
-  <data name="fromZIPToolStripMenuItem.Text" xml:space="preserve">
-    <value>From ZIP</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pictureBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -339,12 +345,6 @@
   <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>
-  <data name="toJPGToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="toJPGToolStripMenuItem.Text" xml:space="preserve">
-    <value>To JPG</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -3565,6 +3565,12 @@
   <data name="&gt;&gt;toICOToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toJPGToolStripMenuItem.Name" xml:space="preserve">
+    <value>toJPGToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;toJPGToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;mP4ToolStripMenuItem.Name" xml:space="preserve">
     <value>mP4ToolStripMenuItem</value>
   </data>
@@ -3613,16 +3619,10 @@
   <data name="&gt;&gt;pDFsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;saveFileDialog1.Name" xml:space="preserve">
-    <value>saveFileDialog1</value>
+  <data name="&gt;&gt;simpleToolStripMenuItem.Name" xml:space="preserve">
+    <value>simpleToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;saveFileDialog1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toJPGToolStripMenuItem.Name" xml:space="preserve">
-    <value>toJPGToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;toJPGToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;simpleToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;withTitleToolStripMenuItem.Name" xml:space="preserve">
@@ -3631,11 +3631,11 @@
   <data name="&gt;&gt;withTitleToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;simpleToolStripMenuItem.Name" xml:space="preserve">
-    <value>simpleToolStripMenuItem</value>
+  <data name="&gt;&gt;saveFileDialog1.Name" xml:space="preserve">
+    <value>saveFileDialog1</value>
   </data>
-  <data name="&gt;&gt;simpleToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;saveFileDialog1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

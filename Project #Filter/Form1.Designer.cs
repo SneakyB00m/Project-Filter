@@ -47,6 +47,7 @@
             iMGPDFToolStripMenuItem = new ToolStripMenuItem();
             toPDFToolStripMenuItem = new ToolStripMenuItem();
             toICOToolStripMenuItem = new ToolStripMenuItem();
+            toJPGToolStripMenuItem = new ToolStripMenuItem();
             mP4ToolStripMenuItem = new ToolStripMenuItem();
             toMP3ToolStripMenuItem = new ToolStripMenuItem();
             extractToolStripMenuItem = new ToolStripMenuItem();
@@ -55,11 +56,10 @@
             fromZIPToolStripMenuItem = new ToolStripMenuItem();
             combineToolStripMenuItem = new ToolStripMenuItem();
             pDFsToolStripMenuItem = new ToolStripMenuItem();
+            simpleToolStripMenuItem = new ToolStripMenuItem();
+            withTitleToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             saveFileDialog1 = new SaveFileDialog();
-            toJPGToolStripMenuItem = new ToolStripMenuItem();
-            withTitleToolStripMenuItem = new ToolStripMenuItem();
-            simpleToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -174,6 +174,12 @@
             resources.ApplyResources(toICOToolStripMenuItem, "toICOToolStripMenuItem");
             toICOToolStripMenuItem.Click += toICOToolStripMenuItem_Click;
             // 
+            // toJPGToolStripMenuItem
+            // 
+            toJPGToolStripMenuItem.Name = "toJPGToolStripMenuItem";
+            resources.ApplyResources(toJPGToolStripMenuItem, "toJPGToolStripMenuItem");
+            toJPGToolStripMenuItem.Click += toJPGToolStripMenuItem_Click;
+            // 
             // mP4ToolStripMenuItem
             // 
             mP4ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toMP3ToolStripMenuItem });
@@ -223,6 +229,19 @@
             pDFsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { simpleToolStripMenuItem, withTitleToolStripMenuItem });
             pDFsToolStripMenuItem.Name = "pDFsToolStripMenuItem";
             resources.ApplyResources(pDFsToolStripMenuItem, "pDFsToolStripMenuItem");
+            pDFsToolStripMenuItem.Click += pDFsToolStripMenuItem_Click;
+            // 
+            // simpleToolStripMenuItem
+            // 
+            simpleToolStripMenuItem.Name = "simpleToolStripMenuItem";
+            resources.ApplyResources(simpleToolStripMenuItem, "simpleToolStripMenuItem");
+            simpleToolStripMenuItem.Click += simpleToolStripMenuItem_Click;
+            // 
+            // withTitleToolStripMenuItem
+            // 
+            withTitleToolStripMenuItem.Name = "withTitleToolStripMenuItem";
+            resources.ApplyResources(withTitleToolStripMenuItem, "withTitleToolStripMenuItem");
+            withTitleToolStripMenuItem.Click += withTitleToolStripMenuItem_Click;
             // 
             // pictureBox1
             // 
@@ -231,24 +250,6 @@
             pictureBox1.Image = Properties.Resources.Martin_Berube_Animal_Sheep_256;
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
-            // 
-            // toJPGToolStripMenuItem
-            // 
-            toJPGToolStripMenuItem.Name = "toJPGToolStripMenuItem";
-            resources.ApplyResources(toJPGToolStripMenuItem, "toJPGToolStripMenuItem");
-            toJPGToolStripMenuItem.Click += toJPGToolStripMenuItem_Click;
-            // 
-            // withTitleToolStripMenuItem
-            // 
-            withTitleToolStripMenuItem.Name = "withTitleToolStripMenuItem";
-            resources.ApplyResources(withTitleToolStripMenuItem, "withTitleToolStripMenuItem");
-            withTitleToolStripMenuItem.Click += withTitleToolStripMenuItem_Click;
-            // 
-            // simpleToolStripMenuItem
-            // 
-            simpleToolStripMenuItem.Name = "simpleToolStripMenuItem";
-            resources.ApplyResources(simpleToolStripMenuItem, "simpleToolStripMenuItem");
-            simpleToolStripMenuItem.Click += simpleToolStripMenuItem_Click;
             // 
             // Form1
             // 

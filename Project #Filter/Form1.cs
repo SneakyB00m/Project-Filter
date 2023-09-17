@@ -8,6 +8,8 @@ using NAudio.Wave;
 using PdfSharp.Pdf.IO;
 using System.Diagnostics;
 using System;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 
 namespace Project__Filter
 {
@@ -433,12 +435,12 @@ namespace Project__Filter
                 string[] imageFiles = Directory.GetFiles(folderBrowserDialog1.SelectedPath, "*.jpg");
 
                 // Create a PDF document
-                PdfDocument doc = new PdfDocument();
+                PdfSharp.Pdf.PdfDocument doc = new PdfSharp.Pdf.PdfDocument();
 
                 // Add an image to each page of the PDF document
                 foreach (string imageFile in imageFiles)
                 {
-                    PdfPage page = doc.AddPage();
+                    PdfSharp.Pdf.PdfPage page = doc.AddPage();
                     XGraphics gfx = XGraphics.FromPdfPage(page);
                     using (XImage image = XImage.FromFile(imageFile))
                     {
@@ -635,7 +637,82 @@ namespace Project__Filter
 
         private void simpleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Register the CodePagesEncodingProvider instance
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
+            // Create an OpenFileDialog to request the path of the PDF files.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "PDF Files|*.pdf";
+            openFileDialog1.Title = "Select PDF Files";
+            openFileDialog1.Multiselect = true;
+            openFileDialog1.ShowDialog();
+
+            // If the file names are not empty, open them for merging.
+            if (openFileDialog1.FileNames.Length > 0)
+            {
+                // Sort the file names
+                var sortedFileNames = openFileDialog1.FileNames.OrderBy(name => name);
+
+                // Save the document in the same directory as the selected files...
+                string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Merged.pdf");
+
+                // Initialize a new PDF document
+                Document document = new Document();
+                PdfCopy copy = new PdfCopy(document, new FileStream(filename, FileMode.Create));
+
+                // Open the document
+                document.Open();
+
+                // Iterate through the selected files
+                foreach (string pdfFile in sortedFileNames)
+                {
+                    // Create a temporary PDF with the file name
+                    Document tempDocument = new Document();
+                    PdfWriter.GetInstance(tempDocument, new FileStream("temp.pdf", FileMode.Create));
+                    tempDocument.Open();
+                    tempDocument.Add(new Paragraph(Path.GetFileName(pdfFile)));
+                    tempDocument.Close();
+
+                    // Merge the temporary PDF with file name
+                    iTextSharp.text.pdf.PdfReader readerTemp = new iTextSharp.text.pdf.PdfReader("temp.pdf");
+                    copy.AddPage(copy.GetImportedPage(readerTemp, 1));
+                    readerTemp.Close();
+
+                    // Open the document to import pages from it.
+                    iTextSharp.text.pdf.PdfReader reader = new iTextSharp.text.pdf.PdfReader(pdfFile);
+                    int n = reader.NumberOfPages;
+
+                    // Add each page to the output document
+                    for (int page = 0; page < n;)
+                    {
+                        copy.AddPage(copy.GetImportedPage(reader, ++page));
+                    }
+
+                    copy.FreeReader(reader);
+                    reader.Close();
+                }
+
+                // Delete temporary file
+                File.Delete("temp.pdf");
+
+                // Close the output document
+                document.Close();
+
+                // Ask before deleting the original PDF files
+                DialogResult dialogResult = MessageBox.Show("Do you want to delete the original PDF files?", "Confirm Delete", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    foreach (string pdfFile in sortedFileNames)
+                    {
+                        File.Delete(pdfFile);
+                    }
+                    MessageBox.Show($"Done! Successfully merged {sortedFileNames.Count()} PDF and deleted the original files.");
+                }
+                else
+                {
+                    MessageBox.Show($"Done! Successfully merged {sortedFileNames.Count()} PDF files. The original files were not deleted.");
+                }
+            }
         }
 
         private void withTitleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -654,7 +731,7 @@ namespace Project__Filter
             if (openFileDialog1.FileNames.Length > 0)
             {
                 // Create a new PDF document
-                PdfDocument outputDocument = new PdfDocument();
+                PdfSharp.Pdf.PdfDocument outputDocument = new PdfSharp.Pdf.PdfDocument();
                 int fileCount = 0;
 
                 // Sort the file names
@@ -664,19 +741,19 @@ namespace Project__Filter
                 foreach (string pdfFile in sortedFileNames)
                 {
                     // Add a new page with the file name
-                    PdfPage fileNamePage = outputDocument.AddPage();
+                    PdfSharp.Pdf.PdfPage fileNamePage = outputDocument.AddPage();
                     XGraphics gfx = XGraphics.FromPdfPage(fileNamePage);
                     XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
                     gfx.DrawString(Path.GetFileName(pdfFile), font, XBrushes.Black, new XRect(0, 0, fileNamePage.Width, fileNamePage.Height), XStringFormats.Center);
 
                     // Open the document to import pages from it.
-                    PdfDocument inputDocument = PdfReader.Open(pdfFile, PdfDocumentOpenMode.Import);
+                    PdfSharp.Pdf.PdfDocument inputDocument = PdfSharp.Pdf.IO.PdfReader.Open(pdfFile, PdfDocumentOpenMode.Import);
 
                     // Iterate through the pages
                     int count = inputDocument.PageCount;
                     for (int idx = 0; idx < count; idx++)
                     {
-                        PdfPage page = inputDocument.Pages[idx];
+                        PdfSharp.Pdf.PdfPage page = inputDocument.Pages[idx];
                         outputDocument.AddPage(page);
                     }
                     fileCount++;
@@ -701,6 +778,11 @@ namespace Project__Filter
                     MessageBox.Show($"Done! Successfully merged {fileCount} PDF files. The original files were not deleted.");
                 }
             }
+        }
+
+        private void pDFsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
