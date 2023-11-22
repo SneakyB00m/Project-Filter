@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             panel_Menu = new Panel();
-            button8 = new Button();
-            button7 = new Button();
+            button6 = new Button();
+            button_Credits = new Button();
+            button_Help = new Button();
             button5 = new Button();
             button4 = new Button();
             button3 = new Button();
@@ -40,7 +41,7 @@
             panel_Accent = new Panel();
             Panel_Banner = new Panel();
             pictureBox1 = new PictureBox();
-            button6 = new Button();
+            button_Exit = new Button();
             home1 = new Home();
             filter1 = new Filter();
             panel_Menu.SuspendLayout();
@@ -51,8 +52,9 @@
             // panel_Menu
             // 
             panel_Menu.BackColor = Color.FromArgb(64, 64, 64);
-            panel_Menu.Controls.Add(button8);
-            panel_Menu.Controls.Add(button7);
+            panel_Menu.Controls.Add(button6);
+            panel_Menu.Controls.Add(button_Credits);
+            panel_Menu.Controls.Add(button_Help);
             panel_Menu.Controls.Add(button5);
             panel_Menu.Controls.Add(button4);
             panel_Menu.Controls.Add(button3);
@@ -65,27 +67,43 @@
             panel_Menu.Size = new Size(250, 683);
             panel_Menu.TabIndex = 0;
             // 
-            // button8
+            // button6
             // 
-            button8.FlatAppearance.BorderSize = 0;
-            button8.FlatStyle = FlatStyle.Flat;
-            button8.Image = Properties.Resources.icons8_movie_ticket_30;
-            button8.Location = new Point(207, 645);
-            button8.Name = "button8";
-            button8.Size = new Size(35, 35);
-            button8.TabIndex = 7;
-            button8.UseVisualStyleBackColor = true;
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button6.ForeColor = Color.White;
+            button6.Image = Properties.Resources.icons8_fingerprint_30;
+            button6.Location = new Point(34, 334);
+            button6.Name = "button6";
+            button6.Size = new Size(213, 53);
+            button6.TabIndex = 8;
+            button6.Text = "    Encipher";
+            button6.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
-            // button7
+            // button_Credits
             // 
-            button7.FlatAppearance.BorderSize = 0;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Image = Properties.Resources.icons8_help_30;
-            button7.Location = new Point(3, 645);
-            button7.Name = "button7";
-            button7.Size = new Size(35, 35);
-            button7.TabIndex = 6;
-            button7.UseVisualStyleBackColor = true;
+            button_Credits.FlatAppearance.BorderSize = 0;
+            button_Credits.FlatStyle = FlatStyle.Flat;
+            button_Credits.Image = Properties.Resources.icons8_movie_ticket_30;
+            button_Credits.Location = new Point(207, 645);
+            button_Credits.Name = "button_Credits";
+            button_Credits.Size = new Size(35, 35);
+            button_Credits.TabIndex = 7;
+            button_Credits.UseVisualStyleBackColor = true;
+            // 
+            // button_Help
+            // 
+            button_Help.FlatAppearance.BorderSize = 0;
+            button_Help.FlatStyle = FlatStyle.Flat;
+            button_Help.Image = Properties.Resources.icons8_help_30;
+            button_Help.Location = new Point(3, 645);
+            button_Help.Name = "button_Help";
+            button_Help.Size = new Size(35, 35);
+            button_Help.TabIndex = 6;
+            button_Help.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
@@ -93,14 +111,15 @@
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button5.ForeColor = Color.White;
-            button5.Image = Properties.Resources.icons8_windows_30;
-            button5.Location = new Point(34, 338);
+            button5.Image = Properties.Resources.icons8_merge_30;
+            button5.Location = new Point(34, 274);
             button5.Name = "button5";
             button5.Size = new Size(213, 53);
             button5.TabIndex = 5;
-            button5.Text = "    Home";
+            button5.Text = "    Merge";
             button5.TextImageRelation = TextImageRelation.ImageBeforeText;
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button4
             // 
@@ -108,14 +127,15 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button4.ForeColor = Color.White;
-            button4.Image = Properties.Resources.icons8_windows_30;
-            button4.Location = new Point(34, 262);
+            button4.Image = Properties.Resources.icons8_undo_30;
+            button4.Location = new Point(34, 214);
             button4.Name = "button4";
             button4.Size = new Size(213, 53);
             button4.TabIndex = 4;
-            button4.Text = "    Home";
+            button4.Text = "    Extract";
             button4.TextImageRelation = TextImageRelation.ImageBeforeText;
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button3
             // 
@@ -124,13 +144,14 @@
             button3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button3.ForeColor = Color.White;
             button3.Image = Properties.Resources.icons8_convert_30;
-            button3.Location = new Point(34, 186);
+            button3.Location = new Point(34, 154);
             button3.Name = "button3";
             button3.Size = new Size(213, 53);
             button3.TabIndex = 3;
-            button3.Text = "    Home";
+            button3.Text = "    Transform";
             button3.TextImageRelation = TextImageRelation.ImageBeforeText;
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -139,7 +160,7 @@
             button2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = Color.White;
             button2.Image = Properties.Resources.icons8_filter_30;
-            button2.Location = new Point(34, 110);
+            button2.Location = new Point(34, 94);
             button2.Name = "button2";
             button2.Size = new Size(213, 53);
             button2.TabIndex = 2;
@@ -200,17 +221,18 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // button6
+            // button_Exit
             // 
-            button6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Image = Properties.Resources.icons8_power_30__1_;
-            button6.Location = new Point(1003, 34);
-            button6.Name = "button6";
-            button6.Size = new Size(35, 35);
-            button6.TabIndex = 3;
-            button6.UseVisualStyleBackColor = true;
+            button_Exit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_Exit.FlatAppearance.BorderSize = 0;
+            button_Exit.FlatStyle = FlatStyle.Flat;
+            button_Exit.Image = Properties.Resources.icons8_power_30;
+            button_Exit.Location = new Point(1003, 34);
+            button_Exit.Name = "button_Exit";
+            button_Exit.Size = new Size(35, 35);
+            button_Exit.TabIndex = 3;
+            button_Exit.UseVisualStyleBackColor = true;
+            button_Exit.Click += button_Exit_Click;
             // 
             // home1
             // 
@@ -234,7 +256,7 @@
             ClientSize = new Size(1041, 683);
             Controls.Add(filter1);
             Controls.Add(home1);
-            Controls.Add(button6);
+            Controls.Add(button_Exit);
             Controls.Add(Panel_Banner);
             Controls.Add(panel_Accent);
             Controls.Add(panel_Menu);
@@ -259,10 +281,11 @@
         private Button button2;
         private Panel Panel_Index;
         private Button button1;
-        private Button button6;
-        private Button button7;
-        private Button button8;
+        private Button button_Exit;
+        private Button button_Help;
+        private Button button_Credits;
         private Home home1;
         private Filter filter1;
+        private Button button6;
     }
 }

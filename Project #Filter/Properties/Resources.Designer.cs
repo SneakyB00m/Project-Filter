@@ -83,9 +83,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_encrypt_30 {
+        internal static System.Drawing.Bitmap icons8_filter_30 {
             get {
-                object obj = ResourceManager.GetObject("icons8-encrypt-30", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-filter-30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_filter_30 {
+        internal static System.Drawing.Bitmap icons8_fingerprint_30 {
             get {
-                object obj = ResourceManager.GetObject("icons8-filter-30", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-fingerprint-30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_merge_documents_30 {
+        internal static System.Drawing.Bitmap icons8_merge_30 {
             get {
-                object obj = ResourceManager.GetObject("icons8-merge-documents-30", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-merge-30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,19 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_power_30__1_ {
+        internal static System.Drawing.Bitmap icons8_power_30 {
             get {
-                object obj = ResourceManager.GetObject("icons8-power-30 (1)", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-power-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_undo_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-undo-30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,16 +156,6 @@ namespace Project__Filter.Properties {
         internal static System.Drawing.Bitmap icons8_windows_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-windows-30", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_winrar_30 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-winrar-30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

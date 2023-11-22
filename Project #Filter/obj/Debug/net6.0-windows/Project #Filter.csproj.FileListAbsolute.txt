@@ -17,3 +17,7 @@ C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Properties.Resources.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Home.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Filter.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Convert.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Extract.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Merge.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Privacy.resources
