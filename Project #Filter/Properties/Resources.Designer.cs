@@ -133,9 +133,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_power_30 {
+        internal static System.Drawing.Bitmap icons8_power_30__1_ {
             get {
-                object obj = ResourceManager.GetObject("icons8-power-30", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-power-30 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

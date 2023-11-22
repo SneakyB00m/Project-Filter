@@ -35,12 +35,14 @@
             button4 = new Button();
             button3 = new Button();
             button2 = new Button();
-            panel1 = new Panel();
+            Panel_Index = new Panel();
             button1 = new Button();
             panel_Accent = new Panel();
             Panel_Banner = new Panel();
             pictureBox1 = new PictureBox();
             button6 = new Button();
+            home1 = new Home();
+            filter1 = new Filter();
             panel_Menu.SuspendLayout();
             Panel_Banner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -55,7 +57,7 @@
             panel_Menu.Controls.Add(button4);
             panel_Menu.Controls.Add(button3);
             panel_Menu.Controls.Add(button2);
-            panel_Menu.Controls.Add(panel1);
+            panel_Menu.Controls.Add(Panel_Index);
             panel_Menu.Controls.Add(button1);
             panel_Menu.Dock = DockStyle.Left;
             panel_Menu.Location = new Point(0, 0);
@@ -121,7 +123,7 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button3.ForeColor = Color.White;
-            button3.Image = Properties.Resources.icons8_windows_30;
+            button3.Image = Properties.Resources.icons8_convert_30;
             button3.Location = new Point(34, 186);
             button3.Name = "button3";
             button3.Size = new Size(213, 53);
@@ -136,22 +138,23 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = Color.White;
-            button2.Image = Properties.Resources.icons8_windows_30;
+            button2.Image = Properties.Resources.icons8_filter_30;
             button2.Location = new Point(34, 110);
             button2.Name = "button2";
             button2.Size = new Size(213, 53);
             button2.TabIndex = 2;
-            button2.Text = "    Home";
+            button2.Text = "    Filter";
             button2.TextImageRelation = TextImageRelation.ImageBeforeText;
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
-            // panel1
+            // Panel_Index
             // 
-            panel1.BackColor = Color.Teal;
-            panel1.Location = new Point(3, 34);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(25, 53);
-            panel1.TabIndex = 1;
+            Panel_Index.BackColor = Color.Teal;
+            Panel_Index.Location = new Point(3, 34);
+            Panel_Index.Name = "Panel_Index";
+            Panel_Index.Size = new Size(25, 53);
+            Panel_Index.TabIndex = 1;
             // 
             // button1
             // 
@@ -167,6 +170,7 @@
             button1.Text = "    Home";
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // panel_Accent
             // 
@@ -198,21 +202,38 @@
             // 
             // button6
             // 
+            button6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
-            button6.Image = Properties.Resources.icons8_power_30;
-            button6.Location = new Point(990, 34);
+            button6.Image = Properties.Resources.icons8_power_30__1_;
+            button6.Location = new Point(1003, 34);
             button6.Name = "button6";
             button6.Size = new Size(35, 35);
             button6.TabIndex = 3;
             button6.UseVisualStyleBackColor = true;
             // 
+            // home1
+            // 
+            home1.Location = new Point(250, 110);
+            home1.Name = "home1";
+            home1.Size = new Size(791, 573);
+            home1.TabIndex = 4;
+            // 
+            // filter1
+            // 
+            filter1.Location = new Point(250, 110);
+            filter1.Name = "filter1";
+            filter1.Size = new Size(791, 573);
+            filter1.TabIndex = 5;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(1041, 683);
+            Controls.Add(filter1);
+            Controls.Add(home1);
             Controls.Add(button6);
             Controls.Add(Panel_Banner);
             Controls.Add(panel_Accent);
@@ -236,10 +257,12 @@
         private Button button4;
         private Button button3;
         private Button button2;
-        private Panel panel1;
+        private Panel Panel_Index;
         private Button button1;
         private Button button6;
         private Button button7;
         private Button button8;
+        private Home home1;
+        private Filter filter1;
     }
 }
