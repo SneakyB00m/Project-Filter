@@ -103,6 +103,26 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_github_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-github-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_gmail_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-gmail-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_help_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-help-30", resourceCulture);
@@ -126,6 +146,16 @@ namespace Project__Filter.Properties {
         internal static System.Drawing.Bitmap icons8_movie_ticket_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-movie-ticket-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_new_copy_15 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-new-copy-15", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

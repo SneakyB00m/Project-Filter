@@ -30,7 +30,6 @@
         {
             panel_Menu = new Panel();
             button6 = new Button();
-            button_Credits = new Button();
             button_Help = new Button();
             button5 = new Button();
             button4 = new Button();
@@ -44,6 +43,8 @@
             button_Exit = new Button();
             home1 = new Home();
             filter1 = new Filter();
+            label1 = new Label();
+            button7 = new Button();
             panel_Menu.SuspendLayout();
             Panel_Banner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -53,8 +54,6 @@
             // 
             panel_Menu.BackColor = Color.FromArgb(64, 64, 64);
             panel_Menu.Controls.Add(button6);
-            panel_Menu.Controls.Add(button_Credits);
-            panel_Menu.Controls.Add(button_Help);
             panel_Menu.Controls.Add(button5);
             panel_Menu.Controls.Add(button4);
             panel_Menu.Controls.Add(button3);
@@ -83,23 +82,12 @@
             button6.UseVisualStyleBackColor = true;
             button6.Click += button6_Click;
             // 
-            // button_Credits
-            // 
-            button_Credits.FlatAppearance.BorderSize = 0;
-            button_Credits.FlatStyle = FlatStyle.Flat;
-            button_Credits.Image = Properties.Resources.icons8_movie_ticket_30;
-            button_Credits.Location = new Point(207, 645);
-            button_Credits.Name = "button_Credits";
-            button_Credits.Size = new Size(35, 35);
-            button_Credits.TabIndex = 7;
-            button_Credits.UseVisualStyleBackColor = true;
-            // 
             // button_Help
             // 
             button_Help.FlatAppearance.BorderSize = 0;
             button_Help.FlatStyle = FlatStyle.Flat;
             button_Help.Image = Properties.Resources.icons8_help_30;
-            button_Help.Location = new Point(3, 645);
+            button_Help.Location = new Point(749, 46);
             button_Help.Name = "button_Help";
             button_Help.Size = new Size(35, 35);
             button_Help.TabIndex = 6;
@@ -227,7 +215,7 @@
             button_Exit.FlatAppearance.BorderSize = 0;
             button_Exit.FlatStyle = FlatStyle.Flat;
             button_Exit.Image = Properties.Resources.icons8_power_30;
-            button_Exit.Location = new Point(1003, 34);
+            button_Exit.Location = new Point(994, 46);
             button_Exit.Name = "button_Exit";
             button_Exit.Size = new Size(35, 35);
             button_Exit.TabIndex = 3;
@@ -243,10 +231,33 @@
             // 
             // filter1
             // 
+            filter1.BackColor = Color.FromArgb(64, 64, 64);
             filter1.Location = new Point(250, 110);
             filter1.Name = "filter1";
             filter1.Size = new Size(791, 573);
             filter1.TabIndex = 5;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(356, 51);
+            label1.Name = "label1";
+            label1.Size = new Size(339, 24);
+            label1.TabIndex = 6;
+            label1.Text = "TOOL KIT 2.0  BY @SneakyB00m";
+            // 
+            // button7
+            // 
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Image = Properties.Resources.icons8_github_30;
+            button7.Location = new Point(701, 48);
+            button7.Name = "button7";
+            button7.Size = new Size(30, 30);
+            button7.TabIndex = 7;
+            button7.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -254,6 +265,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(1041, 683);
+            Controls.Add(button7);
+            Controls.Add(button_Help);
+            Controls.Add(label1);
             Controls.Add(filter1);
             Controls.Add(home1);
             Controls.Add(button_Exit);
@@ -267,6 +281,7 @@
             Panel_Banner.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -283,9 +298,10 @@
         private Button button1;
         private Button button_Exit;
         private Button button_Help;
-        private Button button_Credits;
         private Home home1;
         private Filter filter1;
         private Button button6;
+        private Label label1;
+        private Button button7;
     }
 }
