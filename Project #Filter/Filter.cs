@@ -15,7 +15,6 @@ namespace Project__Filter
     {
         private string folderPath;
         Actions actions = new Actions();
-        List<string> files = new List<string>();
 
         public Filter()
         {
@@ -26,14 +25,12 @@ namespace Project__Filter
         {
             folderPath = actions.OpenFolderManager();
             textBox_Path.Text = folderPath;
-
-            // Get all files in the folder and its subdirectories
-            files = actions.GetAllFiles(folderPath);
         }
 
 
         private void button_Filter_Click(object sender, EventArgs e)
         {
+
             if (!string.IsNullOrEmpty(folderPath))
             {
                 List<CheckBox> checkedCheckBoxes = actions.GetCheckedCheckBoxes(this);
@@ -43,7 +40,6 @@ namespace Project__Filter
                     // Handle the action for each checked checkbox
                     foreach (CheckBox checkBox in checkedCheckBoxes)
                     {
-
                         switch (checkBox.Name)
                         {
                             case "checkBox_Include":
@@ -140,8 +136,35 @@ public class Actions
 
     public void HandleInclude(string folderPath, string include)
     {
+        // Create the "filtered" directory if it doesn't exist
+        string filteredPath = Path.Combine(folderPath, "Filtered");
+        if (!Directory.Exists(filteredPath))
+        {
+            Directory.CreateDirectory(filteredPath);
+        }
 
+        // Create the "include" directory inside the "filtered" directory
+        string includePath = Path.Combine(filteredPath, "Includes");
+        if (!Directory.Exists(includePath))
+        {
+            Directory.CreateDirectory(includePath);
+        }
+
+        // Get all files in the folder and its subfolders
+        List<string> allFiles = GetAllFiles(folderPath);
+
+        // Filter the files based on the include string
+        List<string> includedFiles = allFiles.Where(file => Path.GetFileNameWithoutExtension(file).IndexOf(include, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+
+        // Move the included files to the "include" directory
+        foreach (string file in includedFiles)
+        {
+            string destinationPath = Path.Combine(includePath, Path.GetFileName(file));
+            File.Move(file, destinationPath, true);
+        }
     }
+
+
 
     public void HandleExclude(string folderPath, string exclude)
     {
