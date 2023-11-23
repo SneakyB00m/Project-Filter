@@ -15,6 +15,7 @@ namespace Project__Filter
     {
         private string folderPath;
         Actions actions = new Actions();
+        List<string> files = new List<string>();
 
         public Filter()
         {
@@ -25,7 +26,11 @@ namespace Project__Filter
         {
             folderPath = actions.OpenFolderManager();
             textBox_Path.Text = folderPath;
+
+            // Get all files in the folder and its subdirectories
+            files = actions.GetAllFiles(folderPath);
         }
+
 
         private void button_Filter_Click(object sender, EventArgs e)
         {
@@ -38,11 +43,16 @@ namespace Project__Filter
                     // Handle the action for each checked checkbox
                     foreach (CheckBox checkBox in checkedCheckBoxes)
                     {
+
                         switch (checkBox.Name)
                         {
                             case "checkBox_Include":
+                                string inputInclude = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "Default", -1, -1);
+                                actions.HandleInclude(folderPath, inputInclude);
                                 break;
                             case "checkBox_Exclude":
+                                string inputExclude = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "Default", -1, -1);
+                                actions.HandleExclude(folderPath, inputExclude);
                                 break;
                             case "checkBox_AtoZ":
                                 actions.HandleAToZ(folderPath);
@@ -128,11 +138,9 @@ public class Actions
         return checkedCheckBoxes; // Return the list of checked checkboxes
     }
 
-
     public void HandleInclude(string folderPath, string include)
     {
-        // Access folderPath here
-        Console.WriteLine(folderPath);
+
     }
 
     public void HandleExclude(string folderPath, string exclude)
@@ -142,25 +150,6 @@ public class Actions
     }
 
     public void HandleExtension(string folderPath)
-    {
-        // Access folderPath here
-        Console.WriteLine(folderPath);
-    }
-
-
-    public void HandleAToZ(string folderPath)
-    {
-        // Access folderPath here
-        Console.WriteLine(folderPath);
-    }
-
-    public void HandleSize(string folderPath)
-    {
-        // Access folderPath here
-        Console.WriteLine(folderPath);
-    }
-
-    public void HandleDate(string folderPath)
     {
         // Access folderPath here
         Console.WriteLine(folderPath);
@@ -178,10 +167,55 @@ public class Actions
         Console.WriteLine(folderPath);
     }
 
+    public void HandleSize(string folderPath)
+    {
+        // Access folderPath here
+        Console.WriteLine(folderPath);
+    }
+
+    public void HandleDate(string folderPath)
+    {
+        // Access folderPath here
+        Console.WriteLine(folderPath);
+    }
+
+    public void HandleAToZ(string folderPath)
+    {
+        // Access folderPath here
+        Console.WriteLine(folderPath);
+    }
+
     public void HandleDelete(string folderPath)
     {
         // Access folderPath here
         Console.WriteLine(folderPath);
     }
+
+    public List<string> GetAllFiles(string folderPath)
+    {
+        List<string> filesList = new List<string>();
+
+        // Check if the directory exists
+        if (Directory.Exists(folderPath))
+        {
+            // Get the files in the directory
+            string[] files = Directory.GetFiles(folderPath);
+            filesList.AddRange(files);
+
+            // Get the subdirectories in the directory
+            string[] subdirectories = Directory.GetDirectories(folderPath);
+
+            // Use a foreach loop to check each subdirectory
+            foreach (string subdirectory in subdirectories)
+            {
+                // Use recursion to get the files in the subdirectory
+                List<string> subdirectoryFiles = GetAllFiles(subdirectory);
+                filesList.AddRange(subdirectoryFiles);
+            }
+        }
+
+        return filesList; // Return the list of files
+    }
+
 }
 
