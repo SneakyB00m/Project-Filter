@@ -12,8 +12,6 @@ namespace Project__Filter
 {
     public partial class Home : UserControl
     {
-
-        //Test
         public Home()
         {
             InitializeComponent();
