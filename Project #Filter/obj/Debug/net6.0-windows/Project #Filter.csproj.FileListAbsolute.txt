@@ -1,0 +1,47 @@
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.0-windows\Project #Filter.exe
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.0-windows\Project #Filter.deps.json
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.0-windows\Project #Filter.runtimeconfig.json
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.0-windows\Project #Filter.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.0-windows\Project #Filter.pdb
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.csproj.GenerateResource.cache
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.AssemblyInfoInputs.cache
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.AssemblyInfo.cs
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.csproj.CoreCompileInputs.cache
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\refint\Project #Filter.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.pdb
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.genruntimeconfig.cache
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\ref\Project #Filter.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Properties.Resources.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Home.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Filter.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Convert.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Extract.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Merge.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Privacy.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\Project #Filter.exe
+E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\Project #Filter.deps.json
+E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\Project #Filter.runtimeconfig.json
+E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\Project #Filter.dll
+E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\Project #Filter.pdb
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Convert.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Extract.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Filter.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Home.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Merge.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Privacy.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Properties.Resources.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.csproj.GenerateResource.cache
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.GeneratedMSBuildEditorConfig.editorconfig
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.AssemblyInfoInputs.cache
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.AssemblyInfo.cs
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.csproj.CoreCompileInputs.cache
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.sourcelink.json
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.dll
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\refint\Project #Filter.dll
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.pdb
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.genruntimeconfig.cache
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\ref\Project #Filter.dll
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Main.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Main.resources
