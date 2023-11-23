@@ -1,8 +1,8 @@
 namespace Project__Filter
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
             Panel_Index.Height = button1.Height;
@@ -33,6 +33,7 @@ namespace Project__Filter
         {
             Panel_Index.Height = button3.Height;
             Panel_Index.Top = button3.Top;
+            convert1.BringToFront();
         }
 
         private void button4_Click(object sender, EventArgs e)
