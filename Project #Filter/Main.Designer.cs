@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel_Menu = new Panel();
             Panel_Index = new Panel();
             button_Privacy = new Button();
@@ -39,7 +40,7 @@
             button_Home = new Button();
             panel_Accent = new Panel();
             button_Config = new Button();
-            label1 = new Label();
+            label_Title = new Label();
             button_Exit = new Button();
             button_Git = new Button();
             Panel_Banner = new Panel();
@@ -50,6 +51,10 @@
             extract1 = new Extract();
             merge1 = new Merge();
             privacy1 = new Privacy();
+            DragControl_Accent = new Bunifu.Framework.UI.BunifuDragControl(components);
+            DragControl_Tittle = new Bunifu.Framework.UI.BunifuDragControl(components);
+            DragControl_Menu = new Bunifu.Framework.UI.BunifuDragControl(components);
+            DragControl_Banner = new Bunifu.Framework.UI.BunifuDragControl(components);
             panel_Menu.SuspendLayout();
             panel_Accent.SuspendLayout();
             Panel_Banner.SuspendLayout();
@@ -201,7 +206,7 @@
             // 
             panel_Accent.BackColor = Color.FromArgb(0, 64, 64);
             panel_Accent.Controls.Add(button_Config);
-            panel_Accent.Controls.Add(label1);
+            panel_Accent.Controls.Add(label_Title);
             panel_Accent.Controls.Add(button_Exit);
             panel_Accent.Controls.Add(button_Git);
             panel_Accent.Dock = DockStyle.Top;
@@ -224,16 +229,16 @@
             button_Config.TabIndex = 8;
             button_Config.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // label_Title
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(84, 6);
-            label1.Name = "label1";
-            label1.Size = new Size(274, 19);
-            label1.TabIndex = 6;
-            label1.Text = "TOOL KIT 2.0  BY @SneakyB00m";
+            label_Title.AutoSize = true;
+            label_Title.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label_Title.ForeColor = Color.White;
+            label_Title.Location = new Point(84, 6);
+            label_Title.Name = "label_Title";
+            label_Title.Size = new Size(274, 19);
+            label_Title.TabIndex = 6;
+            label_Title.Text = "TOOL KIT 2.0  BY @SneakyB00m";
             // 
             // button_Exit
             // 
@@ -335,6 +340,34 @@
             privacy1.Size = new Size(692, 430);
             privacy1.TabIndex = 11;
             // 
+            // DragControl_Accent
+            // 
+            DragControl_Accent.Fixed = true;
+            DragControl_Accent.Horizontal = true;
+            DragControl_Accent.TargetControl = panel_Accent;
+            DragControl_Accent.Vertical = true;
+            // 
+            // DragControl_Tittle
+            // 
+            DragControl_Tittle.Fixed = true;
+            DragControl_Tittle.Horizontal = true;
+            DragControl_Tittle.TargetControl = label_Title;
+            DragControl_Tittle.Vertical = true;
+            // 
+            // DragControl_Menu
+            // 
+            DragControl_Menu.Fixed = true;
+            DragControl_Menu.Horizontal = true;
+            DragControl_Menu.TargetControl = panel_Menu;
+            DragControl_Menu.Vertical = true;
+            // 
+            // DragControl_Banner
+            // 
+            DragControl_Banner.Fixed = true;
+            DragControl_Banner.Horizontal = true;
+            DragControl_Banner.TargetControl = Panel_Banner;
+            DragControl_Banner.Vertical = true;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -381,12 +414,16 @@
         private Home home1;
         private Filter filter1;
         private Button button_Privacy;
-        private Label label1;
+        private Label label_Title;
         private Button button_Git;
         private Convert convert1;
         private Extract extract1;
         private Merge merge1;
         private Privacy privacy1;
         private Button button_Config;
+        private Bunifu.Framework.UI.BunifuDragControl DragControl_Accent;
+        private Bunifu.Framework.UI.BunifuDragControl DragControl_Tittle;
+        private Bunifu.Framework.UI.BunifuDragControl DragControl_Menu;
+        private Bunifu.Framework.UI.BunifuDragControl DragControl_Banner;
     }
 }
