@@ -3,7 +3,6 @@ C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.0-windows\Project #Filter.runtimeconfig.json
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.0-windows\Project #Filter.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.0-windows\Project #Filter.pdb
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Form1.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.csproj.GenerateResource.cache
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.AssemblyInfoInputs.cache
@@ -45,3 +44,4 @@ E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Pr
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.genruntimeconfig.cache
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\ref\Project #Filter.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Main.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Main.resources
