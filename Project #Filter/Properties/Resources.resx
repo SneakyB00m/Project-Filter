@@ -124,20 +124,14 @@
   <data name="icons8-fingerprint-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-fingerprint-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-new-copy-15" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-new-copy-15.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-help-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-help-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-power-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-power-301.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-merge-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-merge-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Martin-Berube-Animal-Sheep.256" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Martin-Berube-Animal-Sheep.256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-windows-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-windows-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-new-copy-15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-new-copy-15.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-filter-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-filter-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,13 +145,16 @@
   <data name="icons8-convert-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-convert-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-merge-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-merge-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-windows-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-windows-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-gmail-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-gmail-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-github-25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-github-25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-github-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-github-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-help-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-help-301.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-power-25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-power-25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

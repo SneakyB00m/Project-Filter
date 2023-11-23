@@ -31,25 +31,26 @@
             panel_Menu = new Panel();
             Panel_Index = new Panel();
             button_Privacy = new Button();
+            button_Help = new Button();
             button_Merge = new Button();
             button_Extract = new Button();
             button_Convert = new Button();
             button_Filter = new Button();
             button_Home = new Button();
-            button_Help = new Button();
             panel_Accent = new Panel();
+            label1 = new Label();
+            button_Exit = new Button();
+            button_Git = new Button();
             Panel_Banner = new Panel();
             pictureBox1 = new PictureBox();
-            button_Exit = new Button();
             home1 = new Home();
             filter1 = new Filter();
-            label1 = new Label();
-            button_Git = new Button();
             convert1 = new Convert();
             extract1 = new Extract();
             merge1 = new Merge();
             privacy1 = new Privacy();
             panel_Menu.SuspendLayout();
+            panel_Accent.SuspendLayout();
             Panel_Banner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -59,6 +60,7 @@
             panel_Menu.BackColor = Color.FromArgb(64, 64, 64);
             panel_Menu.Controls.Add(Panel_Index);
             panel_Menu.Controls.Add(button_Privacy);
+            panel_Menu.Controls.Add(button_Help);
             panel_Menu.Controls.Add(button_Merge);
             panel_Menu.Controls.Add(button_Extract);
             panel_Menu.Controls.Add(button_Convert);
@@ -96,6 +98,18 @@
             button_Privacy.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Privacy.UseVisualStyleBackColor = true;
             button_Privacy.Click += button_Privacy_Click;
+            // 
+            // button_Help
+            // 
+            button_Help.FlatAppearance.BorderSize = 0;
+            button_Help.FlatStyle = FlatStyle.Flat;
+            button_Help.Image = Properties.Resources.icons8_help_30;
+            button_Help.Location = new Point(3, 478);
+            button_Help.Margin = new Padding(3, 2, 3, 2);
+            button_Help.Name = "button_Help";
+            button_Help.Size = new Size(32, 32);
+            button_Help.TabIndex = 6;
+            button_Help.UseVisualStyleBackColor = true;
             // 
             // button_Merge
             // 
@@ -182,27 +196,55 @@
             button_Home.UseVisualStyleBackColor = true;
             button_Home.Click += button_Home_Click;
             // 
-            // button_Help
-            // 
-            button_Help.FlatAppearance.BorderSize = 0;
-            button_Help.FlatStyle = FlatStyle.Flat;
-            button_Help.Image = Properties.Resources.icons8_help_30;
-            button_Help.Location = new Point(619, 28);
-            button_Help.Margin = new Padding(3, 2, 3, 2);
-            button_Help.Name = "button_Help";
-            button_Help.Size = new Size(30, 30);
-            button_Help.TabIndex = 6;
-            button_Help.UseVisualStyleBackColor = true;
-            // 
             // panel_Accent
             // 
             panel_Accent.BackColor = Color.FromArgb(0, 64, 64);
+            panel_Accent.Controls.Add(label1);
+            panel_Accent.Controls.Add(button_Exit);
+            panel_Accent.Controls.Add(button_Git);
             panel_Accent.Dock = DockStyle.Top;
             panel_Accent.Location = new Point(219, 0);
             panel_Accent.Margin = new Padding(3, 2, 3, 2);
             panel_Accent.Name = "panel_Accent";
-            panel_Accent.Size = new Size(692, 21);
+            panel_Accent.Size = new Size(692, 32);
             panel_Accent.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(84, 6);
+            label1.Name = "label1";
+            label1.Size = new Size(274, 19);
+            label1.TabIndex = 6;
+            label1.Text = "TOOL KIT 2.0  BY @SneakyB00m";
+            // 
+            // button_Exit
+            // 
+            button_Exit.Anchor = AnchorStyles.Right;
+            button_Exit.FlatAppearance.BorderSize = 0;
+            button_Exit.FlatStyle = FlatStyle.Flat;
+            button_Exit.Image = Properties.Resources.icons8_power_25;
+            button_Exit.Location = new Point(660, 2);
+            button_Exit.Margin = new Padding(3, 2, 3, 2);
+            button_Exit.Name = "button_Exit";
+            button_Exit.Size = new Size(25, 25);
+            button_Exit.TabIndex = 3;
+            button_Exit.UseVisualStyleBackColor = true;
+            button_Exit.Click += button_Exit_Click;
+            // 
+            // button_Git
+            // 
+            button_Git.FlatAppearance.BorderSize = 0;
+            button_Git.FlatStyle = FlatStyle.Flat;
+            button_Git.Image = Properties.Resources.icons8_github_25;
+            button_Git.Location = new Point(630, 2);
+            button_Git.Margin = new Padding(3, 2, 3, 2);
+            button_Git.Name = "button_Git";
+            button_Git.Size = new Size(25, 25);
+            button_Git.TabIndex = 7;
+            button_Git.UseVisualStyleBackColor = true;
             // 
             // Panel_Banner
             // 
@@ -225,20 +267,6 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // button_Exit
-            // 
-            button_Exit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button_Exit.FlatAppearance.BorderSize = 0;
-            button_Exit.FlatStyle = FlatStyle.Flat;
-            button_Exit.Image = Properties.Resources.icons8_power_30;
-            button_Exit.Location = new Point(869, 28);
-            button_Exit.Margin = new Padding(3, 2, 3, 2);
-            button_Exit.Name = "button_Exit";
-            button_Exit.Size = new Size(30, 30);
-            button_Exit.TabIndex = 3;
-            button_Exit.UseVisualStyleBackColor = true;
-            button_Exit.Click += button_Exit_Click;
-            // 
             // home1
             // 
             home1.Location = new Point(219, 82);
@@ -255,29 +283,6 @@
             filter1.Name = "filter1";
             filter1.Size = new Size(692, 430);
             filter1.TabIndex = 5;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(303, 34);
-            label1.Name = "label1";
-            label1.Size = new Size(274, 19);
-            label1.TabIndex = 6;
-            label1.Text = "TOOL KIT 2.0  BY @SneakyB00m";
-            // 
-            // button_Git
-            // 
-            button_Git.FlatAppearance.BorderSize = 0;
-            button_Git.FlatStyle = FlatStyle.Flat;
-            button_Git.Image = Properties.Resources.icons8_github_30;
-            button_Git.Location = new Point(583, 28);
-            button_Git.Margin = new Padding(3, 2, 3, 2);
-            button_Git.Name = "button_Git";
-            button_Git.Size = new Size(30, 30);
-            button_Git.TabIndex = 7;
-            button_Git.UseVisualStyleBackColor = true;
             // 
             // convert1
             // 
@@ -320,10 +325,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(911, 512);
-            Controls.Add(label1);
-            Controls.Add(button_Git);
-            Controls.Add(button_Help);
-            Controls.Add(button_Exit);
             Controls.Add(home1);
             Controls.Add(filter1);
             Controls.Add(convert1);
@@ -338,10 +339,11 @@
             Name = "Main";
             Text = "Form1";
             panel_Menu.ResumeLayout(false);
+            panel_Accent.ResumeLayout(false);
+            panel_Accent.PerformLayout();
             Panel_Banner.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
