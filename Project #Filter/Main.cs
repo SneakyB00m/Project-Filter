@@ -5,14 +5,25 @@ namespace Project__Filter
         public Main()
         {
             InitializeComponent();
+            // Index
             Panel_Index.Height = button_Home.Height;
             Panel_Index.Top = button_Home.Top;
             home1.BringToFront();
+
         }
 
         private void button_Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button_Git_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "https://github.com/Dev-Alan-Isaac",
+                UseShellExecute = true
+            });
         }
 
         private void button_Home_Click(object sender, EventArgs e)
@@ -56,5 +67,7 @@ namespace Project__Filter
             Panel_Index.Top = button_Privacy.Top;
             privacy1.BringToFront();
         }
+
+
     }
 }

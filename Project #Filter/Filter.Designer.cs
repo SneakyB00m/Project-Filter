@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button1 = new Button();
+            button_Path = new Button();
             panel2 = new Panel();
             panel3 = new Panel();
             panel4 = new Panel();
@@ -43,7 +43,7 @@
             checkBox8 = new CheckBox();
             checkBox9 = new CheckBox();
             label1 = new Label();
-            textBox1 = new TextBox();
+            textBox_Path = new TextBox();
             label2 = new Label();
             checkBox1 = new CheckBox();
             button2 = new Button();
@@ -54,7 +54,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 64, 64);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(button_Path);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 2, 3, 2);
@@ -62,18 +62,19 @@
             panel1.Size = new Size(676, 32);
             panel1.TabIndex = 4;
             // 
-            // button1
+            // button_Path
             // 
-            button1.BackColor = Color.Teal;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = Properties.Resources.Add;
-            button1.Location = new Point(630, 5);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(44, 22);
-            button1.TabIndex = 0;
-            button1.UseVisualStyleBackColor = false;
+            button_Path.BackColor = Color.Teal;
+            button_Path.FlatAppearance.BorderSize = 0;
+            button_Path.FlatStyle = FlatStyle.Flat;
+            button_Path.Image = Properties.Resources.Add;
+            button_Path.Location = new Point(630, 5);
+            button_Path.Margin = new Padding(3, 2, 3, 2);
+            button_Path.Name = "button_Path";
+            button_Path.Size = new Size(44, 22);
+            button_Path.TabIndex = 0;
+            button_Path.UseVisualStyleBackColor = false;
+            button_Path.Click += button_Path_Click;
             // 
             // panel2
             // 
@@ -233,18 +234,18 @@
             label1.TabIndex = 23;
             label1.Text = "Path:";
             // 
-            // textBox1
+            // textBox_Path
             // 
-            textBox1.BackColor = Color.FromArgb(64, 64, 64);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(115, 45);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(523, 20);
-            textBox1.TabIndex = 25;
+            textBox_Path.BackColor = Color.FromArgb(64, 64, 64);
+            textBox_Path.BorderStyle = BorderStyle.None;
+            textBox_Path.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            textBox_Path.ForeColor = Color.White;
+            textBox_Path.Location = new Point(115, 51);
+            textBox_Path.Margin = new Padding(3, 2, 3, 2);
+            textBox_Path.Name = "textBox_Path";
+            textBox_Path.ReadOnly = true;
+            textBox_Path.Size = new Size(523, 20);
+            textBox_Path.TabIndex = 25;
             // 
             // label2
             // 
@@ -300,7 +301,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(textBox_Path);
             Controls.Add(label2);
             Controls.Add(checkBox1);
             Controls.Add(button2);
@@ -331,7 +332,7 @@
         private Panel panel2;
         private Panel panel3;
         private Panel panel4;
-        private Button button1;
+        private Button button_Path;
         private Label label3;
         private CheckBox checkBox2;
         private CheckBox checkBox3;
@@ -342,7 +343,7 @@
         private CheckBox checkBox8;
         private CheckBox checkBox9;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox textBox_Path;
         private Label label2;
         private CheckBox checkBox1;
         private Button button2;

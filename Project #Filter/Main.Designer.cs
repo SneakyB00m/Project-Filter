@@ -38,6 +38,7 @@
             button_Filter = new Button();
             button_Home = new Button();
             panel_Accent = new Panel();
+            button_Config = new Button();
             label1 = new Label();
             button_Exit = new Button();
             button_Git = new Button();
@@ -199,6 +200,7 @@
             // panel_Accent
             // 
             panel_Accent.BackColor = Color.FromArgb(0, 64, 64);
+            panel_Accent.Controls.Add(button_Config);
             panel_Accent.Controls.Add(label1);
             panel_Accent.Controls.Add(button_Exit);
             panel_Accent.Controls.Add(button_Git);
@@ -208,6 +210,19 @@
             panel_Accent.Name = "panel_Accent";
             panel_Accent.Size = new Size(692, 32);
             panel_Accent.TabIndex = 1;
+            // 
+            // button_Config
+            // 
+            button_Config.Anchor = AnchorStyles.Right;
+            button_Config.FlatAppearance.BorderSize = 0;
+            button_Config.FlatStyle = FlatStyle.Flat;
+            button_Config.Image = Properties.Resources.Config;
+            button_Config.Location = new Point(623, 2);
+            button_Config.Margin = new Padding(3, 2, 3, 2);
+            button_Config.Name = "button_Config";
+            button_Config.Size = new Size(25, 25);
+            button_Config.TabIndex = 8;
+            button_Config.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -239,12 +254,13 @@
             button_Git.FlatAppearance.BorderSize = 0;
             button_Git.FlatStyle = FlatStyle.Flat;
             button_Git.Image = Properties.Resources.Git;
-            button_Git.Location = new Point(630, 2);
+            button_Git.Location = new Point(386, 2);
             button_Git.Margin = new Padding(3, 2, 3, 2);
             button_Git.Name = "button_Git";
             button_Git.Size = new Size(25, 25);
             button_Git.TabIndex = 7;
             button_Git.UseVisualStyleBackColor = true;
+            button_Git.Click += button_Git_Click;
             // 
             // Panel_Banner
             // 
@@ -325,6 +341,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(911, 512);
+            ControlBox = false;
             Controls.Add(home1);
             Controls.Add(filter1);
             Controls.Add(convert1);
@@ -337,6 +354,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 2, 3, 2);
             Name = "Main";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel_Menu.ResumeLayout(false);
             panel_Accent.ResumeLayout(false);
@@ -369,5 +387,6 @@
         private Extract extract1;
         private Merge merge1;
         private Privacy privacy1;
+        private Button button_Config;
     }
 }
