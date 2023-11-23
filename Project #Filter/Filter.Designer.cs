@@ -67,7 +67,6 @@
             button1.BackColor = Color.Teal;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = Properties.Resources.icons8_new_copy_15;
             button1.Location = new Point(630, 5);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
@@ -122,12 +121,12 @@
             checkBox2.AutoSize = true;
             checkBox2.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox2.ForeColor = Color.White;
-            checkBox2.Location = new Point(191, 141);
+            checkBox2.Location = new Point(126, 141);
             checkBox2.Margin = new Padding(3, 2, 3, 2);
             checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(131, 27);
+            checkBox2.Size = new Size(207, 27);
             checkBox2.TabIndex = 12;
-            checkBox2.Text = "checkBox2";
+            checkBox2.Text = "Alphabetical Order";
             checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox3
@@ -135,12 +134,12 @@
             checkBox3.AutoSize = true;
             checkBox3.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox3.ForeColor = Color.White;
-            checkBox3.Location = new Point(191, 170);
+            checkBox3.Location = new Point(126, 170);
             checkBox3.Margin = new Padding(3, 2, 3, 2);
             checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(131, 27);
+            checkBox3.Size = new Size(163, 27);
             checkBox3.TabIndex = 13;
-            checkBox3.Text = "checkBox3";
+            checkBox3.Text = "File Extension";
             checkBox3.UseVisualStyleBackColor = true;
             // 
             // checkBox4
@@ -148,12 +147,12 @@
             checkBox4.AutoSize = true;
             checkBox4.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox4.ForeColor = Color.White;
-            checkBox4.Location = new Point(191, 198);
+            checkBox4.Location = new Point(126, 198);
             checkBox4.Margin = new Padding(3, 2, 3, 2);
             checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(131, 27);
+            checkBox4.Size = new Size(108, 27);
             checkBox4.TabIndex = 14;
-            checkBox4.Text = "checkBox4";
+            checkBox4.Text = "File Size";
             checkBox4.UseVisualStyleBackColor = true;
             // 
             // checkBox5
@@ -161,12 +160,12 @@
             checkBox5.AutoSize = true;
             checkBox5.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox5.ForeColor = Color.White;
-            checkBox5.Location = new Point(191, 226);
+            checkBox5.Location = new Point(126, 226);
             checkBox5.Margin = new Padding(3, 2, 3, 2);
             checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(131, 27);
+            checkBox5.Size = new Size(111, 27);
             checkBox5.TabIndex = 15;
-            checkBox5.Text = "checkBox5";
+            checkBox5.Text = "Includes";
             checkBox5.UseVisualStyleBackColor = true;
             // 
             // checkBox6
@@ -203,9 +202,9 @@
             checkBox8.Location = new Point(344, 170);
             checkBox8.Margin = new Padding(3, 2, 3, 2);
             checkBox8.Name = "checkBox8";
-            checkBox8.Size = new Size(131, 27);
+            checkBox8.Size = new Size(139, 27);
             checkBox8.TabIndex = 18;
-            checkBox8.Text = "checkBox8";
+            checkBox8.Text = "Date Range";
             checkBox8.UseVisualStyleBackColor = true;
             // 
             // checkBox9
@@ -216,9 +215,9 @@
             checkBox9.Location = new Point(344, 141);
             checkBox9.Margin = new Padding(3, 2, 3, 2);
             checkBox9.Name = "checkBox9";
-            checkBox9.Size = new Size(131, 27);
+            checkBox9.Size = new Size(113, 27);
             checkBox9.TabIndex = 17;
-            checkBox9.Text = "checkBox9";
+            checkBox9.Text = "Excludes";
             checkBox9.UseVisualStyleBackColor = true;
             // 
             // label1
