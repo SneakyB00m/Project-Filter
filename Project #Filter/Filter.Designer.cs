@@ -34,20 +34,20 @@
             panel3 = new Panel();
             panel4 = new Panel();
             label3 = new Label();
-            checkBox2 = new CheckBox();
-            checkBox3 = new CheckBox();
-            checkBox4 = new CheckBox();
-            checkBox5 = new CheckBox();
-            checkBox6 = new CheckBox();
-            checkBox7 = new CheckBox();
-            checkBox8 = new CheckBox();
-            checkBox9 = new CheckBox();
+            checkBox_AtoZ = new CheckBox();
+            checkBox_Extension = new CheckBox();
+            checkBox_Size = new CheckBox();
+            checkBox_Include = new CheckBox();
+            checkBox_Duration = new CheckBox();
+            checkBox_Resolution = new CheckBox();
+            checkBox_Date = new CheckBox();
+            checkBox_Exclude = new CheckBox();
             label1 = new Label();
             textBox_Path = new TextBox();
             label2 = new Label();
-            checkBox1 = new CheckBox();
-            button2 = new Button();
-            progressBar1 = new ProgressBar();
+            checkBox_Delete = new CheckBox();
+            button_Filter = new Button();
+            progressBar_Time = new ProgressBar();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -118,109 +118,111 @@
             label3.TabIndex = 11;
             label3.Text = "Options";
             // 
-            // checkBox2
+            // checkBox_AtoZ
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox2.ForeColor = Color.White;
-            checkBox2.Location = new Point(115, 141);
-            checkBox2.Margin = new Padding(3, 2, 3, 2);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(207, 27);
-            checkBox2.TabIndex = 12;
-            checkBox2.Text = "Alphabetical Order";
-            checkBox2.UseVisualStyleBackColor = true;
+            checkBox_AtoZ.AutoSize = true;
+            checkBox_AtoZ.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_AtoZ.ForeColor = Color.White;
+            checkBox_AtoZ.Location = new Point(116, 141);
+            checkBox_AtoZ.Margin = new Padding(3, 2, 3, 2);
+            checkBox_AtoZ.Name = "checkBox_AtoZ";
+            checkBox_AtoZ.Size = new Size(207, 27);
+            checkBox_AtoZ.TabIndex = 12;
+            checkBox_AtoZ.Text = "Alphabetical Order";
+            checkBox_AtoZ.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // checkBox_Extension
             // 
-            checkBox3.AutoSize = true;
-            checkBox3.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox3.ForeColor = Color.White;
-            checkBox3.Location = new Point(115, 170);
-            checkBox3.Margin = new Padding(3, 2, 3, 2);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(163, 27);
-            checkBox3.TabIndex = 13;
-            checkBox3.Text = "File Extension";
-            checkBox3.UseVisualStyleBackColor = true;
+            checkBox_Extension.AutoSize = true;
+            checkBox_Extension.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_Extension.ForeColor = Color.White;
+            checkBox_Extension.Location = new Point(115, 170);
+            checkBox_Extension.Margin = new Padding(3, 2, 3, 2);
+            checkBox_Extension.Name = "checkBox_Extension";
+            checkBox_Extension.Size = new Size(163, 27);
+            checkBox_Extension.TabIndex = 13;
+            checkBox_Extension.Text = "File Extension";
+            checkBox_Extension.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // checkBox_Size
             // 
-            checkBox4.AutoSize = true;
-            checkBox4.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox4.ForeColor = Color.White;
-            checkBox4.Location = new Point(115, 198);
-            checkBox4.Margin = new Padding(3, 2, 3, 2);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(108, 27);
-            checkBox4.TabIndex = 14;
-            checkBox4.Text = "File Size";
-            checkBox4.UseVisualStyleBackColor = true;
+            checkBox_Size.AutoSize = true;
+            checkBox_Size.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_Size.ForeColor = Color.White;
+            checkBox_Size.Location = new Point(115, 198);
+            checkBox_Size.Margin = new Padding(3, 2, 3, 2);
+            checkBox_Size.Name = "checkBox_Size";
+            checkBox_Size.Size = new Size(108, 27);
+            checkBox_Size.TabIndex = 14;
+            checkBox_Size.Text = "File Size";
+            checkBox_Size.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // checkBox_Include
             // 
-            checkBox5.AutoSize = true;
-            checkBox5.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox5.ForeColor = Color.White;
-            checkBox5.Location = new Point(344, 141);
-            checkBox5.Margin = new Padding(3, 2, 3, 2);
-            checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(111, 27);
-            checkBox5.TabIndex = 15;
-            checkBox5.Text = "Includes";
-            checkBox5.UseVisualStyleBackColor = true;
+            checkBox_Include.AutoSize = true;
+            checkBox_Include.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_Include.ForeColor = Color.White;
+            checkBox_Include.Location = new Point(344, 141);
+            checkBox_Include.Margin = new Padding(3, 2, 3, 2);
+            checkBox_Include.Name = "checkBox_Include";
+            checkBox_Include.Size = new Size(111, 27);
+            checkBox_Include.TabIndex = 15;
+            checkBox_Include.Text = "Includes";
+            checkBox_Include.UseVisualStyleBackColor = true;
+            checkBox_Include.CheckedChanged += checkBox_Include_CheckedChanged;
             // 
-            // checkBox6
+            // checkBox_Duration
             // 
-            checkBox6.AutoSize = true;
-            checkBox6.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox6.ForeColor = Color.White;
-            checkBox6.Location = new Point(344, 226);
-            checkBox6.Margin = new Padding(3, 2, 3, 2);
-            checkBox6.Name = "checkBox6";
-            checkBox6.Size = new Size(112, 27);
-            checkBox6.TabIndex = 20;
-            checkBox6.Text = "Duration";
-            checkBox6.UseVisualStyleBackColor = true;
+            checkBox_Duration.AutoSize = true;
+            checkBox_Duration.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_Duration.ForeColor = Color.White;
+            checkBox_Duration.Location = new Point(344, 226);
+            checkBox_Duration.Margin = new Padding(3, 2, 3, 2);
+            checkBox_Duration.Name = "checkBox_Duration";
+            checkBox_Duration.Size = new Size(112, 27);
+            checkBox_Duration.TabIndex = 20;
+            checkBox_Duration.Text = "Duration";
+            checkBox_Duration.UseVisualStyleBackColor = true;
             // 
-            // checkBox7
+            // checkBox_Resolution
             // 
-            checkBox7.AutoSize = true;
-            checkBox7.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox7.ForeColor = Color.White;
-            checkBox7.Location = new Point(344, 198);
-            checkBox7.Margin = new Padding(3, 2, 3, 2);
-            checkBox7.Name = "checkBox7";
-            checkBox7.Size = new Size(208, 27);
-            checkBox7.TabIndex = 19;
-            checkBox7.Text = "Display Resolution";
-            checkBox7.UseVisualStyleBackColor = true;
+            checkBox_Resolution.AutoSize = true;
+            checkBox_Resolution.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_Resolution.ForeColor = Color.White;
+            checkBox_Resolution.Location = new Point(344, 198);
+            checkBox_Resolution.Margin = new Padding(3, 2, 3, 2);
+            checkBox_Resolution.Name = "checkBox_Resolution";
+            checkBox_Resolution.Size = new Size(208, 27);
+            checkBox_Resolution.TabIndex = 19;
+            checkBox_Resolution.Text = "Display Resolution";
+            checkBox_Resolution.UseVisualStyleBackColor = true;
             // 
-            // checkBox8
+            // checkBox_Date
             // 
-            checkBox8.AutoSize = true;
-            checkBox8.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox8.ForeColor = Color.White;
-            checkBox8.Location = new Point(115, 226);
-            checkBox8.Margin = new Padding(3, 2, 3, 2);
-            checkBox8.Name = "checkBox8";
-            checkBox8.Size = new Size(139, 27);
-            checkBox8.TabIndex = 18;
-            checkBox8.Text = "Date Range";
-            checkBox8.UseVisualStyleBackColor = true;
+            checkBox_Date.AutoSize = true;
+            checkBox_Date.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_Date.ForeColor = Color.White;
+            checkBox_Date.Location = new Point(115, 226);
+            checkBox_Date.Margin = new Padding(3, 2, 3, 2);
+            checkBox_Date.Name = "checkBox_Date";
+            checkBox_Date.Size = new Size(139, 27);
+            checkBox_Date.TabIndex = 18;
+            checkBox_Date.Text = "Date Range";
+            checkBox_Date.UseVisualStyleBackColor = true;
             // 
-            // checkBox9
+            // checkBox_Exclude
             // 
-            checkBox9.AutoSize = true;
-            checkBox9.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox9.ForeColor = Color.White;
-            checkBox9.Location = new Point(344, 170);
-            checkBox9.Margin = new Padding(3, 2, 3, 2);
-            checkBox9.Name = "checkBox9";
-            checkBox9.Size = new Size(113, 27);
-            checkBox9.TabIndex = 17;
-            checkBox9.Text = "Excludes";
-            checkBox9.UseVisualStyleBackColor = true;
+            checkBox_Exclude.AutoSize = true;
+            checkBox_Exclude.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_Exclude.ForeColor = Color.White;
+            checkBox_Exclude.Location = new Point(344, 170);
+            checkBox_Exclude.Margin = new Padding(3, 2, 3, 2);
+            checkBox_Exclude.Name = "checkBox_Exclude";
+            checkBox_Exclude.Size = new Size(113, 27);
+            checkBox_Exclude.TabIndex = 17;
+            checkBox_Exclude.Text = "Excludes";
+            checkBox_Exclude.UseVisualStyleBackColor = true;
+            checkBox_Exclude.CheckedChanged += checkBox_Exclude_CheckedChanged;
             // 
             // label1
             // 
@@ -259,41 +261,42 @@
             label2.TabIndex = 26;
             label2.Text = "Would you like to delete the original files?";
             // 
-            // checkBox1
+            // checkBox_Delete
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(348, 319);
-            checkBox1.Margin = new Padding(3, 2, 3, 2);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(15, 14);
-            checkBox1.TabIndex = 27;
-            checkBox1.UseVisualStyleBackColor = true;
+            checkBox_Delete.AutoSize = true;
+            checkBox_Delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_Delete.ForeColor = Color.White;
+            checkBox_Delete.Location = new Point(348, 319);
+            checkBox_Delete.Margin = new Padding(3, 2, 3, 2);
+            checkBox_Delete.Name = "checkBox_Delete";
+            checkBox_Delete.Size = new Size(15, 14);
+            checkBox_Delete.TabIndex = 27;
+            checkBox_Delete.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // button_Filter
             // 
-            button2.BackColor = Color.Teal;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(398, 313);
-            button2.Margin = new Padding(3, 2, 3, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(233, 26);
-            button2.TabIndex = 28;
-            button2.Text = "Filter";
-            button2.UseVisualStyleBackColor = false;
+            button_Filter.BackColor = Color.Teal;
+            button_Filter.FlatAppearance.BorderSize = 0;
+            button_Filter.FlatStyle = FlatStyle.Flat;
+            button_Filter.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Filter.ForeColor = Color.White;
+            button_Filter.Location = new Point(398, 313);
+            button_Filter.Margin = new Padding(3, 2, 3, 2);
+            button_Filter.Name = "button_Filter";
+            button_Filter.Size = new Size(233, 26);
+            button_Filter.TabIndex = 28;
+            button_Filter.Text = "Filter";
+            button_Filter.UseVisualStyleBackColor = false;
+            button_Filter.Click += button_Filter_Click;
             // 
-            // progressBar1
+            // progressBar_Time
             // 
-            progressBar1.Location = new Point(41, 347);
-            progressBar1.Margin = new Padding(3, 2, 3, 2);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(590, 22);
-            progressBar1.Step = 1;
-            progressBar1.TabIndex = 24;
+            progressBar_Time.Location = new Point(41, 347);
+            progressBar_Time.Margin = new Padding(3, 2, 3, 2);
+            progressBar_Time.Name = "progressBar_Time";
+            progressBar_Time.Size = new Size(590, 22);
+            progressBar_Time.Step = 1;
+            progressBar_Time.TabIndex = 24;
             // 
             // Filter
             // 
@@ -303,17 +306,17 @@
             Controls.Add(label1);
             Controls.Add(textBox_Path);
             Controls.Add(label2);
-            Controls.Add(checkBox1);
-            Controls.Add(button2);
-            Controls.Add(progressBar1);
-            Controls.Add(checkBox6);
-            Controls.Add(checkBox7);
-            Controls.Add(checkBox8);
-            Controls.Add(checkBox9);
-            Controls.Add(checkBox5);
-            Controls.Add(checkBox4);
-            Controls.Add(checkBox3);
-            Controls.Add(checkBox2);
+            Controls.Add(checkBox_Delete);
+            Controls.Add(button_Filter);
+            Controls.Add(progressBar_Time);
+            Controls.Add(checkBox_Duration);
+            Controls.Add(checkBox_Resolution);
+            Controls.Add(checkBox_Date);
+            Controls.Add(checkBox_Exclude);
+            Controls.Add(checkBox_Include);
+            Controls.Add(checkBox_Size);
+            Controls.Add(checkBox_Extension);
+            Controls.Add(checkBox_AtoZ);
             Controls.Add(label3);
             Controls.Add(panel4);
             Controls.Add(panel3);
@@ -334,19 +337,19 @@
         private Panel panel4;
         private Button button_Path;
         private Label label3;
-        private CheckBox checkBox2;
-        private CheckBox checkBox3;
-        private CheckBox checkBox4;
-        private CheckBox checkBox5;
-        private CheckBox checkBox6;
-        private CheckBox checkBox7;
-        private CheckBox checkBox8;
-        private CheckBox checkBox9;
+        private CheckBox checkBox_AtoZ;
+        private CheckBox checkBox_Extension;
+        private CheckBox checkBox_Size;
+        private CheckBox checkBox_Include;
+        private CheckBox checkBox_Duration;
+        private CheckBox checkBox_Resolution;
+        private CheckBox checkBox_Date;
+        private CheckBox checkBox_Exclude;
         private Label label1;
         private TextBox textBox_Path;
         private Label label2;
-        private CheckBox checkBox1;
-        private Button button2;
-        private ProgressBar progressBar1;
+        private CheckBox checkBox_Delete;
+        private Button button_Filter;
+        private ProgressBar progressBar_Time;
     }
 }
