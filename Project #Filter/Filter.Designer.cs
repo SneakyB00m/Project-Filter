@@ -67,6 +67,7 @@
             button1.BackColor = Color.Teal;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
+            button1.Image = Properties.Resources.Add;
             button1.Location = new Point(630, 5);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
@@ -121,7 +122,7 @@
             checkBox2.AutoSize = true;
             checkBox2.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox2.ForeColor = Color.White;
-            checkBox2.Location = new Point(126, 141);
+            checkBox2.Location = new Point(115, 141);
             checkBox2.Margin = new Padding(3, 2, 3, 2);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(207, 27);
@@ -134,7 +135,7 @@
             checkBox3.AutoSize = true;
             checkBox3.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox3.ForeColor = Color.White;
-            checkBox3.Location = new Point(126, 170);
+            checkBox3.Location = new Point(115, 170);
             checkBox3.Margin = new Padding(3, 2, 3, 2);
             checkBox3.Name = "checkBox3";
             checkBox3.Size = new Size(163, 27);
@@ -147,7 +148,7 @@
             checkBox4.AutoSize = true;
             checkBox4.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox4.ForeColor = Color.White;
-            checkBox4.Location = new Point(126, 198);
+            checkBox4.Location = new Point(115, 198);
             checkBox4.Margin = new Padding(3, 2, 3, 2);
             checkBox4.Name = "checkBox4";
             checkBox4.Size = new Size(108, 27);
@@ -160,7 +161,7 @@
             checkBox5.AutoSize = true;
             checkBox5.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox5.ForeColor = Color.White;
-            checkBox5.Location = new Point(126, 226);
+            checkBox5.Location = new Point(344, 141);
             checkBox5.Margin = new Padding(3, 2, 3, 2);
             checkBox5.Name = "checkBox5";
             checkBox5.Size = new Size(111, 27);
@@ -176,9 +177,9 @@
             checkBox6.Location = new Point(344, 226);
             checkBox6.Margin = new Padding(3, 2, 3, 2);
             checkBox6.Name = "checkBox6";
-            checkBox6.Size = new Size(131, 27);
+            checkBox6.Size = new Size(112, 27);
             checkBox6.TabIndex = 20;
-            checkBox6.Text = "checkBox6";
+            checkBox6.Text = "Duration";
             checkBox6.UseVisualStyleBackColor = true;
             // 
             // checkBox7
@@ -189,9 +190,9 @@
             checkBox7.Location = new Point(344, 198);
             checkBox7.Margin = new Padding(3, 2, 3, 2);
             checkBox7.Name = "checkBox7";
-            checkBox7.Size = new Size(131, 27);
+            checkBox7.Size = new Size(208, 27);
             checkBox7.TabIndex = 19;
-            checkBox7.Text = "checkBox7";
+            checkBox7.Text = "Display Resolution";
             checkBox7.UseVisualStyleBackColor = true;
             // 
             // checkBox8
@@ -199,7 +200,7 @@
             checkBox8.AutoSize = true;
             checkBox8.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox8.ForeColor = Color.White;
-            checkBox8.Location = new Point(344, 170);
+            checkBox8.Location = new Point(115, 226);
             checkBox8.Margin = new Padding(3, 2, 3, 2);
             checkBox8.Name = "checkBox8";
             checkBox8.Size = new Size(139, 27);
@@ -212,7 +213,7 @@
             checkBox9.AutoSize = true;
             checkBox9.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox9.ForeColor = Color.White;
-            checkBox9.Location = new Point(344, 141);
+            checkBox9.Location = new Point(344, 170);
             checkBox9.Margin = new Padding(3, 2, 3, 2);
             checkBox9.Name = "checkBox9";
             checkBox9.Size = new Size(113, 27);
@@ -262,7 +263,7 @@
             checkBox1.AutoSize = true;
             checkBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(339, 319);
+            checkBox1.Location = new Point(348, 319);
             checkBox1.Margin = new Padding(3, 2, 3, 2);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(15, 14);

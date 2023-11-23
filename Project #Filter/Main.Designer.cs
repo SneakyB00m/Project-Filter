@@ -88,7 +88,7 @@
             button_Privacy.FlatStyle = FlatStyle.Flat;
             button_Privacy.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_Privacy.ForeColor = Color.White;
-            button_Privacy.Image = Properties.Resources.icons8_fingerprint_30;
+            button_Privacy.Image = Properties.Resources.FingerPrint;
             button_Privacy.Location = new Point(30, 246);
             button_Privacy.Margin = new Padding(3, 2, 3, 2);
             button_Privacy.Name = "button_Privacy";
@@ -103,7 +103,7 @@
             // 
             button_Help.FlatAppearance.BorderSize = 0;
             button_Help.FlatStyle = FlatStyle.Flat;
-            button_Help.Image = Properties.Resources.icons8_help_30;
+            button_Help.Image = Properties.Resources.Help;
             button_Help.Location = new Point(3, 478);
             button_Help.Margin = new Padding(3, 2, 3, 2);
             button_Help.Name = "button_Help";
@@ -117,7 +117,7 @@
             button_Merge.FlatStyle = FlatStyle.Flat;
             button_Merge.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_Merge.ForeColor = Color.White;
-            button_Merge.Image = Properties.Resources.icons8_merge_30;
+            button_Merge.Image = Properties.Resources.Merge;
             button_Merge.Location = new Point(30, 202);
             button_Merge.Margin = new Padding(3, 2, 3, 2);
             button_Merge.Name = "button_Merge";
@@ -134,7 +134,7 @@
             button_Extract.FlatStyle = FlatStyle.Flat;
             button_Extract.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_Extract.ForeColor = Color.White;
-            button_Extract.Image = Properties.Resources.icons8_undo_30;
+            button_Extract.Image = Properties.Resources.Undo;
             button_Extract.Location = new Point(30, 158);
             button_Extract.Margin = new Padding(3, 2, 3, 2);
             button_Extract.Name = "button_Extract";
@@ -151,7 +151,7 @@
             button_Convert.FlatStyle = FlatStyle.Flat;
             button_Convert.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_Convert.ForeColor = Color.White;
-            button_Convert.Image = Properties.Resources.icons8_convert_30;
+            button_Convert.Image = Properties.Resources.Convert;
             button_Convert.Location = new Point(30, 114);
             button_Convert.Margin = new Padding(3, 2, 3, 2);
             button_Convert.Name = "button_Convert";
@@ -168,7 +168,7 @@
             button_Filter.FlatStyle = FlatStyle.Flat;
             button_Filter.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_Filter.ForeColor = Color.White;
-            button_Filter.Image = Properties.Resources.icons8_filter_30;
+            button_Filter.Image = Properties.Resources.Filter;
             button_Filter.Location = new Point(30, 70);
             button_Filter.Margin = new Padding(3, 2, 3, 2);
             button_Filter.Name = "button_Filter";
@@ -185,7 +185,7 @@
             button_Home.FlatStyle = FlatStyle.Flat;
             button_Home.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_Home.ForeColor = Color.White;
-            button_Home.Image = Properties.Resources.icons8_windows_30;
+            button_Home.Image = Properties.Resources.Windows;
             button_Home.Location = new Point(30, 26);
             button_Home.Margin = new Padding(3, 2, 3, 2);
             button_Home.Name = "button_Home";
@@ -225,7 +225,7 @@
             button_Exit.Anchor = AnchorStyles.Right;
             button_Exit.FlatAppearance.BorderSize = 0;
             button_Exit.FlatStyle = FlatStyle.Flat;
-            button_Exit.Image = Properties.Resources.icons8_power_25;
+            button_Exit.Image = Properties.Resources.Power;
             button_Exit.Location = new Point(660, 2);
             button_Exit.Margin = new Padding(3, 2, 3, 2);
             button_Exit.Name = "button_Exit";
@@ -238,7 +238,7 @@
             // 
             button_Git.FlatAppearance.BorderSize = 0;
             button_Git.FlatStyle = FlatStyle.Flat;
-            button_Git.Image = Properties.Resources.icons8_github_25;
+            button_Git.Image = Properties.Resources.Git;
             button_Git.Location = new Point(630, 2);
             button_Git.Margin = new Padding(3, 2, 3, 2);
             button_Git.Name = "button_Git";
@@ -258,7 +258,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Martin_Berube_Animal_Sheep_256;
+            pictureBox1.Image = Properties.Resources.Logo;
             pictureBox1.Location = new Point(3, 20);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";

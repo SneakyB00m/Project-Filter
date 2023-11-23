@@ -63,9 +63,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap COCOS2 {
+        internal static System.Drawing.Bitmap Add {
             get {
-                object obj = ResourceManager.GetObject("COCOS2", resourceCulture);
+                object obj = ResourceManager.GetObject("Add", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_convert_30 {
+        internal static System.Drawing.Bitmap Background {
             get {
-                object obj = ResourceManager.GetObject("icons8-convert-30", resourceCulture);
+                object obj = ResourceManager.GetObject("Background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_filter_30 {
+        internal static System.Drawing.Bitmap Convert {
             get {
-                object obj = ResourceManager.GetObject("icons8-filter-30", resourceCulture);
+                object obj = ResourceManager.GetObject("Convert", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_fingerprint_30 {
+        internal static System.Drawing.Bitmap Filter {
             get {
-                object obj = ResourceManager.GetObject("icons8-fingerprint-30", resourceCulture);
+                object obj = ResourceManager.GetObject("Filter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_github_25 {
+        internal static System.Drawing.Bitmap FingerPrint {
             get {
-                object obj = ResourceManager.GetObject("icons8-github-25", resourceCulture);
+                object obj = ResourceManager.GetObject("FingerPrint", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_help_30 {
+        internal static System.Drawing.Bitmap Git {
             get {
-                object obj = ResourceManager.GetObject("icons8-help-30", resourceCulture);
+                object obj = ResourceManager.GetObject("Git", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_merge_30 {
+        internal static System.Drawing.Bitmap Help {
             get {
-                object obj = ResourceManager.GetObject("icons8-merge-30", resourceCulture);
+                object obj = ResourceManager.GetObject("Help", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_movie_ticket_30 {
+        internal static System.Drawing.Bitmap Logo {
             get {
-                object obj = ResourceManager.GetObject("icons8-movie-ticket-30", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_new_copy_15 {
+        internal static System.Drawing.Bitmap Merge {
             get {
-                object obj = ResourceManager.GetObject("icons8-new-copy-15", resourceCulture);
+                object obj = ResourceManager.GetObject("Merge", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_power_25 {
+        internal static System.Drawing.Bitmap Power {
             get {
-                object obj = ResourceManager.GetObject("icons8-power-25", resourceCulture);
+                object obj = ResourceManager.GetObject("Power", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_undo_30 {
+        internal static System.Drawing.Bitmap Undo {
             get {
-                object obj = ResourceManager.GetObject("icons8-undo-30", resourceCulture);
+                object obj = ResourceManager.GetObject("Undo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,19 +173,9 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_windows_30 {
+        internal static System.Drawing.Bitmap Windows {
             get {
-                object obj = ResourceManager.GetObject("icons8-windows-30", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Martin_Berube_Animal_Sheep_256 {
-            get {
-                object obj = ResourceManager.GetObject("Martin-Berube-Animal-Sheep.256", resourceCulture);
+                object obj = ResourceManager.GetObject("Windows", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

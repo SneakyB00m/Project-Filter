@@ -82,7 +82,7 @@
             button1.BackColor = Color.Teal;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = Properties.Resources.icons8_new_copy_15;
+            button1.Image = Properties.Resources.Add;
             button1.Location = new Point(630, 5);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";

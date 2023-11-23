@@ -62,7 +62,7 @@
             checkBox1.AutoSize = true;
             checkBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(339, 319);
+            checkBox1.Location = new Point(348, 319);
             checkBox1.Margin = new Padding(3, 2, 3, 2);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(15, 14);
@@ -161,7 +161,7 @@
             button1.BackColor = Color.Teal;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = Properties.Resources.icons8_new_copy_15;
+            button1.Image = Properties.Resources.Add;
             button1.Location = new Point(630, 5);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
