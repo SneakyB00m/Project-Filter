@@ -5,8 +5,8 @@ namespace Project__Filter
         public Main()
         {
             InitializeComponent();
-            Panel_Index.Height = button1.Height;
-            Panel_Index.Top = button1.Top;
+            Panel_Index.Height = button_Home.Height;
+            Panel_Index.Top = button_Home.Top;
             home1.BringToFront();
         }
 
@@ -15,43 +15,46 @@ namespace Project__Filter
             Application.Exit();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button_Home_Click(object sender, EventArgs e)
         {
-            Panel_Index.Height = button1.Height;
-            Panel_Index.Top = button1.Top;
+            Panel_Index.Height = button_Home.Height;
+            Panel_Index.Top = button_Home.Top;
             home1.BringToFront();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_Filter_Click_1(object sender, EventArgs e)
         {
-            Panel_Index.Height = button2.Height;
-            Panel_Index.Top = button2.Top;
+            Panel_Index.Height = button_Filter.Height;
+            Panel_Index.Top = button_Filter.Top;
             filter1.BringToFront();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button_Convert_Click(object sender, EventArgs e)
         {
-            Panel_Index.Height = button3.Height;
-            Panel_Index.Top = button3.Top;
+            Panel_Index.Height = button_Convert.Height;
+            Panel_Index.Top = button_Convert.Top;
             convert1.BringToFront();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button_Extract_Click(object sender, EventArgs e)
         {
-            Panel_Index.Height = button4.Height;
-            Panel_Index.Top = button4.Top;
+            Panel_Index.Height = button_Extract.Height;
+            Panel_Index.Top = button_Extract.Top;
+            extract1.BringToFront();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button_Merge_Click(object sender, EventArgs e)
         {
-            Panel_Index.Height = button5.Height;
-            Panel_Index.Top = button5.Top;
+            Panel_Index.Height = button_Merge.Height;
+            Panel_Index.Top = button_Merge.Top;
+            merge1.BringToFront();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button_Privacy_Click(object sender, EventArgs e)
         {
-            Panel_Index.Height = button6.Height;
-            Panel_Index.Top = button6.Top;
+            Panel_Index.Height = button_Privacy.Height;
+            Panel_Index.Top = button_Privacy.Top;
+            privacy1.BringToFront();
         }
     }
 }

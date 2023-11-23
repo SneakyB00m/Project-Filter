@@ -28,51 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            panel2 = new Panel();
-            panel3 = new Panel();
-            panel4 = new Panel();
             button2 = new Button();
             checkBox1 = new CheckBox();
             label2 = new Label();
             textBox1 = new TextBox();
             progressBar1 = new ProgressBar();
             label1 = new Label();
+            panel4 = new Panel();
+            panel3 = new Panel();
+            panel2 = new Panel();
+            panel1 = new Panel();
+            button1 = new Button();
+            panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(0, 64, 64);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(32, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(612, 32);
-            panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.FromArgb(0, 64, 64);
-            panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(32, 373);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(612, 32);
-            panel2.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            panel3.Dock = DockStyle.Left;
-            panel3.Location = new Point(0, 0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(32, 405);
-            panel3.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(644, 0);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(32, 405);
-            panel4.TabIndex = 1;
             // 
             // button2
             // 
@@ -94,7 +62,7 @@
             checkBox1.AutoSize = true;
             checkBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(353, 320);
+            checkBox1.Location = new Point(339, 319);
             checkBox1.Margin = new Padding(3, 2, 3, 2);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(15, 14);
@@ -119,11 +87,11 @@
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(121, 41);
+            textBox1.Location = new Point(115, 45);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(509, 20);
+            textBox1.Size = new Size(523, 20);
             textBox1.TabIndex = 19;
             // 
             // progressBar1
@@ -141,21 +109,75 @@
             label1.BackColor = Color.FromArgb(64, 64, 64);
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(38, 35);
+            label1.Location = new Point(38, 39);
             label1.Name = "label1";
             label1.Size = new Size(71, 32);
             label1.TabIndex = 17;
             label1.Text = "Path:";
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.FromArgb(64, 64, 64);
+            panel4.Dock = DockStyle.Right;
+            panel4.Location = new Point(644, 32);
+            panel4.Margin = new Padding(3, 2, 3, 2);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(32, 341);
+            panel4.TabIndex = 26;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.FromArgb(64, 64, 64);
+            panel3.Dock = DockStyle.Left;
+            panel3.Location = new Point(0, 32);
+            panel3.Margin = new Padding(3, 2, 3, 2);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(32, 341);
+            panel3.TabIndex = 25;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(0, 64, 64);
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(0, 373);
+            panel2.Margin = new Padding(3, 2, 3, 2);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(676, 32);
+            panel2.TabIndex = 24;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(0, 64, 64);
+            panel1.Controls.Add(button1);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(676, 32);
+            panel1.TabIndex = 23;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Teal;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Image = Properties.Resources.icons8_new_copy_15;
+            button1.Location = new Point(630, 5);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(44, 22);
+            button1.TabIndex = 0;
+            button1.UseVisualStyleBackColor = false;
             // 
             // Convert
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
-            Controls.Add(panel1);
-            Controls.Add(panel2);
-            Controls.Add(panel3);
             Controls.Add(panel4);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(label2);
@@ -165,21 +187,22 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "Convert";
             Size = new Size(676, 405);
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Panel panel1;
-        private Panel panel2;
-        private Panel panel3;
-        private Panel panel4;
         private Button button2;
         private CheckBox checkBox1;
         private Label label2;
         private TextBox textBox1;
         private ProgressBar progressBar1;
         private Label label1;
+        private Panel panel4;
+        private Panel panel3;
+        private Panel panel2;
+        private Panel panel1;
+        private Button button1;
     }
 }
