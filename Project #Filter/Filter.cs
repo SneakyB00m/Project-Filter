@@ -134,7 +134,7 @@ public class Actions
         return checkedCheckBoxes; // Return the list of checked checkboxes
     }
 
-    public void HandleInclude(string folderPath, string include)
+    public List<string> HandleInclude(string folderPath, string include)
     {
         // Create the "filtered" directory if it doesn't exist
         string filteredPath = Path.Combine(folderPath, "Filtered");
@@ -156,56 +156,57 @@ public class Actions
         // Filter the files based on the include string
         List<string> includedFiles = allFiles.Where(file => Path.GetFileNameWithoutExtension(file).IndexOf(include, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
 
+        // List to store the destination paths of the moved files
+        List<string> destinationPaths = new List<string>();
+
         // Move the included files to the "include" directory
         foreach (string file in includedFiles)
         {
             string destinationPath = Path.Combine(includePath, Path.GetFileName(file));
             File.Move(file, destinationPath, true);
-        }
-    }
 
+            // Add the destination path to the list
+            destinationPaths.Add(destinationPath);
+        }
+
+        // Return the list of destination paths
+        return destinationPaths;
+    }
 
 
     public void HandleExclude(string folderPath, string exclude)
     {
-        // Access folderPath here
-        Console.WriteLine(folderPath);
+
     }
 
     public void HandleExtension(string folderPath)
     {
-        // Access folderPath here
-        Console.WriteLine(folderPath);
+
     }
 
     public void HandleResolution(string folderPath)
     {
-        // Access folderPath here
-        Console.WriteLine(folderPath);
+
     }
 
     public void HandleDuration(string folderPath)
     {
-        // Access folderPath here
-        Console.WriteLine(folderPath);
+
     }
 
     public void HandleSize(string folderPath)
     {
-        // Access folderPath here
-        Console.WriteLine(folderPath);
+
     }
 
     public void HandleDate(string folderPath)
     {
-        // Access folderPath here
-        Console.WriteLine(folderPath);
+
     }
 
     public void HandleAToZ(string folderPath)
     {
-        // Access folderPath here
-        Console.WriteLine(folderPath);
+
     }
 
     public void HandleDelete(string folderPath)
