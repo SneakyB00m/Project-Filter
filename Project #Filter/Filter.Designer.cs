@@ -123,7 +123,7 @@
             checkBox_AtoZ.AutoSize = true;
             checkBox_AtoZ.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_AtoZ.ForeColor = Color.White;
-            checkBox_AtoZ.Location = new Point(116, 141);
+            checkBox_AtoZ.Location = new Point(195, 146);
             checkBox_AtoZ.Margin = new Padding(3, 2, 3, 2);
             checkBox_AtoZ.Name = "checkBox_AtoZ";
             checkBox_AtoZ.Size = new Size(207, 27);
@@ -136,7 +136,7 @@
             checkBox_Extension.AutoSize = true;
             checkBox_Extension.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Extension.ForeColor = Color.White;
-            checkBox_Extension.Location = new Point(115, 170);
+            checkBox_Extension.Location = new Point(195, 175);
             checkBox_Extension.Margin = new Padding(3, 2, 3, 2);
             checkBox_Extension.Name = "checkBox_Extension";
             checkBox_Extension.Size = new Size(163, 27);
@@ -149,7 +149,7 @@
             checkBox_Size.AutoSize = true;
             checkBox_Size.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Size.ForeColor = Color.White;
-            checkBox_Size.Location = new Point(115, 198);
+            checkBox_Size.Location = new Point(195, 204);
             checkBox_Size.Margin = new Padding(3, 2, 3, 2);
             checkBox_Size.Name = "checkBox_Size";
             checkBox_Size.Size = new Size(108, 27);
@@ -162,7 +162,7 @@
             checkBox_Include.AutoSize = true;
             checkBox_Include.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Include.ForeColor = Color.White;
-            checkBox_Include.Location = new Point(344, 141);
+            checkBox_Include.Location = new Point(71, 146);
             checkBox_Include.Margin = new Padding(3, 2, 3, 2);
             checkBox_Include.Name = "checkBox_Include";
             checkBox_Include.Size = new Size(111, 27);
@@ -176,7 +176,7 @@
             checkBox_Duration.AutoSize = true;
             checkBox_Duration.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Duration.ForeColor = Color.White;
-            checkBox_Duration.Location = new Point(344, 226);
+            checkBox_Duration.Location = new Point(415, 204);
             checkBox_Duration.Margin = new Padding(3, 2, 3, 2);
             checkBox_Duration.Name = "checkBox_Duration";
             checkBox_Duration.Size = new Size(112, 27);
@@ -189,7 +189,7 @@
             checkBox_Resolution.AutoSize = true;
             checkBox_Resolution.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Resolution.ForeColor = Color.White;
-            checkBox_Resolution.Location = new Point(344, 198);
+            checkBox_Resolution.Location = new Point(415, 175);
             checkBox_Resolution.Margin = new Padding(3, 2, 3, 2);
             checkBox_Resolution.Name = "checkBox_Resolution";
             checkBox_Resolution.Size = new Size(208, 27);
@@ -202,7 +202,7 @@
             checkBox_Date.AutoSize = true;
             checkBox_Date.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Date.ForeColor = Color.White;
-            checkBox_Date.Location = new Point(115, 226);
+            checkBox_Date.Location = new Point(415, 146);
             checkBox_Date.Margin = new Padding(3, 2, 3, 2);
             checkBox_Date.Name = "checkBox_Date";
             checkBox_Date.Size = new Size(139, 27);
@@ -215,7 +215,7 @@
             checkBox_Exclude.AutoSize = true;
             checkBox_Exclude.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Exclude.ForeColor = Color.White;
-            checkBox_Exclude.Location = new Point(344, 170);
+            checkBox_Exclude.Location = new Point(71, 175);
             checkBox_Exclude.Margin = new Padding(3, 2, 3, 2);
             checkBox_Exclude.Name = "checkBox_Exclude";
             checkBox_Exclude.Size = new Size(113, 27);
