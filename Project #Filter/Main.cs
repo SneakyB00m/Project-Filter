@@ -1,3 +1,8 @@
+using SharpCompress.Archives;
+using SharpCompress.Archives.Rar;
+using SharpCompress.Common;
+using SharpCompress.Writers;
+
 namespace Project__Filter
 {
     public partial class Main : Form
@@ -70,21 +75,10 @@ namespace Project__Filter
     }
 }
 
-public class Actions_Filter
+public class Actions
 {
-    public string? OpenFolderManager()
-    {
-        FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-        if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-        {
-            return folderBrowserDialog.SelectedPath;
-        }
-        else
-        {
-            return null;
-        }
-    }
 
+    // Filter
     public List<CheckBox> GetCheckedCheckBoxes(UserControl userControl)
     {
         List<CheckBox> checkedCheckBoxes = new List<CheckBox>();
@@ -93,7 +87,7 @@ public class Actions_Filter
         {
             if (control is CheckBox)
             {
-                CheckBox checkBox = control as CheckBox;
+                CheckBox? checkBox = control as CheckBox;
                 if (checkBox.Checked)
                 {
                     checkedCheckBoxes.Add(checkBox);
@@ -180,6 +174,7 @@ public class Actions_Filter
         return destinationPaths;
     }
 
+    // Hacer que no mueva los folders
     public void HandleExtension(string folderPath)
     {
         // Get all files in the directory and its subdirectories
@@ -226,43 +221,7 @@ public class Actions_Filter
 
     }
 
-    public void HandleDelete(string folderPath)
-    {
-        // Access folderPath here
-        Console.WriteLine(folderPath);
-    }
-
-    public List<string> GetAllFiles(string folderPath)
-    {
-        List<string> filesList = new List<string>();
-
-        // Check if the directory exists
-        if (Directory.Exists(folderPath))
-        {
-            // Get the files in the directory
-            string[] files = Directory.GetFiles(folderPath);
-            filesList.AddRange(files);
-
-            // Get the subdirectories in the directory
-            string[] subdirectories = Directory.GetDirectories(folderPath);
-
-            // Use a foreach loop to check each subdirectory
-            foreach (string subdirectory in subdirectories)
-            {
-                // Use recursion to get the files in the subdirectory
-                List<string> subdirectoryFiles = GetAllFiles(subdirectory);
-                filesList.AddRange(subdirectoryFiles);
-            }
-        }
-
-        return filesList; // Return the list of files
-    }
-
-}
-
-
-public class Action_Extract
-{
+    // Univresal
     public string? OpenFolderManager()
     {
         FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
@@ -301,4 +260,183 @@ public class Action_Extract
 
         return filesList; // Return the list of files
     }
+
+    public void HandleDelete(string folderPath)
+    {
+        // Access folderPath here
+        Console.WriteLine(folderPath);
+    }
+
+    // Extract
+    public List<RadioButton> GetCheckedRadioButtons(UserControl userControl)
+    {
+        List<RadioButton> checkedRadioButtons = new List<RadioButton>();
+
+        foreach (Control control in userControl.Controls)
+        {
+            if (control is RadioButton)
+            {
+                RadioButton? radioButton = control as RadioButton;
+                if (radioButton.Checked)
+                {
+                    checkedRadioButtons.Add(radioButton);
+                }
+            }
+        }
+
+        return checkedRadioButtons; // Return the list of checked radio buttons
+    }
+
+    public void HandleFolder(string folderPath)
+    {
+        // Create the 'Extracted' directory
+        string extractedFolderPath = Path.Combine(folderPath, "Extracted");
+        Directory.CreateDirectory(extractedFolderPath);
+
+        // Get all files in the specified directory and its subdirectories
+        string[] files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
+
+        // Move each file to the 'Extracted' directory
+        foreach (string file in files)
+        {
+            // Get the file name
+            string fileName = Path.GetFileName(file);
+
+            // Create the destination path
+            string destPath = Path.Combine(extractedFolderPath, fileName);
+
+            // Ensure that the destination file name is unique
+            int count = 1;
+            string fileNameOnly = Path.GetFileNameWithoutExtension(destPath);
+            string extension = Path.GetExtension(destPath);
+            while (File.Exists(destPath))
+            {
+                string tempFileName = string.Format("{0}({1})", fileNameOnly, count++);
+                destPath = Path.Combine(extractedFolderPath, tempFileName + extension);
+            }
+
+            // Move the file
+            File.Move(file, destPath);
+        }
+    }
+
+    public void HandleZip(string folderPath)
+    {
+        // Get the name of the folder
+        string folderName = new DirectoryInfo(folderPath).Name;
+
+        // Define the path of the zip file
+        string zipFilePath = Path.Combine(Directory.GetParent(folderPath).FullName, $"{folderName}.zip");
+
+        // Create the zip file from the directory
+        using (var archive = SharpCompress.Archives.Zip.ZipArchive.Create())
+        {
+            archive.AddAllFromDirectory(folderPath);
+            archive.SaveTo(zipFilePath, SharpCompress.Common.CompressionType.Deflate);
+        }
+    }
+
+    public void HandleTar(string folderPath)
+    {
+        // Get the name of the folder
+        string folderName = new DirectoryInfo(folderPath).Name;
+
+        // Define the path of the tar file
+        string tarFilePath = Path.Combine(Directory.GetParent(folderPath).FullName, $"{folderName}.tar");
+
+        // Create the tar file from the directory
+        using (var stream = File.OpenWrite(tarFilePath))
+        {
+            using (var writer = WriterFactory.Open(stream, ArchiveType.Tar, CompressionType.None))
+            {
+                writer.WriteAll(folderPath, "*", SearchOption.AllDirectories);
+            }
+        }
+    }
+
+    public void HandleUnRar(string rarFilePath)
+    {
+        // Get the directory of the rar file
+        string directoryPath = Path.GetDirectoryName(rarFilePath);
+
+        // Get the name of the rar file without the extension
+        string folderName = Path.GetFileNameWithoutExtension(rarFilePath);
+
+        // Define the path of the folder to unrar to
+        string folderPath = Path.Combine(directoryPath, folderName);
+
+        // Create the directory if it doesn't exist
+        Directory.CreateDirectory(folderPath);
+
+        // Unrar the rar file to the directory
+        using (var archive = RarArchive.Open(rarFilePath))
+        {
+            foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
+            {
+                entry.WriteToDirectory(folderPath, new ExtractionOptions()
+                {
+                    ExtractFullPath = true,
+                    Overwrite = true
+                });
+            }
+        }
+    } 
+
+    public void HandleUnZip(string zipFilePath)
+    {
+        // Get the directory of the zip file
+        string directoryPath = Path.GetDirectoryName(zipFilePath);
+
+        // Get the name of the zip file without the extension
+        string folderName = Path.GetFileNameWithoutExtension(zipFilePath);
+
+        // Define the path of the folder to unzip to
+        string folderPath = Path.Combine(directoryPath, folderName);
+
+        // Create the directory if it doesn't exist
+        Directory.CreateDirectory(folderPath);
+
+        // Unzip the zip file to the directory
+        using (var archive = SharpCompress.Archives.Zip.ZipArchive.Open(zipFilePath))
+        {
+            foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
+            {
+                entry.WriteToDirectory(folderPath, new SharpCompress.Common.ExtractionOptions()
+                {
+                    ExtractFullPath = true,
+                    Overwrite = true
+                });
+            }
+        }
+    }
+
+    public void HandleUnTar(string tarFilePath)
+    {
+        // Get the directory of the tar file
+        string directoryPath = Path.GetDirectoryName(tarFilePath);
+
+        // Get the name of the tar file without the extension
+        string folderName = Path.GetFileNameWithoutExtension(tarFilePath);
+
+        // Define the path of the folder to untar to
+        string folderPath = Path.Combine(directoryPath, folderName);
+
+        // Create the directory if it doesn't exist
+        Directory.CreateDirectory(folderPath);
+
+        // Untar the tar file to the directory
+        using (var archive = ArchiveFactory.Open(tarFilePath))
+        {
+            foreach (var entry in archive.Entries.Where(entry => !entry.IsDirectory))
+            {
+                entry.WriteToDirectory(folderPath, new ExtractionOptions()
+                {
+                    ExtractFullPath = true,
+                    Overwrite = true
+                });
+            }
+        }
+    }
+
+    // 
 }

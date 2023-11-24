@@ -14,7 +14,7 @@ namespace Project__Filter
     public partial class Filter : UserControl
     {
         private string folderPath;
-        Actions_Filter actions = new Actions_Filter();
+        Actions actions = new Actions();
 
         public Filter()
         {
@@ -61,7 +61,6 @@ namespace Project__Filter
                             case "checkBox_Date":
                                 break;
                             case "checkBox_AtoZ":
-                                actions.HandleAToZ(folderPath);
                                 break;
                             case "checkBox_Delete":
                                 break;
