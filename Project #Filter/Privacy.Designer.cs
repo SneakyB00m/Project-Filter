@@ -28,68 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel4 = new Panel();
-            panel3 = new Panel();
-            panel2 = new Panel();
-            panel1 = new Panel();
-            button1 = new Button();
+            panel_R = new Panel();
+            panel_L = new Panel();
+            panel_Down = new Panel();
+            panel_Up = new Panel();
+            button_FilePath = new Button();
             label1 = new Label();
             textBox_Path = new TextBox();
             label2 = new Label();
             checkBox_Delete = new CheckBox();
             button_Filter = new Button();
             progressBar_Time = new ProgressBar();
-            panel1.SuspendLayout();
+            label3 = new Label();
+            radioButton1 = new RadioButton();
+            radioButton2 = new RadioButton();
+            panel_Up.SuspendLayout();
             SuspendLayout();
             // 
-            // panel4
+            // panel_R
             // 
-            panel4.BackColor = Color.FromArgb(64, 64, 64);
-            panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(736, 43);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(37, 454);
-            panel4.TabIndex = 33;
+            panel_R.BackColor = Color.FromArgb(64, 64, 64);
+            panel_R.Dock = DockStyle.Right;
+            panel_R.Location = new Point(736, 43);
+            panel_R.Name = "panel_R";
+            panel_R.Size = new Size(37, 454);
+            panel_R.TabIndex = 33;
             // 
-            // panel3
+            // panel_L
             // 
-            panel3.BackColor = Color.FromArgb(64, 64, 64);
-            panel3.Dock = DockStyle.Left;
-            panel3.Location = new Point(0, 43);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(37, 454);
-            panel3.TabIndex = 32;
+            panel_L.BackColor = Color.FromArgb(64, 64, 64);
+            panel_L.Dock = DockStyle.Left;
+            panel_L.Location = new Point(0, 43);
+            panel_L.Name = "panel_L";
+            panel_L.Size = new Size(37, 454);
+            panel_L.TabIndex = 32;
             // 
-            // panel2
+            // panel_Down
             // 
-            panel2.BackColor = Color.FromArgb(0, 64, 64);
-            panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 497);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(773, 43);
-            panel2.TabIndex = 31;
+            panel_Down.BackColor = Color.FromArgb(0, 64, 64);
+            panel_Down.Dock = DockStyle.Bottom;
+            panel_Down.Location = new Point(0, 497);
+            panel_Down.Name = "panel_Down";
+            panel_Down.Size = new Size(773, 43);
+            panel_Down.TabIndex = 31;
             // 
-            // panel1
+            // panel_Up
             // 
-            panel1.BackColor = Color.FromArgb(0, 64, 64);
-            panel1.Controls.Add(button1);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(773, 43);
-            panel1.TabIndex = 30;
+            panel_Up.BackColor = Color.FromArgb(0, 64, 64);
+            panel_Up.Controls.Add(button_FilePath);
+            panel_Up.Dock = DockStyle.Top;
+            panel_Up.Location = new Point(0, 0);
+            panel_Up.Name = "panel_Up";
+            panel_Up.Size = new Size(773, 43);
+            panel_Up.TabIndex = 30;
             // 
-            // button1
+            // button_FilePath
             // 
-            button1.BackColor = Color.Teal;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = Properties.Resources.Add;
-            button1.Location = new Point(720, 7);
-            button1.Name = "button1";
-            button1.Size = new Size(50, 29);
-            button1.TabIndex = 0;
-            button1.UseVisualStyleBackColor = false;
+            button_FilePath.BackColor = Color.Teal;
+            button_FilePath.FlatAppearance.BorderSize = 0;
+            button_FilePath.FlatStyle = FlatStyle.Flat;
+            button_FilePath.Image = Properties.Resources.Add;
+            button_FilePath.Location = new Point(720, 7);
+            button_FilePath.Name = "button_FilePath";
+            button_FilePath.Size = new Size(50, 29);
+            button_FilePath.TabIndex = 0;
+            button_FilePath.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -160,39 +163,83 @@
             progressBar_Time.Step = 1;
             progressBar_Time.TabIndex = 35;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(64, 64, 64);
+            label3.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(70, 123);
+            label3.Name = "label3";
+            label3.Size = new Size(120, 38);
+            label3.TabIndex = 40;
+            label3.Text = "Options";
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            radioButton1.ForeColor = Color.White;
+            radioButton1.Location = new Point(131, 203);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(106, 32);
+            radioButton1.TabIndex = 41;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Encrypt";
+            radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            radioButton2.ForeColor = Color.White;
+            radioButton2.Location = new Point(131, 253);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(159, 32);
+            radioButton2.TabIndex = 42;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "radioButton2";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
             // Privacy
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
+            Controls.Add(radioButton2);
+            Controls.Add(radioButton1);
+            Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(textBox_Path);
             Controls.Add(label2);
             Controls.Add(checkBox_Delete);
             Controls.Add(button_Filter);
             Controls.Add(progressBar_Time);
-            Controls.Add(panel4);
-            Controls.Add(panel3);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            Controls.Add(panel_R);
+            Controls.Add(panel_L);
+            Controls.Add(panel_Up);
+            Controls.Add(panel_Down);
             Name = "Privacy";
             Size = new Size(773, 540);
-            panel1.ResumeLayout(false);
+            panel_Up.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Panel panel4;
-        private Panel panel3;
-        private Panel panel2;
-        private Panel panel1;
-        private Button button1;
+        private Panel panel_R;
+        private Panel panel_L;
+        private Panel panel_Down;
+        private Panel panel_Up;
+        private Button button_FilePath;
         private Label label1;
         private TextBox textBox_Path;
         private Label label2;
         private CheckBox checkBox_Delete;
         private Button button_Filter;
         private ProgressBar progressBar_Time;
+        private Label label3;
+        private RadioButton radioButton1;
+        private RadioButton radioButton2;
     }
 }

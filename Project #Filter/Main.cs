@@ -2,6 +2,8 @@ using SharpCompress.Archives;
 using SharpCompress.Archives.Rar;
 using SharpCompress.Common;
 using SharpCompress.Writers;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Project__Filter
 {
@@ -441,8 +443,29 @@ public class Actions
     // Encrypt
     public void HandleEncrypt(string encryptFilePath)
     {
+        string password = "123"; // Replace with your password
 
+        // Get all files in the folder
+        string[] files = Directory.GetFiles(encryptFilePath);
+
+        foreach (string file in files)
+        {
+            byte[] bytesToBeEncrypted = File.ReadAllBytes(file);
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+
+            // Hash the password with SHA256
+            passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
+
+            byte[] bytesEncrypted = AES_Encrypt(bytesToBeEncrypted, passwordBytes);
+
+            string fileEncrypted = $"{file}.aes";
+
+            File.WriteAllBytes(fileEncrypted, bytesEncrypted);
+
+            // The original file is not deleted
+        }
     }
+
 
     public void HandleDecrypt(string decryptFilePath)
     {
