@@ -259,7 +259,7 @@
             checkBox_Delete.AutoSize = true;
             checkBox_Delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Delete.ForeColor = Color.White;
-            checkBox_Delete.Location = new Point(398, 425);
+            checkBox_Delete.Location = new Point(398, 426);
             checkBox_Delete.Name = "checkBox_Delete";
             checkBox_Delete.Size = new Size(18, 17);
             checkBox_Delete.TabIndex = 42;

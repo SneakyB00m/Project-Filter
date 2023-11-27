@@ -380,7 +380,7 @@ public class Actions
                 });
             }
         }
-    } 
+    }
 
     public void HandleUnZip(string zipFilePath)
     {
@@ -438,5 +438,14 @@ public class Actions
         }
     }
 
-    // 
+    // Encrypt
+    public void HandleEncrypt(string encryptFilePath)
+    {
+
+    }
+
+    public void HandleDecrypt(string decryptFilePath)
+    {
+
+    }
 }
