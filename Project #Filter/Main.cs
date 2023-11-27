@@ -1,3 +1,6 @@
+using iTextSharp.text.pdf;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf.IO;
 using SharpCompress.Archives;
 using SharpCompress.Archives.Rar;
 using SharpCompress.Common;
@@ -263,12 +266,6 @@ public class Actions
         return filesList; // Return the list of files
     }
 
-    public void HandleDelete(string folderPath)
-    {
-        // Access folderPath here
-        Console.WriteLine(folderPath);
-    }
-
     // Extract
     public List<RadioButton> GetCheckedRadioButtons(UserControl userControl)
     {
@@ -440,13 +437,113 @@ public class Actions
         }
     }
 
+    // Merge
+    public void MergePDFs(List<string> filePaths)
+    {
+        // Sort the file names
+        var sortedFileNames = filePaths.OrderBy(name => name);
+
+        // Save the document in the same directory as the selected files...
+        string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Simple Merged.pdf");
+
+        // Check if a file with the same name already exists and change the name accordingly
+        int count = 2;
+        while (File.Exists(filename))
+        {
+            filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), $"Simple Merged ({count}).pdf");
+            count++;
+        }
+
+        // Initialize a new PDF document
+        iTextSharp.text.Document document = new iTextSharp.text.Document();
+        PdfCopy copy = new PdfCopy(document, new FileStream(filename, FileMode.Create));
+
+        // Open the document
+        document.Open();
+
+        // Iterate through the selected files
+        foreach (string pdfFile in sortedFileNames)
+        {
+            // Open the document to import pages from it.
+            iTextSharp.text.pdf.PdfReader reader = new iTextSharp.text.pdf.PdfReader(pdfFile);
+            int n = reader.NumberOfPages;
+
+            // Add each page to the output document
+            for (int page = 0; page < n;)
+            {
+                copy.AddPage(copy.GetImportedPage(reader, ++page));
+            }
+
+            copy.FreeReader(reader);
+            reader.Close();
+
+            // Update your progress bar here
+            Console.WriteLine($"Merged {pdfFile}");
+        }
+
+        // Close the output document
+        document.Close();
+
+        Console.WriteLine($"Done! Successfully merged {sortedFileNames.Count()} PDF files into {filename}.");
+    }
+
+    public void MergePDFsWithIndex(List<string> filePaths)
+    {
+        // Sort the file names
+        var sortedFileNames = filePaths.OrderBy(name => name);
+
+        // Save the document in the same directory as the selected files...
+        string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Title Merged.pdf");
+
+        // Check if a file with the same name already exists and change the name accordingly
+        int count = 2;
+        while (File.Exists(filename))
+        {
+            filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), $"Title Merged ({count}).pdf");
+            count++;
+        }
+
+        // Initialize a new PDF document
+        PdfSharp.Pdf.PdfDocument outputDocument = new PdfSharp.Pdf.PdfDocument();
+
+        // Iterate through the selected files
+        foreach (string pdfFile in sortedFileNames)
+        {
+            // Add a new page with the file name
+            PdfSharp.Pdf.PdfPage fileNamePage = outputDocument.AddPage();
+            XGraphics gfx = XGraphics.FromPdfPage(fileNamePage);
+            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+            gfx.DrawString(Path.GetFileNameWithoutExtension(pdfFile), font, XBrushes.Black, new XRect(0, 0, fileNamePage.Width, fileNamePage.Height), XStringFormats.Center);
+
+            // Open the document to import pages from it.
+            PdfSharp.Pdf.PdfDocument inputDocument = PdfSharp.Pdf.IO.PdfReader.Open(pdfFile, PdfDocumentOpenMode.Import);
+
+            // Iterate through the pages
+            int pageCount = inputDocument.PageCount;
+            for (int idx = 0; idx < pageCount; idx++)
+            {
+                PdfSharp.Pdf.PdfPage page = inputDocument.Pages[idx];
+                outputDocument.AddPage(page);
+            }
+
+            // Update your progress bar here
+            Console.WriteLine($"Merged {pdfFile}");
+        }
+
+        // Save and close the PDF document
+        outputDocument.Save(filename);
+
+        Console.WriteLine($"Done! Successfully merged {sortedFileNames.Count()} PDF files into {filename}.");
+    }
+
+
     // Encrypt
     public void HandleEncrypt(string encryptFilePath)
     {
-        string password = "123"; // Replace with your password
+        string password = Microsoft.VisualBasic.Interaction.InputBox("Enter your password:", "Password Entry", "", -1, -1);
 
-        // Get all files in the folder
-        string[] files = Directory.GetFiles(encryptFilePath);
+        // Get all files in the folder and subfolders
+        string[] files = Directory.GetFiles(encryptFilePath, "*.*", SearchOption.AllDirectories);
 
         foreach (string file in files)
         {
@@ -462,13 +559,122 @@ public class Actions
 
             File.WriteAllBytes(fileEncrypted, bytesEncrypted);
 
-            // The original file is not deleted
+            // Delete the original file
+            File.Delete(file);
         }
     }
 
+    public static byte[] AES_Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
+    {
+        byte[] encryptedBytes = null;
+
+        // Create salt bytes
+        byte[] saltBytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+        using (MemoryStream ms = new MemoryStream())
+        {
+            using var AES = new AesCryptoServiceProvider();
+            AES.KeySize = 256;
+            AES.BlockSize = 128;
+
+            var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
+            AES.Key = key.GetBytes(AES.KeySize / 8);
+            AES.IV = key.GetBytes(AES.BlockSize / 8);
+
+            AES.Mode = CipherMode.CBC;
+
+            using (var cs = new CryptoStream(ms, AES.CreateEncryptor(), CryptoStreamMode.Write))
+            {
+                cs.Write(bytesToBeEncrypted, 0, bytesToBeEncrypted.Length);
+                cs.Close();
+            }
+            encryptedBytes = ms.ToArray();
+        }
+        return encryptedBytes;
+    }
 
     public void HandleDecrypt(string decryptFilePath)
     {
+        string password = Microsoft.VisualBasic.Interaction.InputBox("Enter your password:", "Password Entry", "", -1, -1);
 
+        // Get all files in the folder and subfolders
+        string[] files = Directory.GetFiles(decryptFilePath, "*.*", SearchOption.AllDirectories);
+
+        bool errorShown = false; // Add this line
+
+        foreach (string file in files)
+        {
+            byte[] bytesToBeDecrypted = File.ReadAllBytes(file);
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+
+            // Hash the password with SHA256
+            passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
+
+            try
+            {
+                byte[] bytesDecrypted = AES_Decrypt(bytesToBeDecrypted, passwordBytes);
+
+                // Delete the original encrypted file
+                File.Delete(file);
+
+                // Get the directory of the original file
+                string directoryPath = Path.GetDirectoryName(file);
+
+                // Get the original file name without the extension
+                string fileName = Path.GetFileNameWithoutExtension(file);
+
+                // Combine the directory path and file name
+                string fileDecrypted = Path.Combine(directoryPath, fileName);
+
+                File.WriteAllBytes(fileDecrypted, bytesDecrypted);
+            }
+            catch (System.Security.Cryptography.CryptographicException)
+            {
+                if (!errorShown)
+                {
+                    MessageBox.Show("The password you entered is incorrect. Please try again.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    errorShown = true;
+                }
+            }
+        }
     }
+
+    public static byte[] AES_Decrypt(byte[] bytesToBeDecrypted, byte[] passwordBytes)
+    {
+        byte[] decryptedBytes = null;
+
+        // Set your salt here, change it to meet your flavor:
+        // The salt bytes must be at least 8 bytes.
+        byte[] saltBytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+        using (MemoryStream ms = new MemoryStream())
+        {
+            using var AES = new AesCryptoServiceProvider();
+            AES.KeySize = 256;
+            AES.BlockSize = 128;
+
+            var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
+            AES.Key = key.GetBytes(AES.KeySize / 8);
+            AES.IV = key.GetBytes(AES.BlockSize / 8);
+
+            AES.Mode = CipherMode.CBC;
+
+            using (var cs = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Write))
+            {
+                try
+                {
+                    cs.Write(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length);
+                    cs.Close();
+                }
+                catch (System.Security.Cryptography.CryptographicException)
+                {
+                    MessageBox.Show("The password you entered is incorrect. Please try again.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            decryptedBytes = ms.ToArray();
+        }
+        return decryptedBytes;
+    }
+
+    // 
 }

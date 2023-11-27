@@ -52,6 +52,10 @@
               "target": "Package",
               "version": "[13.4.0, )"
             },
+            "Microsoft.Windows.Compatibility": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "NAudio": {
               "target": "Package",
               "version": "[2.2.1, )"
@@ -71,6 +75,10 @@
             "SharpCompress": {
               "target": "Package",
               "version": "[0.34.2, )"
+            },
+            "System.Security.Cryptography.Pkcs": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "iTextSharp": {
               "target": "Package",

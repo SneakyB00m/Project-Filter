@@ -35,13 +35,12 @@
             button_FilePath = new Button();
             label1 = new Label();
             textBox_Path = new TextBox();
-            label2 = new Label();
-            checkBox_Delete = new CheckBox();
             button_Filter = new Button();
             progressBar_Time = new ProgressBar();
             label3 = new Label();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
+            textBox1 = new TextBox();
+            checkBox_Decrypt = new CheckBox();
+            checkBox_Encrypt = new CheckBox();
             panel_Up.SuspendLayout();
             SuspendLayout();
             // 
@@ -93,6 +92,7 @@
             button_FilePath.Size = new Size(50, 29);
             button_FilePath.TabIndex = 0;
             button_FilePath.UseVisualStyleBackColor = false;
+            button_FilePath.Click += button_FilePath_Click;
             // 
             // label1
             // 
@@ -118,29 +118,6 @@
             textBox_Path.Size = new Size(598, 24);
             textBox_Path.TabIndex = 36;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.FromArgb(64, 64, 64);
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(47, 423);
-            label2.Name = "label2";
-            label2.Size = new Size(351, 23);
-            label2.TabIndex = 37;
-            label2.Text = "Would you like to delete the original files?";
-            // 
-            // checkBox_Delete
-            // 
-            checkBox_Delete.AutoSize = true;
-            checkBox_Delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox_Delete.ForeColor = Color.White;
-            checkBox_Delete.Location = new Point(398, 426);
-            checkBox_Delete.Name = "checkBox_Delete";
-            checkBox_Delete.Size = new Size(18, 17);
-            checkBox_Delete.TabIndex = 38;
-            checkBox_Delete.UseVisualStyleBackColor = true;
-            // 
             // button_Filter
             // 
             button_Filter.BackColor = Color.Teal;
@@ -154,6 +131,7 @@
             button_Filter.TabIndex = 39;
             button_Filter.Text = "Encrypt";
             button_Filter.UseVisualStyleBackColor = false;
+            button_Filter.Click += button_Filter_Click;
             // 
             // progressBar_Time
             // 
@@ -175,44 +153,52 @@
             label3.TabIndex = 40;
             label3.Text = "Options";
             // 
-            // radioButton1
+            // textBox1
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            radioButton1.ForeColor = Color.White;
-            radioButton1.Location = new Point(131, 203);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(106, 32);
-            radioButton1.TabIndex = 41;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Encrypt";
-            radioButton1.UseVisualStyleBackColor = true;
+            textBox1.Location = new Point(280, 123);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(441, 237);
+            textBox1.TabIndex = 43;
+            textBox1.WordWrap = false;
             // 
-            // radioButton2
+            // checkBox_Decrypt
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            radioButton2.ForeColor = Color.White;
-            radioButton2.Location = new Point(131, 253);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(159, 32);
-            radioButton2.TabIndex = 42;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "radioButton2";
-            radioButton2.UseVisualStyleBackColor = true;
+            checkBox_Decrypt.AutoSize = true;
+            checkBox_Decrypt.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_Decrypt.ForeColor = Color.White;
+            checkBox_Decrypt.Location = new Point(116, 264);
+            checkBox_Decrypt.Name = "checkBox_Decrypt";
+            checkBox_Decrypt.Size = new Size(124, 32);
+            checkBox_Decrypt.TabIndex = 45;
+            checkBox_Decrypt.Text = "Decrypt";
+            checkBox_Decrypt.UseVisualStyleBackColor = true;
+            checkBox_Decrypt.CheckedChanged += checkBox_Decrypt_CheckedChanged;
+            // 
+            // checkBox_Encrypt
+            // 
+            checkBox_Encrypt.AutoSize = true;
+            checkBox_Encrypt.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_Encrypt.ForeColor = Color.White;
+            checkBox_Encrypt.Location = new Point(116, 202);
+            checkBox_Encrypt.Name = "checkBox_Encrypt";
+            checkBox_Encrypt.Size = new Size(122, 32);
+            checkBox_Encrypt.TabIndex = 44;
+            checkBox_Encrypt.Text = "Encrypt";
+            checkBox_Encrypt.UseVisualStyleBackColor = true;
+            checkBox_Encrypt.CheckedChanged += checkBox_Encrypt_CheckedChanged;
             // 
             // Privacy
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
-            Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
+            Controls.Add(checkBox_Decrypt);
+            Controls.Add(checkBox_Encrypt);
+            Controls.Add(textBox1);
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(textBox_Path);
-            Controls.Add(label2);
-            Controls.Add(checkBox_Delete);
             Controls.Add(button_Filter);
             Controls.Add(progressBar_Time);
             Controls.Add(panel_R);
@@ -234,12 +220,11 @@
         private Button button_FilePath;
         private Label label1;
         private TextBox textBox_Path;
-        private Label label2;
-        private CheckBox checkBox_Delete;
         private Button button_Filter;
         private ProgressBar progressBar_Time;
         private Label label3;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
+        private TextBox textBox1;
+        private CheckBox checkBox_Decrypt;
+        private CheckBox checkBox_Encrypt;
     }
 }
