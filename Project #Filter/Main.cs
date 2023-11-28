@@ -1,5 +1,5 @@
-using iTextSharp.text.pdf;
 using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using SharpCompress.Archives;
 using SharpCompress.Archives.Rar;
@@ -455,37 +455,31 @@ public class Actions
         }
 
         // Initialize a new PDF document
-        iTextSharp.text.Document document = new iTextSharp.text.Document();
-        PdfCopy copy = new PdfCopy(document, new FileStream(filename, FileMode.Create));
-
-        // Open the document
-        document.Open();
+        PdfDocument outputDocument = new PdfDocument();
 
         // Iterate through the selected files
         foreach (string pdfFile in sortedFileNames)
         {
             // Open the document to import pages from it.
-            iTextSharp.text.pdf.PdfReader reader = new iTextSharp.text.pdf.PdfReader(pdfFile);
-            int n = reader.NumberOfPages;
+            PdfDocument inputDocument = PdfReader.Open(pdfFile, PdfDocumentOpenMode.Import);
 
             // Add each page to the output document
-            for (int page = 0; page < n;)
+            for (int page = 0; page < inputDocument.PageCount; page++)
             {
-                copy.AddPage(copy.GetImportedPage(reader, ++page));
+                outputDocument.AddPage(inputDocument.Pages[page]);
             }
-
-            copy.FreeReader(reader);
-            reader.Close();
 
             // Update your progress bar here
             Console.WriteLine($"Merged {pdfFile}");
         }
 
-        // Close the output document
-        document.Close();
+        // Save and close the output document
+        outputDocument.Save(filename);
+        outputDocument.Close();
 
         Console.WriteLine($"Done! Successfully merged {sortedFileNames.Count()} PDF files into {filename}.");
     }
+
 
     public void MergePDFsWithIndex(List<string> filePaths)
     {
@@ -504,25 +498,25 @@ public class Actions
         }
 
         // Initialize a new PDF document
-        PdfSharp.Pdf.PdfDocument outputDocument = new PdfSharp.Pdf.PdfDocument();
+        PdfDocument outputDocument = new PdfDocument();
 
         // Iterate through the selected files
         foreach (string pdfFile in sortedFileNames)
         {
             // Add a new page with the file name
-            PdfSharp.Pdf.PdfPage fileNamePage = outputDocument.AddPage();
+            PdfPage fileNamePage = outputDocument.AddPage();
             XGraphics gfx = XGraphics.FromPdfPage(fileNamePage);
-            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+            XFont font = new XFont("Verdana Bold", 20);
             gfx.DrawString(Path.GetFileNameWithoutExtension(pdfFile), font, XBrushes.Black, new XRect(0, 0, fileNamePage.Width, fileNamePage.Height), XStringFormats.Center);
 
             // Open the document to import pages from it.
-            PdfSharp.Pdf.PdfDocument inputDocument = PdfSharp.Pdf.IO.PdfReader.Open(pdfFile, PdfDocumentOpenMode.Import);
+            PdfDocument inputDocument = PdfReader.Open(pdfFile, PdfDocumentOpenMode.Import);
 
             // Iterate through the pages
             int pageCount = inputDocument.PageCount;
             for (int idx = 0; idx < pageCount; idx++)
             {
-                PdfSharp.Pdf.PdfPage page = inputDocument.Pages[idx];
+                PdfPage page = inputDocument.Pages[idx];
                 outputDocument.AddPage(page);
             }
 

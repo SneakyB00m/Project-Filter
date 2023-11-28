@@ -39,6 +39,8 @@
             checkBox_Delete = new CheckBox();
             button_Filter = new Button();
             progressBar_Time = new ProgressBar();
+            label3 = new Label();
+            comboBox_Selector = new ComboBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -95,7 +97,7 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(64, 64, 64);
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label1.ForeColor = Color.White;
             label1.Location = new Point(43, 52);
             label1.Name = "label1";
@@ -107,7 +109,7 @@
             // 
             textBox_Path.BackColor = Color.FromArgb(64, 64, 64);
             textBox_Path.BorderStyle = BorderStyle.None;
-            textBox_Path.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            textBox_Path.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             textBox_Path.ForeColor = Color.White;
             textBox_Path.Location = new Point(131, 69);
             textBox_Path.Name = "textBox_Path";
@@ -119,7 +121,7 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(64, 64, 64);
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             label2.ForeColor = Color.White;
             label2.Location = new Point(47, 423);
             label2.Name = "label2";
@@ -130,7 +132,7 @@
             // checkBox_Delete
             // 
             checkBox_Delete.AutoSize = true;
-            checkBox_Delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_Delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             checkBox_Delete.ForeColor = Color.White;
             checkBox_Delete.Location = new Point(398, 426);
             checkBox_Delete.Name = "checkBox_Delete";
@@ -143,7 +145,7 @@
             button_Filter.BackColor = Color.Teal;
             button_Filter.FlatAppearance.BorderSize = 0;
             button_Filter.FlatStyle = FlatStyle.Flat;
-            button_Filter.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Filter.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             button_Filter.ForeColor = Color.White;
             button_Filter.Location = new Point(455, 417);
             button_Filter.Name = "button_Filter";
@@ -160,11 +162,34 @@
             progressBar_Time.Step = 1;
             progressBar_Time.TabIndex = 30;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(64, 64, 64);
+            label3.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(70, 123);
+            label3.Name = "label3";
+            label3.Size = new Size(120, 38);
+            label3.TabIndex = 35;
+            label3.Text = "Options";
+            // 
+            // comboBox_Selector
+            // 
+            comboBox_Selector.FormattingEnabled = true;
+            comboBox_Selector.Items.AddRange(new object[] { "TEXT", "WORD", "PDF", "PDF With Index", "IMAGE COLLAGE" });
+            comboBox_Selector.Location = new Point(131, 181);
+            comboBox_Selector.Name = "comboBox_Selector";
+            comboBox_Selector.Size = new Size(590, 28);
+            comboBox_Selector.TabIndex = 36;
+            // 
             // Merge
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
+            Controls.Add(comboBox_Selector);
+            Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(textBox_Path);
             Controls.Add(label2);
@@ -196,5 +221,7 @@
         private CheckBox checkBox_Delete;
         private Button button_Filter;
         private ProgressBar progressBar_Time;
+        private Label label3;
+        private ComboBox comboBox_Selector;
     }
 }
