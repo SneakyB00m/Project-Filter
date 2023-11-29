@@ -179,7 +179,6 @@ public class Actions
         return destinationPaths;
     }
 
-    // Hacer que no mueva los folders
     public void HandleExtension(string folderPath)
     {
         // Get all files in the directory and its subdirectories
@@ -189,7 +188,8 @@ public class Actions
         foreach (string file in allFiles)
         {
             string extension = Path.GetExtension(file).TrimStart('.').ToLower();
-            string extensionPath = Path.Combine(folderPath, extension);
+            string fileDirectory = Path.GetDirectoryName(file);
+            string extensionPath = Path.Combine(fileDirectory, extension);
 
             if (!Directory.Exists(extensionPath))
             {
@@ -200,6 +200,7 @@ public class Actions
             File.Move(file, destinationPath, true);
         }
     }
+
 
     public void HandleResolution(string folderPath)
     {
