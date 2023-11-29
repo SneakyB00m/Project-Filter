@@ -14,7 +14,6 @@ namespace Project__Filter
     public partial class Main : Form
     {
         Dictionary<string, object> data;
-
         public Main()
         {
             InitializeComponent();
@@ -22,7 +21,6 @@ namespace Project__Filter
             Panel_Index.Height = button_Home.Height;
             Panel_Index.Top = button_Home.Top;
             home1.BringToFront();
-
         }
 
         private void button_Exit_Click(object sender, EventArgs e)
@@ -88,15 +86,23 @@ namespace Project__Filter
             if (!File.Exists(filePath))
             {
                 // Create a dictionary to hold the data
-                data = new Dictionary<string, object>
-                {
-                    // Add sections for video extensions, file size, duration, and resolution
-                    // Replace the placeholders with your actual data
-                    { "VideoExtensions", new List<string> { ".mp4", ".avi", ".mkv" } },
-                    { "FileSize", new List<string> { "1024 MB", "2048 MB", "4096 MB" } },
-                    { "Duration", new List<string> { "01:30:00", "02:00:00", "02:30:00" } },
-                    { "Resolution", new List<string> { "1920x1080", "1280x720", "640x480" } }
-                };
+                data = new Dictionary<string, object>();
+
+                // Add a section for video extensions
+                List<string> videoExtensions = new List<string> { ".mp4", ".avi", ".mkv" };
+                data.Add("VideoExtensions", videoExtensions);
+
+                // Add a section for file size in bytes
+                List<int> fileSizes = new List<int> { 1024, 2048, 4096 }; // replace with actual file sizes
+                data.Add("FileSize", fileSizes);
+
+                // Add a section for duration in seconds
+                List<int> durations = new List<int> { 5400, 7200, 9000 }; // replace with actual durations
+                data.Add("Duration", durations);
+
+                // Add a section for resolution
+                List<string> resolutions = new List<string> { "1920x1080", "1280x720", "640x480" };
+                data.Add("Resolution", resolutions);
 
                 // Convert the dictionary to a JSON string
                 string json = JsonConvert.SerializeObject(data, Formatting.Indented);
@@ -113,8 +119,6 @@ namespace Project__Filter
                 data = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
             }
         }
-
-
     }
 }
 
