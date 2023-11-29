@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
@@ -12,6 +13,8 @@ namespace Project__Filter
 {
     public partial class Main : Form
     {
+        Dictionary<string, object> data;
+
         public Main()
         {
             InitializeComponent();
@@ -77,6 +80,41 @@ namespace Project__Filter
             Panel_Index.Top = button_Privacy.Top;
             privacy1.BringToFront();
         }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            string filePath = "Config.json";
+
+            if (!File.Exists(filePath))
+            {
+                // Create a dictionary to hold the data
+                data = new Dictionary<string, object>
+                {
+                    // Add sections for video extensions, file size, duration, and resolution
+                    // Replace the placeholders with your actual data
+                    { "VideoExtensions", new List<string> { ".mp4", ".avi", ".mkv" } },
+                    { "FileSize", new List<string> { "1024 MB", "2048 MB", "4096 MB" } },
+                    { "Duration", new List<string> { "01:30:00", "02:00:00", "02:30:00" } },
+                    { "Resolution", new List<string> { "1920x1080", "1280x720", "640x480" } }
+                };
+
+                // Convert the dictionary to a JSON string
+                string json = JsonConvert.SerializeObject(data, Formatting.Indented);
+
+                // Save the JSON string to a file
+                File.WriteAllText(filePath, json);
+            }
+            else
+            {
+                // Read the JSON file
+                string json = File.ReadAllText(filePath);
+
+                // Deserialize the JSON string to a dictionary
+                data = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
+            }
+        }
+
+
     }
 }
 
@@ -121,7 +159,7 @@ public class Actions
         List<string> allFiles = GetAllFiles(folderPath);
 
         // Filter the files based on the include string
-        List<string> includedFiles = allFiles.Where(file => Path.GetFileNameWithoutExtension(file).IndexOf(include, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+        List<string> includedFiles = allFiles.Where(file => Path.GetFileNameWithoutExtension(file).Contains(include, StringComparison.OrdinalIgnoreCase)).ToList();
 
         // List to store the destination paths of the moved files
         List<string> destinationPaths = new List<string>();
@@ -200,13 +238,10 @@ public class Actions
             File.Move(file, destinationPath, true);
         }
     }
-
-
     public void HandleResolution(string folderPath)
     {
 
     }
-
     public void HandleDuration(string folderPath)
     {
 

@@ -74,31 +74,28 @@
             panel_Menu.Controls.Add(button_Home);
             panel_Menu.Dock = DockStyle.Left;
             panel_Menu.Location = new Point(0, 0);
-            panel_Menu.Margin = new Padding(3, 2, 3, 2);
             panel_Menu.Name = "panel_Menu";
-            panel_Menu.Size = new Size(219, 512);
+            panel_Menu.Size = new Size(250, 683);
             panel_Menu.TabIndex = 0;
             // 
             // Panel_Index
             // 
             Panel_Index.BackColor = Color.Teal;
-            Panel_Index.Location = new Point(3, 26);
-            Panel_Index.Margin = new Padding(3, 2, 3, 2);
+            Panel_Index.Location = new Point(3, 35);
             Panel_Index.Name = "Panel_Index";
-            Panel_Index.Size = new Size(22, 40);
+            Panel_Index.Size = new Size(25, 53);
             Panel_Index.TabIndex = 1;
             // 
             // button_Privacy
             // 
             button_Privacy.FlatAppearance.BorderSize = 0;
             button_Privacy.FlatStyle = FlatStyle.Flat;
-            button_Privacy.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Privacy.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Privacy.ForeColor = Color.White;
             button_Privacy.Image = Properties.Resources.FingerPrint;
-            button_Privacy.Location = new Point(30, 246);
-            button_Privacy.Margin = new Padding(3, 2, 3, 2);
+            button_Privacy.Location = new Point(34, 328);
             button_Privacy.Name = "button_Privacy";
-            button_Privacy.Size = new Size(186, 40);
+            button_Privacy.Size = new Size(213, 53);
             button_Privacy.TabIndex = 8;
             button_Privacy.Text = "    Encipher";
             button_Privacy.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -110,10 +107,9 @@
             button_Help.FlatAppearance.BorderSize = 0;
             button_Help.FlatStyle = FlatStyle.Flat;
             button_Help.Image = Properties.Resources.Help;
-            button_Help.Location = new Point(3, 478);
-            button_Help.Margin = new Padding(3, 2, 3, 2);
+            button_Help.Location = new Point(3, 637);
             button_Help.Name = "button_Help";
-            button_Help.Size = new Size(32, 32);
+            button_Help.Size = new Size(37, 43);
             button_Help.TabIndex = 6;
             button_Help.UseVisualStyleBackColor = true;
             // 
@@ -121,13 +117,12 @@
             // 
             button_Merge.FlatAppearance.BorderSize = 0;
             button_Merge.FlatStyle = FlatStyle.Flat;
-            button_Merge.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Merge.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Merge.ForeColor = Color.White;
             button_Merge.Image = Properties.Resources.Merge;
-            button_Merge.Location = new Point(30, 202);
-            button_Merge.Margin = new Padding(3, 2, 3, 2);
+            button_Merge.Location = new Point(34, 269);
             button_Merge.Name = "button_Merge";
-            button_Merge.Size = new Size(186, 40);
+            button_Merge.Size = new Size(213, 53);
             button_Merge.TabIndex = 5;
             button_Merge.Text = "    Merge";
             button_Merge.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -138,13 +133,12 @@
             // 
             button_Extract.FlatAppearance.BorderSize = 0;
             button_Extract.FlatStyle = FlatStyle.Flat;
-            button_Extract.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Extract.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Extract.ForeColor = Color.White;
             button_Extract.Image = Properties.Resources.Undo;
-            button_Extract.Location = new Point(30, 158);
-            button_Extract.Margin = new Padding(3, 2, 3, 2);
+            button_Extract.Location = new Point(34, 211);
             button_Extract.Name = "button_Extract";
-            button_Extract.Size = new Size(186, 40);
+            button_Extract.Size = new Size(213, 53);
             button_Extract.TabIndex = 4;
             button_Extract.Text = "    Extract";
             button_Extract.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -155,13 +149,12 @@
             // 
             button_Convert.FlatAppearance.BorderSize = 0;
             button_Convert.FlatStyle = FlatStyle.Flat;
-            button_Convert.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Convert.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Convert.ForeColor = Color.White;
             button_Convert.Image = Properties.Resources.Convert;
-            button_Convert.Location = new Point(30, 114);
-            button_Convert.Margin = new Padding(3, 2, 3, 2);
+            button_Convert.Location = new Point(34, 152);
             button_Convert.Name = "button_Convert";
-            button_Convert.Size = new Size(186, 40);
+            button_Convert.Size = new Size(213, 53);
             button_Convert.TabIndex = 3;
             button_Convert.Text = "    Transform";
             button_Convert.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -172,13 +165,12 @@
             // 
             button_Filter.FlatAppearance.BorderSize = 0;
             button_Filter.FlatStyle = FlatStyle.Flat;
-            button_Filter.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Filter.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Filter.ForeColor = Color.White;
             button_Filter.Image = Properties.Resources.Filter;
-            button_Filter.Location = new Point(30, 70);
-            button_Filter.Margin = new Padding(3, 2, 3, 2);
+            button_Filter.Location = new Point(34, 93);
             button_Filter.Name = "button_Filter";
-            button_Filter.Size = new Size(186, 40);
+            button_Filter.Size = new Size(213, 53);
             button_Filter.TabIndex = 2;
             button_Filter.Text = "    Filter";
             button_Filter.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -189,13 +181,12 @@
             // 
             button_Home.FlatAppearance.BorderSize = 0;
             button_Home.FlatStyle = FlatStyle.Flat;
-            button_Home.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Home.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Home.ForeColor = Color.White;
             button_Home.Image = Properties.Resources.Windows;
-            button_Home.Location = new Point(30, 26);
-            button_Home.Margin = new Padding(3, 2, 3, 2);
+            button_Home.Location = new Point(34, 35);
             button_Home.Name = "button_Home";
-            button_Home.Size = new Size(186, 40);
+            button_Home.Size = new Size(213, 53);
             button_Home.TabIndex = 0;
             button_Home.Text = "    Home";
             button_Home.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -210,10 +201,9 @@
             panel_Accent.Controls.Add(button_Exit);
             panel_Accent.Controls.Add(button_Git);
             panel_Accent.Dock = DockStyle.Top;
-            panel_Accent.Location = new Point(219, 0);
-            panel_Accent.Margin = new Padding(3, 2, 3, 2);
+            panel_Accent.Location = new Point(250, 0);
             panel_Accent.Name = "panel_Accent";
-            panel_Accent.Size = new Size(692, 32);
+            panel_Accent.Size = new Size(791, 43);
             panel_Accent.TabIndex = 1;
             // 
             // button_Config
@@ -222,21 +212,20 @@
             button_Config.FlatAppearance.BorderSize = 0;
             button_Config.FlatStyle = FlatStyle.Flat;
             button_Config.Image = Properties.Resources.Config;
-            button_Config.Location = new Point(623, 2);
-            button_Config.Margin = new Padding(3, 2, 3, 2);
+            button_Config.Location = new Point(712, 3);
             button_Config.Name = "button_Config";
-            button_Config.Size = new Size(25, 25);
+            button_Config.Size = new Size(29, 33);
             button_Config.TabIndex = 8;
             button_Config.UseVisualStyleBackColor = true;
             // 
             // label_Title
             // 
             label_Title.AutoSize = true;
-            label_Title.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label_Title.Font = new Font("Tahoma", 12F, FontStyle.Bold);
             label_Title.ForeColor = Color.White;
-            label_Title.Location = new Point(84, 6);
+            label_Title.Location = new Point(96, 8);
             label_Title.Name = "label_Title";
-            label_Title.Size = new Size(274, 19);
+            label_Title.Size = new Size(339, 24);
             label_Title.TabIndex = 6;
             label_Title.Text = "TOOL KIT 2.0  BY @SneakyB00m";
             // 
@@ -246,10 +235,9 @@
             button_Exit.FlatAppearance.BorderSize = 0;
             button_Exit.FlatStyle = FlatStyle.Flat;
             button_Exit.Image = Properties.Resources.Power;
-            button_Exit.Location = new Point(660, 2);
-            button_Exit.Margin = new Padding(3, 2, 3, 2);
+            button_Exit.Location = new Point(754, 3);
             button_Exit.Name = "button_Exit";
-            button_Exit.Size = new Size(25, 25);
+            button_Exit.Size = new Size(29, 33);
             button_Exit.TabIndex = 3;
             button_Exit.UseVisualStyleBackColor = true;
             button_Exit.Click += button_Exit_Click;
@@ -259,10 +247,9 @@
             button_Git.FlatAppearance.BorderSize = 0;
             button_Git.FlatStyle = FlatStyle.Flat;
             button_Git.Image = Properties.Resources.Git;
-            button_Git.Location = new Point(386, 2);
-            button_Git.Margin = new Padding(3, 2, 3, 2);
+            button_Git.Location = new Point(441, 3);
             button_Git.Name = "button_Git";
-            button_Git.Size = new Size(25, 25);
+            button_Git.Size = new Size(29, 33);
             button_Git.TabIndex = 7;
             button_Git.UseVisualStyleBackColor = true;
             button_Git.Click += button_Git_Click;
@@ -271,73 +258,67 @@
             // 
             Panel_Banner.BackColor = Color.FromArgb(0, 64, 64);
             Panel_Banner.Controls.Add(pictureBox1);
-            Panel_Banner.Location = new Point(237, 0);
-            Panel_Banner.Margin = new Padding(3, 2, 3, 2);
+            Panel_Banner.Location = new Point(271, 0);
             Panel_Banner.Name = "Panel_Banner";
-            Panel_Banner.Size = new Size(60, 77);
+            Panel_Banner.Size = new Size(69, 103);
             Panel_Banner.TabIndex = 2;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Logo;
-            pictureBox1.Location = new Point(3, 20);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(3, 27);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(55, 46);
+            pictureBox1.Size = new Size(63, 61);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // home1
             // 
-            home1.Location = new Point(219, 82);
-            home1.Margin = new Padding(3, 2, 3, 2);
+            home1.Location = new Point(250, 109);
             home1.Name = "home1";
-            home1.Size = new Size(692, 430);
+            home1.Size = new Size(791, 573);
             home1.TabIndex = 4;
             // 
             // filter1
             // 
             filter1.BackColor = Color.FromArgb(64, 64, 64);
-            filter1.Location = new Point(219, 82);
-            filter1.Margin = new Padding(3, 2, 3, 2);
+            filter1.Location = new Point(250, 109);
             filter1.Name = "filter1";
-            filter1.Size = new Size(692, 430);
+            filter1.Size = new Size(791, 573);
             filter1.TabIndex = 5;
             // 
             // convert1
             // 
             convert1.BackColor = Color.FromArgb(64, 64, 64);
-            convert1.Location = new Point(219, 82);
-            convert1.Margin = new Padding(3, 2, 3, 2);
+            convert1.Location = new Point(250, 109);
             convert1.Name = "convert1";
-            convert1.Size = new Size(692, 430);
+            convert1.Size = new Size(791, 573);
             convert1.TabIndex = 8;
             // 
             // extract1
             // 
             extract1.BackColor = Color.FromArgb(64, 64, 64);
-            extract1.Location = new Point(219, 82);
-            extract1.Margin = new Padding(3, 2, 3, 2);
+            extract1.Location = new Point(250, 109);
             extract1.Name = "extract1";
-            extract1.Size = new Size(692, 430);
+            extract1.Size = new Size(791, 573);
             extract1.TabIndex = 9;
             // 
             // merge1
             // 
             merge1.BackColor = Color.FromArgb(64, 64, 64);
-            merge1.Location = new Point(219, 82);
+            merge1.Location = new Point(250, 109);
+            merge1.Margin = new Padding(3, 5, 3, 5);
             merge1.Name = "merge1";
-            merge1.Size = new Size(692, 430);
+            merge1.Size = new Size(791, 573);
             merge1.TabIndex = 10;
             // 
             // privacy1
             // 
             privacy1.BackColor = Color.FromArgb(64, 64, 64);
-            privacy1.Location = new Point(219, 82);
-            privacy1.Margin = new Padding(3, 2, 3, 2);
+            privacy1.Location = new Point(250, 109);
             privacy1.Name = "privacy1";
-            privacy1.Size = new Size(692, 430);
+            privacy1.Size = new Size(791, 573);
             privacy1.TabIndex = 11;
             // 
             // DragControl_Accent
@@ -370,10 +351,10 @@
             // 
             // Main
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
-            ClientSize = new Size(911, 512);
+            ClientSize = new Size(1041, 683);
             ControlBox = false;
             Controls.Add(home1);
             Controls.Add(filter1);
@@ -385,10 +366,10 @@
             Controls.Add(panel_Accent);
             Controls.Add(panel_Menu);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Main";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += Main_Load;
             panel_Menu.ResumeLayout(false);
             panel_Accent.ResumeLayout(false);
             panel_Accent.PerformLayout();
