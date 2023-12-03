@@ -13,7 +13,8 @@ namespace Project__Filter
 {
     public partial class Main : Form
     {
-        Dictionary<string, object> data;
+        Dictionary<string, object> data;    
+
         public Main()
         {
             InitializeComponent();
@@ -119,12 +120,16 @@ namespace Project__Filter
                 data = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
             }
         }
+
+        private void button_Config_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
 public class Actions
 {
-
     // Filter
     public List<CheckBox> GetCheckedCheckBoxes(UserControl userControl)
     {
@@ -241,11 +246,13 @@ public class Actions
             string destinationPath = Path.Combine(extensionPath, Path.GetFileName(file));
             File.Move(file, destinationPath, true);
         }
-    }
+    }     
+
     public void HandleResolution(string folderPath)
     {
 
     }
+
     public void HandleDuration(string folderPath)
     {
 
