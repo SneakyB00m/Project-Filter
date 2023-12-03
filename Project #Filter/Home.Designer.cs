@@ -80,7 +80,7 @@
             // 
             pictureBox1.BackColor = Color.FromArgb(64, 64, 64);
             pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = Properties.Resources.COCOS2;
+            pictureBox1.Image = Properties.Resources.Background;
             pictureBox1.Location = new Point(37, 32);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";

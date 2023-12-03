@@ -49,12 +49,11 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(398, 313);
-            button2.Margin = new Padding(3, 2, 3, 2);
+            button2.Location = new Point(455, 417);
             button2.Name = "button2";
-            button2.Size = new Size(233, 26);
+            button2.Size = new Size(266, 35);
             button2.TabIndex = 22;
-            button2.Text = "Filter";
+            button2.Text = "Transform";
             button2.UseVisualStyleBackColor = false;
             // 
             // checkBox1
@@ -62,10 +61,9 @@
             checkBox1.AutoSize = true;
             checkBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(339, 319);
-            checkBox1.Margin = new Padding(3, 2, 3, 2);
+            checkBox1.Location = new Point(398, 426);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(15, 14);
+            checkBox1.Size = new Size(18, 17);
             checkBox1.TabIndex = 21;
             checkBox1.UseVisualStyleBackColor = true;
             // 
@@ -75,9 +73,9 @@
             label2.BackColor = Color.FromArgb(64, 64, 64);
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(41, 317);
+            label2.Location = new Point(47, 423);
             label2.Name = "label2";
-            label2.Size = new Size(292, 19);
+            label2.Size = new Size(351, 23);
             label2.TabIndex = 20;
             label2.Text = "Would you like to delete the original files?";
             // 
@@ -87,19 +85,17 @@
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(115, 45);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Location = new Point(131, 68);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(523, 20);
+            textBox1.Size = new Size(598, 24);
             textBox1.TabIndex = 19;
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(41, 347);
-            progressBar1.Margin = new Padding(3, 2, 3, 2);
+            progressBar1.Location = new Point(47, 463);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(590, 22);
+            progressBar1.Size = new Size(674, 29);
             progressBar1.Step = 1;
             progressBar1.TabIndex = 18;
             // 
@@ -109,9 +105,9 @@
             label1.BackColor = Color.FromArgb(64, 64, 64);
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(38, 39);
+            label1.Location = new Point(43, 52);
             label1.Name = "label1";
-            label1.Size = new Size(71, 32);
+            label1.Size = new Size(89, 41);
             label1.TabIndex = 17;
             label1.Text = "Path:";
             // 
@@ -119,30 +115,27 @@
             // 
             panel4.BackColor = Color.FromArgb(64, 64, 64);
             panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(644, 32);
-            panel4.Margin = new Padding(3, 2, 3, 2);
+            panel4.Location = new Point(736, 43);
             panel4.Name = "panel4";
-            panel4.Size = new Size(32, 341);
+            panel4.Size = new Size(37, 454);
             panel4.TabIndex = 26;
             // 
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(64, 64, 64);
             panel3.Dock = DockStyle.Left;
-            panel3.Location = new Point(0, 32);
-            panel3.Margin = new Padding(3, 2, 3, 2);
+            panel3.Location = new Point(0, 43);
             panel3.Name = "panel3";
-            panel3.Size = new Size(32, 341);
+            panel3.Size = new Size(37, 454);
             panel3.TabIndex = 25;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(0, 64, 64);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 373);
-            panel2.Margin = new Padding(3, 2, 3, 2);
+            panel2.Location = new Point(0, 497);
             panel2.Name = "panel2";
-            panel2.Size = new Size(676, 32);
+            panel2.Size = new Size(773, 43);
             panel2.TabIndex = 24;
             // 
             // panel1
@@ -151,9 +144,8 @@
             panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(676, 32);
+            panel1.Size = new Size(773, 43);
             panel1.TabIndex = 23;
             // 
             // button1
@@ -161,17 +153,16 @@
             button1.BackColor = Color.Teal;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = Properties.Resources.icons8_new_copy_15;
-            button1.Location = new Point(630, 5);
-            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Image = Properties.Resources.Add;
+            button1.Location = new Point(720, 7);
             button1.Name = "button1";
-            button1.Size = new Size(44, 22);
+            button1.Size = new Size(50, 29);
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = false;
             // 
             // Convert
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             Controls.Add(panel4);
@@ -184,9 +175,8 @@
             Controls.Add(checkBox1);
             Controls.Add(button2);
             Controls.Add(progressBar1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Convert";
-            Size = new Size(676, 405);
+            Size = new Size(773, 540);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
