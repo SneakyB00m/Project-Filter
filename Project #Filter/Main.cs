@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
@@ -260,17 +261,94 @@ public class Actions
 
     public void HandleSize(string folderPath)
     {
+        // Read the JSON file
+        string json = File.ReadAllText("Config.json");
 
+        // Deserialize the JSON string to a dictionary
+        Dictionary<string, object> data = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
+
+        // Get the list of file sizes from the dictionary
+        List<int> fileSizes = ((JArray)data["FileSize"]).ToObject<List<int>>();
+        fileSizes.Sort();
+
+        // Get all files in the directory and its subdirectories
+        string[] files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
+
+        foreach (string file in files)
+        {
+            // Get the size of the file
+            FileInfo fileInfo = new FileInfo(file);
+            long size = fileInfo.Length;
+
+            // Find the appropriate folder for this file size
+            int folderSize = fileSizes.FirstOrDefault(s => size <= s);
+            if (folderSize == 0)
+            {
+                // If the file is larger than all specified sizes, put it in a separate folder
+                folderSize = fileSizes.Max() + 1;
+            }
+
+            // Convert the folder size to gigabytes
+            double folderSizeInGb = folderSize / 1024.0;
+
+            // Create the size folder if it doesn't exist
+            string sizeFolder = Path.Combine(folderPath, $"{folderSizeInGb} GB");
+            if (!Directory.Exists(sizeFolder))
+            {
+                Directory.CreateDirectory(sizeFolder);
+            }
+
+            // Move the file into the size folder
+            string fileName = Path.GetFileName(file);
+            File.Move(file, Path.Combine(sizeFolder, fileName));
+        }
     }
 
     public void HandleDate(string folderPath)
     {
+        // Get all files in the directory and its subdirectories
+        string[] files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
 
+        foreach (string file in files)
+        {
+            // Get the date of the file
+            DateTime lastWriteTime = File.GetLastWriteTime(file);
+            string dateFolder = Path.Combine(folderPath, lastWriteTime.ToString("yyyy-MM-dd"));
+
+            // Create the date folder if it doesn't exist
+            if (!Directory.Exists(dateFolder))
+            {
+                Directory.CreateDirectory(dateFolder);
+            }
+
+            // Move the file into the date folder
+            string fileName = Path.GetFileName(file);
+            File.Move(file, Path.Combine(dateFolder, fileName));
+        }
     }
 
     public void HandleAToZ(string folderPath)
     {
+        // Get all files in the directory and its subdirectories
+        var files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
 
+        foreach (var file in files)
+        {
+            // Get the first letter of the file name
+            var firstLetter = Path.GetFileName(file)[0];
+
+            // Create a new directory path based on the first letter
+            var newDirPath = Path.Combine(folderPath, firstLetter.ToString());
+
+            // Create the directory if it doesn't exist
+            Directory.CreateDirectory(newDirPath);
+
+            // Create a new file path in the new directory
+            var newFilePath = Path.Combine(newDirPath, Path.GetFileName(file));
+
+            // Move the file to the new directory
+            File.Move(file, newFilePath);
+        }
     }
 
     // Univresal
@@ -527,7 +605,6 @@ public class Actions
         Console.WriteLine($"Done! Successfully merged {sortedFileNames.Count()} PDF files into {filename}.");
     }
 
-
     public void MergePDFsWithIndex(List<string> filePaths)
     {
         // Sort the file names
@@ -614,7 +691,7 @@ public class Actions
 
         using (MemoryStream ms = new MemoryStream())
         {
-            using var AES = new AesCryptoServiceProvider();
+            using AesCryptoServiceProvider AES = new AesCryptoServiceProvider();
             AES.KeySize = 256;
             AES.BlockSize = 128;
 
@@ -717,5 +794,4 @@ public class Actions
         return decryptedBytes;
     }
 
-    // 
 }
