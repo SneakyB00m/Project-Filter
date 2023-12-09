@@ -344,3 +344,4 @@ E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\ru
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.csproj.AssemblyReference.cache
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.csproj.CopyComplete
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Config.resources
