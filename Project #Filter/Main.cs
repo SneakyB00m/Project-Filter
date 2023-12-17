@@ -124,7 +124,7 @@ namespace Project__Filter
 
         private void button_Config_Click(object sender, EventArgs e)
         {
-
+            config1.BringToFront();
         }
     }
 }
@@ -653,7 +653,6 @@ public class Actions
 
         Console.WriteLine($"Done! Successfully merged {sortedFileNames.Count()} PDF files into {filename}.");
     }
-
 
     // Encrypt
     public void HandleEncrypt(string encryptFilePath)

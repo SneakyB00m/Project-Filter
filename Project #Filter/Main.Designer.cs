@@ -55,6 +55,8 @@
             DragControl_Tittle = new Bunifu.Framework.UI.BunifuDragControl(components);
             DragControl_Menu = new Bunifu.Framework.UI.BunifuDragControl(components);
             DragControl_Banner = new Bunifu.Framework.UI.BunifuDragControl(components);
+            DragControl_Main = new Bunifu.Framework.UI.BunifuDragControl(components);
+            config1 = new Config();
             panel_Menu.SuspendLayout();
             panel_Accent.SuspendLayout();
             Panel_Banner.SuspendLayout();
@@ -370,6 +372,21 @@
             DragControl_Banner.TargetControl = Panel_Banner;
             DragControl_Banner.Vertical = true;
             // 
+            // DragControl_Main
+            // 
+            DragControl_Main.Fixed = true;
+            DragControl_Main.Horizontal = true;
+            DragControl_Main.TargetControl = this;
+            DragControl_Main.Vertical = true;
+            // 
+            // config1
+            // 
+            config1.BackColor = Color.FromArgb(64, 64, 64);
+            config1.Location = new Point(219, 82);
+            config1.Name = "config1";
+            config1.Size = new Size(692, 430);
+            config1.TabIndex = 12;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -378,6 +395,7 @@
             ClientSize = new Size(911, 512);
             ControlBox = false;
             Controls.Add(home1);
+            Controls.Add(config1);
             Controls.Add(filter1);
             Controls.Add(convert1);
             Controls.Add(extract1);
@@ -428,5 +446,7 @@
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Tittle;
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Menu;
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Banner;
+        private Bunifu.Framework.UI.BunifuDragControl DragControl_Main;
+        private Config config1;
     }
 }
