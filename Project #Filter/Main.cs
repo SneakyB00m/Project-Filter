@@ -151,7 +151,7 @@ public class Actions
         return checkedCheckBoxes; // Return the list of checked checkboxes
     }
 
-    public void FilterVideoFilesBasedOnCriteria(string folderPath, Dictionary<string, object> data, string Include)
+    public void OrganizeFilesBasedOnCriteria_Include(string folderPath, Dictionary<string, object> data, string Include)
     {
         // Get the video extensions from the dictionary
         var videoExtensions = ((JArray)data["VideoExtensions"]).ToObject<string[]>();
@@ -208,45 +208,6 @@ public class Actions
             File.Move(file, destinationPath);
         }
     }
-
-    //public List<string> HandleExclude(string folderPath, string exclude)
-    //{
-    //    // Create the "filtered" directory if it doesn't exist
-    //    string filteredPath = Path.Combine(folderPath, "Filtered");
-    //    if (!Directory.Exists(filteredPath))
-    //    {
-    //        Directory.CreateDirectory(filteredPath);
-    //    }
-
-    //    // Create the "exclude" directory inside the "filtered" directory
-    //    string excludePath = Path.Combine(filteredPath, "Excludes");
-    //    if (!Directory.Exists(excludePath))
-    //    {
-    //        Directory.CreateDirectory(excludePath);
-    //    }
-
-    //    // Get all files in the folder and its subfolders
-    //    List<string> allFiles = GetAllFiles(folderPath);
-
-    //    // Filter the files based on the exclude string
-    //    List<string> excludedFiles = allFiles.Where(file => Path.GetFileNameWithoutExtension(file).IndexOf(exclude, StringComparison.OrdinalIgnoreCase) < 0).ToList();
-
-    //    // List to store the destination paths of the moved files
-    //    List<string> destinationPaths = new List<string>();
-
-    //    // Move the excluded files to the "exclude" directory
-    //    foreach (string file in excludedFiles)
-    //    {
-    //        string destinationPath = Path.Combine(excludePath, Path.GetFileName(file));
-    //        File.Move(file, destinationPath, true);
-
-    //        // Add the destination path to the list
-    //        destinationPaths.Add(destinationPath);
-    //    }
-
-    //    // Return the list of destination paths
-    //    return destinationPaths;
-    //}
 
     public void HandleExtension(string folderPath)
     {
@@ -384,11 +345,6 @@ public class Actions
         {
             return null;
         }
-    }
-
-    public void CreateConfigFile()
-    {
-
     }
 
     // Extract

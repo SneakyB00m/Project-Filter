@@ -62,11 +62,7 @@ namespace Project__Filter
                         {
                             case "checkBox_Include":
                                 string inputInclude = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "Default", -1, -1);
-                                actions.OrganizeFilesBasedOnCriteria(folderPath, JsonData, inputInclude);
-                                break;
-                            case "checkBox_Exclude":
-                                string inputExclude = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "Default", -1, -1);
-                                //actions.HandleExclude(folderPath, inputExclude);
+                                actions.OrganizeFilesBasedOnCriteria_Include(folderPath, JsonData, inputInclude);
                                 break;
                             case "checkBox_Extension":
                                 actions.HandleExtension(folderPath);
@@ -99,23 +95,5 @@ namespace Project__Filter
                 MessageBox.Show("No Folder Selected.");
             }
         }
-
-        private void checkBox_Include_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_Include.Checked)
-            {
-                checkBox_Exclude.Checked = false;
-            }
-        }
-
-        private void checkBox_Exclude_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_Exclude.Checked)
-            {
-                checkBox_Include.Checked = false;
-            }
-        }
-
-
     }
 }

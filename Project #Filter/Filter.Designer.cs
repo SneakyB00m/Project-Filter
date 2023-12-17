@@ -41,7 +41,6 @@
             checkBox_Duration = new CheckBox();
             checkBox_Resolution = new CheckBox();
             checkBox_Date = new CheckBox();
-            checkBox_Exclude = new CheckBox();
             label1 = new Label();
             textBox_Path = new TextBox();
             label2 = new Label();
@@ -162,14 +161,13 @@
             checkBox_Include.AutoSize = true;
             checkBox_Include.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Include.ForeColor = Color.White;
-            checkBox_Include.Location = new Point(71, 146);
+            checkBox_Include.Location = new Point(61, 146);
             checkBox_Include.Margin = new Padding(3, 2, 3, 2);
             checkBox_Include.Name = "checkBox_Include";
             checkBox_Include.Size = new Size(111, 27);
             checkBox_Include.TabIndex = 15;
             checkBox_Include.Text = "Includes";
             checkBox_Include.UseVisualStyleBackColor = true;
-            checkBox_Include.CheckedChanged += checkBox_Include_CheckedChanged;
             // 
             // checkBox_Duration
             // 
@@ -209,20 +207,6 @@
             checkBox_Date.TabIndex = 18;
             checkBox_Date.Text = "Date Range";
             checkBox_Date.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Exclude
-            // 
-            checkBox_Exclude.AutoSize = true;
-            checkBox_Exclude.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
-            checkBox_Exclude.ForeColor = Color.White;
-            checkBox_Exclude.Location = new Point(71, 175);
-            checkBox_Exclude.Margin = new Padding(3, 2, 3, 2);
-            checkBox_Exclude.Name = "checkBox_Exclude";
-            checkBox_Exclude.Size = new Size(113, 27);
-            checkBox_Exclude.TabIndex = 17;
-            checkBox_Exclude.Text = "Excludes";
-            checkBox_Exclude.UseVisualStyleBackColor = true;
-            checkBox_Exclude.CheckedChanged += checkBox_Exclude_CheckedChanged;
             // 
             // label1
             // 
@@ -312,7 +296,6 @@
             Controls.Add(checkBox_Duration);
             Controls.Add(checkBox_Resolution);
             Controls.Add(checkBox_Date);
-            Controls.Add(checkBox_Exclude);
             Controls.Add(checkBox_Include);
             Controls.Add(checkBox_Size);
             Controls.Add(checkBox_Extension);
@@ -345,7 +328,6 @@
         private CheckBox checkBox_Duration;
         private CheckBox checkBox_Resolution;
         private CheckBox checkBox_Date;
-        private CheckBox checkBox_Exclude;
         private Label label1;
         private TextBox textBox_Path;
         private Label label2;
