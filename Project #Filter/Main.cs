@@ -211,25 +211,27 @@ public class Actions
 
     public void HandleExtension(string folderPath)
     {
-        // Get all files in the directory and its subdirectories
-        List<string> allFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories).ToList();
+        // Get all the files in the folder and its subfolders
+        var files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
 
-        // Move the files to directories based on their extensions
-        foreach (string file in allFiles)
+        foreach (var file in files)
         {
-            string extension = Path.GetExtension(file).TrimStart('.').ToLower();
-            string fileDirectory = Path.GetDirectoryName(file);
-            string extensionPath = Path.Combine(fileDirectory, extension);
+            // Get the file extension
+            var extension = Path.GetExtension(file);
 
-            if (!Directory.Exists(extensionPath))
+            // Create a new directory for this extension if it doesn't exist
+            var newFolderPath = Path.Combine(folderPath, extension);
+            if (!Directory.Exists(newFolderPath))
             {
-                Directory.CreateDirectory(extensionPath);
+                Directory.CreateDirectory(newFolderPath);
             }
 
-            string destinationPath = Path.Combine(extensionPath, Path.GetFileName(file));
-            File.Move(file, destinationPath, true);
+            // Move the file to the new directory
+            var newFilePath = Path.Combine(newFolderPath, Path.GetFileName(file));
+            File.Move(file, newFilePath);
         }
     }
+
 
     public void HandleResolution(string folderPath)
     {
