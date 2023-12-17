@@ -65,9 +65,10 @@ namespace Project__Filter
                                 actions.OrganizeFilesBasedOnCriteria_Include(folderPath, JsonData, inputInclude);
                                 break;
                             case "checkBox_Extension":
-                                actions.HandleExtension(folderPath);
+                                actions.OrganizeFilesBasedOnExtension(folderPath);
                                 break;
                             case "checkBox_Resolution":
+                                actions.OrganizeFilesBasedOnResolution(folderPath, JsonData);
                                 break;
                             case "checkBox_Duration":
                                 break;

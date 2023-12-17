@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using NReco.VideoInfo;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
@@ -209,7 +210,7 @@ public class Actions
         }
     }
 
-    public void HandleExtension(string folderPath)
+    public void OrganizeFilesBasedOnExtension(string folderPath)
     {
         // Get all the files in the folder and its subfolders
         var files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
@@ -232,18 +233,60 @@ public class Actions
         }
     }
 
+    public void OrganizeFilesBasedOnResolution(string folderPath, Dictionary<string, object> data)
+    {
+        // Get the video resolutions from the dictionary
+        var videoResolutions = ((JArray)data["Resolution"]).ToObject<string[]>();
 
-    public void HandleResolution(string folderPath)
+        // Check if the folder "filter" exists in the given path
+        string filterFolderPath = Path.Combine(folderPath, "filter");
+        if (Directory.Exists(filterFolderPath))
+        {
+            // Check if the folder "Videos" exists inside the "filter" folder
+            string videosFolderPath = Path.Combine(filterFolderPath, "Videos");
+            if (Directory.Exists(videosFolderPath))
+            {
+                // Get all the files in the "Videos" folder and its subfolders
+                var files = Directory.GetFiles(videosFolderPath, "*.*", SearchOption.AllDirectories);
+
+                foreach (var file in files)
+                {
+                    // Get the resolution of the video file
+                    string resolution = GetVideoResolution(file);
+
+                    // If the resolution is in the list of video resolutions
+                    if (videoResolutions.Contains(resolution))
+                    {
+                        // Create a new folder with the resolution name if it doesn't exist
+                        string resolutionFolderPath = Path.Combine(videosFolderPath, resolution);
+                        Directory.CreateDirectory(resolutionFolderPath);
+
+                        // Move the file to the new folder
+                        string destinationPath = Path.Combine(resolutionFolderPath, Path.GetFileName(file));
+                        File.Move(file, destinationPath);
+                    }
+                }
+            }
+        }
+    }
+
+    public string GetVideoResolution(string filePath)
+    {
+        var ffProbe = new FFProbe();
+        var videoInfo = ffProbe.GetMediaInfo(filePath);
+
+        int width = videoInfo.Streams[0].Width;
+        int height = videoInfo.Streams[0].Height;
+
+        return $"{width}x{height}";
+    }
+
+    public void OrganizeFilesBasedOnDuration(string folderPath)
     {
 
     }
 
-    public void HandleDuration(string folderPath)
-    {
-
-    }
-
-    public void HandleSize(string folderPath)
+    public void OrganizeFilesBasedOnSize(string folderPath)
     {
         // Read the JSON file
         string json = File.ReadAllText("Config.json");
@@ -288,7 +331,7 @@ public class Actions
         }
     }
 
-    public void HandleDate(string folderPath)
+    public void OrganizeFilesBasedOnDate(string folderPath)
     {
         // Get all files in the directory and its subdirectories
         string[] files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
@@ -311,7 +354,7 @@ public class Actions
         }
     }
 
-    public void HandleAToZ(string folderPath)
+    public void OrganizeFilesBasedOnAToZ(string folderPath)
     {
         // Get all files in the directory and its subdirectories
         var files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
