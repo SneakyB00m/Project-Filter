@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using static System.Windows.Forms.Design.AxImporter;
 
 namespace Project__Filter
@@ -14,11 +15,30 @@ namespace Project__Filter
     public partial class Filter : UserControl
     {
         private string folderPath;
+        Dictionary<string, object> JsonData;
         Actions actions = new Actions();
 
         public Filter()
         {
             InitializeComponent();
+        }
+
+        private void Filter_Load(object sender, EventArgs e)
+        {
+            string filePath = "Config.json";
+
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("Error No config File Found");
+            }
+            else
+            {
+                // Read the JSON file
+                string json = File.ReadAllText(filePath);
+
+                // Deserialize the JSON string to a dictionary
+                JsonData = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
+            }
         }
 
         private void button_Path_Click(object sender, EventArgs e)
@@ -29,7 +49,6 @@ namespace Project__Filter
 
         private void button_Filter_Click(object sender, EventArgs e)
         {
-
             if (!string.IsNullOrEmpty(folderPath))
             {
                 List<CheckBox> checkedCheckBoxes = actions.GetCheckedCheckBoxes(this);
@@ -43,11 +62,11 @@ namespace Project__Filter
                         {
                             case "checkBox_Include":
                                 string inputInclude = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "Default", -1, -1);
-                                actions.HandleInclude(folderPath, inputInclude);
+                                actions.OrganizeFilesBasedOnCriteria(folderPath, JsonData, inputInclude);
                                 break;
                             case "checkBox_Exclude":
                                 string inputExclude = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "Default", -1, -1);
-                                actions.HandleExclude(folderPath, inputExclude);
+                                //actions.HandleExclude(folderPath, inputExclude);
                                 break;
                             case "checkBox_Extension":
                                 actions.HandleExtension(folderPath);
@@ -96,5 +115,7 @@ namespace Project__Filter
                 checkBox_Include.Checked = false;
             }
         }
+
+
     }
 }

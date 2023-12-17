@@ -2,7 +2,8 @@
   "VideoExtensions": [
     ".mp4",
     ".avi",
-    ".mkv"
+    ".mkv",
+    ".webm"
   ],
   "FileSize": [
     1024,

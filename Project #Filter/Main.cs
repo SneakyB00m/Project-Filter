@@ -14,7 +14,7 @@ namespace Project__Filter
 {
     public partial class Main : Form
     {
-        Dictionary<string, object> data;    
+        Dictionary<string, object> data;
 
         public Main()
         {
@@ -151,81 +151,102 @@ public class Actions
         return checkedCheckBoxes; // Return the list of checked checkboxes
     }
 
-    public List<string> HandleInclude(string folderPath, string include)
+    public void FilterVideoFilesBasedOnCriteria(string folderPath, Dictionary<string, object> data, string Include)
     {
-        string filteredPath = Path.Combine(folderPath, "Filtered");
-        if (!Directory.Exists(filteredPath))
+        // Get the video extensions from the dictionary
+        var videoExtensions = ((JArray)data["VideoExtensions"]).ToObject<string[]>();
+
+        // Get all the files in the folder and its subfolders
+        var files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
+
+        // Filter the files based on the video extensions
+        var filteredFiles = files.Where(file => videoExtensions.Contains(Path.GetExtension(file))).ToList();
+
+        // If there are any filtered files, create the "Filter/Videos" directory and move the files there
+        if (filteredFiles.Any())
         {
-            Directory.CreateDirectory(filteredPath);
+            var videoDirectory = Path.Combine(folderPath, "Filter", "Videos");
+            Directory.CreateDirectory(videoDirectory);
+
+            foreach (var file in filteredFiles)
+            {
+                var destinationPath = Path.Combine(videoDirectory, Path.GetFileName(file));
+                File.Move(file, destinationPath);
+            }
         }
 
-        string includePath = Path.Combine(filteredPath, "Includes");
-        if (!Directory.Exists(includePath))
+        // Get the remaining files
+        var otherFiles = files.Except(filteredFiles);
+
+        // If there are any other files, create the "Filter/Files" directory and move the files there
+        if (otherFiles.Any())
         {
-            Directory.CreateDirectory(includePath);
+            var filesDirectory = Path.Combine(folderPath, "Filter", "Files");
+            Directory.CreateDirectory(filesDirectory);
+
+            foreach (var file in otherFiles)
+            {
+                var destinationPath = Path.Combine(filesDirectory, Path.GetFileName(file));
+                File.Move(file, destinationPath);
+            }
         }
 
-        // Get all files in the folder and its subfolders
-        List<string> allFiles = GetAllFiles(folderPath);
+        // Create the "Filter/Include" directory
+        var includedDirectory = Path.Combine(folderPath, "Filter", Include);
+        Directory.CreateDirectory(includedDirectory);
 
-        // Filter the files based on the include string
-        List<string> includedFiles = allFiles.Where(file => Path.GetFileNameWithoutExtension(file).Contains(include, StringComparison.OrdinalIgnoreCase)).ToList();
+        // Get all the files in the "Filter/Videos" and "Filter/Files" directories
+        var filterFiles = Directory.GetFiles(Path.Combine(folderPath, "Filter"), "*.*", SearchOption.AllDirectories);
 
-        // List to store the destination paths of the moved files
-        List<string> destinationPaths = new List<string>();
+        // Filter the files based on the Include string
+        var includeFiles = filterFiles.Where(file => Path.GetFileName(file).Contains(Include));
 
-        // Move the included files to the "include" directory
-        foreach (string file in includedFiles)
+        // Move the include files to the "Filter/Include" directory
+        foreach (var file in includeFiles)
         {
-            string destinationPath = Path.Combine(includePath, Path.GetFileName(file));
-            File.Move(file, destinationPath, true);
-
-            // Add the destination path to the list
-            destinationPaths.Add(destinationPath);
+            var destinationPath = Path.Combine(includedDirectory, Path.GetFileName(file));
+            File.Move(file, destinationPath);
         }
-
-        // Return the list of destination paths
-        return destinationPaths;
     }
 
-    public List<string> HandleExclude(string folderPath, string exclude)
-    {
-        // Create the "filtered" directory if it doesn't exist
-        string filteredPath = Path.Combine(folderPath, "Filtered");
-        if (!Directory.Exists(filteredPath))
-        {
-            Directory.CreateDirectory(filteredPath);
-        }
+    //public List<string> HandleExclude(string folderPath, string exclude)
+    //{
+    //    // Create the "filtered" directory if it doesn't exist
+    //    string filteredPath = Path.Combine(folderPath, "Filtered");
+    //    if (!Directory.Exists(filteredPath))
+    //    {
+    //        Directory.CreateDirectory(filteredPath);
+    //    }
 
-        // Create the "exclude" directory inside the "filtered" directory
-        string excludePath = Path.Combine(filteredPath, "Excludes");
-        if (!Directory.Exists(excludePath))
-        {
-            Directory.CreateDirectory(excludePath);
-        }
+    //    // Create the "exclude" directory inside the "filtered" directory
+    //    string excludePath = Path.Combine(filteredPath, "Excludes");
+    //    if (!Directory.Exists(excludePath))
+    //    {
+    //        Directory.CreateDirectory(excludePath);
+    //    }
 
-        // Get all files in the folder and its subfolders
-        List<string> allFiles = GetAllFiles(folderPath);
+    //    // Get all files in the folder and its subfolders
+    //    List<string> allFiles = GetAllFiles(folderPath);
 
-        // Filter the files based on the exclude string
-        List<string> excludedFiles = allFiles.Where(file => Path.GetFileNameWithoutExtension(file).IndexOf(exclude, StringComparison.OrdinalIgnoreCase) < 0).ToList();
+    //    // Filter the files based on the exclude string
+    //    List<string> excludedFiles = allFiles.Where(file => Path.GetFileNameWithoutExtension(file).IndexOf(exclude, StringComparison.OrdinalIgnoreCase) < 0).ToList();
 
-        // List to store the destination paths of the moved files
-        List<string> destinationPaths = new List<string>();
+    //    // List to store the destination paths of the moved files
+    //    List<string> destinationPaths = new List<string>();
 
-        // Move the excluded files to the "exclude" directory
-        foreach (string file in excludedFiles)
-        {
-            string destinationPath = Path.Combine(excludePath, Path.GetFileName(file));
-            File.Move(file, destinationPath, true);
+    //    // Move the excluded files to the "exclude" directory
+    //    foreach (string file in excludedFiles)
+    //    {
+    //        string destinationPath = Path.Combine(excludePath, Path.GetFileName(file));
+    //        File.Move(file, destinationPath, true);
 
-            // Add the destination path to the list
-            destinationPaths.Add(destinationPath);
-        }
+    //        // Add the destination path to the list
+    //        destinationPaths.Add(destinationPath);
+    //    }
 
-        // Return the list of destination paths
-        return destinationPaths;
-    }
+    //    // Return the list of destination paths
+    //    return destinationPaths;
+    //}
 
     public void HandleExtension(string folderPath)
     {
@@ -247,7 +268,7 @@ public class Actions
             string destinationPath = Path.Combine(extensionPath, Path.GetFileName(file));
             File.Move(file, destinationPath, true);
         }
-    }     
+    }
 
     public void HandleResolution(string folderPath)
     {
@@ -365,30 +386,9 @@ public class Actions
         }
     }
 
-    public List<string> GetAllFiles(string folderPath)
+    public void CreateConfigFile()
     {
-        List<string> filesList = new List<string>();
 
-        // Check if the directory exists
-        if (Directory.Exists(folderPath))
-        {
-            // Get the files in the directory
-            string[] files = Directory.GetFiles(folderPath);
-            filesList.AddRange(files);
-
-            // Get the subdirectories in the directory
-            string[] subdirectories = Directory.GetDirectories(folderPath);
-
-            // Use a foreach loop to check each subdirectory
-            foreach (string subdirectory in subdirectories)
-            {
-                // Use recursion to get the files in the subdirectory
-                List<string> subdirectoryFiles = GetAllFiles(subdirectory);
-                filesList.AddRange(subdirectoryFiles);
-            }
-        }
-
-        return filesList; // Return the list of files
     }
 
     // Extract
