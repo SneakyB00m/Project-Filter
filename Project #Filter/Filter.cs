@@ -65,18 +65,22 @@ namespace Project__Filter
                                 actions.OrganizeFilesBasedOnCriteria_Include(folderPath, JsonData, inputInclude);
                                 break;
                             case "checkBox_Extension":
-                                actions.OrganizeFilesBasedOnExtension(folderPath);
+                                actions.OrganizeFilesBasedOnExtension(folderPath,JsonData);
                                 break;
                             case "checkBox_Resolution":
                                 actions.OrganizeFilesBasedOnResolution(folderPath, JsonData);
                                 break;
                             case "checkBox_Duration":
+                                actions.OrganizeFilesBasedOnDuration(folderPath, JsonData);
                                 break;
                             case "checkBox_Size":
+                                actions.OrganizeFilesBasedOnSize(folderPath, JsonData);
                                 break;
                             case "checkBox_Date":
+                                actions.OrganizeFilesBasedOnDate(folderPath, JsonData);
                                 break;
                             case "checkBox_AtoZ":
+                                actions.OrganizeFilesBasedOnAToZ(folderPath, JsonData);
                                 break;
                             case "checkBox_Delete":
                                 break;

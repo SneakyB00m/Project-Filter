@@ -152,7 +152,7 @@ public class Actions
         return checkedCheckBoxes; // Return the list of checked checkboxes
     }
 
-    public void OrganizeFilesBasedOnCriteria_Include(string folderPath, Dictionary<string, object> data, string Include)
+    public void OrganizeFilesBasedOnCriteria(string folderPath, Dictionary<string, object> data)
     {
         // Get the video extensions from the dictionary
         var videoExtensions = ((JArray)data["VideoExtensions"]).ToObject<string[]>();
@@ -167,7 +167,10 @@ public class Actions
         if (filteredFiles.Any())
         {
             var videoDirectory = Path.Combine(folderPath, "Filter", "Videos");
-            Directory.CreateDirectory(videoDirectory);
+            if (!Directory.Exists(videoDirectory))
+            {
+                Directory.CreateDirectory(videoDirectory);
+            }
 
             foreach (var file in filteredFiles)
             {
@@ -183,7 +186,57 @@ public class Actions
         if (otherFiles.Any())
         {
             var filesDirectory = Path.Combine(folderPath, "Filter", "Files");
-            Directory.CreateDirectory(filesDirectory);
+            if (!Directory.Exists(filesDirectory))
+            {
+                Directory.CreateDirectory(filesDirectory);
+            }
+
+            foreach (var file in otherFiles)
+            {
+                var destinationPath = Path.Combine(filesDirectory, Path.GetFileName(file));
+                File.Move(file, destinationPath);
+            }
+        }
+    }
+
+    public void OrganizeFilesBasedOnCriteria_Include(string folderPath, Dictionary<string, object> data, string Include)
+    {
+        // Get the video extensions from the dictionary
+        var videoExtensions = ((JArray)data["VideoExtensions"]).ToObject<string[]>();
+
+        // Get all the files in the folder and its subfolders
+        var files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
+
+        // Filter the files based on the video extensions
+        var filteredFiles = files.Where(file => videoExtensions.Contains(Path.GetExtension(file))).ToList();
+
+        // If there are any filtered files, create the "Filter/Videos" directory and move the files there
+        if (filteredFiles.Any())
+        {
+            var videoDirectory = Path.Combine(folderPath, "Filter", "Videos");
+            if (!Directory.Exists(videoDirectory))
+            {
+                Directory.CreateDirectory(videoDirectory);
+            }
+
+            foreach (var file in filteredFiles)
+            {
+                var destinationPath = Path.Combine(videoDirectory, Path.GetFileName(file));
+                File.Move(file, destinationPath);
+            }
+        }
+
+        // Get the remaining files
+        var otherFiles = files.Except(filteredFiles);
+
+        // If there are any other files, create the "Filter/Files" directory and move the files there
+        if (otherFiles.Any())
+        {
+            var filesDirectory = Path.Combine(folderPath, "Filter", "Files");
+            if (!Directory.Exists(filesDirectory))
+            {
+                Directory.CreateDirectory(filesDirectory);
+            }
 
             foreach (var file in otherFiles)
             {
@@ -194,7 +247,10 @@ public class Actions
 
         // Create the "Filter/Include" directory
         var includedDirectory = Path.Combine(folderPath, "Filter", Include);
-        Directory.CreateDirectory(includedDirectory);
+        if (!Directory.Exists(includedDirectory))
+        {
+            Directory.CreateDirectory(includedDirectory);
+        }
 
         // Get all the files in the "Filter/Videos" and "Filter/Files" directories
         var filterFiles = Directory.GetFiles(Path.Combine(folderPath, "Filter"), "*.*", SearchOption.AllDirectories);
@@ -210,28 +266,49 @@ public class Actions
         }
     }
 
-    public void OrganizeFilesBasedOnExtension(string folderPath)
+    public void OrganizeFilesBasedOnExtension(string folderPath, Dictionary<string, object> data)
     {
-        // Get all the files in the folder and its subfolders
-        var files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
+        // Check if the folder exists
+        if (!Directory.Exists(folderPath))
+        {
+            return;
+        }
 
-        foreach (var file in files)
+        // Get the subfolders 'videos' and 'files'
+        var videoFolder = Path.Combine(folderPath, "Filter", "Videos");
+        var filesFolder = Path.Combine(folderPath, "Filter", "Files");
+
+        // Check if the subfolders exist
+        if (!Directory.Exists(videoFolder) || !Directory.Exists(filesFolder))
+        {
+            OrganizeFilesBasedOnCriteria(folderPath, data);
+        }
+
+        // Get all files in the 'videos' and 'files' folders
+        var videoFiles = Directory.GetFiles(videoFolder);
+        var otherFiles = Directory.GetFiles(filesFolder);
+
+        // Combine all files
+        var allFiles = videoFiles.Concat(otherFiles);
+
+        foreach (var file in allFiles)
         {
             // Get the file extension
             var extension = Path.GetExtension(file);
 
-            // Create a new directory for this extension if it doesn't exist
-            var newFolderPath = Path.Combine(folderPath, extension);
-            if (!Directory.Exists(newFolderPath))
-            {
-                Directory.CreateDirectory(newFolderPath);
-            }
+            // Determine the parent folder ('Videos' or 'Files') based on the file's current location
+            var parentFolder = file.Contains("Videos") ? videoFolder : filesFolder;
 
-            // Move the file to the new directory
+            // Create a new folder for this extension if it doesn't exist
+            var newFolderPath = Path.Combine(parentFolder, extension);
+            Directory.CreateDirectory(newFolderPath);
+
+            // Move the file to the new folder
             var newFilePath = Path.Combine(newFolderPath, Path.GetFileName(file));
             File.Move(file, newFilePath);
         }
     }
+
 
     public void OrganizeFilesBasedOnResolution(string folderPath, Dictionary<string, object> data)
     {
@@ -255,6 +332,7 @@ public class Actions
                     string resolution = GetVideoResolution(file);
 
                     // If the resolution is in the list of video resolutions
+#pragma warning disable CS8604 // Possible null reference argument.
                     if (videoResolutions.Contains(resolution))
                     {
                         // Create a new folder with the resolution name if it doesn't exist
@@ -265,6 +343,7 @@ public class Actions
                         string destinationPath = Path.Combine(resolutionFolderPath, Path.GetFileName(file));
                         File.Move(file, destinationPath);
                     }
+#pragma warning restore CS8604 // Possible null reference argument.
                 }
             }
         }
@@ -281,57 +360,60 @@ public class Actions
         return $"{width}x{height}";
     }
 
-    public void OrganizeFilesBasedOnDuration(string folderPath)
+    public void OrganizeFilesBasedOnDuration(string folderPath, Dictionary<string, object> data)
     {
+        // Get the video durations from the dictionary
+        var videoDurations = ((JArray)data["Duration"]).ToObject<int[]>();
 
-    }
-
-    public void OrganizeFilesBasedOnSize(string folderPath)
-    {
-        // Read the JSON file
-        string json = File.ReadAllText("Config.json");
-
-        // Deserialize the JSON string to a dictionary
-        Dictionary<string, object> data = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
-
-        // Get the list of file sizes from the dictionary
-        List<int> fileSizes = ((JArray)data["FileSize"]).ToObject<List<int>>();
-        fileSizes.Sort();
-
-        // Get all files in the directory and its subdirectories
-        string[] files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
-
-        foreach (string file in files)
+        // Check if the folder "filter" exists in the given path
+        string filterFolderPath = Path.Combine(folderPath, "filter");
+        if (Directory.Exists(filterFolderPath))
         {
-            // Get the size of the file
-            FileInfo fileInfo = new FileInfo(file);
-            long size = fileInfo.Length;
-
-            // Find the appropriate folder for this file size
-            int folderSize = fileSizes.FirstOrDefault(s => size <= s);
-            if (folderSize == 0)
+            // Check if the folder "Videos" exists inside the "filter" folder
+            string videosFolderPath = Path.Combine(filterFolderPath, "Videos");
+            if (Directory.Exists(videosFolderPath))
             {
-                // If the file is larger than all specified sizes, put it in a separate folder
-                folderSize = fileSizes.Max() + 1;
+                // Get all the files in the "Videos" folder and its subfolders
+                var files = Directory.GetFiles(videosFolderPath, "*.*", SearchOption.AllDirectories);
+
+                foreach (var file in files)
+                {
+                    // Get the duration of the video file
+                    int duration = GetVideoDuration(file);
+
+                    // If the duration is in the list of video durations
+                    if (videoDurations.Contains(duration))
+                    {
+                        // Create a new folder with the duration name if it doesn't exist
+                        string durationFolderPath = Path.Combine(videosFolderPath, duration.ToString());
+                        Directory.CreateDirectory(durationFolderPath);
+
+                        // Move the file to the new folder
+                        string destinationPath = Path.Combine(durationFolderPath, Path.GetFileName(file));
+                        File.Move(file, destinationPath);
+                    }
+                }
             }
-
-            // Convert the folder size to gigabytes
-            double folderSizeInGb = folderSize / 1024.0;
-
-            // Create the size folder if it doesn't exist
-            string sizeFolder = Path.Combine(folderPath, $"{folderSizeInGb} GB");
-            if (!Directory.Exists(sizeFolder))
-            {
-                Directory.CreateDirectory(sizeFolder);
-            }
-
-            // Move the file into the size folder
-            string fileName = Path.GetFileName(file);
-            File.Move(file, Path.Combine(sizeFolder, fileName));
         }
     }
 
-    public void OrganizeFilesBasedOnDate(string folderPath)
+    public int GetVideoDuration(string filePath)
+    {
+        var ffProbe = new FFProbe();
+        var videoInfo = ffProbe.GetMediaInfo(filePath);
+
+        // Get the duration in seconds
+        int duration = (int)videoInfo.Duration.TotalSeconds;
+
+        return duration;
+    }
+
+    public void OrganizeFilesBasedOnSize(string folderPath, Dictionary<string, object> data)
+    {
+
+    }
+
+    public void OrganizeFilesBasedOnDate(string folderPath, Dictionary<string, object> data)
     {
         // Get all files in the directory and its subdirectories
         string[] files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
@@ -354,7 +436,7 @@ public class Actions
         }
     }
 
-    public void OrganizeFilesBasedOnAToZ(string folderPath)
+    public void OrganizeFilesBasedOnAToZ(string folderPath, Dictionary<string, object> data)
     {
         // Get all files in the directory and its subdirectories
         var files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
@@ -377,6 +459,7 @@ public class Actions
             File.Move(file, newFilePath);
         }
     }
+
 
     // Univresal
     public string? OpenFolderManager()
@@ -691,7 +774,9 @@ public class Actions
 
         using (MemoryStream ms = new MemoryStream())
         {
+#pragma warning disable SYSLIB0021 // Type or member is obsolete
             using AesCryptoServiceProvider AES = new AesCryptoServiceProvider();
+#pragma warning restore SYSLIB0021 // Type or member is obsolete
             AES.KeySize = 256;
             AES.BlockSize = 128;
 
