@@ -315,6 +315,16 @@ public class Actions
         // Get the video resolutions from the dictionary
         var videoResolutions = ((JArray)data["Resolution"]).ToObject<string[]>();
 
+        // Get the subfolders 'videos' and 'files'
+        var videoFolder = Path.Combine(folderPath, "Filter", "Videos");
+        var filesFolder = Path.Combine(folderPath, "Filter", "Files");
+
+        // Check if the subfolders exist
+        if (!Directory.Exists(videoFolder) || !Directory.Exists(filesFolder))
+        {
+            OrganizeFilesBasedOnCriteria(folderPath, data);
+        }
+
         // Check if the folder "filter" exists in the given path
         string filterFolderPath = Path.Combine(folderPath, "filter");
         if (Directory.Exists(filterFolderPath))
@@ -336,7 +346,8 @@ public class Actions
                     if (videoResolutions.Contains(resolution))
                     {
                         // Create a new folder with the resolution name if it doesn't exist
-                        string resolutionFolderPath = Path.Combine(videosFolderPath, resolution);
+                        string CurrentFilePath = Path.GetDirectoryName(file);
+                        string resolutionFolderPath = Path.Combine(CurrentFilePath, resolution);
                         Directory.CreateDirectory(resolutionFolderPath);
 
                         // Move the file to the new folder
@@ -365,8 +376,18 @@ public class Actions
         // Get the video durations from the dictionary
         var videoDurations = ((JArray)data["Duration"]).ToObject<int[]>();
 
+        // Get the subfolders 'videos' and 'files'
+        var videoFolder = Path.Combine(folderPath, "Filter", "Videos");
+        var filesFolder = Path.Combine(folderPath, "Filter", "Files");
+
+        // Check if the subfolders exist
+        if (!Directory.Exists(videoFolder) || !Directory.Exists(filesFolder))
+        {
+            OrganizeFilesBasedOnCriteria(folderPath, data);
+        }
+
         // Check if the folder "filter" exists in the given path
-        string filterFolderPath = Path.Combine(folderPath, "filter");
+        string filterFolderPath = Path.Combine(folderPath, "Filter");
         if (Directory.Exists(filterFolderPath))
         {
             // Check if the folder "Videos" exists inside the "filter" folder
@@ -381,11 +402,14 @@ public class Actions
                     // Get the duration of the video file
                     int duration = GetVideoDuration(file);
 
-                    // If the duration is in the list of video durations
-                    if (videoDurations.Contains(duration))
+                    // Find the appropriate duration threshold
+
+                    int durationThreshold = videoDurations.FirstOrDefault(d => duration <= d);
+                    if (durationThreshold != 0)
                     {
-                        // Create a new folder with the duration name if it doesn't exist
-                        string durationFolderPath = Path.Combine(videosFolderPath, duration.ToString());
+                        // Create a new folder with the duration threshold name if it doesn't exist
+                        string CurrentFilePath = Path.GetDirectoryName(file);
+                        string durationFolderPath = Path.Combine(CurrentFilePath, durationThreshold.ToString());
                         Directory.CreateDirectory(durationFolderPath);
 
                         // Move the file to the new folder
@@ -394,7 +418,7 @@ public class Actions
                     }
                 }
             }
-        }
+        }  
     }
 
     public int GetVideoDuration(string filePath)
@@ -459,7 +483,6 @@ public class Actions
             File.Move(file, newFilePath);
         }
     }
-
 
     // Univresal
     public string? OpenFolderManager()
