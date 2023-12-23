@@ -403,13 +403,15 @@ public class Actions
                     int duration = GetVideoDuration(file);
 
                     // Find the appropriate duration threshold
-
                     int durationThreshold = videoDurations.FirstOrDefault(d => duration <= d);
                     if (durationThreshold != 0)
                     {
+                        // Convert the duration threshold to minutes
+                        int durationThresholdInMinutes = durationThreshold / 60;
+
                         // Create a new folder with the duration threshold name if it doesn't exist
                         string CurrentFilePath = Path.GetDirectoryName(file);
-                        string durationFolderPath = Path.Combine(CurrentFilePath, durationThreshold.ToString());
+                        string durationFolderPath = Path.Combine(CurrentFilePath, $"{durationThresholdInMinutes}Min");
                         Directory.CreateDirectory(durationFolderPath);
 
                         // Move the file to the new folder
@@ -418,7 +420,7 @@ public class Actions
                     }
                 }
             }
-        }  
+        }
     }
 
     public int GetVideoDuration(string filePath)
