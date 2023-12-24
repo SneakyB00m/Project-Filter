@@ -95,10 +95,6 @@ namespace Project__Filter
                 List<string> videoExtensions = new List<string> { ".mp4", ".avi", ".mkv" };
                 data.Add("VideoExtensions", videoExtensions);
 
-                // Add a section for file size in bytes
-                List<int> fileSizes = new List<int> { 1024, 2048, 4096 }; // replace with actual file sizes
-                data.Add("FileSize", fileSizes);
-
                 // Add a section for duration in seconds
                 List<int> durations = new List<int> { 5400, 7200, 9000 }; // replace with actual durations
                 data.Add("Duration", durations);
@@ -309,7 +305,6 @@ public class Actions
         }
     }
 
-
     public void OrganizeFilesBasedOnResolution(string folderPath, Dictionary<string, object> data)
     {
         // Get the video resolutions from the dictionary
@@ -436,7 +431,68 @@ public class Actions
 
     public void OrganizeFilesBasedOnSize(string folderPath, Dictionary<string, object> data)
     {
+        // Get the subfolders 'videos' and 'files'
+        var videoFolder = Path.Combine(folderPath, "Filter", "Videos");
+        var filesFolder = Path.Combine(folderPath, "Filter", "Files");
 
+        // Check if the subfolders exist
+        if (!Directory.Exists(videoFolder) || !Directory.Exists(filesFolder))
+        {
+            OrganizeFilesBasedOnCriteria(folderPath, data);
+        }
+        if (Directory.Exists(videoFolder))
+        {
+            OrganizeFilesInFolderBasedOnSize(videoFolder);
+        }
+        if (Directory.Exists(filesFolder))
+        {
+            OrganizeFilesInFolderBasedOnSize(filesFolder);
+        }
+    }
+
+    private void OrganizeFilesInFolderBasedOnSize(string folderPath)
+    {
+        // Get all files in the directory
+        string[] files = Directory.GetFiles(folderPath);
+
+        foreach (string file in files)
+        {
+            FileInfo fileInfo = new FileInfo(file);
+            long sizeInBytes = fileInfo.Length;
+            string sizeStr;
+
+            // Determine the size unit and convert the size accordingly
+            if (sizeInBytes >= 1073741824) // Size is in GBs
+            {
+                double sizeInGB = sizeInBytes / (1024.0 * 1024.0 * 1024.0);
+                sizeStr = Math.Round(sizeInGB, 2) + "GB";
+            }
+            else if (sizeInBytes >= 1048576) // Size is in MBs
+            {
+                double sizeInMB = sizeInBytes / (1024.0 * 1024.0);
+                sizeStr = Math.Round(sizeInMB, 2) + "MB";
+            }
+            else if (sizeInBytes >= 1024) // Size is in KBs
+            {
+                double sizeInKB = sizeInBytes / 1024.0;
+                sizeStr = Math.Round(sizeInKB, 2) + "KB";
+            }
+            else // Size is in bytes
+            {
+                sizeStr = sizeInBytes + "B";
+            }
+
+            // Create a new directory for the file size if it doesn't exist
+            string newSizeFolderPath = Path.Combine(folderPath, sizeStr);
+            if (!Directory.Exists(newSizeFolderPath))
+            {
+                Directory.CreateDirectory(newSizeFolderPath);
+            }
+
+            // Move the file to the new directory
+            string newFilePath = Path.Combine(newSizeFolderPath, fileInfo.Name);
+            File.Move(file, newFilePath);
+        }
     }
 
     public void OrganizeFilesBasedOnDate(string folderPath, Dictionary<string, object> data)
