@@ -18,9 +18,21 @@ namespace Project__Filter
         Dictionary<string, object> JsonData;
         Actions actions = new Actions();
 
+        List<CheckBox> checkedOrder = new List<CheckBox>();
+
         public Filter()
         {
             InitializeComponent();
+
+            // Add the CheckedChanged event handler for each checkbox
+            foreach (Control control in this.Controls)
+            {
+                if (control is CheckBox)
+                {
+                    CheckBox checkBox = control as CheckBox;
+                    checkBox.CheckedChanged += checkBox_CheckedChanged;
+                }
+            }
         }
 
         private void Filter_Load(object sender, EventArgs e)
@@ -51,7 +63,7 @@ namespace Project__Filter
         {
             if (!string.IsNullOrEmpty(folderPath))
             {
-                List<CheckBox> checkedCheckBoxes = actions.GetCheckedCheckBoxes(this);
+                List<CheckBox> checkedCheckBoxes = GetCheckedCheckBoxes();
 
                 if (checkedCheckBoxes.Count > 0)
                 {
@@ -65,7 +77,7 @@ namespace Project__Filter
                                 actions.OrganizeFilesBasedOnCriteria_Include(folderPath, JsonData, inputInclude);
                                 break;
                             case "checkBox_Extension":
-                                actions.OrganizeFilesBasedOnExtension(folderPath,JsonData);
+                                actions.OrganizeFilesBasedOnExtension(folderPath, JsonData);
                                 break;
                             case "checkBox_Resolution":
                                 actions.OrganizeFilesBasedOnResolution(folderPath, JsonData);
@@ -99,6 +111,27 @@ namespace Project__Filter
             {
                 MessageBox.Show("No Folder Selected.");
             }
+        }
+
+
+        // Funcs
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+
+            if (checkBox.Checked)
+            {
+                checkedOrder.Add(checkBox);
+            }
+            else
+            {
+                checkedOrder.Remove(checkBox);
+            }
+        }
+
+        public List<CheckBox> GetCheckedCheckBoxes()
+        {
+            return checkedOrder; // Return the list of checked checkboxes in the order they were chec
         }
     }
 }
