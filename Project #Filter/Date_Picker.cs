@@ -16,5 +16,15 @@ namespace Project__Filter
         {
             InitializeComponent();
         }
+
+        private void button_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button_Check_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

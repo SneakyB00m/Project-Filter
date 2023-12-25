@@ -89,7 +89,9 @@ namespace Project__Filter
                                 actions.OrganizeFilesBasedOnSize(folderPath, JsonData);
                                 break;
                             case "checkBox_Date":
-                                actions.OrganizeFilesBasedOnDate(folderPath, JsonData);
+                                DatePicker date = new DatePicker();
+                                date.Show();
+                                //actions.OrganizeFilesBasedOnDate(folderPath, JsonData);
                                 break;
                             case "checkBox_AtoZ":
                                 actions.OrganizeFilesBasedOnAToZ(folderPath, JsonData);
