@@ -40,13 +40,12 @@
             checkBox_Include = new CheckBox();
             checkBox_Duration = new CheckBox();
             checkBox_Resolution = new CheckBox();
-            checkBox_Date = new CheckBox();
             label1 = new Label();
             textBox_Path = new TextBox();
-            label2 = new Label();
             checkBox_Delete = new CheckBox();
             button_Filter = new Button();
             progressBar_Time = new ProgressBar();
+            label2 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -174,7 +173,7 @@
             checkBox_Duration.AutoSize = true;
             checkBox_Duration.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Duration.ForeColor = Color.White;
-            checkBox_Duration.Location = new Point(415, 204);
+            checkBox_Duration.Location = new Point(408, 175);
             checkBox_Duration.Margin = new Padding(3, 2, 3, 2);
             checkBox_Duration.Name = "checkBox_Duration";
             checkBox_Duration.Size = new Size(112, 27);
@@ -187,26 +186,13 @@
             checkBox_Resolution.AutoSize = true;
             checkBox_Resolution.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Resolution.ForeColor = Color.White;
-            checkBox_Resolution.Location = new Point(415, 175);
+            checkBox_Resolution.Location = new Point(408, 146);
             checkBox_Resolution.Margin = new Padding(3, 2, 3, 2);
             checkBox_Resolution.Name = "checkBox_Resolution";
             checkBox_Resolution.Size = new Size(208, 27);
             checkBox_Resolution.TabIndex = 19;
             checkBox_Resolution.Text = "Display Resolution";
             checkBox_Resolution.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Date
-            // 
-            checkBox_Date.AutoSize = true;
-            checkBox_Date.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
-            checkBox_Date.ForeColor = Color.White;
-            checkBox_Date.Location = new Point(415, 146);
-            checkBox_Date.Margin = new Padding(3, 2, 3, 2);
-            checkBox_Date.Name = "checkBox_Date";
-            checkBox_Date.Size = new Size(139, 27);
-            checkBox_Date.TabIndex = 18;
-            checkBox_Date.Text = "Date Range";
-            checkBox_Date.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -232,18 +218,6 @@
             textBox_Path.ReadOnly = true;
             textBox_Path.Size = new Size(523, 20);
             textBox_Path.TabIndex = 25;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.FromArgb(64, 64, 64);
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(41, 317);
-            label2.Name = "label2";
-            label2.Size = new Size(292, 19);
-            label2.TabIndex = 26;
-            label2.Text = "Would you like to delete the original files?";
             // 
             // checkBox_Delete
             // 
@@ -282,6 +256,18 @@
             progressBar_Time.Step = 1;
             progressBar_Time.TabIndex = 24;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(64, 64, 64);
+            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(41, 317);
+            label2.Name = "label2";
+            label2.Size = new Size(292, 19);
+            label2.TabIndex = 26;
+            label2.Text = "Would you like to delete the original files?";
+            // 
             // Filter
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -295,7 +281,6 @@
             Controls.Add(progressBar_Time);
             Controls.Add(checkBox_Duration);
             Controls.Add(checkBox_Resolution);
-            Controls.Add(checkBox_Date);
             Controls.Add(checkBox_Include);
             Controls.Add(checkBox_Size);
             Controls.Add(checkBox_Extension);
@@ -327,12 +312,11 @@
         private CheckBox checkBox_Include;
         private CheckBox checkBox_Duration;
         private CheckBox checkBox_Resolution;
-        private CheckBox checkBox_Date;
         private Label label1;
         private TextBox textBox_Path;
-        private Label label2;
         private CheckBox checkBox_Delete;
         private Button button_Filter;
         private ProgressBar progressBar_Time;
+        private Label label2;
     }
 }

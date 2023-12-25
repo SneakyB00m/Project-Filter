@@ -14,7 +14,7 @@ namespace Project__Filter
 {
     public partial class Filter : UserControl
     {
-        private string folderPath;
+        string folderPath;
         Dictionary<string, object> JsonData;
         Actions actions = new Actions();
 
@@ -74,7 +74,7 @@ namespace Project__Filter
                         {
                             case "checkBox_Include":
                                 string inputInclude = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "Default", -1, -1);
-                                actions.OrganizeFilesBasedOnCriteria_Include(folderPath, JsonData, inputInclude);
+                                actions.OrganizeFilesBasedOnCriteria(folderPath, JsonData, inputInclude);
                                 break;
                             case "checkBox_Extension":
                                 actions.OrganizeFilesBasedOnExtension(folderPath, JsonData);
@@ -87,11 +87,6 @@ namespace Project__Filter
                                 break;
                             case "checkBox_Size":
                                 actions.OrganizeFilesBasedOnSize(folderPath, JsonData);
-                                break;
-                            case "checkBox_Date":
-                                DatePicker date = new DatePicker();
-                                date.Show();
-                                //actions.OrganizeFilesBasedOnDate(folderPath, JsonData);
                                 break;
                             case "checkBox_AtoZ":
                                 actions.OrganizeFilesBasedOnAToZ(folderPath, JsonData);
@@ -114,7 +109,6 @@ namespace Project__Filter
                 MessageBox.Show("No Folder Selected.");
             }
         }
-
 
         // Funcs
         private void checkBox_CheckedChanged(object sender, EventArgs e)

@@ -4,10 +4,12 @@ using NReco.VideoInfo;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
+using Project__Filter;
 using SharpCompress.Archives;
 using SharpCompress.Archives.Rar;
 using SharpCompress.Common;
 using SharpCompress.Writers;
+using System;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
@@ -191,7 +193,19 @@ public class Actions
         }
     }
 
-    public void OrganizeFilesBasedOnCriteria_Include(string folderPath, Dictionary<string, object> data, string Include)
+    public void DeleteEmptyFolders(string rootPath)
+    {
+        foreach (var directory in Directory.GetDirectories(rootPath))
+        {
+            DeleteEmptyFolders(directory);
+            if (Directory.GetFiles(directory).Length == 0 && Directory.GetDirectories(directory).Length == 0)
+            {
+                Directory.Delete(directory);
+            }
+        }
+    }
+
+    public void OrganizeFilesBasedOnCriteria(string folderPath, Dictionary<string, object> data, string Include)
     {
         // Get the subfolders 'videos' and 'files'
         var videoFolder = Path.Combine(folderPath, "Filter", "Videos");
@@ -433,31 +447,46 @@ public class Actions
         }
     }
 
-    public void OrganizeFilesBasedOnDate(string folderPath, Dictionary<string, object> data)
-    {
-       
-    }
-
     public void OrganizeFilesBasedOnAToZ(string folderPath, Dictionary<string, object> data)
     {
-        // Get all files in the directory and its subdirectories
-        var files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
+        // Get the subfolders 'videos' and 'files'
+        var videoFolder = Path.Combine(folderPath, "Filter", "Videos");
+        var filesFolder = Path.Combine(folderPath, "Filter", "Files");
 
-        foreach (var file in files)
+        // Check if the subfolders exist
+        if (!Directory.Exists(videoFolder) || !Directory.Exists(filesFolder))
         {
-            // Get the first letter of the file name
-            var firstLetter = Path.GetFileName(file)[0];
+            BasedOrganizeFiles(folderPath, data);
+        }
 
-            // Create a new directory path based on the first letter
-            var newDirPath = Path.Combine(folderPath, firstLetter.ToString());
+        // Get all files in the 'videos' folder and its subdirectories
+        var videoFiles = Directory.EnumerateFiles(videoFolder, "*.*", SearchOption.AllDirectories);
 
-            // Create the directory if it doesn't exist
-            Directory.CreateDirectory(newDirPath);
+        // Get all files in the 'files' folder and its subdirectories
+        var otherFiles = Directory.EnumerateFiles(filesFolder, "*.*", SearchOption.AllDirectories);
 
-            // Create a new file path in the new directory
-            var newFilePath = Path.Combine(newDirPath, Path.GetFileName(file));
+        // Combine the two lists of files
+        var allFiles = videoFiles.Concat(otherFiles);
 
-            // Move the file to the new directory
+        foreach (var file in allFiles)
+        {
+            // Get the directory of the current file
+            var currentDirectory = Path.GetDirectoryName(file);
+
+            // Get the first character of the file name and make it uppercase
+            var firstChar = Char.ToUpper(Path.GetFileName(file)[0]);
+
+            // Create a new folder path based on the first character
+            var newFolderPath = Path.Combine(currentDirectory, firstChar.ToString());
+
+            // Create the new folder if it doesn't exist
+            if (!Directory.Exists(newFolderPath))
+            {
+                Directory.CreateDirectory(newFolderPath);
+            }
+
+            // Move the file to the new folder
+            var newFilePath = Path.Combine(newFolderPath, Path.GetFileName(file));
             File.Move(file, newFilePath);
         }
     }
@@ -541,7 +570,7 @@ public class Actions
         using (var archive = SharpCompress.Archives.Zip.ZipArchive.Create())
         {
             archive.AddAllFromDirectory(folderPath);
-            archive.SaveTo(zipFilePath, SharpCompress.Common.CompressionType.Deflate);
+            archive.SaveTo(zipFilePath, CompressionType.Deflate);
         }
     }
 
