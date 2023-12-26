@@ -1,14 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "US7lOUzHrehSHjRn9X4/uzpCLp/LU1DahcW6xjw32N/LrsgMGRAbyRPMWh8CoLtiuVl+Q6mT3oWlq5Geb9SYgQ==",
+  "dgSpecHash": "D49UxkIfcdWveIjF2+fCRQ35biDi7nNJOHSdatBn0qx3QC93HDmN8Pf6QMFVUjQcZx4kIfqG0i/WvtFL2r4mLg==",
   "success": true,
   "projectFilePath": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Project #Filter.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Alan_\\.nuget\\packages\\bouncycastle\\1.8.9\\bouncycastle.1.8.9.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\bunifu.licensing\\5.0.0\\bunifu.licensing.5.0.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\bunifu.ui.winforms\\6.1.0\\bunifu.ui.winforms.6.1.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\bunifu.ui.winforms.1.5.3\\1.0.0\\bunifu.ui.winforms.1.5.3.1.0.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\costura.fody\\3.3.3\\costura.fody.3.3.3.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\fody\\4.0.2\\fody.4.0.2.nupkg.sha512",
+    "C:\\Users\\Alan_\\.nuget\\packages\\itextsharp\\5.5.13.3\\itextsharp.5.5.13.3.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\magick.net-q16-anycpu\\13.4.0\\magick.net-q16-anycpu.13.4.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\magick.net.core\\13.4.0\\magick.net.core.13.4.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
@@ -104,8 +106,28 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
+      "message": "Package 'BouncyCastle 1.8.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
       "message": "Package 'Bunifu.UI.WinForms 6.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "Bunifu.UI.WinForms",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'iTextSharp 5.5.13.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "iTextSharp",
       "targetGraphs": [
         "net6.0-windows7.0"
       ]
