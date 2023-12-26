@@ -46,7 +46,7 @@
             },
             "Magick.NET-Q16-AnyCPU": {
               "target": "Package",
-              "version": "[13.4.0, )"
+              "version": "[13.5.0, )"
             },
             "Microsoft.Windows.Compatibility": {
               "target": "Package",
@@ -70,7 +70,7 @@
             },
             "SharpCompress": {
               "target": "Package",
-              "version": "[0.34.2, )"
+              "version": "[0.35.0, )"
             },
             "System.Security.Cryptography.Pkcs": {
               "target": "Package",

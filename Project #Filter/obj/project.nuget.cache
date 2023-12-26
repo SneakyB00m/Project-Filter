@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "D49UxkIfcdWveIjF2+fCRQ35biDi7nNJOHSdatBn0qx3QC93HDmN8Pf6QMFVUjQcZx4kIfqG0i/WvtFL2r4mLg==",
+  "dgSpecHash": "Rvr7NRBq9AnhDas+QkmG1ZWmD9lQE/txLtPXtAaM4meYtkOKxw7nbEvYGskMtn2y8UFDIyfTYvNBxhKbPAHSeg==",
   "success": true,
   "projectFilePath": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Project #Filter.csproj",
   "expectedPackageFiles": [
@@ -11,8 +11,8 @@
     "C:\\Users\\Alan_\\.nuget\\packages\\costura.fody\\3.3.3\\costura.fody.3.3.3.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\fody\\4.0.2\\fody.4.0.2.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\itextsharp\\5.5.13.3\\itextsharp.5.5.13.3.nupkg.sha512",
-    "C:\\Users\\Alan_\\.nuget\\packages\\magick.net-q16-anycpu\\13.4.0\\magick.net-q16-anycpu.13.4.0.nupkg.sha512",
-    "C:\\Users\\Alan_\\.nuget\\packages\\magick.net.core\\13.4.0\\magick.net.core.13.4.0.nupkg.sha512",
+    "C:\\Users\\Alan_\\.nuget\\packages\\magick.net-q16-anycpu\\13.5.0\\magick.net-q16-anycpu.13.5.0.nupkg.sha512",
+    "C:\\Users\\Alan_\\.nuget\\packages\\magick.net.core\\13.5.0\\magick.net.core.13.5.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.0\\microsoft.extensions.configuration.6.0.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
@@ -54,7 +54,7 @@
     "C:\\Users\\Alan_\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
-    "C:\\Users\\Alan_\\.nuget\\packages\\sharpcompress\\0.34.2\\sharpcompress.0.34.2.nupkg.sha512",
+    "C:\\Users\\Alan_\\.nuget\\packages\\sharpcompress\\0.35.0\\sharpcompress.0.35.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\system.codedom\\8.0.0\\system.codedom.8.0.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\system.componentmodel.composition\\8.0.0\\system.componentmodel.composition.8.0.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\system.componentmodel.composition.registration\\8.0.0\\system.componentmodel.composition.registration.8.0.0.nupkg.sha512",
@@ -99,7 +99,7 @@
     "C:\\Users\\Alan_\\.nuget\\packages\\system.threading.accesscontrol\\8.0.0\\system.threading.accesscontrol.8.0.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\system.web.services.description\\4.10.0\\system.web.services.description.4.10.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\system.windows.extensions\\8.0.0\\system.windows.extensions.8.0.0.nupkg.sha512",
-    "C:\\Users\\Alan_\\.nuget\\packages\\zstdsharp.port\\0.7.2\\zstdsharp.port.0.7.2.nupkg.sha512"
+    "C:\\Users\\Alan_\\.nuget\\packages\\zstdsharp.port\\0.7.4\\zstdsharp.port.0.7.4.nupkg.sha512"
   ],
   "logs": [
     {

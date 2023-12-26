@@ -9,17 +9,26 @@
       "Project #Filter/1.0.0": {
         "dependencies": {
           "Bunifu.UI.WinForms": "6.1.0",
-          "Magick.NET-Q16-AnyCPU": "13.4.0",
+          "Magick.NET-Q16-AnyCPU": "13.5.0",
           "Microsoft.Windows.Compatibility": "8.0.0",
           "NAudio": "2.2.1",
           "NReco.VideoInfo": "1.2.0",
           "Newtonsoft.Json": "13.0.3",
           "PDFsharp": "6.0.0",
-          "SharpCompress": "0.34.2",
-          "System.Security.Cryptography.Pkcs": "8.0.0"
+          "SharpCompress": "0.35.0",
+          "System.Security.Cryptography.Pkcs": "8.0.0",
+          "iTextSharp": "5.5.13.3"
         },
         "runtime": {
           "Project #Filter.dll": {}
+        }
+      },
+      "BouncyCastle/1.8.9": {
+        "runtime": {
+          "lib/BouncyCastle.Crypto.dll": {
+            "assemblyVersion": "1.8.9.0",
+            "fileVersion": "1.8.20343.1"
+          }
         }
       },
       "Bunifu.Licensing/5.0.0": {
@@ -72,14 +81,25 @@
         }
       },
       "Fody/4.0.2": {},
-      "Magick.NET-Q16-AnyCPU/13.4.0": {
+      "iTextSharp/5.5.13.3": {
         "dependencies": {
-          "Magick.NET.Core": "13.4.0"
+          "BouncyCastle": "1.8.9"
+        },
+        "runtime": {
+          "lib/itextsharp.dll": {
+            "assemblyVersion": "5.5.13.3",
+            "fileVersion": "5.5.13.3"
+          }
+        }
+      },
+      "Magick.NET-Q16-AnyCPU/13.5.0": {
+        "dependencies": {
+          "Magick.NET.Core": "13.5.0"
         },
         "runtime": {
           "lib/netstandard21/Magick.NET-Q16-AnyCPU.dll": {
-            "assemblyVersion": "13.4.0.0",
-            "fileVersion": "13.4.0.0"
+            "assemblyVersion": "13.5.0.0",
+            "fileVersion": "13.5.0.0"
           }
         },
         "runtimeTargets": {
@@ -111,25 +131,25 @@
           "runtimes/win-arm64/native/Magick.Native-Q16-arm64.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "7.1.1.20"
+            "fileVersion": "7.1.1.22"
           },
           "runtimes/win-x64/native/Magick.Native-Q16-x64.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "7.1.1.20"
+            "fileVersion": "7.1.1.22"
           },
           "runtimes/win-x86/native/Magick.Native-Q16-x86.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "7.1.1.20"
+            "fileVersion": "7.1.1.22"
           }
         }
       },
-      "Magick.NET.Core/13.4.0": {
+      "Magick.NET.Core/13.5.0": {
         "runtime": {
           "lib/netstandard21/Magick.NET.Core.dll": {
-            "assemblyVersion": "13.4.0.0",
-            "fileVersion": "13.4.0.0"
+            "assemblyVersion": "13.5.0.0",
+            "fileVersion": "13.5.0.0"
           }
         }
       },
@@ -603,14 +623,14 @@
           }
         }
       },
-      "SharpCompress/0.34.2": {
+      "SharpCompress/0.35.0": {
         "dependencies": {
-          "ZstdSharp.Port": "0.7.2"
+          "ZstdSharp.Port": "0.7.4"
         },
         "runtime": {
           "lib/net6.0/SharpCompress.dll": {
-            "assemblyVersion": "0.34.2.0",
-            "fileVersion": "0.34.2.0"
+            "assemblyVersion": "0.35.0.0",
+            "fileVersion": "0.35.0.0"
           }
         }
       },
@@ -1279,11 +1299,11 @@
           }
         }
       },
-      "ZstdSharp.Port/0.7.2": {
+      "ZstdSharp.Port/0.7.4": {
         "runtime": {
           "lib/net6.0/ZstdSharp.dll": {
-            "assemblyVersion": "0.7.2.0",
-            "fileVersion": "0.7.2.0"
+            "assemblyVersion": "0.7.4.0",
+            "fileVersion": "0.7.4.0"
           }
         }
       }
@@ -1294,6 +1314,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "BouncyCastle/1.8.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-axnBgvdD5n+FnEG6efk/tfKuMFru7R/EoISH9zjh319yb3HD24TEHSAbNN/lTRT2ulOGRxDgOsCjkuk08iwWPg==",
+      "path": "bouncycastle/1.8.9",
+      "hashPath": "bouncycastle.1.8.9.nupkg.sha512"
     },
     "Bunifu.Licensing/5.0.0": {
       "type": "package",
@@ -1330,19 +1357,26 @@
       "path": "fody/4.0.2",
       "hashPath": "fody.4.0.2.nupkg.sha512"
     },
-    "Magick.NET-Q16-AnyCPU/13.4.0": {
+    "iTextSharp/5.5.13.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-OgOv1V8KHMp1wnAmFma7Aafe1CsYViQEGrxHGTaUzPdaiRBk3GCv6dV1iDL+nCDgsciFs1gBKNMaSsxByrHbDw==",
-      "path": "magick.net-q16-anycpu/13.4.0",
-      "hashPath": "magick.net-q16-anycpu.13.4.0.nupkg.sha512"
+      "sha512": "sha512-vtnMhTEJdZFCkLqaQLjD8aqTBIVKHPrSFuSXnxbLEJlvE/j/l88fvG9wtsejXTmhtErMo0lA9T2LdfdfbwplYw==",
+      "path": "itextsharp/5.5.13.3",
+      "hashPath": "itextsharp.5.5.13.3.nupkg.sha512"
     },
-    "Magick.NET.Core/13.4.0": {
+    "Magick.NET-Q16-AnyCPU/13.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Z1om0NiXREKUUI2BYKM86RSgMpBJFuc+OCI25fPtF/evpWsWm83kpACMODuNs60Bv/I4sn8VCGqezQA2/azWKA==",
-      "path": "magick.net.core/13.4.0",
-      "hashPath": "magick.net.core.13.4.0.nupkg.sha512"
+      "sha512": "sha512-Kl3uDaaQkK9LVM9CUexnerlTOGFxA0CQHDU9be960W2VZVD45KtE5Yvtq3Mg0rUq7LlwXGCNr1FxEw/hhS2D/Q==",
+      "path": "magick.net-q16-anycpu/13.5.0",
+      "hashPath": "magick.net-q16-anycpu.13.5.0.nupkg.sha512"
+    },
+    "Magick.NET.Core/13.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/jKqfhbLvaVqxsV+DkOA5TjfrbO/Q3LdN3OL/xuewdC2EVBN4pTnAekAetn3CsbHOolfvc1xQLxY0MUN3nfwsg==",
+      "path": "magick.net.core/13.5.0",
+      "hashPath": "magick.net.core.13.5.0.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/5.0.0": {
       "type": "package",
@@ -1631,12 +1665,12 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
-    "SharpCompress/0.34.2": {
+    "SharpCompress/0.35.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-x+L5dw5D44EtN1m+0kkTHPi0v+u7S3iyj6nMcfns1y3uKQVb/nflmlroPWIILcxUnbTV2xRqwU335sMkRhDM7A==",
-      "path": "sharpcompress/0.34.2",
-      "hashPath": "sharpcompress.0.34.2.nupkg.sha512"
+      "sha512": "sha512-pR64DKzJ63zt3me8VvhfWqxxzXA0+1S/gRjDUBVovlQ0wCGXGATp/zpVL1Bdoo5tRy887tR5vYS9Bd5MaErEDA==",
+      "path": "sharpcompress/0.35.0",
+      "hashPath": "sharpcompress.0.35.0.nupkg.sha512"
     },
     "System.CodeDom/8.0.0": {
       "type": "package",
@@ -1946,12 +1980,12 @@
       "path": "system.windows.extensions/8.0.0",
       "hashPath": "system.windows.extensions.8.0.0.nupkg.sha512"
     },
-    "ZstdSharp.Port/0.7.2": {
+    "ZstdSharp.Port/0.7.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mT6Pb7qzDGapJ2ic4dAFqbzHpM+qgnasQIGR/Sofrk0fmKTQSTljG55OFXHbDJczLZWnUAFsg4bKR81uHiKzPg==",
-      "path": "zstdsharp.port/0.7.2",
-      "hashPath": "zstdsharp.port.0.7.2.nupkg.sha512"
+      "sha512": "sha512-ziptnotpUJr51afwXJQ5Wc03dvDiZAdmxS08s1g7SHn/VzbyZUXdH6yORk/zaNjzUOEE6pVZ0Nqztab0rYROgQ==",
+      "path": "zstdsharp.port/0.7.4",
+      "hashPath": "zstdsharp.port.0.7.4.nupkg.sha512"
     }
   }
 }

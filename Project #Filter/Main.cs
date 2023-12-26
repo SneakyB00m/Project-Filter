@@ -770,7 +770,6 @@ public class Actions
     //}
 
     // Convert 
-
     public void ConvertImagesToPdf(string folderPath, string pdfFile)
     {
         // Get all image files in the directory and its subdirectories

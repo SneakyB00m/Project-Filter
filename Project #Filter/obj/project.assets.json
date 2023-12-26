@@ -99,10 +99,10 @@
           "lib/itextsharp.dll": {}
         }
       },
-      "Magick.NET-Q16-AnyCPU/13.4.0": {
+      "Magick.NET-Q16-AnyCPU/13.5.0": {
         "type": "package",
         "dependencies": {
-          "Magick.NET.Core": "13.4.0"
+          "Magick.NET.Core": "13.5.0"
         },
         "compile": {
           "lib/netstandard21/Magick.NET-Q16-AnyCPU.dll": {
@@ -152,7 +152,7 @@
           }
         }
       },
-      "Magick.NET.Core/13.4.0": {
+      "Magick.NET.Core/13.5.0": {
         "type": "package",
         "compile": {
           "lib/netstandard21/Magick.NET.Core.dll": {
@@ -851,10 +851,10 @@
           }
         }
       },
-      "SharpCompress/0.34.2": {
+      "SharpCompress/0.35.0": {
         "type": "package",
         "dependencies": {
-          "ZstdSharp.Port": "0.7.2"
+          "ZstdSharp.Port": "0.7.4"
         },
         "compile": {
           "lib/net6.0/SharpCompress.dll": {}
@@ -1845,7 +1845,7 @@
           }
         }
       },
-      "ZstdSharp.Port/0.7.2": {
+      "ZstdSharp.Port/0.7.4": {
         "type": "package",
         "compile": {
           "lib/net6.0/ZstdSharp.dll": {}
@@ -1993,10 +1993,10 @@
         "notice.txt"
       ]
     },
-    "Magick.NET-Q16-AnyCPU/13.4.0": {
-      "sha512": "OgOv1V8KHMp1wnAmFma7Aafe1CsYViQEGrxHGTaUzPdaiRBk3GCv6dV1iDL+nCDgsciFs1gBKNMaSsxByrHbDw==",
+    "Magick.NET-Q16-AnyCPU/13.5.0": {
+      "sha512": "Kl3uDaaQkK9LVM9CUexnerlTOGFxA0CQHDU9be960W2VZVD45KtE5Yvtq3Mg0rUq7LlwXGCNr1FxEw/hhS2D/Q==",
       "type": "package",
-      "path": "magick.net-q16-anycpu/13.4.0",
+      "path": "magick.net-q16-anycpu/13.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2011,7 +2011,7 @@
         "lib/netstandard20/Magick.NET-Q16-AnyCPU.xml",
         "lib/netstandard21/Magick.NET-Q16-AnyCPU.dll",
         "lib/netstandard21/Magick.NET-Q16-AnyCPU.xml",
-        "magick.net-q16-anycpu.13.4.0.nupkg.sha512",
+        "magick.net-q16-anycpu.13.5.0.nupkg.sha512",
         "magick.net-q16-anycpu.nuspec",
         "runtimes/linux-arm64/native/Magick.Native-Q16-arm64.dll.so",
         "runtimes/linux-musl-x64/native/Magick.Native-Q16-x64.dll.so",
@@ -2023,10 +2023,10 @@
         "runtimes/win-x86/native/Magick.Native-Q16-x86.dll"
       ]
     },
-    "Magick.NET.Core/13.4.0": {
-      "sha512": "Z1om0NiXREKUUI2BYKM86RSgMpBJFuc+OCI25fPtF/evpWsWm83kpACMODuNs60Bv/I4sn8VCGqezQA2/azWKA==",
+    "Magick.NET.Core/13.5.0": {
+      "sha512": "/jKqfhbLvaVqxsV+DkOA5TjfrbO/Q3LdN3OL/xuewdC2EVBN4pTnAekAetn3CsbHOolfvc1xQLxY0MUN3nfwsg==",
       "type": "package",
-      "path": "magick.net.core/13.4.0",
+      "path": "magick.net.core/13.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2037,7 +2037,7 @@
         "lib/netstandard20/Magick.NET.Core.xml",
         "lib/netstandard21/Magick.NET.Core.dll",
         "lib/netstandard21/Magick.NET.Core.xml",
-        "magick.net.core.13.4.0.nupkg.sha512",
+        "magick.net.core.13.5.0.nupkg.sha512",
         "magick.net.core.nuspec"
       ]
     },
@@ -2907,19 +2907,20 @@
         "version.txt"
       ]
     },
-    "SharpCompress/0.34.2": {
-      "sha512": "x+L5dw5D44EtN1m+0kkTHPi0v+u7S3iyj6nMcfns1y3uKQVb/nflmlroPWIILcxUnbTV2xRqwU335sMkRhDM7A==",
+    "SharpCompress/0.35.0": {
+      "sha512": "pR64DKzJ63zt3me8VvhfWqxxzXA0+1S/gRjDUBVovlQ0wCGXGATp/zpVL1Bdoo5tRy887tR5vYS9Bd5MaErEDA==",
       "type": "package",
-      "path": "sharpcompress/0.34.2",
+      "path": "sharpcompress/0.35.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net462/SharpCompress.dll",
         "lib/net6.0/SharpCompress.dll",
         "lib/net7.0/SharpCompress.dll",
+        "lib/net8.0/SharpCompress.dll",
         "lib/netstandard2.0/SharpCompress.dll",
         "lib/netstandard2.1/SharpCompress.dll",
-        "sharpcompress.0.34.2.nupkg.sha512",
+        "sharpcompress.0.35.0.nupkg.sha512",
         "sharpcompress.nuspec"
       ]
     },
@@ -4625,21 +4626,22 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "ZstdSharp.Port/0.7.2": {
-      "sha512": "mT6Pb7qzDGapJ2ic4dAFqbzHpM+qgnasQIGR/Sofrk0fmKTQSTljG55OFXHbDJczLZWnUAFsg4bKR81uHiKzPg==",
+    "ZstdSharp.Port/0.7.4": {
+      "sha512": "ziptnotpUJr51afwXJQ5Wc03dvDiZAdmxS08s1g7SHn/VzbyZUXdH6yORk/zaNjzUOEE6pVZ0Nqztab0rYROgQ==",
       "type": "package",
-      "path": "zstdsharp.port/0.7.2",
+      "path": "zstdsharp.port/0.7.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net461/ZstdSharp.dll",
+        "lib/net462/ZstdSharp.dll",
         "lib/net5.0/ZstdSharp.dll",
         "lib/net6.0/ZstdSharp.dll",
         "lib/net7.0/ZstdSharp.dll",
+        "lib/net8.0/ZstdSharp.dll",
         "lib/netcoreapp3.1/ZstdSharp.dll",
         "lib/netstandard2.0/ZstdSharp.dll",
         "lib/netstandard2.1/ZstdSharp.dll",
-        "zstdsharp.port.0.7.2.nupkg.sha512",
+        "zstdsharp.port.0.7.4.nupkg.sha512",
         "zstdsharp.port.nuspec"
       ]
     }
@@ -4647,13 +4649,13 @@
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "Bunifu.UI.WinForms >= 6.1.0",
-      "Magick.NET-Q16-AnyCPU >= 13.4.0",
+      "Magick.NET-Q16-AnyCPU >= 13.5.0",
       "Microsoft.Windows.Compatibility >= 8.0.0",
       "NAudio >= 2.2.1",
       "NReco.VideoInfo >= 1.2.0",
       "Newtonsoft.Json >= 13.0.3",
       "PDFsharp >= 6.0.0",
-      "SharpCompress >= 0.34.2",
+      "SharpCompress >= 0.35.0",
       "System.Security.Cryptography.Pkcs >= 8.0.0",
       "iTextSharp >= 5.5.13.3"
     ]
@@ -4703,7 +4705,7 @@
           },
           "Magick.NET-Q16-AnyCPU": {
             "target": "Package",
-            "version": "[13.4.0, )"
+            "version": "[13.5.0, )"
           },
           "Microsoft.Windows.Compatibility": {
             "target": "Package",
@@ -4727,7 +4729,7 @@
           },
           "SharpCompress": {
             "target": "Package",
-            "version": "[0.34.2, )"
+            "version": "[0.35.0, )"
           },
           "System.Security.Cryptography.Pkcs": {
             "target": "Package",

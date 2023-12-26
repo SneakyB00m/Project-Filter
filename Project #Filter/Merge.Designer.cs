@@ -187,6 +187,7 @@
             // 
             // comboBox_Selector
             // 
+            comboBox_Selector.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_Selector.FormattingEnabled = true;
             comboBox_Selector.Items.AddRange(new object[] { "TEXT", "WORD", "PDF - SIMPLE", "PDF - TITLE", "IMAGE COLLAGE" });
             comboBox_Selector.Location = new Point(115, 136);
