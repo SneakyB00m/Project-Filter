@@ -25,15 +25,25 @@ namespace Project__Filter
         {
             // Get the selected item
             string selectedOption = comboBox_Selector.SelectedItem.ToString();
+            OpenFileDialog openDialog = new OpenFileDialog();
 
             switch (selectedOption)
             {
+                case "IMAGE > ASCII":
+                    openDialog.Title = "Select A File";
+                    openDialog.Filter = "Image Files (*.png;*.jpg)|*.png;*.jpg";
+                    openDialog.InitialDirectory = @"C:\";
+                    if (openDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        folderPath = openDialog.FileName;
+                        textBox_Path.Text = folderPath;
+                    }
+                    break;
                 case "IMAGES > PFD":
                     folderPath = actions.OpenFolderManager();
                     textBox_Path.Text = folderPath;
                     break;
                 case "IMAGE > ICO":
-                    OpenFileDialog openDialog = new OpenFileDialog();
                     openDialog.Title = "Select A File";
                     openDialog.Filter = "Image Files (*.png;*.jpg)|*.png;*.jpg";
                     openDialog.InitialDirectory = @"C:\";
@@ -107,7 +117,8 @@ namespace Project__Filter
                         case "IMAGE > ICO":
                             actions.ConvertImageToIco(folderPath);
                             break;
-                        case "PDF - SIMPLE":
+                        case "IMAGE > ASCII":
+                            actions.ConvertImageToAscii(folderPath);
                             break;
                         case "PDF - TITLE ":
                             break;

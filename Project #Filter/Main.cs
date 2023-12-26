@@ -827,27 +827,22 @@ public class Actions
     public void ConvertImageToAscii(string filePath)
     {
         Bitmap image = new Bitmap(filePath);
-        // Scale the image while maintaining the aspect ratio
-        int newWidth = 100;
-        int newHeight = image.Height * newWidth / image.Width;
-        Bitmap scaledImage = new Bitmap(image, new Size(newWidth, newHeight));
-
         StringBuilder asciiArt = new StringBuilder();
-        for (int h = 0; h < scaledImage.Height; h++)
+        for (int h = 0; h < image.Height; h++)
         {
-            for (int w = 0; w < scaledImage.Width; w++)
+            for (int w = 0; w < image.Width; w++)
             {
-                Color pixelColor = scaledImage.GetPixel(w, h);
+                Color pixelColor = image.GetPixel(w, h);
                 int grayScale = (int)((pixelColor.R * 0.3) + (pixelColor.G * 0.59) + (pixelColor.B * 0.11));
-                int index = grayScale * 16 / 255;
-                asciiArt.Append(" .:-=+*#%@@"[index]);
+                int index = grayScale * 10 / 255;
+                asciiArt.Append(" .:-=+*#%@"[index]);
             }
             asciiArt.Append("\n");
         }
 
         // Create an image from the ASCII art
         string asciiFilePath = filePath + "_ascii.png";
-        Bitmap asciiImage = new Bitmap(scaledImage.Width * 6, scaledImage.Height * 10);
+        Bitmap asciiImage = new Bitmap(image.Width * 10, image.Height * 20);
         using (Graphics g = Graphics.FromImage(asciiImage))
         {
             g.Clear(Color.White);
