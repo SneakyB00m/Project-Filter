@@ -79,7 +79,8 @@ namespace Project__Filter
 
                     switch (selectedOption)
                     {
-                        case "TEXT":
+                        case "IMAGES > PFD":
+                            actions.ConvertImagesToPdf(folderPath);
                             break;
                         case "WORD":
                             break;
