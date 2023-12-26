@@ -23,8 +23,30 @@ namespace Project__Filter
 
         private void button1_Click(object sender, EventArgs e)
         {
-            folderPath = actions.OpenFolderManager();
-            textBox_Path.Text = folderPath;
+            // Get the selected item
+            string selectedOption = comboBox_Selector.SelectedItem.ToString();
+
+            switch (selectedOption)
+            {
+                case "IMAGES > PFD":
+                    folderPath = actions.OpenFolderManager();
+                    textBox_Path.Text = folderPath;
+                    break;
+                case "IMAGE > ICO":
+                    OpenFileDialog openDialog = new OpenFileDialog();
+                    openDialog.Title = "Select A File";
+                    openDialog.Filter = "Image Files (*.png;*.jpg)|*.png;*.jpg";
+                    openDialog.InitialDirectory = @"C:\";
+                    if (openDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        folderPath = openDialog.FileName;
+                        textBox_Path.Text = folderPath;
+                    }
+                    break;
+                default:
+                    MessageBox.Show("Select first an option");
+                    break;
+            }
         }
 
         private void Convert_Load(object sender, EventArgs e)
@@ -82,7 +104,8 @@ namespace Project__Filter
                         case "IMAGES > PFD":
                             actions.ConvertImagesToPdf(folderPath);
                             break;
-                        case "WORD":
+                        case "IMAGE > ICO":
+                            actions.ConvertImageToIco(folderPath);
                             break;
                         case "PDF - SIMPLE":
                             break;

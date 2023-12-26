@@ -3,9 +3,6 @@ using iTextSharp.text.pdf;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NReco.VideoInfo;
-using PdfSharp.Drawing;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
 using SharpCompress.Archives;
 using SharpCompress.Archives.Rar;
 using SharpCompress.Common;
@@ -14,6 +11,9 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using Rectangle = iTextSharp.text.Rectangle;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
+using Image = SixLabors.ImageSharp.Image;
 
 namespace Project__Filter
 {
@@ -773,7 +773,7 @@ public class Actions
     public void ConvertImagesToPdf(string folderPath)
     {
         // Define the PDF file path
-        string pdfFile = Path.Combine(folderPath, "output.pdf");
+        string pdfFile = Path.Combine(folderPath, "Album.pdf");
 
         // Get all image files in the directory and its subdirectories
         string[] imageFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)
@@ -786,7 +786,7 @@ public class Actions
             int count = 1;
             while (File.Exists(pdfFile))
             {
-                pdfFile = Path.Combine(folderPath, $"output ({count}).pdf");
+                pdfFile = Path.Combine(folderPath, $"Album ({count}).pdf");
                 count++;
             }
         }
@@ -810,6 +810,18 @@ public class Actions
                     }
                 }
             }
+        }
+    }
+
+    public void ConvertImageToIco(string filePath)
+    {
+        using (Bitmap bmp = new Bitmap(filePath))
+        {
+            bmp.MakeTransparent(); // This will make white color transparent. Change to your needs.
+            Icon icon = Icon.FromHandle(bmp.GetHicon());
+            FileStream fs = new FileStream(Path.ChangeExtension(filePath, ".ico"), FileMode.Create);
+            icon.Save(fs);
+            fs.Close();
         }
     }
 
