@@ -813,8 +813,6 @@ public class Actions
         }
     }
 
-
-
     // Encrypt
     public void HandleEncrypt(string encryptFilePath)
     {
