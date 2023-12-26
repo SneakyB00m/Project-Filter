@@ -11,9 +11,8 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using Rectangle = iTextSharp.text.Rectangle;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Processing;
-using Image = SixLabors.ImageSharp.Image;
+using ImageMagick;
+using Font = System.Drawing.Font;
 
 namespace Project__Filter
 {
@@ -815,14 +814,46 @@ public class Actions
 
     public void ConvertImageToIco(string filePath)
     {
-        using (Bitmap bmp = new Bitmap(filePath))
+        using (MagickImage image = new MagickImage(filePath))
         {
-            bmp.MakeTransparent(); // This will make white color transparent. Change to your needs.
-            Icon icon = Icon.FromHandle(bmp.GetHicon());
-            FileStream fs = new FileStream(Path.ChangeExtension(filePath, ".ico"), FileMode.Create);
-            icon.Save(fs);
-            fs.Close();
+            // Resize the image to the size you want for the icon
+            image.Resize(new MagickGeometry(256, 256));
+
+            // Save the image as an ICO file
+            image.Write(Path.ChangeExtension(filePath, ".ico"), MagickFormat.Icon);
         }
+    }
+
+    public void ConvertImageToAscii(string filePath)
+    {
+        Bitmap image = new Bitmap(filePath);
+        // Scale the image while maintaining the aspect ratio
+        int newWidth = 100;
+        int newHeight = image.Height * newWidth / image.Width;
+        Bitmap scaledImage = new Bitmap(image, new Size(newWidth, newHeight));
+
+        StringBuilder asciiArt = new StringBuilder();
+        for (int h = 0; h < scaledImage.Height; h++)
+        {
+            for (int w = 0; w < scaledImage.Width; w++)
+            {
+                Color pixelColor = scaledImage.GetPixel(w, h);
+                int grayScale = (int)((pixelColor.R * 0.3) + (pixelColor.G * 0.59) + (pixelColor.B * 0.11));
+                int index = grayScale * 16 / 255;
+                asciiArt.Append(" .:-=+*#%@@"[index]);
+            }
+            asciiArt.Append("\n");
+        }
+
+        // Create an image from the ASCII art
+        string asciiFilePath = filePath + "_ascii.png";
+        Bitmap asciiImage = new Bitmap(scaledImage.Width * 6, scaledImage.Height * 10);
+        using (Graphics g = Graphics.FromImage(asciiImage))
+        {
+            g.Clear(Color.White);
+            g.DrawString(asciiArt.ToString(), new Font("Courier New", 10), Brushes.Black, new PointF(0, 0));
+        }
+        asciiImage.Save(asciiFilePath);
     }
 
     // Encrypt

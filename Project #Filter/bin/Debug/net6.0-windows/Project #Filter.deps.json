@@ -16,7 +16,6 @@
           "Newtonsoft.Json": "13.0.3",
           "PDFsharp": "6.0.0",
           "SharpCompress": "0.35.0",
-          "SixLabors.ImageSharp": "3.1.1",
           "System.Security.Cryptography.Pkcs": "8.0.0",
           "iTextSharp": "5.5.13.3"
         },
@@ -632,14 +631,6 @@
           "lib/net6.0/SharpCompress.dll": {
             "assemblyVersion": "0.35.0.0",
             "fileVersion": "0.35.0.0"
-          }
-        }
-      },
-      "SixLabors.ImageSharp/3.1.1": {
-        "runtime": {
-          "lib/net6.0/SixLabors.ImageSharp.dll": {
-            "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.1.1.0"
           }
         }
       },
@@ -1680,13 +1671,6 @@
       "sha512": "sha512-pR64DKzJ63zt3me8VvhfWqxxzXA0+1S/gRjDUBVovlQ0wCGXGATp/zpVL1Bdoo5tRy887tR5vYS9Bd5MaErEDA==",
       "path": "sharpcompress/0.35.0",
       "hashPath": "sharpcompress.0.35.0.nupkg.sha512"
-    },
-    "SixLabors.ImageSharp/3.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-AItH9C5CtUHn40ev2e683p9IvuWJvL9O9OZrGgvo3vSz5IOdLm5N3K1hC8e2wHb7wkMjTY+KIzXt6zrsq1LKig==",
-      "path": "sixlabors.imagesharp/3.1.1",
-      "hashPath": "sixlabors.imagesharp.3.1.1.nupkg.sha512"
     },
     "System.CodeDom/8.0.0": {
       "type": "package",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3iCCuoldd04q7tWhRO3HrWv2JcSQsQig9cn6ZotS9mocpYEZHzyp4NGApDcY6+wZe2vOilIdECDE2glOq/64TQ==",
+  "dgSpecHash": "QDSmF8NfgjwK0B9rEfxxIE/jQtjJMBAGO9w7g0v33RCZF+BqxWA1gEoHY85LoDeOjZ0ASpgfumpMRjIiGa4JGg==",
   "success": true,
   "projectFilePath": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Project #Filter.csproj",
   "expectedPackageFiles": [
@@ -55,7 +55,6 @@
     "C:\\Users\\alan_\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\alan_\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\alan_\\.nuget\\packages\\sharpcompress\\0.35.0\\sharpcompress.0.35.0.nupkg.sha512",
-    "C:\\Users\\alan_\\.nuget\\packages\\sixlabors.imagesharp\\3.1.1\\sixlabors.imagesharp.3.1.1.nupkg.sha512",
     "C:\\Users\\alan_\\.nuget\\packages\\system.codedom\\8.0.0\\system.codedom.8.0.0.nupkg.sha512",
     "C:\\Users\\alan_\\.nuget\\packages\\system.componentmodel.composition\\8.0.0\\system.componentmodel.composition.8.0.0.nupkg.sha512",
     "C:\\Users\\alan_\\.nuget\\packages\\system.componentmodel.composition.registration\\8.0.0\\system.componentmodel.composition.registration.8.0.0.nupkg.sha512",

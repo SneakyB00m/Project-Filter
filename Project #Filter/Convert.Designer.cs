@@ -168,7 +168,7 @@
             // 
             comboBox_Selector.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_Selector.FormattingEnabled = true;
-            comboBox_Selector.Items.AddRange(new object[] { "IMAGES > PFD", "IMAGE > ICO" });
+            comboBox_Selector.Items.AddRange(new object[] { "IMAGES > PFD", "IMAGE > ICO", "IMAGE > ASCII" });
             comboBox_Selector.Location = new Point(131, 181);
             comboBox_Selector.Name = "comboBox_Selector";
             comboBox_Selector.Size = new Size(590, 28);
