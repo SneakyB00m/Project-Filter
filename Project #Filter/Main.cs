@@ -1,18 +1,19 @@
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NReco.VideoInfo;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
-using Project__Filter;
 using SharpCompress.Archives;
 using SharpCompress.Archives.Rar;
 using SharpCompress.Common;
 using SharpCompress.Writers;
-using System;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
+using Rectangle = iTextSharp.text.Rectangle;
 
 namespace Project__Filter
 {
@@ -677,95 +678,124 @@ public class Actions
     }
 
     // Merge
-    public void MergePDFs(List<string> filePaths)
+    //public void MergePDFs(List<string> filePaths)
+    //{
+    //    // Sort the file names
+    //    var sortedFileNames = filePaths.OrderBy(name => name);
+
+    //    // Save the document in the same directory as the selected files...
+    //    string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Simple Merged.pdf");
+
+    //    // Check if a file with the same name already exists and change the name accordingly
+    //    int count = 2;
+    //    while (File.Exists(filename))
+    //    {
+    //        filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), $"Simple Merged ({count}).pdf");
+    //        count++;
+    //    }
+
+    //    // Initialize a new PDF document
+    //    PdfDocument outputDocument = new PdfDocument();
+
+    //    // Iterate through the selected files
+    //    foreach (string pdfFile in sortedFileNames)
+    //    {
+    //        // Open the document to import pages from it.
+    //        PdfDocument inputDocument = PdfReader.Open(pdfFile, PdfDocumentOpenMode.Import);
+
+    //        // Add each page to the output document
+    //        for (int page = 0; page < inputDocument.PageCount; page++)
+    //        {
+    //            outputDocument.AddPage(inputDocument.Pages[page]);
+    //        }
+
+    //        // Update your progress bar here
+    //        MessageBox.Show($"Merged {pdfFile}");
+    //    }
+
+    //    // Save and close the output document
+    //    outputDocument.Save(filename);
+    //    outputDocument.Close();
+
+    //    MessageBox.Show($"Done! Successfully merged {sortedFileNames.Count()} PDF files into {filename}.");
+    //}
+
+    //public void MergePDFsWithIndex(List<string> filePaths)
+    //{
+    //    // Sort the file names
+    //    var sortedFileNames = filePaths.OrderBy(name => name);
+
+    //    // Save the document in the same directory as the selected files...
+    //    string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Title Merged.pdf");
+
+    //    // Check if a file with the same name already exists and change the name accordingly
+    //    int count = 2;
+    //    while (File.Exists(filename))
+    //    {
+    //        filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), $"Title Merged ({count}).pdf");
+    //        count++;
+    //    }
+
+    //    // Initialize a new PDF document
+    //    PdfDocument outputDocument = new PdfDocument();
+
+    //    // Iterate through the selected files
+    //    foreach (string pdfFile in sortedFileNames)
+    //    {
+    //        // Add a new page with the file name
+    //        PdfPage fileNamePage = outputDocument.AddPage();
+    //        XGraphics gfx = XGraphics.FromPdfPage(fileNamePage);
+    //        XFont font = new XFont("Verdana Bold", 20);
+    //        gfx.DrawString(Path.GetFileNameWithoutExtension(pdfFile), font, XBrushes.Black, new XRect(0, 0, fileNamePage.Width, fileNamePage.Height), XStringFormats.Center);
+
+    //        // Open the document to import pages from it.
+    //        PdfDocument inputDocument = PdfReader.Open(pdfFile, PdfDocumentOpenMode.Import);
+
+    //        // Iterate through the pages
+    //        int pageCount = inputDocument.PageCount;
+    //        for (int idx = 0; idx < pageCount; idx++)
+    //        {
+    //            PdfPage page = inputDocument.Pages[idx];
+    //            outputDocument.AddPage(page);
+    //        }
+
+    //        // Update your progress bar here
+    //        Console.WriteLine($"Merged {pdfFile}");
+    //    }
+
+    //    // Save and close the PDF document
+    //    outputDocument.Save(filename);
+
+    //    Console.WriteLine($"Done! Successfully merged {sortedFileNames.Count()} PDF files into {filename}.");
+    //}
+
+    // Convert 
+    public void ConvertImagesToPdf(string folderPath, string pdfFile)
     {
-        // Sort the file names
-        var sortedFileNames = filePaths.OrderBy(name => name);
+        // Get all image files in the directory and its subdirectories
+        string[] imageFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)
+            .Where(file => file.EndsWith(".png") || file.EndsWith(".jpg") || file.EndsWith(".jpeg") || file.EndsWith(".bmp")).ToArray();
 
-        // Save the document in the same directory as the selected files...
-        string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Simple Merged.pdf");
-
-        // Check if a file with the same name already exists and change the name accordingly
-        int count = 2;
-        while (File.Exists(filename))
+        using (FileStream stream = new FileStream(pdfFile, FileMode.Create, FileAccess.Write, FileShare.None))
         {
-            filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), $"Simple Merged ({count}).pdf");
-            count++;
-        }
-
-        // Initialize a new PDF document
-        PdfDocument outputDocument = new PdfDocument();
-
-        // Iterate through the selected files
-        foreach (string pdfFile in sortedFileNames)
-        {
-            // Open the document to import pages from it.
-            PdfDocument inputDocument = PdfReader.Open(pdfFile, PdfDocumentOpenMode.Import);
-
-            // Add each page to the output document
-            for (int page = 0; page < inputDocument.PageCount; page++)
+            using (Document document = new Document())
             {
-                outputDocument.AddPage(inputDocument.Pages[page]);
+                PdfWriter.GetInstance(document, stream);
+                document.Open();
+
+                foreach (string imageFile in imageFiles)
+                {
+                    if (File.Exists(imageFile))
+                    {
+                        iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageFile);
+                        document.SetPageSize(new Rectangle(0, 0, image.Width, image.Height));
+                        document.NewPage();
+                        image.SetAbsolutePosition(0, 0);
+                        document.Add(image);
+                    }
+                }
             }
-
-            // Update your progress bar here
-            Console.WriteLine($"Merged {pdfFile}");
         }
-
-        // Save and close the output document
-        outputDocument.Save(filename);
-        outputDocument.Close();
-
-        Console.WriteLine($"Done! Successfully merged {sortedFileNames.Count()} PDF files into {filename}.");
-    }
-
-    public void MergePDFsWithIndex(List<string> filePaths)
-    {
-        // Sort the file names
-        var sortedFileNames = filePaths.OrderBy(name => name);
-
-        // Save the document in the same directory as the selected files...
-        string filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), "Title Merged.pdf");
-
-        // Check if a file with the same name already exists and change the name accordingly
-        int count = 2;
-        while (File.Exists(filename))
-        {
-            filename = Path.Combine(Path.GetDirectoryName(sortedFileNames.First()), $"Title Merged ({count}).pdf");
-            count++;
-        }
-
-        // Initialize a new PDF document
-        PdfDocument outputDocument = new PdfDocument();
-
-        // Iterate through the selected files
-        foreach (string pdfFile in sortedFileNames)
-        {
-            // Add a new page with the file name
-            PdfPage fileNamePage = outputDocument.AddPage();
-            XGraphics gfx = XGraphics.FromPdfPage(fileNamePage);
-            XFont font = new XFont("Verdana Bold", 20);
-            gfx.DrawString(Path.GetFileNameWithoutExtension(pdfFile), font, XBrushes.Black, new XRect(0, 0, fileNamePage.Width, fileNamePage.Height), XStringFormats.Center);
-
-            // Open the document to import pages from it.
-            PdfDocument inputDocument = PdfReader.Open(pdfFile, PdfDocumentOpenMode.Import);
-
-            // Iterate through the pages
-            int pageCount = inputDocument.PageCount;
-            for (int idx = 0; idx < pageCount; idx++)
-            {
-                PdfPage page = inputDocument.Pages[idx];
-                outputDocument.AddPage(page);
-            }
-
-            // Update your progress bar here
-            Console.WriteLine($"Merged {pdfFile}");
-        }
-
-        // Save and close the PDF document
-        outputDocument.Save(filename);
-
-        Console.WriteLine($"Done! Successfully merged {sortedFileNames.Count()} PDF files into {filename}.");
     }
 
     // Encrypt
