@@ -770,11 +770,28 @@ public class Actions
     //}
 
     // Convert 
+
     public void ConvertImagesToPdf(string folderPath, string pdfFile)
     {
         // Get all image files in the directory and its subdirectories
         string[] imageFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)
             .Where(file => file.EndsWith(".png") || file.EndsWith(".jpg") || file.EndsWith(".jpeg") || file.EndsWith(".bmp")).ToArray();
+
+        // Check if the PDF file already exists
+        if (File.Exists(pdfFile))
+        {
+            // Create a new PDF file with a unique name
+            string directory = Path.GetDirectoryName(pdfFile);
+            string fileName = Path.GetFileNameWithoutExtension(pdfFile);
+            string extension = Path.GetExtension(pdfFile);
+            int count = 1;
+
+            while (File.Exists(pdfFile))
+            {
+                pdfFile = Path.Combine(directory, $"{fileName} ({count}){extension}");
+                count++;
+            }
+        }
 
         using (FileStream stream = new FileStream(pdfFile, FileMode.Create, FileAccess.Write, FileShare.None))
         {
@@ -797,6 +814,7 @@ public class Actions
             }
         }
     }
+
 
     // Encrypt
     public void HandleEncrypt(string encryptFilePath)
