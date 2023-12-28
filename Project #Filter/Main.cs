@@ -3,9 +3,6 @@ using iTextSharp.text.pdf;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NReco.VideoInfo;
-using PdfSharp.Drawing;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
 using SharpCompress.Archives;
 using SharpCompress.Archives.Rar;
 using SharpCompress.Common;
@@ -14,6 +11,8 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using Rectangle = iTextSharp.text.Rectangle;
+using ImageMagick;
+using Font = System.Drawing.Font;
 
 namespace Project__Filter
 {
@@ -773,7 +772,7 @@ public class Actions
     public void ConvertImagesToPdf(string folderPath)
     {
         // Define the PDF file path
-        string pdfFile = Path.Combine(folderPath, "output.pdf");
+        string pdfFile = Path.Combine(folderPath, "Album.pdf");
 
         // Get all image files in the directory and its subdirectories
         string[] imageFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)
@@ -786,7 +785,7 @@ public class Actions
             int count = 1;
             while (File.Exists(pdfFile))
             {
-                pdfFile = Path.Combine(folderPath, $"output ({count}).pdf");
+                pdfFile = Path.Combine(folderPath, $"Album ({count}).pdf");
                 count++;
             }
         }
@@ -811,6 +810,45 @@ public class Actions
                 }
             }
         }
+    }
+
+    public void ConvertImageToIco(string filePath)
+    {
+        using (MagickImage image = new MagickImage(filePath))
+        {
+            // Resize the image to the size you want for the icon
+            image.Resize(new MagickGeometry(256, 256));
+
+            // Save the image as an ICO file
+            image.Write(Path.ChangeExtension(filePath, ".ico"), MagickFormat.Icon);
+        }
+    }
+
+    public void ConvertImageToAscii(string filePath)
+    {
+        Bitmap image = new Bitmap(filePath);
+        StringBuilder asciiArt = new StringBuilder();
+        for (int h = 0; h < image.Height; h++)
+        {
+            for (int w = 0; w < image.Width; w++)
+            {
+                Color pixelColor = image.GetPixel(w, h);
+                int grayScale = (int)((pixelColor.R * 0.3) + (pixelColor.G * 0.59) + (pixelColor.B * 0.11));
+                int index = grayScale * 10 / 255;
+                asciiArt.Append(" .:-=+*#%@"[index]);
+            }
+            asciiArt.Append("\n");
+        }
+
+        // Create an image from the ASCII art
+        string asciiFilePath = filePath + "_ascii.png";
+        Bitmap asciiImage = new Bitmap(image.Width * 10, image.Height * 20);
+        using (Graphics g = Graphics.FromImage(asciiImage))
+        {
+            g.Clear(Color.White);
+            g.DrawString(asciiArt.ToString(), new Font("Courier New", 10), Brushes.Black, new PointF(0, 0));
+        }
+        asciiImage.Save(asciiFilePath);
     }
 
     // Encrypt

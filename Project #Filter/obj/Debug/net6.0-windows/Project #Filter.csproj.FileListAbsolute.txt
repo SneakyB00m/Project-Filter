@@ -347,3 +347,6 @@ E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Pr
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Config.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\itextsharp.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.0-windows\itextsharp.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Config.resources
