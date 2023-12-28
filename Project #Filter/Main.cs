@@ -152,44 +152,51 @@ public class Actions
         var videoExtensions = ((JArray)data["VideoExtensions"]).ToObject<string[]>();
 
         // Get all the files in the folder and its subfolders
-        var files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
-
-        // Filter the files based on the video extensions
-        var filteredFiles = files.Where(file => videoExtensions.Contains(Path.GetExtension(file))).ToList();
-
-        // If there are any filtered files, create the "Filter/Videos" directory and move the files there
-        if (filteredFiles.Any())
+        try
         {
-            var videoDirectory = Path.Combine(folderPath, "Filter", "Videos");
-            if (!Directory.Exists(videoDirectory))
+            var files = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories);
+            // Filter the files based on the video extensions
+            var filteredFiles = files.Where(file => videoExtensions.Contains(Path.GetExtension(file))).ToList();
+
+
+            // If there are any filtered files, create the "Filter/Videos" directory and move the files there
+            if (filteredFiles.Any())
             {
-                Directory.CreateDirectory(videoDirectory);
+                var videoDirectory = Path.Combine(folderPath, "Filter", "Videos");
+                if (!Directory.Exists(videoDirectory))
+                {
+                    Directory.CreateDirectory(videoDirectory);
+                }
+
+                foreach (var file in filteredFiles)
+                {
+                    var destinationPath = Path.Combine(videoDirectory, Path.GetFileName(file));
+                    File.Move(file, destinationPath);
+                }
             }
 
-            foreach (var file in filteredFiles)
+            // Get the remaining files
+            var otherFiles = files.Except(filteredFiles);
+
+            // If there are any other files, create the "Filter/Files" directory and move the files there
+            if (otherFiles.Any())
             {
-                var destinationPath = Path.Combine(videoDirectory, Path.GetFileName(file));
-                File.Move(file, destinationPath);
+                var filesDirectory = Path.Combine(folderPath, "Filter", "Files");
+                if (!Directory.Exists(filesDirectory))
+                {
+                    Directory.CreateDirectory(filesDirectory);
+                }
+
+                foreach (var file in otherFiles)
+                {
+                    var destinationPath = Path.Combine(filesDirectory, Path.GetFileName(file));
+                    File.Move(file, destinationPath);
+                }
             }
         }
-
-        // Get the remaining files
-        var otherFiles = files.Except(filteredFiles);
-
-        // If there are any other files, create the "Filter/Files" directory and move the files there
-        if (otherFiles.Any())
+        catch (UnauthorizedAccessException ex)
         {
-            var filesDirectory = Path.Combine(folderPath, "Filter", "Files");
-            if (!Directory.Exists(filesDirectory))
-            {
-                Directory.CreateDirectory(filesDirectory);
-            }
-
-            foreach (var file in otherFiles)
-            {
-                var destinationPath = Path.Combine(filesDirectory, Path.GetFileName(file));
-                File.Move(file, destinationPath);
-            }
+            Console.WriteLine(ex.Message);
         }
     }
 
