@@ -83,40 +83,6 @@ namespace Project__Filter
             privacy1.BringToFront();
         }
 
-        private void Main_Load(object sender, EventArgs e)
-        {
-            Dictionary<string, object> data;
-
-            string filePath = "Config.json";
-
-            if (!File.Exists(filePath))
-            {
-                // Create a dictionary to hold the data
-                data = new Dictionary<string, object>();
-
-                // Add a section for video extensions
-                List<string> videoExtensions = new List<string> { ".mp4", ".avi", ".mkv" };
-                data.Add("VideoExtensions", videoExtensions);
-
-                // Add a section for duration in seconds
-                List<int> durations = new List<int> { 300, 600, 1200, 1800, 2400, 3000, 3600 }; // replace with actual durations
-                data.Add("Duration", durations);
-
-                // Convert the dictionary to a JSON string
-                string json = JsonConvert.SerializeObject(data, Formatting.Indented);
-
-                // Save the JSON string to a file
-                File.WriteAllText(filePath, json);
-
-                // Start a new instance of the application
-                Process.Start(Application.ExecutablePath);
-
-                // Close the current process
-                Environment.Exit(0);
-
-            }
-        }
-
         private void button_Config_Click(object sender, EventArgs e)
         {
             config1.BringToFront();
@@ -683,7 +649,6 @@ public class Actions
         }
     }
 
-    // Merge
     //public void MergePDFs(List<string> filePaths)
     //{
     //    // Sort the file names
@@ -776,6 +741,7 @@ public class Actions
     //}
 
     // Convert 
+    // 
     public void ConvertImagesToPdf(string folderPath)
     {
         // Define the PDF file path
@@ -856,6 +822,29 @@ public class Actions
             g.DrawString(asciiArt.ToString(), new Font("Courier New", 10), Brushes.Black, new PointF(0, 0));
         }
         asciiImage.Save(asciiFilePath);
+    }
+    // Merge
+    public void MergeTextFiles(string filePath)
+    {
+        // Get all text files in the directory
+        string[] fileArray = Directory.GetFiles(filePath, "*.txt");
+
+        // Create the output file
+        string outputFile = Path.Combine(filePath, "merged.txt");
+
+        // Initialize a StreamWriter with the output file
+        using (StreamWriter fileOutput = new StreamWriter(outputFile))
+        {
+            // Iterate through each file
+            foreach (string file in fileArray)
+            {
+                // Read the contents of the file
+                string contents = File.ReadAllText(file);
+
+                // Write the contents to the output file
+                fileOutput.Write(contents);
+            }
+        }
     }
 
     // Encrypt

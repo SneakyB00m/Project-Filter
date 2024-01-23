@@ -389,7 +389,6 @@
             Name = "Main";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
-            Load += Main_Load;
             panel_Menu.ResumeLayout(false);
             panel_Accent.ResumeLayout(false);
             panel_Accent.PerformLayout();
