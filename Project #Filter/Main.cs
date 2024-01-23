@@ -649,6 +649,7 @@ public class Actions
         }
     }
 
+    //Merge
     //public void MergePDFs(List<string> filePaths)
     //{
     //    // Sort the file names
