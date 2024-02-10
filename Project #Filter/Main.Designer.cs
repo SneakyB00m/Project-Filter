@@ -65,7 +65,7 @@
             // 
             // panel_Menu
             // 
-            panel_Menu.BackColor = Color.FromArgb(64, 64, 64);
+            panel_Menu.BackColor = Color.FromArgb(0, 64, 64);
             panel_Menu.Controls.Add(Panel_Index);
             panel_Menu.Controls.Add(button_Privacy);
             panel_Menu.Controls.Add(button_Help);
@@ -274,7 +274,7 @@
             // 
             Panel_Banner.BackColor = Color.FromArgb(0, 64, 64);
             Panel_Banner.Controls.Add(pictureBox1);
-            Panel_Banner.Location = new Point(237, 0);
+            Panel_Banner.Location = new Point(232, 6);
             Panel_Banner.Margin = new Padding(3, 2, 3, 2);
             Panel_Banner.Name = "Panel_Banner";
             Panel_Banner.Size = new Size(60, 77);
@@ -283,7 +283,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Logo;
-            pictureBox1.Location = new Point(3, 20);
+            pictureBox1.Location = new Point(3, 26);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(55, 46);

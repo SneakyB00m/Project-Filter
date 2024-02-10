@@ -1,16 +1,20 @@
 {
-  "VideoExtensions": [
-    ".mp4",
-    ".avi",
-    ".mkv"
+  "video": [
+    "mp4",
+    "m4v",
+    "avi",
+    "mkv"
   ],
-  "Duration": [
-    300,
-    600,
-    1200,
-    1800,
-    2400,
-    3000,
-    3600
+  "document": [
+    "txt",
+    "docx",
+    "pdf",
+    "pptx"
+  ],
+  "image": [
+    "jpg",
+    "png",
+    "gif",
+    "bmp"
   ]
 }

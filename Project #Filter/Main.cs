@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace Project__Filter
 {
     public partial class Main : Form
@@ -74,7 +76,16 @@ namespace Project__Filter
 
         private void Main_Load(object sender, EventArgs e)
         {
+            var dict = new Dictionary<string, List<string>>
+            {
+                { "video", new List<string>() { "mp4", "m4v", "avi", "mkv" } },
+                { "document", new List<string>() { "txt", "docx", "pdf", "pptx" } },
+                { "image", new List<string>() { "jpg", "png", "gif", "bmp" } }
+            };
 
+            string json = JsonConvert.SerializeObject(dict, Formatting.Indented);
+            File.WriteAllText("Config.json", json);
         }
+
     }
 }
