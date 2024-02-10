@@ -14,9 +14,7 @@ namespace Project__Filter
 {
     public partial class Merge : UserControl
     {
-        string folderPath;
-        Actions actions = new Actions();
-
+     
         public Merge()
         {
             InitializeComponent();
@@ -24,8 +22,7 @@ namespace Project__Filter
 
         private void button_Path_Click(object sender, EventArgs e)
         {
-            folderPath = actions.OpenFolderManager();
-            textBox_Path.Text = folderPath;
+           
         }
 
         private void Merge_Load(object sender, EventArgs e)
@@ -70,41 +67,7 @@ namespace Project__Filter
 
         private void button_Filter_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(folderPath))
-            {
-                // Check if an item is selected in the ComboBox
-                if (comboBox_Selector.SelectedItem != null)
-                {
-                    // Get the selected item
-                    string selectedOption = comboBox_Selector.SelectedItem.ToString();
-
-                    switch (selectedOption)
-                    {
-                        case "TEXT":
-                            break;
-                        case "WORD":
-                            break;
-                        case "PDF - SIMPLE":
-                            break;
-                        case "PDF - TITLE ":
-                            break;
-                        case "IMAGE COLLAGE":
-                            break;
-                        default:
-                            MessageBox.Show("No file selected");
-                            break;
-                    }
-                }
-                else
-                {
-                    // No item is selected in the ComboBox
-                    Debug.WriteLine("No option selected.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("No Folder Selected.");
-            }
+           
         }
 
 
