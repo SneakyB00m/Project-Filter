@@ -1,19 +1,3 @@
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NReco.VideoInfo;
-using SharpCompress.Archives;
-using SharpCompress.Archives.Rar;
-using SharpCompress.Common;
-using SharpCompress.Writers;
-using System.Diagnostics;
-using System.Security.Cryptography;
-using System.Text;
-using Rectangle = iTextSharp.text.Rectangle;
-using ImageMagick;
-using Font = System.Drawing.Font;
-
 namespace Project__Filter
 {
     public partial class Main : Form
