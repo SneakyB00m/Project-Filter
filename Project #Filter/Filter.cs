@@ -1,13 +1,23 @@
-﻿namespace Project__Filter
+﻿using Newtonsoft.Json;
+
+namespace Project__Filter
 {
     public partial class Filter : UserControl
     {
-        //Main Main = new Main();
         string selectedPath = "";
         Dictionary<string, List<string>> myDict;
         public Filter()
         {
             InitializeComponent();
+        }
+
+        private void Filter_Load(object sender, EventArgs e)
+        {
+            if (File.Exists("Config.json"))
+            {
+                string json = File.ReadAllText("Config.json");
+                myDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
+            }
         }
 
         private void button_Path_Click(object sender, EventArgs e)
@@ -20,7 +30,6 @@
                 {
                     selectedPath = fbd.SelectedPath;
                     textBox_Path.Text = selectedPath;
-                    //myDict = Main.dict;
                 }
             }
         }
@@ -51,6 +60,8 @@
                 MessageBox.Show("No checkboxes are checked.");
             }
         }
+
+     
 
         private void FilterSort(string path, Dictionary<string, List<string>> myDict, List<string> Check)
         {

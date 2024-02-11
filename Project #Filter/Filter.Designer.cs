@@ -293,6 +293,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "Filter";
             Size = new Size(676, 405);
+            Load += Filter_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

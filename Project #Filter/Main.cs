@@ -4,7 +4,7 @@ namespace Project__Filter
 {
     public partial class Main : Form
     {
-        public Dictionary<string, List<string>> dict;
+        Dictionary<string, List<string>> dict;
 
         public Main()
         {
@@ -89,11 +89,6 @@ namespace Project__Filter
 
                 string json = JsonConvert.SerializeObject(dict, Formatting.Indented);
                 File.WriteAllText("Config.json", json);
-            }
-            else
-            {
-                string json = File.ReadAllText("Config.json");
-                dict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
             }
         }
 
