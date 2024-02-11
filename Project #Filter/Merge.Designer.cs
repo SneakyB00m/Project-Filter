@@ -114,14 +114,14 @@
             // textBox_Path
             // 
             textBox_Path.BackColor = Color.FromArgb(64, 64, 64);
-            textBox_Path.BorderStyle = BorderStyle.None;
-            textBox_Path.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
+            textBox_Path.BorderStyle = BorderStyle.FixedSingle;
+            textBox_Path.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             textBox_Path.ForeColor = Color.White;
-            textBox_Path.Location = new Point(115, 52);
+            textBox_Path.Location = new Point(115, 39);
             textBox_Path.Margin = new Padding(3, 2, 3, 2);
             textBox_Path.Name = "textBox_Path";
             textBox_Path.ReadOnly = true;
-            textBox_Path.Size = new Size(523, 20);
+            textBox_Path.Size = new Size(523, 33);
             textBox_Path.TabIndex = 31;
             // 
             // label2
@@ -187,13 +187,16 @@
             // 
             // comboBox_Selector
             // 
+            comboBox_Selector.BackColor = Color.FromArgb(64, 64, 64);
             comboBox_Selector.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_Selector.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            comboBox_Selector.ForeColor = Color.White;
             comboBox_Selector.FormattingEnabled = true;
             comboBox_Selector.Items.AddRange(new object[] { "TEXT", "WORD", "PDF - SIMPLE", "PDF - TITLE", "IMAGE COLLAGE" });
-            comboBox_Selector.Location = new Point(115, 136);
+            comboBox_Selector.Location = new Point(199, 131);
             comboBox_Selector.Margin = new Padding(3, 2, 3, 2);
             comboBox_Selector.Name = "comboBox_Selector";
-            comboBox_Selector.Size = new Size(517, 23);
+            comboBox_Selector.Size = new Size(439, 29);
             comboBox_Selector.TabIndex = 36;
             // 
             // Merge

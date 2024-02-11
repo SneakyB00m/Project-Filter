@@ -6,6 +6,7 @@ namespace Project__Filter
     {
         string selectedPath = "";
         Dictionary<string, List<string>> myDict;
+
         public Filter()
         {
             InitializeComponent();
@@ -61,11 +62,36 @@ namespace Project__Filter
             }
         }
 
-     
-
         private void FilterSort(string path, Dictionary<string, List<string>> myDict, List<string> Check)
         {
+            string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
 
+            foreach (string file in files)
+            {
+                // Get the file extension
+                string extension = Path.GetExtension(file).TrimStart('.').ToLower();
+
+                // Check if the dictionary contains the extension
+                foreach (var entry in myDict)
+                {
+                    if (entry.Value.Contains(extension))
+                    {
+                        // Get the destination folder
+                        string destinationFolder = Path.Combine(path, entry.Key);
+
+                        // Create the destination folder, if it doesn't exist
+                        Directory.CreateDirectory(destinationFolder);
+
+                        // Get the destination file path
+                        string destinationFile = Path.Combine(destinationFolder, Path.GetFileName(file));
+
+                        // Move the file
+                        File.Move(file, destinationFile);
+
+                        break;
+                    }
+                }
+            }
         }
     }
 }

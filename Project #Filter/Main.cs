@@ -74,6 +74,8 @@ namespace Project__Filter
         private void button_Config_Click(object sender, EventArgs e)
         {
             config1.BringToFront();
+            Panel_Index.Height = button_Home.Height;
+            Panel_Index.Top = button_Home.Top;
         }
 
         private void Main_Load(object sender, EventArgs e)

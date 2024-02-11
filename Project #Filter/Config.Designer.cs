@@ -28,93 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            textBox_Path = new TextBox();
-            label2 = new Label();
-            checkBox_Delete = new CheckBox();
-            button_Filter = new Button();
-            progressBar_Time = new ProgressBar();
+            button_Remove = new Button();
             label3 = new Label();
             panel4 = new Panel();
             panel3 = new Panel();
             panel2 = new Panel();
             panel1 = new Panel();
             button_Path = new Button();
+            listBox_Folders = new ListBox();
+            listBox_Extension = new ListBox();
+            button_Wip = new Button();
+            button_Add = new Button();
+            label1 = new Label();
+            textBox_Item = new TextBox();
+            label2 = new Label();
+            label4 = new Label();
+            radioButton_Folder = new RadioButton();
+            radioButton_Extension = new RadioButton();
+            groupBox = new GroupBox();
             panel1.SuspendLayout();
+            groupBox.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // button_Remove
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.FromArgb(64, 64, 64);
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(38, 39);
-            label1.Name = "label1";
-            label1.Size = new Size(71, 32);
-            label1.TabIndex = 34;
-            label1.Text = "Path:";
-            // 
-            // textBox_Path
-            // 
-            textBox_Path.BackColor = Color.FromArgb(64, 64, 64);
-            textBox_Path.BorderStyle = BorderStyle.None;
-            textBox_Path.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            textBox_Path.ForeColor = Color.White;
-            textBox_Path.Location = new Point(115, 51);
-            textBox_Path.Margin = new Padding(3, 2, 3, 2);
-            textBox_Path.Name = "textBox_Path";
-            textBox_Path.ReadOnly = true;
-            textBox_Path.Size = new Size(523, 20);
-            textBox_Path.TabIndex = 36;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.FromArgb(64, 64, 64);
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(41, 317);
-            label2.Name = "label2";
-            label2.Size = new Size(292, 19);
-            label2.TabIndex = 37;
-            label2.Text = "Would you like to delete the original files?";
-            // 
-            // checkBox_Delete
-            // 
-            checkBox_Delete.AutoSize = true;
-            checkBox_Delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            checkBox_Delete.ForeColor = Color.White;
-            checkBox_Delete.Location = new Point(348, 320);
-            checkBox_Delete.Margin = new Padding(3, 2, 3, 2);
-            checkBox_Delete.Name = "checkBox_Delete";
-            checkBox_Delete.Size = new Size(15, 14);
-            checkBox_Delete.TabIndex = 38;
-            checkBox_Delete.UseVisualStyleBackColor = true;
-            // 
-            // button_Filter
-            // 
-            button_Filter.BackColor = Color.Teal;
-            button_Filter.FlatAppearance.BorderSize = 0;
-            button_Filter.FlatStyle = FlatStyle.Flat;
-            button_Filter.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
-            button_Filter.ForeColor = Color.White;
-            button_Filter.Location = new Point(398, 313);
-            button_Filter.Margin = new Padding(3, 2, 3, 2);
-            button_Filter.Name = "button_Filter";
-            button_Filter.Size = new Size(233, 26);
-            button_Filter.TabIndex = 39;
-            button_Filter.Text = "Filter";
-            button_Filter.UseVisualStyleBackColor = false;
-            // 
-            // progressBar_Time
-            // 
-            progressBar_Time.Location = new Point(41, 347);
-            progressBar_Time.Margin = new Padding(3, 2, 3, 2);
-            progressBar_Time.Name = "progressBar_Time";
-            progressBar_Time.Size = new Size(590, 22);
-            progressBar_Time.Step = 1;
-            progressBar_Time.TabIndex = 35;
+            button_Remove.BackColor = Color.Teal;
+            button_Remove.BackgroundImage = Properties.Resources.icons8_remove_50;
+            button_Remove.BackgroundImageLayout = ImageLayout.Zoom;
+            button_Remove.FlatAppearance.BorderSize = 0;
+            button_Remove.FlatStyle = FlatStyle.Flat;
+            button_Remove.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            button_Remove.ForeColor = Color.White;
+            button_Remove.Location = new Point(510, 330);
+            button_Remove.Margin = new Padding(3, 2, 3, 2);
+            button_Remove.Name = "button_Remove";
+            button_Remove.Size = new Size(128, 39);
+            button_Remove.TabIndex = 39;
+            button_Remove.UseVisualStyleBackColor = false;
+            button_Remove.Click += button_Remove_Click;
             // 
             // label3
             // 
@@ -122,15 +73,15 @@
             label3.BackColor = Color.FromArgb(64, 64, 64);
             label3.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(61, 92);
+            label3.Location = new Point(41, 34);
             label3.Name = "label3";
-            label3.Size = new Size(95, 30);
+            label3.Size = new Size(156, 30);
             label3.TabIndex = 33;
-            label3.Text = "Options";
+            label3.Text = "Configuration";
             // 
             // panel4
             // 
-            panel4.BackColor = Color.FromArgb(64, 64, 64);
+            panel4.BackColor = Color.FromArgb(0, 64, 64);
             panel4.Dock = DockStyle.Right;
             panel4.Location = new Point(644, 32);
             panel4.Margin = new Padding(3, 2, 3, 2);
@@ -182,17 +133,164 @@
             button_Path.TabIndex = 0;
             button_Path.UseVisualStyleBackColor = false;
             // 
+            // listBox_Folders
+            // 
+            listBox_Folders.BackColor = Color.Gray;
+            listBox_Folders.Cursor = Cursors.Hand;
+            listBox_Folders.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
+            listBox_Folders.ForeColor = Color.White;
+            listBox_Folders.FormattingEnabled = true;
+            listBox_Folders.ItemHeight = 18;
+            listBox_Folders.Location = new Point(37, 112);
+            listBox_Folders.Name = "listBox_Folders";
+            listBox_Folders.Size = new Size(95, 256);
+            listBox_Folders.TabIndex = 40;
+            listBox_Folders.SelectedIndexChanged += listBox_Folders_SelectedIndexChanged;
+            // 
+            // listBox_Extension
+            // 
+            listBox_Extension.BackColor = Color.Gray;
+            listBox_Extension.Cursor = Cursors.Hand;
+            listBox_Extension.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
+            listBox_Extension.ForeColor = Color.White;
+            listBox_Extension.FormattingEnabled = true;
+            listBox_Extension.ItemHeight = 18;
+            listBox_Extension.Location = new Point(138, 112);
+            listBox_Extension.Name = "listBox_Extension";
+            listBox_Extension.Size = new Size(90, 256);
+            listBox_Extension.TabIndex = 41;
+            // 
+            // button_Wip
+            // 
+            button_Wip.BackColor = Color.Teal;
+            button_Wip.FlatAppearance.BorderSize = 0;
+            button_Wip.FlatStyle = FlatStyle.Flat;
+            button_Wip.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            button_Wip.ForeColor = Color.White;
+            button_Wip.Location = new Point(379, 330);
+            button_Wip.Margin = new Padding(3, 2, 3, 2);
+            button_Wip.Name = "button_Wip";
+            button_Wip.Size = new Size(128, 39);
+            button_Wip.TabIndex = 42;
+            button_Wip.Text = "Filter";
+            button_Wip.UseVisualStyleBackColor = false;
+            // 
+            // button_Add
+            // 
+            button_Add.BackColor = Color.Teal;
+            button_Add.BackgroundImage = Properties.Resources.icons8_add_50;
+            button_Add.BackgroundImageLayout = ImageLayout.Zoom;
+            button_Add.FlatAppearance.BorderSize = 0;
+            button_Add.FlatStyle = FlatStyle.Flat;
+            button_Add.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            button_Add.ForeColor = Color.White;
+            button_Add.Location = new Point(248, 330);
+            button_Add.Margin = new Padding(3, 2, 3, 2);
+            button_Add.Name = "button_Add";
+            button_Add.Size = new Size(128, 39);
+            button_Add.TabIndex = 43;
+            button_Add.UseVisualStyleBackColor = false;
+            button_Add.Click += button_Add_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(248, 112);
+            label1.Name = "label1";
+            label1.Size = new Size(109, 30);
+            label1.TabIndex = 44;
+            label1.Text = "Extension";
+            // 
+            // textBox_Item
+            // 
+            textBox_Item.BackColor = Color.FromArgb(64, 64, 64);
+            textBox_Item.BorderStyle = BorderStyle.FixedSingle;
+            textBox_Item.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox_Item.ForeColor = Color.White;
+            textBox_Item.Location = new Point(363, 111);
+            textBox_Item.Name = "textBox_Item";
+            textBox_Item.Size = new Size(275, 33);
+            textBox_Item.TabIndex = 45;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(41, 89);
+            label2.Name = "label2";
+            label2.Size = new Size(47, 17);
+            label2.TabIndex = 46;
+            label2.Text = "Folder";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(138, 89);
+            label4.Name = "label4";
+            label4.Size = new Size(68, 17);
+            label4.TabIndex = 47;
+            label4.Text = "Extension";
+            // 
+            // radioButton_Folder
+            // 
+            radioButton_Folder.AutoSize = true;
+            radioButton_Folder.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            radioButton_Folder.ForeColor = Color.White;
+            radioButton_Folder.Location = new Point(87, 43);
+            radioButton_Folder.Name = "radioButton_Folder";
+            radioButton_Folder.Size = new Size(71, 24);
+            radioButton_Folder.TabIndex = 48;
+            radioButton_Folder.TabStop = true;
+            radioButton_Folder.Text = "Folder";
+            radioButton_Folder.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Extension
+            // 
+            radioButton_Extension.AutoSize = true;
+            radioButton_Extension.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            radioButton_Extension.ForeColor = Color.White;
+            radioButton_Extension.Location = new Point(236, 43);
+            radioButton_Extension.Name = "radioButton_Extension";
+            radioButton_Extension.Size = new Size(95, 24);
+            radioButton_Extension.TabIndex = 49;
+            radioButton_Extension.TabStop = true;
+            radioButton_Extension.Text = "Extension";
+            radioButton_Extension.UseVisualStyleBackColor = true;
+            // 
+            // groupBox
+            // 
+            groupBox.Controls.Add(radioButton_Folder);
+            groupBox.Controls.Add(radioButton_Extension);
+            groupBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox.ForeColor = Color.White;
+            groupBox.Location = new Point(248, 172);
+            groupBox.Name = "groupBox";
+            groupBox.Size = new Size(390, 100);
+            groupBox.TabIndex = 50;
+            groupBox.TabStop = false;
+            groupBox.Text = "Type";
+            // 
             // Config
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
-            Controls.Add(label1);
-            Controls.Add(textBox_Path);
+            Controls.Add(groupBox);
+            Controls.Add(label4);
             Controls.Add(label2);
-            Controls.Add(checkBox_Delete);
-            Controls.Add(button_Filter);
-            Controls.Add(progressBar_Time);
+            Controls.Add(textBox_Item);
+            Controls.Add(label1);
+            Controls.Add(button_Add);
+            Controls.Add(button_Wip);
+            Controls.Add(listBox_Extension);
+            Controls.Add(listBox_Folders);
+            Controls.Add(button_Remove);
             Controls.Add(label3);
             Controls.Add(panel4);
             Controls.Add(panel3);
@@ -200,24 +298,32 @@
             Controls.Add(panel1);
             Name = "Config";
             Size = new Size(676, 405);
+            Load += Config_Load;
             panel1.ResumeLayout(false);
+            groupBox.ResumeLayout(false);
+            groupBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
-        private TextBox textBox_Path;
-        private Label label2;
-        private CheckBox checkBox_Delete;
-        private Button button_Filter;
-        private ProgressBar progressBar_Time;
+        private Button button_Remove;
         private Label label3;
         private Panel panel4;
         private Panel panel3;
         private Panel panel2;
         private Panel panel1;
         private Button button_Path;
+        private ListBox listBox_Folders;
+        private ListBox listBox_Extension;
+        private Button button_Wip;
+        private Button button_Add;
+        private Label label1;
+        private TextBox textBox_Item;
+        private Label label2;
+        private Label label4;
+        private RadioButton radioButton_Folder;
+        private RadioButton radioButton_Extension;
+        private GroupBox groupBox;
     }
 }

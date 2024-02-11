@@ -212,7 +212,7 @@
             textBox_Path.BorderStyle = BorderStyle.FixedSingle;
             textBox_Path.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBox_Path.ForeColor = Color.White;
-            textBox_Path.Location = new Point(115, 42);
+            textBox_Path.Location = new Point(115, 39);
             textBox_Path.Margin = new Padding(3, 2, 3, 2);
             textBox_Path.Name = "textBox_Path";
             textBox_Path.ReadOnly = true;
