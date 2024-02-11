@@ -30,7 +30,6 @@
         {
             panel1 = new Panel();
             panel2 = new Panel();
-            panel3 = new Panel();
             panel4 = new Panel();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -56,19 +55,9 @@
             panel2.Size = new Size(676, 32);
             panel2.TabIndex = 1;
             // 
-            // panel3
-            // 
-            panel3.BackColor = Color.FromArgb(64, 64, 64);
-            panel3.Dock = DockStyle.Left;
-            panel3.Location = new Point(0, 32);
-            panel3.Margin = new Padding(3, 2, 3, 2);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(37, 341);
-            panel3.TabIndex = 2;
-            // 
             // panel4
             // 
-            panel4.BackColor = Color.FromArgb(64, 64, 64);
+            panel4.BackColor = Color.FromArgb(0, 64, 64);
             panel4.Dock = DockStyle.Right;
             panel4.Location = new Point(639, 32);
             panel4.Margin = new Padding(3, 2, 3, 2);
@@ -79,12 +68,13 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.FromArgb(64, 64, 64);
+            pictureBox1.BackgroundImage = Properties.Resources.Background;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = Properties.Resources.Background;
-            pictureBox1.Location = new Point(37, 32);
+            pictureBox1.Location = new Point(0, 32);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(602, 341);
+            pictureBox1.Size = new Size(639, 341);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -95,7 +85,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(pictureBox1);
             Controls.Add(panel4);
-            Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
@@ -109,7 +98,6 @@
 
         private Panel panel1;
         private Panel panel2;
-        private Panel panel3;
         private Panel panel4;
         private PictureBox pictureBox1;
     }
