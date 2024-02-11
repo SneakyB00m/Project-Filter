@@ -29,8 +29,18 @@ namespace Project__Filter
 
         private void button_Path_Click(object sender, EventArgs e)
         {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
 
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    string selectedPath = fbd.SelectedPath;
+                    // Use 'selectedPath' wherever you need it
+                }
+            }
         }
+
 
         private void button_Filter_Click(object sender, EventArgs e)
         {
