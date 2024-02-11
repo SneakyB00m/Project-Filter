@@ -4,6 +4,8 @@ namespace Project__Filter
 {
     public partial class Main : Form
     {
+        public Dictionary<string, List<string>> dict;
+
         public Main()
         {
             InitializeComponent();
@@ -78,7 +80,7 @@ namespace Project__Filter
         {
             if (!File.Exists("Config.json"))
             {
-                var dict = new Dictionary<string, List<string>>
+                dict = new Dictionary<string, List<string>>
                 {
                     { "video", new List<string>() { "mp4", "m4v", "avi", "mkv" } },
                     { "document", new List<string>() { "txt", "docx", "pdf", "pptx" } },
@@ -88,6 +90,12 @@ namespace Project__Filter
                 string json = JsonConvert.SerializeObject(dict, Formatting.Indented);
                 File.WriteAllText("Config.json", json);
             }
+            else
+            {
+                string json = File.ReadAllText("Config.json");
+                dict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
+            }
         }
+
     }
 }

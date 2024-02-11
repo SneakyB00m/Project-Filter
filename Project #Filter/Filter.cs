@@ -1,30 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Newtonsoft.Json;
-using static System.Windows.Forms.Design.AxImporter;
-
-namespace Project__Filter
+﻿namespace Project__Filter
 {
     public partial class Filter : UserControl
     {
-
-
-
+        Main Main = new Main();
+        string selectedPath = "";
+        Dictionary<string, List<string>> myDict;
         public Filter()
         {
             InitializeComponent();
-        }
-
-        private void Filter_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void button_Path_Click(object sender, EventArgs e)
@@ -35,16 +18,16 @@ namespace Project__Filter
 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
-                    string selectedPath = fbd.SelectedPath;
-                    // Use 'selectedPath' wherever you need it
+                    selectedPath = fbd.SelectedPath;
+                    textBox_Path.Text = selectedPath;
+                    myDict = Main.dict;
                 }
             }
         }
 
-
         private void button_Filter_Click(object sender, EventArgs e)
         {
-            string checkedBoxes = "";
+            List<string> checkedBoxes = new List<string>();
 
             foreach (Control control in this.Controls)
             {
@@ -53,14 +36,15 @@ namespace Project__Filter
                     CheckBox checkBox = control as CheckBox;
                     if (checkBox.Checked)
                     {
-                        checkedBoxes += checkBox.Name + " is checked.\n";
+                        checkedBoxes.Add(checkBox.Name);
                     }
                 }
             }
 
-            if (!string.IsNullOrEmpty(checkedBoxes))
+            if (checkedBoxes.Count > 0)
             {
-                MessageBox.Show(checkedBoxes);
+                // Call the Filter function
+                FilterSort(selectedPath, myDict, checkedBoxes);
             }
             else
             {
@@ -68,8 +52,7 @@ namespace Project__Filter
             }
         }
 
-        // Funcs
-        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        private void FilterSort(string path, Dictionary<string, List<string>> myDict, List<string> Check)
         {
 
         }

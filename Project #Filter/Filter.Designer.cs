@@ -96,7 +96,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.FromArgb(64, 64, 64);
+            panel4.BackColor = Color.FromArgb(0, 64, 64);
             panel4.Dock = DockStyle.Right;
             panel4.Location = new Point(644, 32);
             panel4.Margin = new Padding(3, 2, 3, 2);
@@ -209,14 +209,14 @@
             // textBox_Path
             // 
             textBox_Path.BackColor = Color.FromArgb(64, 64, 64);
-            textBox_Path.BorderStyle = BorderStyle.None;
-            textBox_Path.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
+            textBox_Path.BorderStyle = BorderStyle.FixedSingle;
+            textBox_Path.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBox_Path.ForeColor = Color.White;
-            textBox_Path.Location = new Point(115, 51);
+            textBox_Path.Location = new Point(115, 42);
             textBox_Path.Margin = new Padding(3, 2, 3, 2);
             textBox_Path.Name = "textBox_Path";
             textBox_Path.ReadOnly = true;
-            textBox_Path.Size = new Size(523, 20);
+            textBox_Path.Size = new Size(523, 33);
             textBox_Path.TabIndex = 25;
             // 
             // checkBox_Delete
@@ -293,7 +293,6 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "Filter";
             Size = new Size(676, 405);
-            Load += Filter_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

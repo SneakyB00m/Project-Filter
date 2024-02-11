@@ -32,8 +32,8 @@
             panel_Menu = new Panel();
             Panel_Index = new Panel();
             button_Privacy = new Button();
-            button_Help = new Button();
             button_Merge = new Button();
+            button_Git = new Button();
             button_Extract = new Button();
             button_Convert = new Button();
             button_Filter = new Button();
@@ -42,7 +42,6 @@
             button_Config = new Button();
             label_Title = new Label();
             button_Exit = new Button();
-            button_Git = new Button();
             Panel_Banner = new Panel();
             pictureBox1 = new PictureBox();
             home1 = new Home();
@@ -68,8 +67,8 @@
             panel_Menu.BackColor = Color.FromArgb(0, 64, 64);
             panel_Menu.Controls.Add(Panel_Index);
             panel_Menu.Controls.Add(button_Privacy);
-            panel_Menu.Controls.Add(button_Help);
             panel_Menu.Controls.Add(button_Merge);
+            panel_Menu.Controls.Add(button_Git);
             panel_Menu.Controls.Add(button_Extract);
             panel_Menu.Controls.Add(button_Convert);
             panel_Menu.Controls.Add(button_Filter);
@@ -92,6 +91,7 @@
             // 
             // button_Privacy
             // 
+            button_Privacy.BackColor = Color.Transparent;
             button_Privacy.FlatAppearance.BorderSize = 0;
             button_Privacy.FlatStyle = FlatStyle.Flat;
             button_Privacy.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
@@ -104,23 +104,12 @@
             button_Privacy.TabIndex = 8;
             button_Privacy.Text = "    Encipher";
             button_Privacy.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button_Privacy.UseVisualStyleBackColor = true;
+            button_Privacy.UseVisualStyleBackColor = false;
             button_Privacy.Click += button_Privacy_Click;
-            // 
-            // button_Help
-            // 
-            button_Help.FlatAppearance.BorderSize = 0;
-            button_Help.FlatStyle = FlatStyle.Flat;
-            button_Help.Image = Properties.Resources.Help;
-            button_Help.Location = new Point(3, 478);
-            button_Help.Margin = new Padding(3, 2, 3, 2);
-            button_Help.Name = "button_Help";
-            button_Help.Size = new Size(32, 32);
-            button_Help.TabIndex = 6;
-            button_Help.UseVisualStyleBackColor = true;
             // 
             // button_Merge
             // 
+            button_Merge.BackColor = Color.Transparent;
             button_Merge.FlatAppearance.BorderSize = 0;
             button_Merge.FlatStyle = FlatStyle.Flat;
             button_Merge.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
@@ -133,11 +122,26 @@
             button_Merge.TabIndex = 5;
             button_Merge.Text = "    Merge";
             button_Merge.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button_Merge.UseVisualStyleBackColor = true;
+            button_Merge.UseVisualStyleBackColor = false;
             button_Merge.Click += button_Merge_Click;
+            // 
+            // button_Git
+            // 
+            button_Git.BackgroundImage = Properties.Resources.icons8_github_50;
+            button_Git.BackgroundImageLayout = ImageLayout.Stretch;
+            button_Git.FlatAppearance.BorderSize = 0;
+            button_Git.FlatStyle = FlatStyle.Flat;
+            button_Git.Location = new Point(3, 480);
+            button_Git.Margin = new Padding(3, 2, 3, 2);
+            button_Git.Name = "button_Git";
+            button_Git.Size = new Size(30, 30);
+            button_Git.TabIndex = 7;
+            button_Git.UseVisualStyleBackColor = true;
+            button_Git.Click += button_Git_Click;
             // 
             // button_Extract
             // 
+            button_Extract.BackColor = Color.Transparent;
             button_Extract.FlatAppearance.BorderSize = 0;
             button_Extract.FlatStyle = FlatStyle.Flat;
             button_Extract.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
@@ -150,11 +154,12 @@
             button_Extract.TabIndex = 4;
             button_Extract.Text = "    Extract";
             button_Extract.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button_Extract.UseVisualStyleBackColor = true;
+            button_Extract.UseVisualStyleBackColor = false;
             button_Extract.Click += button_Extract_Click;
             // 
             // button_Convert
             // 
+            button_Convert.BackColor = Color.Transparent;
             button_Convert.FlatAppearance.BorderSize = 0;
             button_Convert.FlatStyle = FlatStyle.Flat;
             button_Convert.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
@@ -167,11 +172,12 @@
             button_Convert.TabIndex = 3;
             button_Convert.Text = "    Transform";
             button_Convert.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button_Convert.UseVisualStyleBackColor = true;
+            button_Convert.UseVisualStyleBackColor = false;
             button_Convert.Click += button_Convert_Click;
             // 
             // button_Filter
             // 
+            button_Filter.BackColor = Color.Transparent;
             button_Filter.FlatAppearance.BorderSize = 0;
             button_Filter.FlatStyle = FlatStyle.Flat;
             button_Filter.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
@@ -184,11 +190,12 @@
             button_Filter.TabIndex = 2;
             button_Filter.Text = "    Filter";
             button_Filter.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button_Filter.UseVisualStyleBackColor = true;
+            button_Filter.UseVisualStyleBackColor = false;
             button_Filter.Click += button_Filter_Click_1;
             // 
             // button_Home
             // 
+            button_Home.BackColor = Color.Transparent;
             button_Home.FlatAppearance.BorderSize = 0;
             button_Home.FlatStyle = FlatStyle.Flat;
             button_Home.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
@@ -201,7 +208,7 @@
             button_Home.TabIndex = 0;
             button_Home.Text = "    Home";
             button_Home.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button_Home.UseVisualStyleBackColor = true;
+            button_Home.UseVisualStyleBackColor = false;
             button_Home.Click += button_Home_Click;
             // 
             // panel_Accent
@@ -210,7 +217,6 @@
             panel_Accent.Controls.Add(button_Config);
             panel_Accent.Controls.Add(label_Title);
             panel_Accent.Controls.Add(button_Exit);
-            panel_Accent.Controls.Add(button_Git);
             panel_Accent.Dock = DockStyle.Top;
             panel_Accent.Location = new Point(219, 0);
             panel_Accent.Margin = new Padding(3, 2, 3, 2);
@@ -256,19 +262,6 @@
             button_Exit.TabIndex = 3;
             button_Exit.UseVisualStyleBackColor = true;
             button_Exit.Click += button_Exit_Click;
-            // 
-            // button_Git
-            // 
-            button_Git.FlatAppearance.BorderSize = 0;
-            button_Git.FlatStyle = FlatStyle.Flat;
-            button_Git.Image = Properties.Resources.Git;
-            button_Git.Location = new Point(386, 8);
-            button_Git.Margin = new Padding(3, 2, 3, 2);
-            button_Git.Name = "button_Git";
-            button_Git.Size = new Size(25, 25);
-            button_Git.TabIndex = 7;
-            button_Git.UseVisualStyleBackColor = true;
-            button_Git.Click += button_Git_Click;
             // 
             // Panel_Banner
             // 
@@ -432,7 +425,6 @@
         private Panel Panel_Index;
         private Button button_Home;
         private Button button_Exit;
-        private Button button_Help;
         private Home home1;
         private Filter filter1;
         private Button button_Privacy;
