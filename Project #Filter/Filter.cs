@@ -14,7 +14,7 @@ namespace Project__Filter
 {
     public partial class Filter : UserControl
     {
-       
+
 
 
         public Filter()
@@ -24,23 +24,44 @@ namespace Project__Filter
 
         private void Filter_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         private void button_Path_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void button_Filter_Click(object sender, EventArgs e)
         {
-            
+            string checkedBoxes = "";
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is CheckBox)
+                {
+                    CheckBox checkBox = control as CheckBox;
+                    if (checkBox.Checked)
+                    {
+                        checkedBoxes += checkBox.Name + " is checked.\n";
+                    }
+                }
+            }
+
+            if (!string.IsNullOrEmpty(checkedBoxes))
+            {
+                MessageBox.Show(checkedBoxes);
+            }
+            else
+            {
+                MessageBox.Show("No checkboxes are checked.");
+            }
         }
 
         // Funcs
         private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
-          
+
         }
     }
 }
