@@ -2,7 +2,7 @@
 {
     public partial class Filter : UserControl
     {
-        Main Main = new Main();
+        //Main Main = new Main();
         string selectedPath = "";
         Dictionary<string, List<string>> myDict;
         public Filter()
@@ -20,7 +20,7 @@
                 {
                     selectedPath = fbd.SelectedPath;
                     textBox_Path.Text = selectedPath;
-                    myDict = Main.dict;
+                    //myDict = Main.dict;
                 }
             }
         }
