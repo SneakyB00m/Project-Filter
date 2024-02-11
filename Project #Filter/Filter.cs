@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
+using SharpCompress;
 
 namespace Project__Filter
 {
     public partial class Filter : UserControl
     {
-        string selectedPath = "";
+        string selectedPath;
         Dictionary<string, List<string>> myDict;
 
         public Filter()
@@ -54,7 +55,14 @@ namespace Project__Filter
             if (checkedBoxes.Count > 0)
             {
                 // Call the Filter function
-                FilterSort(selectedPath, myDict, checkedBoxes);
+                if (!string.IsNullOrEmpty(selectedPath))
+                {
+                    FilterSort(selectedPath, myDict, checkedBoxes);
+                }
+                else
+                {
+                    MessageBox.Show("Not selected path");
+                }
             }
             else
             {
@@ -88,10 +96,44 @@ namespace Project__Filter
                         // Move the file
                         File.Move(file, destinationFile);
 
+                        // Call the appropriate sorting method based on the Check list
+                        foreach (string check in Check)
+                        {
+                            switch (check)
+                            {
+                                case "checkBox_Include":
+                                    sortContain();
+                                    break;
+                                case "checkBox_AtoZ":
+                                    sortAlphabetical();
+                                    break;
+                                case "checkBox_Resolution":
+                                    sortResolution();
+                                    break;
+                                case "checkBox_Size":
+                                    sortSize();
+                                    break;
+                                case "checkBox_Duration":
+                                    sortDuration();
+                                    break;
+                            }
+                        }
                         break;
                     }
                 }
             }
         }
+
+        private void sortContain() {
+
+        }
+
+        private void sortAlphabetical() { }
+
+        private void sortResolution() { }
+
+        private void sortSize() { }
+
+        private void sortDuration() { }
     }
 }
