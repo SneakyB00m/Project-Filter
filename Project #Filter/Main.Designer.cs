@@ -215,7 +215,7 @@
             panel_Accent.Location = new Point(219, 0);
             panel_Accent.Margin = new Padding(3, 2, 3, 2);
             panel_Accent.Name = "panel_Accent";
-            panel_Accent.Size = new Size(692, 32);
+            panel_Accent.Size = new Size(692, 40);
             panel_Accent.TabIndex = 1;
             // 
             // button_Config
@@ -224,7 +224,7 @@
             button_Config.FlatAppearance.BorderSize = 0;
             button_Config.FlatStyle = FlatStyle.Flat;
             button_Config.Image = Properties.Resources.Config;
-            button_Config.Location = new Point(623, 4);
+            button_Config.Location = new Point(623, 8);
             button_Config.Margin = new Padding(3, 2, 3, 2);
             button_Config.Name = "button_Config";
             button_Config.Size = new Size(25, 25);
@@ -237,7 +237,7 @@
             label_Title.AutoSize = true;
             label_Title.Font = new Font("Tahoma", 12F, FontStyle.Bold);
             label_Title.ForeColor = Color.White;
-            label_Title.Location = new Point(84, 7);
+            label_Title.Location = new Point(84, 11);
             label_Title.Name = "label_Title";
             label_Title.Size = new Size(274, 19);
             label_Title.TabIndex = 6;
@@ -249,7 +249,7 @@
             button_Exit.FlatAppearance.BorderSize = 0;
             button_Exit.FlatStyle = FlatStyle.Flat;
             button_Exit.Image = Properties.Resources.Power;
-            button_Exit.Location = new Point(660, 4);
+            button_Exit.Location = new Point(660, 8);
             button_Exit.Margin = new Padding(3, 2, 3, 2);
             button_Exit.Name = "button_Exit";
             button_Exit.Size = new Size(25, 25);
@@ -262,7 +262,7 @@
             button_Git.FlatAppearance.BorderSize = 0;
             button_Git.FlatStyle = FlatStyle.Flat;
             button_Git.Image = Properties.Resources.Git;
-            button_Git.Location = new Point(386, 4);
+            button_Git.Location = new Point(386, 8);
             button_Git.Margin = new Padding(3, 2, 3, 2);
             button_Git.Name = "button_Git";
             button_Git.Size = new Size(25, 25);
