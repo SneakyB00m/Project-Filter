@@ -95,9 +95,9 @@ namespace Project__Filter
                 var dictsize = new Dictionary<string, int>
                 {
                     { "Less than 250MB", 250 },
-                    { "250MB to 500MB", 250 },
-                    { "500MB to 1GB", 500 },
-                    { "More than 1GB", 1000 }
+                    { "250MB to 500MB", 500 },
+                    { "500MB to 1GB", 1000 },
+                    { "More than 1GB", 2000 }
                 };
 
                 string sizeJson = JsonConvert.SerializeObject(dictsize, Formatting.Indented);
@@ -109,7 +109,7 @@ namespace Project__Filter
                     { "Less than 5 Min", 300 },
                     { "5 Min to 10 Min", 600 },
                     { "10 Min to 1 Hr", 3600 },
-                    { "More than 1 Hr", 3600 }
+                    { "More than 1 Hr", 3601 }
                 };
 
                 string durationJson = JsonConvert.SerializeObject(dictduration, Formatting.Indented);

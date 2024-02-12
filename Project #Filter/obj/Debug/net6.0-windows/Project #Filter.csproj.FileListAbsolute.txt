@@ -351,6 +351,6 @@ C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Config_Folders.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Config_Menu.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Config_Sizes.resources
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Config_Folders.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Config_Menu.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Config_Sizes.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Config_Extensions.resources

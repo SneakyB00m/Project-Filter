@@ -321,21 +321,24 @@ namespace Project__Filter
                     var fileSizeMB = fileInfo.Length / (1024.0 * 1024.0); // Convert bytes to MB
 
                     string folderName = null;
-                    if (fileSizeMB < sizeDict["Less than 250MB"])
+
+                    // Sort the dictionary by value in descending order
+                    var sortedSizeDict = sizeDict.OrderByDescending(x => x.Value);
+
+                    // Find the appropriate folder for the file
+                    foreach (var entry in sortedSizeDict)
+                    {
+                        if (fileSizeMB > entry.Value)
+                        {
+                            folderName = entry.Key;
+                            break;
+                        }
+                    }
+
+                    // If no appropriate folder was found, use a default folder name
+                    if (folderName == null)
                     {
                         folderName = "Less than 250MB";
-                    }
-                    else if (fileSizeMB < sizeDict["250MB to 500MB"])
-                    {
-                        folderName = "250MB to 500MB";
-                    }
-                    else if (fileSizeMB < sizeDict["500MB to 1GB"])
-                    {
-                        folderName = "500MB to 1GB";
-                    }
-                    else
-                    {
-                        folderName = "More than 1GB";
                     }
 
                     // Create the directory if it doesn't exist

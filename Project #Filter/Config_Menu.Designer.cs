@@ -32,7 +32,7 @@
             Panel_Index_Config = new Panel();
             button_Size = new Button();
             button_Folder = new Button();
-            config_Folders1 = new Config_Folders();
+            config_Folders1 = new Config_Extensions();
             config_Sizes1 = new Config_Sizes();
             panel_Menu_Config.SuspendLayout();
             SuspendLayout();
@@ -135,7 +135,7 @@
         private Panel Panel_Index_Config;
         private Button button_Size;
         private Button button_Folder;
-        private Config_Folders config_Folders1;
+        private Config_Extensions config_Folders1;
         private Config_Sizes config_Sizes1;
     }
 }

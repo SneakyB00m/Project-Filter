@@ -1,6 +1,6 @@
 ﻿namespace Project__Filter
 {
-    partial class Config_Folders
+    partial class Config_Extensions
     {
         /// <summary> 
         /// Required designer variable.
@@ -133,10 +133,10 @@
             textBox_Item.BorderStyle = BorderStyle.FixedSingle;
             textBox_Item.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBox_Item.ForeColor = Color.White;
-            textBox_Item.Location = new Point(8, 88);
+            textBox_Item.Location = new Point(8, 89);
             textBox_Item.Margin = new Padding(3, 4, 3, 4);
             textBox_Item.Name = "textBox_Item";
-            textBox_Item.Size = new Size(400, 39);
+            textBox_Item.Size = new Size(406, 39);
             textBox_Item.TabIndex = 45;
             // 
             // radioButton_Folder
@@ -159,7 +159,7 @@
             radioButton_Extension.AutoSize = true;
             radioButton_Extension.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             radioButton_Extension.ForeColor = Color.White;
-            radioButton_Extension.Location = new Point(274, 56);
+            radioButton_Extension.Location = new Point(280, 56);
             radioButton_Extension.Margin = new Padding(3, 4, 3, 4);
             radioButton_Extension.Name = "radioButton_Extension";
             radioButton_Extension.Size = new Size(120, 29);
@@ -192,9 +192,10 @@
             groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             groupBox2.Controls.Add(radioButton_Extension);
             groupBox2.Controls.Add(radioButton_Folder);
+            groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(8, 155);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(400, 125);
+            groupBox2.Size = new Size(406, 125);
             groupBox2.TabIndex = 50;
             groupBox2.TabStop = false;
             groupBox2.Text = "Merge";
