@@ -12,12 +12,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Project__Filter
 {
-    public partial class Config : UserControl
+    public partial class Config_Folders : UserControl
     {
         // Make myDict a field so it's accessible in both methods
         private Dictionary<string, List<string>> myDict;
 
-        public Config()
+        public Config_Folders()
         {
             InitializeComponent();
         }

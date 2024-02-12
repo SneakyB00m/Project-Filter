@@ -1,6 +1,6 @@
 ﻿namespace Project__Filter
 {
-    partial class Config
+    partial class Config_Folders
     {
         /// <summary> 
         /// Required designer variable.
