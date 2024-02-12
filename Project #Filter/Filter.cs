@@ -16,9 +16,9 @@ namespace Project__Filter
 
         private void Filter_Load(object sender, EventArgs e)
         {
-            if (File.Exists("Config.json"))
+            if (File.Exists("Sort.json"))
             {
-                string json = File.ReadAllText("Config.json");
+                string json = File.ReadAllText("Sort.json");
                 myDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
             }
         }

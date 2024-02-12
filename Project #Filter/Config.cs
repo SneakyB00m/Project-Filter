@@ -24,10 +24,10 @@ namespace Project__Filter
 
         private void Config_Load(object sender, EventArgs e)
         {
-            if (File.Exists("Config.json"))
+            if (File.Exists("Sort.json"))
             {
                 // Read the JSON file
-                string json = File.ReadAllText("Config.json");
+                string json = File.ReadAllText("Sort.json");
 
                 // Deserialize the JSON into a dictionary
                 myDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
