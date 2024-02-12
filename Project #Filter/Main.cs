@@ -4,7 +4,6 @@ namespace Project__Filter
 {
     public partial class Main : Form
     {
-        Dictionary<string, List<string>> dict;
 
         public Main()
         {
@@ -80,28 +79,30 @@ namespace Project__Filter
 
         private void Main_Load(object sender, EventArgs e)
         {
-            if (!File.Exists("Sort.json"))
+            if (!File.Exists("Sort.json") || !File.Exists("Sizes.json"))
             {
-                dict = new Dictionary<string, List<string>>
+                var dictsort = new Dictionary<string, List<string>>
                 {
-                    { "video", new List<string>() { "mp4", "m4v", "avi", "mkv" } },
-                    { "document", new List<string>() { "txt", "docx", "pdf", "pptx" } },
-                    { "image", new List<string>() { "jpg", "png", "gif", "bmp" } }
+                    { "Videos", new List<string>() { "mp4", "m4v", "avi", "mkv" } },
+                    { "Documents", new List<string>() { "txt", "docx", "pdf", "pptx" } },
+                    { "Images", new List<string>() { "jpg", "png", "gif", "bmp" } }
                 };
 
-                string sort = JsonConvert.SerializeObject(dict, Formatting.Indented);
+                string sort = JsonConvert.SerializeObject(dictsort, Formatting.Indented);
                 File.WriteAllText("Sort.json", sort);
 
 
-                dict = new Dictionary<string, List<string>>
+                var dictsize = new Dictionary<string, int>
                 {
-                    { "1 KB - 10 MB", new List<string>() { "mp4", "m4v", "avi", "mkv" } },
-                    { "document", new List<string>() { "txt", "docx", "pdf", "pptx" } },
-                    { "image", new List<string>() { "jpg", "png", "gif", "bmp" } }
+                    { "Less than 250MB", 249 },
+                    { "250MB to 500MB", 250 },
+                    { "500MB to 1GB", 500 },
+                    { "More than 1GB", 1000 }
                 };
 
-                string size = JsonConvert.SerializeObject(dict, Formatting.Indented);
-                File.WriteAllText("Sizes.json", size);
+                string sizeJson = JsonConvert.SerializeObject(dictsize, Formatting.Indented);
+                File.WriteAllText("Sizes.json", sizeJson);
+
             }
         }
 

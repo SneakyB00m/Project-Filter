@@ -94,9 +94,17 @@ namespace Project__Filter
                         // Get the destination file path
                         string destinationFile = Path.Combine(destinationFolder, Path.GetFileName(file));
 
+                        // Check if the destination file already exists
+                        int count = 1;
+                        while (File.Exists(destinationFile))
+                        {
+                            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file);
+                            string fileExtension = Path.GetExtension(file);
+                            destinationFile = Path.Combine(destinationFolder, $"{fileNameWithoutExtension}_{count++}{fileExtension}");
+                        }
+
                         // Move the file
                         File.Move(file, destinationFile);
-
 
                         break;
                     }
@@ -130,6 +138,7 @@ namespace Project__Filter
                 }
             }
         }
+
 
         private void sortContain(string path, string searchText)
         {

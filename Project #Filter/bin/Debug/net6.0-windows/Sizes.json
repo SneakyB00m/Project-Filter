@@ -1,20 +1,6 @@
 {
-  "1 KB - 10 MB": [
-    "mp4",
-    "m4v",
-    "avi",
-    "mkv"
-  ],
-  "document": [
-    "txt",
-    "docx",
-    "pdf",
-    "pptx"
-  ],
-  "image": [
-    "jpg",
-    "png",
-    "gif",
-    "bmp"
-  ]
+  "Less than 250MB": 249,
+  "250MB to 500MB": 250,
+  "500MB to 1GB": 500,
+  "More than 1GB": 1000
 }

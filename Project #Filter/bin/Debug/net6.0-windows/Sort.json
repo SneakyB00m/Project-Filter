@@ -1,17 +1,17 @@
 {
-  "video": [
+  "Videos": [
     "mp4",
     "m4v",
     "avi",
     "mkv"
   ],
-  "document": [
+  "Documents": [
     "txt",
     "docx",
     "pdf",
     "pptx"
   ],
-  "image": [
+  "Images": [
     "jpg",
     "png",
     "gif",
