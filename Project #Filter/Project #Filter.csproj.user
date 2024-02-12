@@ -10,6 +10,9 @@
     <Compile Update="Config_Menu.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Config_Sizes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Convert.cs">
       <SubType>UserControl</SubType>
     </Compile>
