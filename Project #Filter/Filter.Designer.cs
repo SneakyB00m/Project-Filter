@@ -199,7 +199,7 @@
             checkBox_Delete.AutoSize = true;
             checkBox_Delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             checkBox_Delete.ForeColor = Color.White;
-            checkBox_Delete.Location = new Point(398, 427);
+            checkBox_Delete.Location = new Point(420, 428);
             checkBox_Delete.Name = "checkBox_Delete";
             checkBox_Delete.Size = new Size(18, 17);
             checkBox_Delete.TabIndex = 27;
@@ -236,9 +236,9 @@
             label2.ForeColor = Color.White;
             label2.Location = new Point(47, 423);
             label2.Name = "label2";
-            label2.Size = new Size(351, 23);
+            label2.Size = new Size(367, 23);
             label2.TabIndex = 26;
-            label2.Text = "Would you like to delete the original files?";
+            label2.Text = "Would you like to delete unused directories?";
             // 
             // Filter
             // 

@@ -79,6 +79,7 @@ namespace Project__Filter
             {
                 // Get the file extension
                 string extension = Path.GetExtension(file).TrimStart('.').ToLower();
+                bool found = false;
 
                 // Check if the dictionary contains the extension
                 foreach (var entry in myDict)
@@ -106,8 +107,33 @@ namespace Project__Filter
                         // Move the file
                         File.Move(file, destinationFile);
 
+                        found = true;
                         break;
                     }
+                }
+
+                // If the extension was not found in the dictionary, move the file to a new folder
+                if (!found)
+                {
+                    string destinationFolder = Path.Combine(path, "Others");
+
+                    // Create the destination folder, if it doesn't exist
+                    Directory.CreateDirectory(destinationFolder);
+
+                    // Get the destination file path
+                    string destinationFile = Path.Combine(destinationFolder, Path.GetFileName(file));
+
+                    // Check if the destination file already exists
+                    int count = 1;
+                    while (File.Exists(destinationFile))
+                    {
+                        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file);
+                        string fileExtension = Path.GetExtension(file);
+                        destinationFile = Path.Combine(destinationFolder, $"{fileNameWithoutExtension}_{count++}{fileExtension}");
+                    }
+
+                    // Move the file
+                    File.Move(file, destinationFile);
                 }
             }
 
@@ -135,11 +161,14 @@ namespace Project__Filter
                     case "checkBox_Duration":
                         sortDuration(selectedPath);
                         break;
+                    case "checkBox_Delete":
+                        DeleteDirectories(selectedPath);
+                        break;
                 }
             }
         }
 
-
+        // Functions
         private void sortContain(string path, string searchText)
         {
             // If the user clicked "Cancel" in the InputBox, the searchText will be an empty string
@@ -279,7 +308,6 @@ namespace Project__Filter
             MessageBox.Show(sb.ToString());
         }
 
-
         private void sortDuration(string path)
         {
             // Create a new instance of the FFProbe class
@@ -327,6 +355,26 @@ namespace Project__Filter
 
             // Show the sorted video files in a message box
             MessageBox.Show(sb.ToString());
+        }
+
+        private void DeleteDirectories(string path)
+        {
+            // Get all directories on this directory.
+            var directories = Directory.GetDirectories(path);
+
+            // Loop through all subdirectories
+            foreach (string directory in directories)
+            {
+                // Call this method recursively.
+                DeleteDirectories(directory);
+            }
+
+            // If directory is empty, delete it
+            if (Directory.GetFiles(path).Length == 0 &&
+                Directory.GetDirectories(path).Length == 0)
+            {
+                Directory.Delete(path, false);
+            }
         }
 
     }
