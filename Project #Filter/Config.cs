@@ -100,7 +100,7 @@ namespace Project__Filter
             string json = JsonConvert.SerializeObject(myDict, Formatting.Indented);
 
             // Write the JSON back to the file
-            File.WriteAllText("Config.json", json);
+            File.WriteAllText("Sort.json", json);
 
             textBox_Item.Text = "";
         }
@@ -134,7 +134,7 @@ namespace Project__Filter
             string json = JsonConvert.SerializeObject(myDict, Formatting.Indented);
 
             // Write the JSON back to the file
-            File.WriteAllText("Config.json", json);
+            File.WriteAllText("Sort.json", json);
         }
 
     }
