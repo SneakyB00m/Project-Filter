@@ -59,10 +59,10 @@
             // 
             panel4.BackColor = Color.FromArgb(0, 64, 64);
             panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(639, 32);
+            panel4.Location = new Point(644, 32);
             panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(37, 341);
+            panel4.Size = new Size(32, 341);
             panel4.TabIndex = 3;
             // 
             // pictureBox1
@@ -74,7 +74,7 @@
             pictureBox1.Location = new Point(0, 32);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(639, 341);
+            pictureBox1.Size = new Size(644, 341);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;

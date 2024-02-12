@@ -57,6 +57,7 @@
             DragControl_Banner = new Bunifu.Framework.UI.BunifuDragControl(components);
             DragControl_Main = new Bunifu.Framework.UI.BunifuDragControl(components);
             config1 = new Config();
+            panel1 = new Panel();
             panel_Menu.SuspendLayout();
             panel_Accent.SuspendLayout();
             Panel_Banner.SuspendLayout();
@@ -93,6 +94,7 @@
             // button_Privacy
             // 
             button_Privacy.BackColor = Color.Transparent;
+            button_Privacy.Cursor = Cursors.Hand;
             button_Privacy.FlatAppearance.BorderSize = 0;
             button_Privacy.FlatStyle = FlatStyle.Flat;
             button_Privacy.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
@@ -111,6 +113,7 @@
             // button_Merge
             // 
             button_Merge.BackColor = Color.Transparent;
+            button_Merge.Cursor = Cursors.Hand;
             button_Merge.FlatAppearance.BorderSize = 0;
             button_Merge.FlatStyle = FlatStyle.Flat;
             button_Merge.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
@@ -130,6 +133,7 @@
             // 
             button_Git.BackgroundImage = Properties.Resources.icons8_github_50;
             button_Git.BackgroundImageLayout = ImageLayout.Stretch;
+            button_Git.Cursor = Cursors.Hand;
             button_Git.FlatAppearance.BorderSize = 0;
             button_Git.FlatStyle = FlatStyle.Flat;
             button_Git.Location = new Point(3, 480);
@@ -143,6 +147,7 @@
             // button_Extract
             // 
             button_Extract.BackColor = Color.Transparent;
+            button_Extract.Cursor = Cursors.Hand;
             button_Extract.FlatAppearance.BorderSize = 0;
             button_Extract.FlatStyle = FlatStyle.Flat;
             button_Extract.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
@@ -161,6 +166,7 @@
             // button_Convert
             // 
             button_Convert.BackColor = Color.Transparent;
+            button_Convert.Cursor = Cursors.Hand;
             button_Convert.FlatAppearance.BorderSize = 0;
             button_Convert.FlatStyle = FlatStyle.Flat;
             button_Convert.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
@@ -179,6 +185,7 @@
             // button_Filter
             // 
             button_Filter.BackColor = Color.Transparent;
+            button_Filter.Cursor = Cursors.Hand;
             button_Filter.FlatAppearance.BorderSize = 0;
             button_Filter.FlatStyle = FlatStyle.Flat;
             button_Filter.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
@@ -197,6 +204,7 @@
             // button_Home
             // 
             button_Home.BackColor = Color.Transparent;
+            button_Home.Cursor = Cursors.Hand;
             button_Home.FlatAppearance.BorderSize = 0;
             button_Home.FlatStyle = FlatStyle.Flat;
             button_Home.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
@@ -228,6 +236,7 @@
             // button_Config
             // 
             button_Config.Anchor = AnchorStyles.Right;
+            button_Config.Cursor = Cursors.Hand;
             button_Config.FlatAppearance.BorderSize = 0;
             button_Config.FlatStyle = FlatStyle.Flat;
             button_Config.Image = Properties.Resources.Config;
@@ -253,6 +262,7 @@
             // button_Exit
             // 
             button_Exit.Anchor = AnchorStyles.Right;
+            button_Exit.Cursor = Cursors.Hand;
             button_Exit.FlatAppearance.BorderSize = 0;
             button_Exit.FlatStyle = FlatStyle.Flat;
             button_Exit.Image = Properties.Resources.Power;
@@ -382,6 +392,14 @@
             config1.Size = new Size(692, 430);
             config1.TabIndex = 12;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(0, 64, 64);
+            panel1.Location = new Point(879, 38);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(32, 45);
+            panel1.TabIndex = 13;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -389,6 +407,7 @@
             BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(911, 512);
             ControlBox = false;
+            Controls.Add(panel1);
             Controls.Add(home1);
             Controls.Add(config1);
             Controls.Add(filter1);
@@ -443,5 +462,6 @@
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Banner;
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Main;
         private Config config1;
+        private Panel panel1;
     }
 }
