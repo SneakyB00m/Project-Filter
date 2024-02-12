@@ -63,7 +63,6 @@
             button_Path.BackColor = Color.Teal;
             button_Path.FlatAppearance.BorderSize = 0;
             button_Path.FlatStyle = FlatStyle.Flat;
-            button_Path.Image = Properties.Resources.Add;
             button_Path.Location = new Point(720, 7);
             button_Path.Name = "button_Path";
             button_Path.Size = new Size(50, 29);
@@ -94,9 +93,9 @@
             label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.BackColor = Color.FromArgb(64, 64, 64);
-            label3.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
+            label3.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(3, 167);
+            label3.Location = new Point(3, 129);
             label3.Name = "label3";
             label3.Size = new Size(120, 38);
             label3.TabIndex = 11;
@@ -105,9 +104,9 @@
             // checkBox_AtoZ
             // 
             checkBox_AtoZ.AutoSize = true;
-            checkBox_AtoZ.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
+            checkBox_AtoZ.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_AtoZ.ForeColor = Color.White;
-            checkBox_AtoZ.Location = new Point(248, 242);
+            checkBox_AtoZ.Location = new Point(248, 204);
             checkBox_AtoZ.Name = "checkBox_AtoZ";
             checkBox_AtoZ.Size = new Size(252, 32);
             checkBox_AtoZ.TabIndex = 12;
@@ -118,9 +117,9 @@
             // checkBox_Size
             // 
             checkBox_Size.AutoSize = true;
-            checkBox_Size.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
+            checkBox_Size.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Size.ForeColor = Color.White;
-            checkBox_Size.Location = new Point(591, 242);
+            checkBox_Size.Location = new Point(591, 204);
             checkBox_Size.Name = "checkBox_Size";
             checkBox_Size.Size = new Size(130, 32);
             checkBox_Size.TabIndex = 14;
@@ -132,9 +131,9 @@
             // 
             checkBox_Include.Anchor = AnchorStyles.Top;
             checkBox_Include.AutoSize = true;
-            checkBox_Include.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
+            checkBox_Include.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Include.ForeColor = Color.White;
-            checkBox_Include.Location = new Point(23, 242);
+            checkBox_Include.Location = new Point(23, 204);
             checkBox_Include.Name = "checkBox_Include";
             checkBox_Include.Size = new Size(134, 32);
             checkBox_Include.TabIndex = 15;
@@ -145,9 +144,9 @@
             // checkBox_Duration
             // 
             checkBox_Duration.AutoSize = true;
-            checkBox_Duration.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
+            checkBox_Duration.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Duration.ForeColor = Color.White;
-            checkBox_Duration.Location = new Point(470, 332);
+            checkBox_Duration.Location = new Point(470, 294);
             checkBox_Duration.Name = "checkBox_Duration";
             checkBox_Duration.Size = new Size(136, 32);
             checkBox_Duration.TabIndex = 20;
@@ -158,9 +157,9 @@
             // checkBox_Resolution
             // 
             checkBox_Resolution.AutoSize = true;
-            checkBox_Resolution.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
+            checkBox_Resolution.Font = new Font("Tahoma", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Resolution.ForeColor = Color.White;
-            checkBox_Resolution.Location = new Point(102, 332);
+            checkBox_Resolution.Location = new Point(102, 294);
             checkBox_Resolution.Name = "checkBox_Resolution";
             checkBox_Resolution.Size = new Size(250, 32);
             checkBox_Resolution.TabIndex = 19;
@@ -173,7 +172,7 @@
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(64, 64, 64);
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
             label1.Location = new Point(3, 46);
             label1.Name = "label1";
@@ -186,7 +185,7 @@
             textBox_Path.Anchor = AnchorStyles.Top;
             textBox_Path.BackColor = Color.FromArgb(64, 64, 64);
             textBox_Path.BorderStyle = BorderStyle.FixedSingle;
-            textBox_Path.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox_Path.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             textBox_Path.ForeColor = Color.White;
             textBox_Path.Location = new Point(98, 47);
             textBox_Path.Name = "textBox_Path";
@@ -197,7 +196,7 @@
             // checkBox_Delete
             // 
             checkBox_Delete.AutoSize = true;
-            checkBox_Delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            checkBox_Delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Delete.ForeColor = Color.White;
             checkBox_Delete.Location = new Point(396, 427);
             checkBox_Delete.Name = "checkBox_Delete";
@@ -210,7 +209,7 @@
             button_Filter.BackColor = Color.Teal;
             button_Filter.FlatAppearance.BorderSize = 0;
             button_Filter.FlatStyle = FlatStyle.Flat;
-            button_Filter.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            button_Filter.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             button_Filter.ForeColor = Color.White;
             button_Filter.Location = new Point(455, 417);
             button_Filter.Name = "button_Filter";
@@ -232,7 +231,7 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(64, 64, 64);
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
             label2.Location = new Point(23, 424);
             label2.Name = "label2";
@@ -244,7 +243,7 @@
             // 
             label_Warning.Anchor = AnchorStyles.Top;
             label_Warning.AutoSize = true;
-            label_Warning.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label_Warning.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label_Warning.ForeColor = Color.FromArgb(255, 128, 0);
             label_Warning.Location = new Point(102, 101);
             label_Warning.Name = "label_Warning";
