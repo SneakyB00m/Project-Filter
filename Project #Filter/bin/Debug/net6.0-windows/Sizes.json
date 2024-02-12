@@ -1,0 +1,20 @@
+{
+  "1 KB - 10 MB": [
+    "mp4",
+    "m4v",
+    "avi",
+    "mkv"
+  ],
+  "document": [
+    "txt",
+    "docx",
+    "pdf",
+    "pptx"
+  ],
+  "image": [
+    "jpg",
+    "png",
+    "gif",
+    "bmp"
+  ]
+}
