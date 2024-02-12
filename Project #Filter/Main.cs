@@ -94,7 +94,6 @@ namespace Project__Filter
 
                 var dictsize = new Dictionary<string, int>
                 {
-                    { "Less than 250MB", 250 },
                     { "250MB to 500MB", 500 },
                     { "500MB to 1GB", 1000 },
                     { "More than 1GB", 2000 }
