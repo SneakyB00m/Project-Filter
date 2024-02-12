@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text;
+using Newtonsoft.Json;
 using SharpCompress;
 
 namespace Project__Filter
@@ -220,9 +221,104 @@ namespace Project__Filter
             }
         }
 
+        private void sortResolution(string path)
+        {
+            // Create a new instance of the FFProbe class
+            var ffProbe = new NReco.VideoInfo.FFProbe();
 
-        private void sortResolution(string path) { }
+            // Get the path of the "Videos" directory
+            string videosPath = Path.Combine(path, "Videos");
 
-        private void sortDuration(string path) { }
+            // Get all video files in the "Videos" directory and its subdirectories
+            string[] videoFiles = Directory.GetFiles(videosPath, "*.*", SearchOption.AllDirectories);
+
+            // Create a dictionary to store the resolution and file paths of each video
+            var videoResolutions = new Dictionary<string, List<string>>();
+
+            foreach (string videoFile in videoFiles)
+            {
+                // Get the media information of the video file
+                var videoInfo = ffProbe.GetMediaInfo(videoFile);
+
+                // Get the resolution of the video
+                string resolution = videoInfo.Streams[0].Width + "x" + videoInfo.Streams[0].Height;
+
+                // Add the resolution and file path to the dictionary
+                if (!videoResolutions.ContainsKey(resolution))
+                {
+                    videoResolutions[resolution] = new List<string>();
+                }
+                videoResolutions[resolution].Add(videoFile);
+            }
+
+            // Sort the dictionary by key (resolution)
+            var sortedVideoResolutions = videoResolutions.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
+
+            // Create a string to display the sorted video files
+            StringBuilder sb = new StringBuilder();
+            foreach (var video in sortedVideoResolutions)
+            {
+                sb.AppendLine($"Resolution: {video.Key}");
+                foreach (var filePath in video.Value)
+                {
+                    sb.AppendLine($"File: {filePath}");
+                }
+                sb.AppendLine();
+            }
+
+            // Show the sorted video files in a message box
+            MessageBox.Show(sb.ToString());
+        }
+
+
+        private void sortDuration(string path)
+        {
+            // Create a new instance of the FFProbe class
+            var ffProbe = new NReco.VideoInfo.FFProbe();
+
+            // Get the path of the "Videos" directory
+            string videosPath = Path.Combine(path, "Videos");
+
+            // Get all video files in the "Videos" directory and its subdirectories
+            string[] videoFiles = Directory.GetFiles(videosPath, "*.*", SearchOption.AllDirectories);
+
+            // Create a dictionary to store the duration and file paths of each video
+            var videoDurations = new Dictionary<TimeSpan, List<string>>();
+
+            foreach (string videoFile in videoFiles)
+            {
+                // Get the media information of the video file
+                var videoInfo = ffProbe.GetMediaInfo(videoFile);
+
+                // Get the duration of the video
+                TimeSpan duration = videoInfo.Duration;
+
+                // Add the duration and file path to the dictionary
+                if (!videoDurations.ContainsKey(duration))
+                {
+                    videoDurations[duration] = new List<string>();
+                }
+                videoDurations[duration].Add(videoFile);
+            }
+
+            // Sort the dictionary by key (duration)
+            var sortedVideoDurations = videoDurations.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
+
+            // Create a string to display the sorted video files
+            StringBuilder sb = new StringBuilder();
+            foreach (var video in sortedVideoDurations)
+            {
+                sb.AppendLine($"Duration: {video.Key}");
+                foreach (var filePath in video.Value)
+                {
+                    sb.AppendLine($"File: {filePath}");
+                }
+                sb.AppendLine();
+            }
+
+            // Show the sorted video files in a message box
+            MessageBox.Show(sb.ToString());
+        }
+
     }
 }
