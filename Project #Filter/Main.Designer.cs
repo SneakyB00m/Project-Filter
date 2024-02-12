@@ -56,8 +56,8 @@
             DragControl_Menu = new Bunifu.Framework.UI.BunifuDragControl(components);
             DragControl_Banner = new Bunifu.Framework.UI.BunifuDragControl(components);
             DragControl_Main = new Bunifu.Framework.UI.BunifuDragControl(components);
-            config1 = new Config();
             panel1 = new Panel();
+            config_Menu1 = new Config_Menu();
             panel_Menu.SuspendLayout();
             panel_Accent.SuspendLayout();
             Panel_Banner.SuspendLayout();
@@ -383,15 +383,6 @@
             DragControl_Main.TargetControl = this;
             DragControl_Main.Vertical = true;
             // 
-            // config1
-            // 
-            config1.BackColor = Color.FromArgb(64, 64, 64);
-            config1.Location = new Point(219, 82);
-            config1.Margin = new Padding(3, 4, 3, 4);
-            config1.Name = "config1";
-            config1.Size = new Size(692, 430);
-            config1.TabIndex = 12;
-            // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 64, 64);
@@ -399,6 +390,13 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(32, 45);
             panel1.TabIndex = 13;
+            // 
+            // config_Menu1
+            // 
+            config_Menu1.Location = new Point(219, 82);
+            config_Menu1.Name = "config_Menu1";
+            config_Menu1.Size = new Size(692, 430);
+            config_Menu1.TabIndex = 14;
             // 
             // Main
             // 
@@ -409,12 +407,12 @@
             ControlBox = false;
             Controls.Add(panel1);
             Controls.Add(home1);
-            Controls.Add(config1);
             Controls.Add(filter1);
             Controls.Add(convert1);
             Controls.Add(extract1);
             Controls.Add(merge1);
             Controls.Add(privacy1);
+            Controls.Add(config_Menu1);
             Controls.Add(Panel_Banner);
             Controls.Add(panel_Accent);
             Controls.Add(panel_Menu);
@@ -461,7 +459,7 @@
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Menu;
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Banner;
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Main;
-        private Config config1;
         private Panel panel1;
+        private Config_Menu config_Menu1;
     }
 }
