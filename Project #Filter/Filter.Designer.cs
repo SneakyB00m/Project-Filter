@@ -120,7 +120,7 @@
             checkBox_AtoZ.AutoSize = true;
             checkBox_AtoZ.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_AtoZ.ForeColor = Color.White;
-            checkBox_AtoZ.Location = new Point(192, 146);
+            checkBox_AtoZ.Location = new Point(209, 146);
             checkBox_AtoZ.Margin = new Padding(3, 2, 3, 2);
             checkBox_AtoZ.Name = "checkBox_AtoZ";
             checkBox_AtoZ.Size = new Size(207, 27);
@@ -133,7 +133,7 @@
             checkBox_Size.AutoSize = true;
             checkBox_Size.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Size.ForeColor = Color.White;
-            checkBox_Size.Location = new Point(324, 217);
+            checkBox_Size.Location = new Point(453, 146);
             checkBox_Size.Margin = new Padding(3, 2, 3, 2);
             checkBox_Size.Name = "checkBox_Size";
             checkBox_Size.Size = new Size(108, 27);
@@ -159,7 +159,7 @@
             checkBox_Duration.AutoSize = true;
             checkBox_Duration.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Duration.ForeColor = Color.White;
-            checkBox_Duration.Location = new Point(487, 217);
+            checkBox_Duration.Location = new Point(398, 214);
             checkBox_Duration.Margin = new Padding(3, 2, 3, 2);
             checkBox_Duration.Name = "checkBox_Duration";
             checkBox_Duration.Size = new Size(112, 27);
@@ -172,7 +172,7 @@
             checkBox_Resolution.AutoSize = true;
             checkBox_Resolution.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Resolution.ForeColor = Color.White;
-            checkBox_Resolution.Location = new Point(61, 217);
+            checkBox_Resolution.Location = new Point(117, 214);
             checkBox_Resolution.Margin = new Padding(3, 2, 3, 2);
             checkBox_Resolution.Name = "checkBox_Resolution";
             checkBox_Resolution.Size = new Size(208, 27);
