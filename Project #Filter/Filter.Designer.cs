@@ -104,7 +104,7 @@
             label3.BackColor = Color.FromArgb(64, 64, 64);
             label3.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(70, 123);
+            label3.Location = new Point(70, 173);
             label3.Name = "label3";
             label3.Size = new Size(120, 38);
             label3.TabIndex = 11;
@@ -115,7 +115,7 @@
             checkBox_AtoZ.AutoSize = true;
             checkBox_AtoZ.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_AtoZ.ForeColor = Color.White;
-            checkBox_AtoZ.Location = new Point(239, 195);
+            checkBox_AtoZ.Location = new Point(239, 245);
             checkBox_AtoZ.Name = "checkBox_AtoZ";
             checkBox_AtoZ.Size = new Size(252, 32);
             checkBox_AtoZ.TabIndex = 12;
@@ -127,7 +127,7 @@
             checkBox_Size.AutoSize = true;
             checkBox_Size.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Size.ForeColor = Color.White;
-            checkBox_Size.Location = new Point(518, 195);
+            checkBox_Size.Location = new Point(518, 245);
             checkBox_Size.Name = "checkBox_Size";
             checkBox_Size.Size = new Size(130, 32);
             checkBox_Size.TabIndex = 14;
@@ -139,7 +139,7 @@
             checkBox_Include.AutoSize = true;
             checkBox_Include.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Include.ForeColor = Color.White;
-            checkBox_Include.Location = new Point(70, 195);
+            checkBox_Include.Location = new Point(70, 245);
             checkBox_Include.Name = "checkBox_Include";
             checkBox_Include.Size = new Size(134, 32);
             checkBox_Include.TabIndex = 15;
@@ -151,7 +151,7 @@
             checkBox_Duration.AutoSize = true;
             checkBox_Duration.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Duration.ForeColor = Color.White;
-            checkBox_Duration.Location = new Point(455, 285);
+            checkBox_Duration.Location = new Point(455, 335);
             checkBox_Duration.Name = "checkBox_Duration";
             checkBox_Duration.Size = new Size(136, 32);
             checkBox_Duration.TabIndex = 20;
@@ -163,7 +163,7 @@
             checkBox_Resolution.AutoSize = true;
             checkBox_Resolution.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Resolution.ForeColor = Color.White;
-            checkBox_Resolution.Location = new Point(134, 285);
+            checkBox_Resolution.Location = new Point(134, 335);
             checkBox_Resolution.Name = "checkBox_Resolution";
             checkBox_Resolution.Size = new Size(250, 32);
             checkBox_Resolution.TabIndex = 19;
@@ -188,10 +188,10 @@
             textBox_Path.BorderStyle = BorderStyle.FixedSingle;
             textBox_Path.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBox_Path.ForeColor = Color.White;
-            textBox_Path.Location = new Point(134, 52);
+            textBox_Path.Location = new Point(43, 96);
             textBox_Path.Name = "textBox_Path";
             textBox_Path.ReadOnly = true;
-            textBox_Path.Size = new Size(594, 39);
+            textBox_Path.Size = new Size(687, 39);
             textBox_Path.TabIndex = 25;
             // 
             // checkBox_Delete
