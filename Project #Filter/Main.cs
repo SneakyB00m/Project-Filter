@@ -80,7 +80,7 @@ namespace Project__Filter
 
         private void Main_Load(object sender, EventArgs e)
         {
-            if (!File.Exists("Config.json"))
+            if (!File.Exists("Sort.json"))
             {
                 dict = new Dictionary<string, List<string>>
                 {
@@ -89,8 +89,19 @@ namespace Project__Filter
                     { "image", new List<string>() { "jpg", "png", "gif", "bmp" } }
                 };
 
-                string json = JsonConvert.SerializeObject(dict, Formatting.Indented);
-                File.WriteAllText("Config.json", json);
+                string sort = JsonConvert.SerializeObject(dict, Formatting.Indented);
+                File.WriteAllText("Sort.json", sort);
+
+
+                dict = new Dictionary<string, List<string>>
+                {
+                    { "1 KB - 10 MB", new List<string>() { "mp4", "m4v", "avi", "mkv" } },
+                    { "document", new List<string>() { "txt", "docx", "pdf", "pptx" } },
+                    { "image", new List<string>() { "jpg", "png", "gif", "bmp" } }
+                };
+
+                string size = JsonConvert.SerializeObject(dict, Formatting.Indented);
+                File.WriteAllText("Sizes.json", size);
             }
         }
 

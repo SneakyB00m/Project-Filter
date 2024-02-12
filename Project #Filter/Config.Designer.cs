@@ -172,7 +172,7 @@
             button_Wip.Name = "button_Wip";
             button_Wip.Size = new Size(128, 39);
             button_Wip.TabIndex = 42;
-            button_Wip.Text = "Filter";
+            button_Wip.Text = "Video";
             button_Wip.UseVisualStyleBackColor = false;
             // 
             // button_Add
@@ -198,7 +198,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(248, 112);
+            label1.Location = new Point(6, 35);
             label1.Name = "label1";
             label1.Size = new Size(109, 30);
             label1.TabIndex = 44;
@@ -210,9 +210,9 @@
             textBox_Item.BorderStyle = BorderStyle.FixedSingle;
             textBox_Item.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBox_Item.ForeColor = Color.White;
-            textBox_Item.Location = new Point(363, 111);
+            textBox_Item.Location = new Point(131, 35);
             textBox_Item.Name = "textBox_Item";
-            textBox_Item.Size = new Size(275, 33);
+            textBox_Item.Size = new Size(253, 33);
             textBox_Item.TabIndex = 45;
             // 
             // label2
@@ -242,7 +242,7 @@
             radioButton_Folder.AutoSize = true;
             radioButton_Folder.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             radioButton_Folder.ForeColor = Color.White;
-            radioButton_Folder.Location = new Point(87, 43);
+            radioButton_Folder.Location = new Point(72, 99);
             radioButton_Folder.Name = "radioButton_Folder";
             radioButton_Folder.Size = new Size(71, 24);
             radioButton_Folder.TabIndex = 48;
@@ -255,7 +255,7 @@
             radioButton_Extension.AutoSize = true;
             radioButton_Extension.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             radioButton_Extension.ForeColor = Color.White;
-            radioButton_Extension.Location = new Point(236, 43);
+            radioButton_Extension.Location = new Point(221, 99);
             radioButton_Extension.Name = "radioButton_Extension";
             radioButton_Extension.Size = new Size(95, 24);
             radioButton_Extension.TabIndex = 49;
@@ -267,11 +267,13 @@
             // 
             groupBox.Controls.Add(radioButton_Folder);
             groupBox.Controls.Add(radioButton_Extension);
+            groupBox.Controls.Add(textBox_Item);
+            groupBox.Controls.Add(label1);
             groupBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox.ForeColor = Color.White;
-            groupBox.Location = new Point(248, 172);
+            groupBox.Location = new Point(248, 112);
             groupBox.Name = "groupBox";
-            groupBox.Size = new Size(390, 100);
+            groupBox.Size = new Size(390, 181);
             groupBox.TabIndex = 50;
             groupBox.TabStop = false;
             groupBox.Text = "Type";
@@ -284,8 +286,6 @@
             Controls.Add(groupBox);
             Controls.Add(label4);
             Controls.Add(label2);
-            Controls.Add(textBox_Item);
-            Controls.Add(label1);
             Controls.Add(button_Add);
             Controls.Add(button_Wip);
             Controls.Add(listBox_Extension);

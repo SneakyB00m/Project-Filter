@@ -96,50 +96,133 @@ namespace Project__Filter
                         // Move the file
                         File.Move(file, destinationFile);
 
-                        // Call the appropriate sorting method based on the Check list
-                        foreach (string check in Check)
-                        {
-                            switch (check)
-                            {
-                                case "checkBox_Include":
-                                    sortContain();
-                                    break;
-                                case "checkBox_AtoZ":
-                                    sortAlphabetical(path);
-                                    break;
-                                case "checkBox_Resolution":
-                                    sortResolution();
-                                    break;
-                                case "checkBox_Size":
-                                    sortSize();
-                                    break;
-                                case "checkBox_Duration":
-                                    sortDuration();
-                                    break;
-                            }
-                        }
+
                         break;
                     }
                 }
             }
+
+            // Call the appropriate sorting method based on the Check list
+            foreach (string check in Check)
+            {
+                switch (check)
+                {
+                    case "checkBox_Include":
+                        string searchText = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "Default", -1, -1);
+                        if (!string.IsNullOrEmpty(searchText))
+                        {
+                            sortContain(selectedPath, searchText);
+                        }
+                        break;
+                    case "checkBox_AtoZ":
+                        sortAlphabetical(selectedPath);
+                        break;
+                    case "checkBox_Resolution":
+                        sortResolution(selectedPath);
+                        break;
+                    case "checkBox_Size":
+                        sortSize(selectedPath);
+                        break;
+                    case "checkBox_Duration":
+                        sortDuration(selectedPath);
+                        break;
+                }
+            }
         }
 
-
-        private void sortContain()
+        private void sortContain(string path, string searchText)
         {
+            // If the user clicked "Cancel" in the InputBox, the searchText will be an empty string
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                // Get all files in the directory and its subdirectories
+                string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
 
+                // Convert the search text to lowercase for case-insensitive comparison
+                string lowerCaseSearchText = searchText.ToLower();
+
+                // Search for files that contain the search text in their names
+                var foundFiles = files.Where(file => Path.GetFileName(file).ToLower().Contains(lowerCaseSearchText)).ToList();
+
+                if (foundFiles.Count > 0)
+                {
+                    // Show a message box with the paths of the found files
+                    string message = "Found files:\n" + string.Join("\n", foundFiles);
+                    MessageBox.Show(message);
+                }
+                else
+                {
+                    // Show a message box indicating that no files were found
+                    MessageBox.Show("No files found with the name: " + searchText);
+                }
+            }
         }
 
         private void sortAlphabetical(string path)
         {
-           
+            // Get all files in the directory and its subdirectories
+            string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
+
+            // Sort the files alphabetically by name
+            var sortedFiles = files.OrderBy(file => Path.GetFileName(file)).ToList();
+
+            if (sortedFiles.Count > 0)
+            {
+                // Create a dictionary to store the files grouped by the first letter of their names
+                var filesGroupedByFirstLetter = new Dictionary<string, List<string>>();
+
+                foreach (var file in sortedFiles)
+                {
+                    string fileName = Path.GetFileName(file);
+                    string firstLetter = fileName.Substring(0, 1).ToUpper();
+
+                    if (!filesGroupedByFirstLetter.ContainsKey(firstLetter))
+                    {
+                        filesGroupedByFirstLetter[firstLetter] = new List<string>();
+                    }
+
+                    filesGroupedByFirstLetter[firstLetter].Add(file);
+                }
+
+                // Show a message box with the paths of the sorted files
+                string message = "";
+                foreach (var group in filesGroupedByFirstLetter)
+                {
+                    message += group.Key + ": Files\n" + string.Join("\n", group.Value) + "\n\n";
+                }
+                MessageBox.Show(message);
+            }
+            else
+            {
+                // Show a message box indicating that no files were found
+                MessageBox.Show("No files found in the directory: " + path);
+            }
         }
 
-        private void sortSize() { }
+        private void sortSize(string path)
+        {
+            // Get all files in the directory and its subdirectories
+            string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
+
+            // Sort the files by size
+            var sortedFiles = files.OrderBy(file => new FileInfo(file).Length).ToList();
+
+            if (sortedFiles.Count > 0)
+            {
+                // Show a message box with the paths of the sorted files
+                string message = "Files sorted by size:\n" + string.Join("\n", sortedFiles.Select(file => $"{file}: {new FileInfo(file).Length} bytes"));
+                MessageBox.Show(message);
+            }
+            else
+            {
+                // Show a message box indicating that no files were found
+                MessageBox.Show("No files found in the directory: " + path);
+            }
+        }
 
 
-        private void sortResolution() { }
+        private void sortResolution(string path) { }
 
-        private void sortDuration() { }
+        private void sortDuration(string path) { }
     }
 }
