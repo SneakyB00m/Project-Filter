@@ -16,9 +16,9 @@ namespace Project__Filter
 
         private void Filter_Load(object sender, EventArgs e)
         {
-            if (File.Exists("Sort.json"))
+            if (File.Exists("Folders.json"))
             {
-                string json = File.ReadAllText("Sort.json");
+                string json = File.ReadAllText("Folders.json");
                 myDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
             }
         }
@@ -55,10 +55,7 @@ namespace Project__Filter
 
             if (checkedBoxes.Count > 0)
             {
-                if (checkedBoxes.Count > 2)
-                {
-                    label_Warning.Text = "";
-                }
+
                 // Call the Filter function
                 if (!string.IsNullOrEmpty(selectedPath))
                 {
@@ -75,6 +72,33 @@ namespace Project__Filter
             }
         }
 
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            List<string> checkedBoxes = new List<string>();
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is CheckBox)
+                {
+                    CheckBox checkBox = control as CheckBox;
+                    if (checkBox.Checked)
+                    {
+                        checkedBoxes.Add(checkBox.Name);
+                    }
+                }
+            }
+
+            if (checkedBoxes.Count > 1)
+            {
+                label_Warning.Text = "This may affect the result.";
+            }
+            else
+            {
+                label_Warning.Text = "";
+            }
+        }
+
+        // Functions
         private void FilterSort(string path, Dictionary<string, List<string>> myDict, List<string> Check)
         {
             string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
@@ -172,7 +196,6 @@ namespace Project__Filter
             }
         }
 
-        // Functions
         private void sortContain(string path, string searchText)
         {
             // If the user clicked "Cancel" in the InputBox, the searchText will be an empty string
@@ -282,22 +305,47 @@ namespace Project__Filter
 
         private void sortSize(string path)
         {
-            // Get all files in the directory and its subdirectories
-            string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
-
-            // Sort the files by size
-            var sortedFiles = files.OrderBy(file => new FileInfo(file).Length).ToList();
-
-            if (sortedFiles.Count > 0)
+            if (File.Exists("Sizes.json"))
             {
-                // Show a message box with the paths of the sorted files
-                string message = "Files sorted by size:\n" + string.Join("\n", sortedFiles.Select(file => $"{file}: {new FileInfo(file).Length} bytes"));
-                MessageBox.Show(message);
-            }
-            else
-            {
-                // Show a message box indicating that no files were found
-                MessageBox.Show("No files found in the directory: " + path);
+                string json = File.ReadAllText("Sizes.json");
+
+                // Read the JSON file
+                var sizeDict = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
+
+                // Get all files in the directory and its subdirectories
+                string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
+
+                foreach (var file in files)
+                {
+                    var fileInfo = new FileInfo(file);
+                    var fileSizeMB = fileInfo.Length / (1024.0 * 1024.0); // Convert bytes to MB
+
+                    string folderName = null;
+                    if (fileSizeMB < sizeDict["Less than 250MB"])
+                    {
+                        folderName = "Less than 250MB";
+                    }
+                    else if (fileSizeMB < sizeDict["250MB to 500MB"])
+                    {
+                        folderName = "250MB to 500MB";
+                    }
+                    else if (fileSizeMB < sizeDict["500MB to 1GB"])
+                    {
+                        folderName = "500MB to 1GB";
+                    }
+                    else
+                    {
+                        folderName = "More than 1GB";
+                    }
+
+                    // Create the directory if it doesn't exist
+                    var directoryPath = Path.Combine(fileInfo.DirectoryName, folderName);
+                    Directory.CreateDirectory(directoryPath);
+
+                    // Move the file to the new directory
+                    var destinationPath = Path.Combine(directoryPath, fileInfo.Name);
+                    File.Move(file, destinationPath);
+                }
             }
         }
 
@@ -309,45 +357,43 @@ namespace Project__Filter
             // Get the path of the "Videos" directory
             string videosPath = Path.Combine(path, "Videos");
 
+            // Check if the "Videos" directory exists
+            if (!Directory.Exists(videosPath))
+            {
+                MessageBox.Show("No 'Videos' folder or video files found in the directory: " + path);
+                return;
+            }
+
             // Get all video files in the "Videos" directory and its subdirectories
             string[] videoFiles = Directory.GetFiles(videosPath, "*.*", SearchOption.AllDirectories);
 
-            // Create a dictionary to store the resolution and file paths of each video
-            var videoResolutions = new Dictionary<string, List<string>>();
-
             foreach (string videoFile in videoFiles)
             {
-                // Get the media information of the video file
-                var videoInfo = ffProbe.GetMediaInfo(videoFile);
-
-                // Get the resolution of the video
-                string resolution = videoInfo.Streams[0].Width + "x" + videoInfo.Streams[0].Height;
-
-                // Add the resolution and file path to the dictionary
-                if (!videoResolutions.ContainsKey(resolution))
+                try
                 {
-                    videoResolutions[resolution] = new List<string>();
+                    // Get the media information of the video file
+                    var videoInfo = ffProbe.GetMediaInfo(videoFile);
+
+                    // Get the resolution of the video
+                    string resolution = videoInfo.Streams[0].Width + "x" + videoInfo.Streams[0].Height;
+
+                    // Create the directory if it doesn't exist
+                    var directoryPath = Path.Combine(new FileInfo(videoFile).DirectoryName, resolution);
+                    Directory.CreateDirectory(directoryPath);
+
+                    // Move the file to the new directory
+                    var destinationPath = Path.Combine(directoryPath, Path.GetFileName(videoFile));
+                    File.Move(videoFile, destinationPath);
                 }
-                videoResolutions[resolution].Add(videoFile);
-            }
-
-            // Sort the dictionary by key (resolution)
-            var sortedVideoResolutions = videoResolutions.OrderBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
-
-            // Create a string to display the sorted video files
-            StringBuilder sb = new StringBuilder();
-            foreach (var video in sortedVideoResolutions)
-            {
-                sb.AppendLine($"Resolution: {video.Key}");
-                foreach (var filePath in video.Value)
+                catch
                 {
-                    sb.AppendLine($"File: {filePath}");
+                    // If the file doesn't have a resolution or is damaged, move it to a separate folder
+                    var errorDirectoryPath = Path.Combine(new FileInfo(videoFile).DirectoryName, "Error");
+                    Directory.CreateDirectory(errorDirectoryPath);
+                    var errorDestinationPath = Path.Combine(errorDirectoryPath, Path.GetFileName(videoFile));
+                    File.Move(videoFile, errorDestinationPath);
                 }
-                sb.AppendLine();
             }
-
-            // Show the sorted video files in a message box
-            MessageBox.Show(sb.ToString());
         }
 
         private void sortDuration(string path)
@@ -412,8 +458,7 @@ namespace Project__Filter
             }
 
             // If directory is empty, delete it
-            if (Directory.GetFiles(path).Length == 0 &&
-                Directory.GetDirectories(path).Length == 0)
+            if (Directory.GetFiles(path).Length == 0 && Directory.GetDirectories(path).Length == 0)
             {
                 Directory.Delete(path, false);
             }

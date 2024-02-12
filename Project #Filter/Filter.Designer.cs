@@ -113,6 +113,7 @@
             checkBox_AtoZ.TabIndex = 12;
             checkBox_AtoZ.Text = "Alphabetical Order";
             checkBox_AtoZ.UseVisualStyleBackColor = true;
+            checkBox_AtoZ.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // checkBox_Size
             // 
@@ -125,6 +126,7 @@
             checkBox_Size.TabIndex = 14;
             checkBox_Size.Text = "File Size";
             checkBox_Size.UseVisualStyleBackColor = true;
+            checkBox_Size.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // checkBox_Include
             // 
@@ -138,6 +140,7 @@
             checkBox_Include.TabIndex = 15;
             checkBox_Include.Text = "Includes";
             checkBox_Include.UseVisualStyleBackColor = true;
+            checkBox_Include.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // checkBox_Duration
             // 
@@ -150,6 +153,7 @@
             checkBox_Duration.TabIndex = 20;
             checkBox_Duration.Text = "Duration";
             checkBox_Duration.UseVisualStyleBackColor = true;
+            checkBox_Duration.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // checkBox_Resolution
             // 
@@ -162,6 +166,7 @@
             checkBox_Resolution.TabIndex = 19;
             checkBox_Resolution.Text = "Display Resolution";
             checkBox_Resolution.UseVisualStyleBackColor = true;
+            checkBox_Resolution.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // label1
             // 
@@ -186,7 +191,7 @@
             textBox_Path.Location = new Point(98, 47);
             textBox_Path.Name = "textBox_Path";
             textBox_Path.ReadOnly = true;
-            textBox_Path.Size = new Size(632, 39);
+            textBox_Path.Size = new Size(623, 39);
             textBox_Path.TabIndex = 25;
             // 
             // checkBox_Delete
@@ -239,11 +244,11 @@
             // 
             label_Warning.Anchor = AnchorStyles.Top;
             label_Warning.AutoSize = true;
-            label_Warning.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label_Warning.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_Warning.ForeColor = Color.FromArgb(255, 128, 0);
-            label_Warning.Location = new Point(23, 113);
+            label_Warning.Location = new Point(102, 101);
             label_Warning.Name = "label_Warning";
-            label_Warning.Size = new Size(0, 23);
+            label_Warning.Size = new Size(0, 28);
             label_Warning.TabIndex = 29;
             // 
             // Filter

@@ -3,8 +3,7 @@
     "mp4",
     "m4v",
     "avi",
-    "mkv",
-    "webm"
+    "mkv"
   ],
   "Documents": [
     "txt",
@@ -16,7 +15,6 @@
     "jpg",
     "png",
     "gif",
-    "bmp",
-    "webp"
+    "bmp"
   ]
 }

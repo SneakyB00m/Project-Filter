@@ -79,7 +79,7 @@ namespace Project__Filter
 
         private void Main_Load(object sender, EventArgs e)
         {
-            if (!File.Exists("Sort.json") || !File.Exists("Sizes.json"))
+            if (!File.Exists("Folders.json") || !File.Exists("Sizes.json") || !File.Exists("Duration.json"))
             {
                 var dictsort = new Dictionary<string, List<string>>
                 {
@@ -89,12 +89,12 @@ namespace Project__Filter
                 };
 
                 string sort = JsonConvert.SerializeObject(dictsort, Formatting.Indented);
-                File.WriteAllText("Sort.json", sort);
+                File.WriteAllText("Folders.json", sort);
 
 
                 var dictsize = new Dictionary<string, int>
                 {
-                    { "Less than 250MB", 249 },
+                    { "Less than 250MB", 250 },
                     { "250MB to 500MB", 250 },
                     { "500MB to 1GB", 500 },
                     { "More than 1GB", 1000 }
@@ -102,6 +102,18 @@ namespace Project__Filter
 
                 string sizeJson = JsonConvert.SerializeObject(dictsize, Formatting.Indented);
                 File.WriteAllText("Sizes.json", sizeJson);
+
+
+                var dictduration = new Dictionary<string, int>
+                {
+                    { "Less than 5 Min", 300 },
+                    { "5 Min to 10 Min", 600 },
+                    { "10 Min to 1 Hr", 3600 },
+                    { "More than 1 Hr", 3600 }
+                };
+
+                string durationJson = JsonConvert.SerializeObject(dictduration, Formatting.Indented);
+                File.WriteAllText("Duration.json", durationJson);
 
             }
         }
