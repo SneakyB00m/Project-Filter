@@ -132,31 +132,7 @@ namespace Project__Filter
 
         private void sortAlphabetical(string path)
         {
-            string alphabeticalFolder = Path.Combine(path, "Alphabetical");
-            Directory.CreateDirectory(alphabeticalFolder);
-
-            // Get the files in the selected folder
-            string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
-
-            // Sort the files alphabetically
-            Array.Sort(files, StringComparer.InvariantCulture);
-
-            // Move the files to the new folders
-            foreach (string file in files)
-            {
-                // Get the first letter of the file name
-                string firstLetter = Path.GetFileName(file).Substring(0, 1).ToUpper();
-
-                // Create a new folder for the first letter, if it doesn't exist
-                string newFolder = Path.Combine(alphabeticalFolder, firstLetter);
-                Directory.CreateDirectory(newFolder);
-
-                // Get the destination file path
-                string destinationFile = Path.Combine(newFolder, Path.GetFileName(file));
-
-                // Move the file
-                File.Move(file, destinationFile);
-            }
+           
         }
 
         private void sortSize() { }
