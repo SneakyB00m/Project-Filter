@@ -55,6 +55,10 @@ namespace Project__Filter
 
             if (checkedBoxes.Count > 0)
             {
+                if (checkedBoxes.Count > 2)
+                {
+                    label_Warning.Text = "";
+                }
                 // Call the Filter function
                 if (!string.IsNullOrEmpty(selectedPath))
                 {
@@ -185,9 +189,28 @@ namespace Project__Filter
 
                 if (foundFiles.Count > 0)
                 {
-                    // Show a message box with the paths of the found files
-                    string message = "Found files:\n" + string.Join("\n", foundFiles);
-                    MessageBox.Show(message);
+                    foreach (string foundFile in foundFiles)
+                    {
+                        // Create a new folder in the same directory as the file
+                        string fileDirectory = Path.GetDirectoryName(foundFile);
+                        string newFolderPath = Path.Combine(fileDirectory, "Match");
+                        Directory.CreateDirectory(newFolderPath);
+
+                        // Get the destination file path
+                        string destinationFile = Path.Combine(newFolderPath, Path.GetFileName(foundFile));
+
+                        // Check if the destination file already exists
+                        int count = 1;
+                        while (File.Exists(destinationFile))
+                        {
+                            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(foundFile);
+                            string fileExtension = Path.GetExtension(foundFile);
+                            destinationFile = Path.Combine(newFolderPath, $"{fileNameWithoutExtension}_{count++}{fileExtension}");
+                        }
+
+                        // Move the file
+                        File.Move(foundFile, destinationFile);
+                    }
                 }
                 else
                 {
@@ -223,13 +246,32 @@ namespace Project__Filter
                     filesGroupedByFirstLetter[firstLetter].Add(file);
                 }
 
-                // Show a message box with the paths of the sorted files
-                string message = "";
+                // Move the files to new folders based on the first letter of their names
                 foreach (var group in filesGroupedByFirstLetter)
                 {
-                    message += group.Key + ": Files\n" + string.Join("\n", group.Value) + "\n\n";
+                    foreach (string file in group.Value)
+                    {
+                        // Create a new folder in the same directory as the file
+                        string fileDirectory = Path.GetDirectoryName(file);
+                        string newFolderPath = Path.Combine(fileDirectory, "Alphabetical", group.Key);
+                        Directory.CreateDirectory(newFolderPath);
+
+                        // Get the destination file path
+                        string destinationFile = Path.Combine(newFolderPath, Path.GetFileName(file));
+
+                        // Check if the destination file already exists
+                        int count = 1;
+                        while (File.Exists(destinationFile))
+                        {
+                            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file);
+                            string fileExtension = Path.GetExtension(file);
+                            destinationFile = Path.Combine(newFolderPath, $"{fileNameWithoutExtension}_{count++}{fileExtension}");
+                        }
+
+                        // Move the file
+                        File.Move(file, destinationFile);
+                    }
                 }
-                MessageBox.Show(message);
             }
             else
             {
