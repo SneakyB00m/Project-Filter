@@ -12,22 +12,22 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Project__Filter
 {
-    public partial class Config_Folders : UserControl
+    public partial class Config_Extensions : UserControl
     {
         // Make myDict a field so it's accessible in both methods
         private Dictionary<string, List<string>> myDict;
 
-        public Config_Folders()
+        public Config_Extensions()
         {
             InitializeComponent();
         }
 
         private void Config_Load(object sender, EventArgs e)
         {
-            if (File.Exists("Sort.json"))
+            if (File.Exists("Folders.json"))
             {
                 // Read the JSON file
-                string json = File.ReadAllText("Sort.json");
+                string json = File.ReadAllText("Folders.json");
 
                 // Deserialize the JSON into a dictionary
                 myDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
@@ -100,7 +100,7 @@ namespace Project__Filter
             string json = JsonConvert.SerializeObject(myDict, Formatting.Indented);
 
             // Write the JSON back to the file
-            File.WriteAllText("Sort.json", json);
+            File.WriteAllText("Folders.json", json);
 
             textBox_Item.Text = "";
         }
@@ -134,8 +134,7 @@ namespace Project__Filter
             string json = JsonConvert.SerializeObject(myDict, Formatting.Indented);
 
             // Write the JSON back to the file
-            File.WriteAllText("Sort.json", json);
+            File.WriteAllText("Folders.json", json);
         }
-
     }
 }

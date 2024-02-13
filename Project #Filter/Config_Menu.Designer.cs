@@ -32,7 +32,7 @@
             Panel_Index_Config = new Panel();
             button_Size = new Button();
             button_Folder = new Button();
-            config_Folders1 = new Config_Folders();
+            config_Folders1 = new Config_Extensions();
             config_Sizes1 = new Config_Sizes();
             panel_Menu_Config.SuspendLayout();
             SuspendLayout();
@@ -45,18 +45,16 @@
             panel_Menu_Config.Controls.Add(button_Folder);
             panel_Menu_Config.Dock = DockStyle.Left;
             panel_Menu_Config.Location = new Point(0, 0);
-            panel_Menu_Config.Margin = new Padding(3, 2, 3, 2);
             panel_Menu_Config.Name = "panel_Menu_Config";
-            panel_Menu_Config.Size = new Size(160, 422);
+            panel_Menu_Config.Size = new Size(183, 563);
             panel_Menu_Config.TabIndex = 1;
             // 
             // Panel_Index_Config
             // 
             Panel_Index_Config.BackColor = Color.Teal;
-            Panel_Index_Config.Location = new Point(3, 26);
-            Panel_Index_Config.Margin = new Padding(3, 2, 3, 2);
+            Panel_Index_Config.Location = new Point(3, 35);
             Panel_Index_Config.Name = "Panel_Index_Config";
-            Panel_Index_Config.Size = new Size(22, 40);
+            Panel_Index_Config.Size = new Size(25, 53);
             Panel_Index_Config.TabIndex = 1;
             // 
             // button_Size
@@ -68,10 +66,9 @@
             button_Size.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Size.ForeColor = Color.White;
             button_Size.Image = Properties.Resources.icons8_aspect_ratio_30;
-            button_Size.Location = new Point(30, 70);
-            button_Size.Margin = new Padding(3, 2, 3, 2);
+            button_Size.Location = new Point(34, 93);
             button_Size.Name = "button_Size";
-            button_Size.Size = new Size(120, 40);
+            button_Size.Size = new Size(137, 53);
             button_Size.TabIndex = 2;
             button_Size.Text = "    Sizes";
             button_Size.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -87,10 +84,9 @@
             button_Folder.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Folder.ForeColor = Color.White;
             button_Folder.Image = Properties.Resources.icons8_folder_30;
-            button_Folder.Location = new Point(30, 26);
-            button_Folder.Margin = new Padding(3, 2, 3, 2);
+            button_Folder.Location = new Point(34, 35);
             button_Folder.Name = "button_Folder";
-            button_Folder.Size = new Size(120, 40);
+            button_Folder.Size = new Size(137, 53);
             button_Folder.TabIndex = 0;
             button_Folder.Text = "    Folder";
             button_Folder.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -102,30 +98,33 @@
             config_Folders1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             config_Folders1.BackColor = Color.FromArgb(64, 64, 64);
             config_Folders1.Dock = DockStyle.Fill;
-            config_Folders1.Location = new Point(160, 0);
+            config_Folders1.Location = new Point(183, 0);
+            config_Folders1.Margin = new Padding(3, 5, 3, 5);
             config_Folders1.Name = "config_Folders1";
-            config_Folders1.Size = new Size(516, 422);
+            config_Folders1.Size = new Size(590, 563);
             config_Folders1.TabIndex = 2;
             // 
             // config_Sizes1
             // 
             config_Sizes1.BackColor = Color.FromArgb(64, 64, 64);
             config_Sizes1.Dock = DockStyle.Fill;
-            config_Sizes1.Location = new Point(160, 0);
+            config_Sizes1.Location = new Point(183, 0);
+            config_Sizes1.Margin = new Padding(3, 5, 3, 5);
             config_Sizes1.Name = "config_Sizes1";
-            config_Sizes1.Size = new Size(516, 422);
+            config_Sizes1.Size = new Size(590, 563);
             config_Sizes1.TabIndex = 3;
             // 
             // Config_Menu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             Controls.Add(config_Folders1);
             Controls.Add(config_Sizes1);
             Controls.Add(panel_Menu_Config);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Config_Menu";
-            Size = new Size(676, 422);
+            Size = new Size(773, 563);
             panel_Menu_Config.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -136,7 +135,7 @@
         private Panel Panel_Index_Config;
         private Button button_Size;
         private Button button_Folder;
-        private Config_Folders config_Folders1;
+        private Config_Extensions config_Folders1;
         private Config_Sizes config_Sizes1;
     }
 }
