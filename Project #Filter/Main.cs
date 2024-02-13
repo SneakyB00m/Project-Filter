@@ -24,7 +24,7 @@ namespace Project__Filter
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
             {
                 FileName = "https://github.com/Dev-Alan-Isaac",
-                UseShellExecute = true                
+                UseShellExecute = true
             });
         }
 
