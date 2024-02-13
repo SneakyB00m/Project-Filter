@@ -173,6 +173,16 @@ namespace Project__Filter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_file_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-add-file-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_aspect_ratio_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-aspect-ratio-30", resourceCulture);

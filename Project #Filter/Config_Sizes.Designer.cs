@@ -51,20 +51,18 @@
             // 
             panel3.BackColor = Color.FromArgb(0, 64, 64);
             panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(0, 450);
-            panel3.Margin = new Padding(3, 4, 3, 4);
+            panel3.Location = new Point(0, 338);
             panel3.Name = "panel3";
-            panel3.Size = new Size(661, 43);
+            panel3.Size = new Size(579, 32);
             panel3.TabIndex = 56;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(0, 64, 64);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(661, 43);
-            panel2.Margin = new Padding(3, 4, 3, 4);
+            panel2.Location = new Point(579, 32);
             panel2.Name = "panel2";
-            panel2.Size = new Size(37, 450);
+            panel2.Size = new Size(32, 338);
             panel2.TabIndex = 55;
             // 
             // panel1
@@ -72,26 +70,23 @@
             panel1.BackColor = Color.FromArgb(0, 64, 64);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(698, 43);
+            panel1.Size = new Size(611, 32);
             panel1.TabIndex = 54;
             // 
             // groupBox
             // 
-            groupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox.Controls.Add(groupBox2);
             groupBox.Controls.Add(button_Remove);
             groupBox.Controls.Add(button_Add);
             groupBox.Controls.Add(textBox_Item);
             groupBox.Controls.Add(label1);
+            groupBox.Dock = DockStyle.Fill;
             groupBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox.ForeColor = Color.White;
-            groupBox.Location = new Point(241, 43);
-            groupBox.Margin = new Padding(3, 4, 3, 4);
+            groupBox.Location = new Point(206, 32);
             groupBox.Name = "groupBox";
-            groupBox.Padding = new Padding(3, 4, 3, 4);
-            groupBox.Size = new Size(420, 407);
+            groupBox.Size = new Size(373, 306);
             groupBox.TabIndex = 57;
             groupBox.TabStop = false;
             groupBox.Text = "Configuration";
@@ -102,9 +97,11 @@
             groupBox2.Controls.Add(radioButton_Extension);
             groupBox2.Controls.Add(radioButton_Folder);
             groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(8, 155);
+            groupBox2.Location = new Point(7, 116);
+            groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(406, 125);
+            groupBox2.Padding = new Padding(3, 2, 3, 2);
+            groupBox2.Size = new Size(360, 94);
             groupBox2.TabIndex = 50;
             groupBox2.TabStop = false;
             groupBox2.Text = "Merge";
@@ -115,10 +112,9 @@
             radioButton_Extension.AutoSize = true;
             radioButton_Extension.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             radioButton_Extension.ForeColor = Color.White;
-            radioButton_Extension.Location = new Point(332, 56);
-            radioButton_Extension.Margin = new Padding(3, 4, 3, 4);
+            radioButton_Extension.Location = new Point(301, 42);
             radioButton_Extension.Name = "radioButton_Extension";
-            radioButton_Extension.Size = new Size(68, 29);
+            radioButton_Extension.Size = new Size(54, 24);
             radioButton_Extension.TabIndex = 49;
             radioButton_Extension.TabStop = true;
             radioButton_Extension.Text = "Size";
@@ -129,10 +125,9 @@
             radioButton_Folder.AutoSize = true;
             radioButton_Folder.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             radioButton_Folder.ForeColor = Color.White;
-            radioButton_Folder.Location = new Point(22, 56);
-            radioButton_Folder.Margin = new Padding(3, 4, 3, 4);
+            radioButton_Folder.Location = new Point(19, 42);
             radioButton_Folder.Name = "radioButton_Folder";
-            radioButton_Folder.Size = new Size(90, 29);
+            radioButton_Folder.Size = new Size(71, 24);
             radioButton_Folder.TabIndex = 48;
             radioButton_Folder.TabStop = true;
             radioButton_Folder.Text = "Folder";
@@ -148,9 +143,10 @@
             button_Remove.FlatStyle = FlatStyle.Flat;
             button_Remove.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             button_Remove.ForeColor = Color.White;
-            button_Remove.Location = new Point(268, 348);
+            button_Remove.Location = new Point(239, 262);
+            button_Remove.Margin = new Padding(3, 2, 3, 2);
             button_Remove.Name = "button_Remove";
-            button_Remove.Size = new Size(146, 52);
+            button_Remove.Size = new Size(128, 39);
             button_Remove.TabIndex = 39;
             button_Remove.UseVisualStyleBackColor = false;
             button_Remove.Click += button_Remove_Click;
@@ -165,9 +161,10 @@
             button_Add.FlatStyle = FlatStyle.Flat;
             button_Add.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             button_Add.ForeColor = Color.White;
-            button_Add.Location = new Point(6, 348);
+            button_Add.Location = new Point(5, 262);
+            button_Add.Margin = new Padding(3, 2, 3, 2);
             button_Add.Name = "button_Add";
-            button_Add.Size = new Size(146, 52);
+            button_Add.Size = new Size(128, 39);
             button_Add.TabIndex = 43;
             button_Add.UseVisualStyleBackColor = false;
             button_Add.Click += button_Add_Click;
@@ -179,10 +176,9 @@
             textBox_Item.BorderStyle = BorderStyle.FixedSingle;
             textBox_Item.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBox_Item.ForeColor = Color.White;
-            textBox_Item.Location = new Point(8, 89);
-            textBox_Item.Margin = new Padding(3, 4, 3, 4);
+            textBox_Item.Location = new Point(7, 67);
             textBox_Item.Name = "textBox_Item";
-            textBox_Item.Size = new Size(406, 39);
+            textBox_Item.Size = new Size(361, 33);
             textBox_Item.TabIndex = 45;
             // 
             // label1
@@ -191,9 +187,9 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(7, 47);
+            label1.Location = new Point(6, 35);
             label1.Name = "label1";
-            label1.Size = new Size(141, 37);
+            label1.Size = new Size(109, 30);
             label1.TabIndex = 44;
             label1.Text = "Extension";
             // 
@@ -204,9 +200,11 @@
             groupBox1.Dock = DockStyle.Left;
             groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(0, 43);
+            groupBox1.Location = new Point(0, 32);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(235, 407);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(206, 306);
             groupBox1.TabIndex = 58;
             groupBox1.TabStop = false;
             groupBox1.Text = "Folder / Size";
@@ -220,11 +218,10 @@
             listBox_Folders.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
             listBox_Folders.ForeColor = Color.White;
             listBox_Folders.FormattingEnabled = true;
-            listBox_Folders.ItemHeight = 24;
-            listBox_Folders.Location = new Point(3, 30);
-            listBox_Folders.Margin = new Padding(3, 4, 3, 4);
+            listBox_Folders.ItemHeight = 18;
+            listBox_Folders.Location = new Point(3, 24);
             listBox_Folders.Name = "listBox_Folders";
-            listBox_Folders.Size = new Size(108, 374);
+            listBox_Folders.Size = new Size(94, 280);
             listBox_Folders.TabIndex = 40;
             listBox_Folders.SelectedIndexChanged += listBox_Folders_SelectedIndexChanged;
             // 
@@ -237,16 +234,15 @@
             listBox_Extension.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold);
             listBox_Extension.ForeColor = Color.White;
             listBox_Extension.FormattingEnabled = true;
-            listBox_Extension.ItemHeight = 24;
-            listBox_Extension.Location = new Point(124, 30);
-            listBox_Extension.Margin = new Padding(3, 4, 3, 4);
+            listBox_Extension.ItemHeight = 18;
+            listBox_Extension.Location = new Point(109, 24);
             listBox_Extension.Name = "listBox_Extension";
-            listBox_Extension.Size = new Size(108, 374);
+            listBox_Extension.Size = new Size(94, 280);
             listBox_Extension.TabIndex = 41;
             // 
             // Config_Sizes
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             Controls.Add(groupBox);
@@ -254,9 +250,8 @@
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Config_Sizes";
-            Size = new Size(698, 493);
+            Size = new Size(611, 370);
             Load += Config_Sizes_Load;
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();
