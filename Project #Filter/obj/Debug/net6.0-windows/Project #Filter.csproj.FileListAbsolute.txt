@@ -343,7 +343,6 @@ E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\ru
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Threading.AccessControl.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.csproj.AssemblyReference.cache
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project #Filter.csproj.CopyComplete
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\itextsharp.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
@@ -354,3 +353,4 @@ C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Config_Sizes.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Config_Extensions.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Config_Extensions.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project .74F23F9C.Up2Date
