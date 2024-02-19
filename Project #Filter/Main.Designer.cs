@@ -231,7 +231,7 @@
             panel_Accent.Location = new Point(219, 0);
             panel_Accent.Margin = new Padding(3, 2, 3, 2);
             panel_Accent.Name = "panel_Accent";
-            panel_Accent.Size = new Size(781, 40);
+            panel_Accent.Size = new Size(774, 40);
             panel_Accent.TabIndex = 1;
             // 
             // button_Config
@@ -241,7 +241,7 @@
             button_Config.FlatAppearance.BorderSize = 0;
             button_Config.FlatStyle = FlatStyle.Flat;
             button_Config.Image = Properties.Resources.Config;
-            button_Config.Location = new Point(712, 8);
+            button_Config.Location = new Point(705, 8);
             button_Config.Margin = new Padding(3, 2, 3, 2);
             button_Config.Name = "button_Config";
             button_Config.Size = new Size(25, 25);
@@ -255,7 +255,7 @@
             label_Title.AutoSize = true;
             label_Title.Font = new Font("Tahoma", 12F, FontStyle.Bold);
             label_Title.ForeColor = Color.White;
-            label_Title.Location = new Point(84, 11);
+            label_Title.Location = new Point(81, 11);
             label_Title.Name = "label_Title";
             label_Title.Size = new Size(274, 19);
             label_Title.TabIndex = 6;
@@ -268,7 +268,7 @@
             button_Exit.FlatAppearance.BorderSize = 0;
             button_Exit.FlatStyle = FlatStyle.Flat;
             button_Exit.Image = Properties.Resources.Power;
-            button_Exit.Location = new Point(749, 8);
+            button_Exit.Location = new Point(742, 8);
             button_Exit.Margin = new Padding(3, 2, 3, 2);
             button_Exit.Name = "button_Exit";
             button_Exit.Size = new Size(25, 25);
@@ -303,7 +303,7 @@
             home1.Location = new Point(219, 82);
             home1.Margin = new Padding(3, 2, 3, 2);
             home1.Name = "home1";
-            home1.Size = new Size(781, 430);
+            home1.Size = new Size(774, 430);
             home1.TabIndex = 4;
             // 
             // filter1
@@ -313,7 +313,7 @@
             filter1.Location = new Point(219, 82);
             filter1.Margin = new Padding(3, 2, 3, 2);
             filter1.Name = "filter1";
-            filter1.Size = new Size(781, 430);
+            filter1.Size = new Size(774, 430);
             filter1.TabIndex = 5;
             // 
             // convert1
@@ -323,7 +323,7 @@
             convert1.Location = new Point(219, 82);
             convert1.Margin = new Padding(3, 2, 3, 2);
             convert1.Name = "convert1";
-            convert1.Size = new Size(781, 430);
+            convert1.Size = new Size(774, 430);
             convert1.TabIndex = 8;
             // 
             // extract1
@@ -392,7 +392,7 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel1.BackColor = Color.FromArgb(0, 64, 64);
-            panel1.Location = new Point(968, 38);
+            panel1.Location = new Point(961, 38);
             panel1.Name = "panel1";
             panel1.Size = new Size(32, 45);
             panel1.TabIndex = 13;
@@ -404,7 +404,7 @@
             config_Menu1.Location = new Point(219, 82);
             config_Menu1.Margin = new Padding(3, 4, 3, 4);
             config_Menu1.Name = "config_Menu1";
-            config_Menu1.Size = new Size(781, 430);
+            config_Menu1.Size = new Size(774, 430);
             config_Menu1.TabIndex = 14;
             // 
             // Main
@@ -412,7 +412,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
-            ClientSize = new Size(1000, 512);
+            ClientSize = new Size(993, 512);
             ControlBox = false;
             Controls.Add(panel1);
             Controls.Add(home1);
