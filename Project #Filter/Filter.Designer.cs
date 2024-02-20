@@ -67,14 +67,14 @@
             // button_Path
             // 
             button_Path.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button_Path.BackColor = Color.Teal;
+            button_Path.BackColor = Color.FromArgb(0, 64, 64);
             button_Path.BackgroundImage = Properties.Resources.icons8_add_file_50;
             button_Path.BackgroundImageLayout = ImageLayout.Zoom;
             button_Path.FlatAppearance.BorderSize = 0;
             button_Path.FlatStyle = FlatStyle.Flat;
-            button_Path.Location = new Point(712, 3);
+            button_Path.Location = new Point(726, 6);
             button_Path.Name = "button_Path";
-            button_Path.Size = new Size(34, 40);
+            button_Path.Size = new Size(30, 30);
             button_Path.TabIndex = 0;
             button_Path.UseVisualStyleBackColor = false;
             button_Path.Click += button_Path_Click;
@@ -103,7 +103,7 @@
             checkBox_AtoZ.AutoSize = true;
             checkBox_AtoZ.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_AtoZ.ForeColor = Color.White;
-            checkBox_AtoZ.Location = new Point(395, 166);
+            checkBox_AtoZ.Location = new Point(448, 167);
             checkBox_AtoZ.Name = "checkBox_AtoZ";
             checkBox_AtoZ.Size = new Size(252, 32);
             checkBox_AtoZ.TabIndex = 12;
@@ -117,7 +117,7 @@
             checkBox_Size.AutoSize = true;
             checkBox_Size.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Size.ForeColor = Color.White;
-            checkBox_Size.Location = new Point(219, 166);
+            checkBox_Size.Location = new Point(272, 167);
             checkBox_Size.Name = "checkBox_Size";
             checkBox_Size.Size = new Size(130, 32);
             checkBox_Size.TabIndex = 14;
@@ -131,7 +131,7 @@
             checkBox_Include.AutoSize = true;
             checkBox_Include.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Include.ForeColor = Color.White;
-            checkBox_Include.Location = new Point(39, 166);
+            checkBox_Include.Location = new Point(92, 167);
             checkBox_Include.Name = "checkBox_Include";
             checkBox_Include.Size = new Size(134, 32);
             checkBox_Include.TabIndex = 15;
@@ -145,7 +145,7 @@
             checkBox_Duration.AutoSize = true;
             checkBox_Duration.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Duration.ForeColor = Color.White;
-            checkBox_Duration.Location = new Point(395, 76);
+            checkBox_Duration.Location = new Point(448, 77);
             checkBox_Duration.Name = "checkBox_Duration";
             checkBox_Duration.Size = new Size(136, 32);
             checkBox_Duration.TabIndex = 20;
@@ -159,7 +159,7 @@
             checkBox_Resolution.AutoSize = true;
             checkBox_Resolution.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Resolution.ForeColor = Color.White;
-            checkBox_Resolution.Location = new Point(39, 76);
+            checkBox_Resolution.Location = new Point(92, 77);
             checkBox_Resolution.Name = "checkBox_Resolution";
             checkBox_Resolution.Size = new Size(250, 32);
             checkBox_Resolution.TabIndex = 19;
@@ -221,7 +221,7 @@
             // 
             // progressBar_Time
             // 
-            progressBar_Time.Anchor = AnchorStyles.Top;
+            progressBar_Time.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             progressBar_Time.Location = new Point(3, 51);
             progressBar_Time.Name = "progressBar_Time";
             progressBar_Time.Size = new Size(753, 29);
@@ -268,7 +268,7 @@
             label3.BackColor = Color.FromArgb(64, 64, 64);
             label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(121, 32);
+            label3.Location = new Point(3, 18);
             label3.Name = "label3";
             label3.Size = new Size(130, 41);
             label3.TabIndex = 26;

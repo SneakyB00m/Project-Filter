@@ -466,7 +466,5 @@ namespace Project__Filter
                 Directory.Delete(path, false);
             }
         }
-
-       
     }
 }
