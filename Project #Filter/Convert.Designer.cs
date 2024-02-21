@@ -53,7 +53,7 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(64, 64, 64);
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
@@ -93,7 +93,6 @@
             // 
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button1.BackColor = Color.FromArgb(0, 64, 64);
-            button1.BackgroundImage = Properties.Resources.icons8_add_file_50;
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
@@ -120,7 +119,7 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(64, 64, 64);
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
             label2.Location = new Point(3, 14);
             label2.Name = "label2";
@@ -140,7 +139,7 @@
             // checkBox_Delete
             // 
             checkBox_Delete.AutoSize = true;
-            checkBox_Delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            checkBox_Delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_Delete.ForeColor = Color.White;
             checkBox_Delete.Location = new Point(382, 17);
             checkBox_Delete.Name = "checkBox_Delete";
@@ -154,7 +153,7 @@
             button_Filter.BackColor = Color.Teal;
             button_Filter.FlatAppearance.BorderSize = 0;
             button_Filter.FlatStyle = FlatStyle.Flat;
-            button_Filter.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            button_Filter.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             button_Filter.ForeColor = Color.White;
             button_Filter.Location = new Point(490, 8);
             button_Filter.Name = "button_Filter";
@@ -178,7 +177,7 @@
             textBox_Path.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBox_Path.BackColor = Color.FromArgb(64, 64, 64);
             textBox_Path.BorderStyle = BorderStyle.FixedSingle;
-            textBox_Path.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            textBox_Path.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             textBox_Path.ForeColor = Color.White;
             textBox_Path.Location = new Point(98, 5);
             textBox_Path.Name = "textBox_Path";
@@ -188,18 +187,24 @@
             // 
             // panel3
             // 
+            panel3.BackColor = Color.FromArgb(64, 64, 64);
             panel3.Controls.Add(comboBox1);
             panel3.Controls.Add(label3);
-            panel3.Location = new Point(0, 145);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(0, 139);
             panel3.Name = "panel3";
-            panel3.Size = new Size(756, 261);
+            panel3.Size = new Size(762, 273);
             panel3.TabIndex = 41;
             // 
             // comboBox1
             // 
-            comboBox1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            comboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            comboBox1.BackColor = Color.FromArgb(64, 64, 64);
+            comboBox1.FlatStyle = FlatStyle.Flat;
+            comboBox1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            comboBox1.ForeColor = Color.White;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "IMG > PDF (TITLE)", "IMG > PDF (NO TITLE)" });
+            comboBox1.Items.AddRange(new object[] { "IMAGE To PDF (TITLE)", "IMAGE To PDF (NO TITLE)", "IMAGE To ICO", "IMAGE To WEBP", "IMAGE To BMP", "VIDEO To GIF", "VIDEO To AUDIO", "VIDEO To WEBM", "VIDEO To AVI", "AUDIO To WAV" });
             comboBox1.Location = new Point(139, 20);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(613, 36);
@@ -209,7 +214,7 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.FromArgb(64, 64, 64);
-            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
             label3.Location = new Point(3, 18);
             label3.Name = "label3";
