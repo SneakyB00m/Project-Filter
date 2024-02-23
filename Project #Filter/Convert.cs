@@ -58,8 +58,10 @@ namespace Project__Filter
                     PDFTitle();
                     break;
                 case "IMAGE To PDF (NO TITLE)":
+                    PDFNoTitle();
                     break;
                 case "IMAGE To ICO":
+
                     break;
                 case "IMAGE To WEBP":
                     break;
@@ -123,17 +125,52 @@ namespace Project__Filter
 
                 MessageBox.Show($"PDF created successfully at: {pdfPath}");
             }
-
             else if (radioButton_Folder.Checked)
             {
-                MessageBox.Show("Radio Button 2 is checked.");
+
             }
+
             else
             {
                 MessageBox.Show("No radio button is checked.");
             }
         }
 
+        private void PDFNoTitle()
+        {
+            string pdfPath = Path.Combine(selectedPath, $"Notitle.pdf");
+
+            // Create a PdfDocument object
+            PdfSharp.Pdf.PdfDocument document = new PdfSharp.Pdf.PdfDocument();
+
+            string[] imageFiles = Directory.EnumerateFiles(selectedPath)
+                                             .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("png"))
+                                             .ToArray();
+
+            foreach (string imageFile in imageFiles)
+            {
+                XImage image = XImage.FromFile(imageFile);
+
+                // Create a new page with the dimensions of the image
+                PdfSharp.Pdf.PdfPage page = document.AddPage();
+                page.Width = image.PointWidth;
+                page.Height = image.PointHeight;
+
+                XGraphics gfx = XGraphics.FromPdfPage(page);
+
+                // Draw the image to fit the page
+                gfx.DrawImage(image, 0, 0, page.Width, page.Height);
+            }
+
+            // Save the document
+            document.Save(pdfPath);
+
+            MessageBox.Show($"PDF created successfully at: {pdfPath}");
+        }
+
+        private void ImageIcon() {
+
+        }
 
         private void DeleteFiles()
         {
