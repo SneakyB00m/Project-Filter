@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 
@@ -83,39 +85,45 @@ namespace Project__Filter
 
         private void PDFTitle()
         {
-
             if (radioButton_Custom.Checked)
             {
                 string Title = Microsoft.VisualBasic.Interaction.InputBox("Enter the title for:", "Title Text", "Default", -1, -1);
 
-                using (PdfDocument document = new PdfDocument())
+                string pdfPath = Path.Combine(selectedPath, $"{Title}.pdf");
+
+                // Create a Document object
+                Document document = new Document();
+
+                // Create a PdfWriter object
+                PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(pdfPath, FileMode.Create));
+
+                // Open the Document
+                document.Open();
+
+                string[] imageFiles = Directory.EnumerateFiles(selectedPath)
+                                    .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("png"))
+                                    .ToArray();
+
+                foreach (string imageFile in imageFiles)
                 {
-                    PdfPage page = document.AddPage();
-                    XGraphics gfx = XGraphics.FromPdfPage(page);
-                    XFont font = new XFont("Arial Bold", 20);
+                    iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageFile);
 
-                    // Set the title on the first page
-                    gfx.DrawString(Title, font, XBrushes.Black, new XRect(0, 0, page.Width, page.Height), XStringFormats.Center);
+                    // Set the page size to the image size
+                    document.SetPageSize(new iTextSharp.text.Rectangle(0, 0, image.Width, image.Height));
 
-                    string[] imageFiles = Directory.GetFiles(selectedPath, "*.{jpg,jpeg,png}"); // Look for jpg, jpeg, and png files
+                    // Add a new page
+                    document.NewPage();
 
-                    foreach (string imageFile in imageFiles)
-                    {
-                        using (XImage image = XImage.FromFile(imageFile))
-                        {
-                            page = document.AddPage();
-                            gfx = XGraphics.FromPdfPage(page);
-
-                            // Adjust image size as per the page size
-                            gfx.DrawImage(image, 0, 0, page.Width, page.Height);
-                        }
-                    }
-
-                    string pdfPath = Path.Combine(selectedPath, $"{Title}.pdf");
-                    document.Save(pdfPath);
-                    MessageBox.Show($"PDF created successfully at: {pdfPath}");
+                    // Add the image to the document
+                    document.Add(image);
                 }
+
+                // Close the Document
+                document.Close();
+
+                MessageBox.Show($"PDF created successfully at: {pdfPath}");
             }
+
             else if (radioButton_Folder.Checked)
             {
                 MessageBox.Show("Radio Button 2 is checked.");
@@ -124,13 +132,12 @@ namespace Project__Filter
             {
                 MessageBox.Show("No radio button is checked.");
             }
-
-
-          
         }
+
+
         private void DeleteFiles()
         {
-            if(checkBox_Delete.Checked)
+            if (checkBox_Delete.Checked)
             {
 
             }

@@ -16,7 +16,7 @@
       },
       "Bunifu.Licensing/5.0.0": {
         "dependencies": {
-          "Microsoft.Windows.Compatibility": "8.0.0",
+          "Microsoft.Windows.Compatibility": "8.0.2",
           "Newtonsoft.Json": "13.0.3",
           "RestSharp": "106.13.0",
           "RestSharpSigned": "105.2.3",
@@ -42,7 +42,7 @@
         "dependencies": {
           "Bunifu.Licensing": "5.0.0",
           "Bunifu.UI.WinForms.1.5.3": "1.0.0",
-          "Microsoft.Windows.Compatibility": "8.0.0"
+          "Microsoft.Windows.Compatibility": "8.0.2"
         },
         "runtime": {
           "lib/net40/Bunifu.UI.WinForms.dll": {
@@ -53,7 +53,7 @@
       },
       "Bunifu.UI.WinForms.1.5.3/1.0.0": {
         "dependencies": {
-          "Microsoft.Windows.Compatibility": "8.0.0"
+          "Microsoft.Windows.Compatibility": "8.0.2"
         },
         "runtime": {
           "lib/net6.0-windows7.0/Bunifu.UI.WinForms.1.5.3.dll": {
@@ -79,14 +79,14 @@
           }
         }
       },
-      "Magick.NET-Q16-AnyCPU/13.5.0": {
+      "Magick.NET-Q16-AnyCPU/13.6.0": {
         "dependencies": {
-          "Magick.NET.Core": "13.5.0"
+          "Magick.NET.Core": "13.6.0"
         },
         "runtime": {
           "lib/netstandard21/Magick.NET-Q16-AnyCPU.dll": {
-            "assemblyVersion": "13.5.0.0",
-            "fileVersion": "13.5.0.0"
+            "assemblyVersion": "13.6.0.0",
+            "fileVersion": "13.6.0.0"
           }
         },
         "runtimeTargets": {
@@ -118,25 +118,25 @@
           "runtimes/win-arm64/native/Magick.Native-Q16-arm64.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "7.1.1.22"
+            "fileVersion": "7.1.1.28"
           },
           "runtimes/win-x64/native/Magick.Native-Q16-x64.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "7.1.1.22"
+            "fileVersion": "7.1.1.28"
           },
           "runtimes/win-x86/native/Magick.Native-Q16-x86.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "7.1.1.22"
+            "fileVersion": "7.1.1.28"
           }
         }
       },
-      "Magick.NET.Core/13.5.0": {
+      "Magick.NET.Core/13.6.0": {
         "runtime": {
           "lib/netstandard21/Magick.NET.Core.dll": {
-            "assemblyVersion": "13.5.0.0",
-            "fileVersion": "13.5.0.0"
+            "assemblyVersion": "13.6.0.0",
+            "fileVersion": "13.6.0.0"
           }
         }
       },
@@ -364,7 +364,7 @@
           }
         }
       },
-      "Microsoft.Windows.Compatibility/8.0.0": {
+      "Microsoft.Windows.Compatibility/8.0.2": {
         "dependencies": {
           "Microsoft.Win32.Registry.AccessControl": "8.0.0",
           "Microsoft.Win32.SystemEvents": "8.0.0",
@@ -374,13 +374,13 @@
           "System.Configuration.ConfigurationManager": "8.0.0",
           "System.Data.Odbc": "8.0.0",
           "System.Data.OleDb": "8.0.0",
-          "System.Data.SqlClient": "4.8.5",
+          "System.Data.SqlClient": "4.8.6",
           "System.Diagnostics.EventLog": "8.0.0",
           "System.Diagnostics.PerformanceCounter": "8.0.0",
           "System.DirectoryServices": "8.0.0",
           "System.DirectoryServices.AccountManagement": "8.0.0",
           "System.DirectoryServices.Protocols": "8.0.0",
-          "System.Drawing.Common": "8.0.0",
+          "System.Drawing.Common": "8.0.2",
           "System.IO.Packaging": "8.0.0",
           "System.IO.Ports": "8.0.0",
           "System.Management": "8.0.0",
@@ -644,14 +644,14 @@
           }
         }
       },
-      "SharpCompress/0.35.0": {
+      "SharpCompress/0.36.0": {
         "dependencies": {
           "ZstdSharp.Port": "0.7.4"
         },
         "runtime": {
           "lib/net6.0/SharpCompress.dll": {
-            "assemblyVersion": "0.35.0.0",
-            "fileVersion": "0.35.0.0"
+            "assemblyVersion": "0.36.0.0",
+            "fileVersion": "0.36.0.0"
           }
         }
       },
@@ -751,7 +751,7 @@
           }
         }
       },
-      "System.Data.SqlClient/4.8.5": {
+      "System.Data.SqlClient/4.8.6": {
         "dependencies": {
           "Microsoft.Win32.Registry": "4.7.0",
           "System.Security.Principal.Windows": "5.0.0",
@@ -759,22 +759,22 @@
         },
         "runtime": {
           "lib/netcoreapp2.1/System.Data.SqlClient.dll": {
-            "assemblyVersion": "4.6.1.5",
-            "fileVersion": "4.700.22.51706"
+            "assemblyVersion": "4.6.1.6",
+            "fileVersion": "4.700.23.52603"
           }
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll": {
             "rid": "unix",
             "assetType": "runtime",
-            "assemblyVersion": "4.6.1.5",
-            "fileVersion": "4.700.22.51706"
+            "assemblyVersion": "4.6.1.6",
+            "fileVersion": "4.700.23.52603"
           },
           "runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll": {
             "rid": "win",
             "assetType": "runtime",
-            "assemblyVersion": "4.6.1.5",
-            "fileVersion": "4.700.22.51706"
+            "assemblyVersion": "4.6.1.6",
+            "fileVersion": "4.700.23.52603"
           }
         }
       },
@@ -895,14 +895,14 @@
           }
         }
       },
-      "System.Drawing.Common/8.0.0": {
+      "System.Drawing.Common/8.0.2": {
         "dependencies": {
           "Microsoft.Win32.SystemEvents": "8.0.0"
         },
         "runtime": {
           "lib/net6.0/System.Drawing.Common.dll": {
             "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.23.53105"
+            "fileVersion": "8.0.224.6803"
           }
         }
       },
@@ -1455,19 +1455,19 @@
       "path": "itextsharp/5.5.13.3",
       "hashPath": "itextsharp.5.5.13.3.nupkg.sha512"
     },
-    "Magick.NET-Q16-AnyCPU/13.5.0": {
+    "Magick.NET-Q16-AnyCPU/13.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Kl3uDaaQkK9LVM9CUexnerlTOGFxA0CQHDU9be960W2VZVD45KtE5Yvtq3Mg0rUq7LlwXGCNr1FxEw/hhS2D/Q==",
-      "path": "magick.net-q16-anycpu/13.5.0",
-      "hashPath": "magick.net-q16-anycpu.13.5.0.nupkg.sha512"
+      "sha512": "sha512-yuRR9pMdf6DoQ0aa9u/CAANeaeMW4PxzCw4EMSm349/VLVa3bLv70hm2w6kQXpTpf+IPf2Th1+5AbcNA12sHrw==",
+      "path": "magick.net-q16-anycpu/13.6.0",
+      "hashPath": "magick.net-q16-anycpu.13.6.0.nupkg.sha512"
     },
-    "Magick.NET.Core/13.5.0": {
+    "Magick.NET.Core/13.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/jKqfhbLvaVqxsV+DkOA5TjfrbO/Q3LdN3OL/xuewdC2EVBN4pTnAekAetn3CsbHOolfvc1xQLxY0MUN3nfwsg==",
-      "path": "magick.net.core/13.5.0",
-      "hashPath": "magick.net.core.13.5.0.nupkg.sha512"
+      "sha512": "sha512-VHW7fxIM/5z0m7pm6XXkAqTTCg6DlvVyn6MS/DhJ1bwY9v8W27AdhYDWOLns2P9zkD0WR72YAXPlcVbbIBVW6A==",
+      "path": "magick.net.core/13.6.0",
+      "hashPath": "magick.net.core.13.6.0.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/5.0.0": {
       "type": "package",
@@ -1595,12 +1595,12 @@
       "path": "microsoft.win32.systemevents/8.0.0",
       "hashPath": "microsoft.win32.systemevents.8.0.0.nupkg.sha512"
     },
-    "Microsoft.Windows.Compatibility/8.0.0": {
+    "Microsoft.Windows.Compatibility/8.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4hIR9/0mJe1YWCPJ8ChPf6V+R0SjxF5Uj5RhviRoUk3gri0hQeRrdeGFGjJjAKQRu1OgpF2GnbHIwBTRvZGUuQ==",
-      "path": "microsoft.windows.compatibility/8.0.0",
-      "hashPath": "microsoft.windows.compatibility.8.0.0.nupkg.sha512"
+      "sha512": "sha512-3m3XQBDQKsJWCmBqoYmMLdgjUc69tFFFEumcGb89y8ZOqyGfkdDicK6WLnCmogZLpDSp6tCqo/sYn/L0g0nWOQ==",
+      "path": "microsoft.windows.compatibility/8.0.2",
+      "hashPath": "microsoft.windows.compatibility.8.0.2.nupkg.sha512"
     },
     "NAudio/2.2.1": {
       "type": "package",
@@ -1756,12 +1756,12 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
-    "SharpCompress/0.35.0": {
+    "SharpCompress/0.36.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pR64DKzJ63zt3me8VvhfWqxxzXA0+1S/gRjDUBVovlQ0wCGXGATp/zpVL1Bdoo5tRy887tR5vYS9Bd5MaErEDA==",
-      "path": "sharpcompress/0.35.0",
-      "hashPath": "sharpcompress.0.35.0.nupkg.sha512"
+      "sha512": "sha512-48am//T6Ou+GmyPmBaxaFN1ym0VNidRcBeANr9+OYTzpKRz8QMGzAkHVkCV30lFQ/gnWqGr50AuebahpG1C6xA==",
+      "path": "sharpcompress/0.36.0",
+      "hashPath": "sharpcompress.0.36.0.nupkg.sha512"
     },
     "System.CodeDom/8.0.0": {
       "type": "package",
@@ -1805,12 +1805,12 @@
       "path": "system.data.oledb/8.0.0",
       "hashPath": "system.data.oledb.8.0.0.nupkg.sha512"
     },
-    "System.Data.SqlClient/4.8.5": {
+    "System.Data.SqlClient/4.8.6": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-fRqxut4lrndPHrXD+ht1XRmCL3obuKldm4XjCRYS9p5f7FSR7shBxAwTkDrpFMsHC9BhNgjjmUtiIjvehn5zkg==",
-      "path": "system.data.sqlclient/4.8.5",
-      "hashPath": "system.data.sqlclient.4.8.5.nupkg.sha512"
+      "sha512": "sha512-2Ij/LCaTQRyAi5lAv7UUTV9R2FobC8xN9mE0fXBZohum/xLl8IZVmE98Rq5ugQHjCgTBRKqpXRb4ORulRdA6Ig==",
+      "path": "system.data.sqlclient/4.8.6",
+      "hashPath": "system.data.sqlclient.4.8.6.nupkg.sha512"
     },
     "System.Diagnostics.DiagnosticSource/6.0.0": {
       "type": "package",
@@ -1854,12 +1854,12 @@
       "path": "system.directoryservices.protocols/8.0.0",
       "hashPath": "system.directoryservices.protocols.8.0.0.nupkg.sha512"
     },
-    "System.Drawing.Common/8.0.0": {
+    "System.Drawing.Common/8.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-JkbHJjtI/dWc5dfmEdJlbe3VwgZqCkZRtfuWFh5GOv0f+gGCfBtzMpIVkmdkj2AObO9y+oiOi81UGwH3aBYuqA==",
-      "path": "system.drawing.common/8.0.0",
-      "hashPath": "system.drawing.common.8.0.0.nupkg.sha512"
+      "sha512": "sha512-oDedGrYVyzvtGZhgtURpeneHq9D3HQtrvU7q6iCRa+BbIXvTZayGFo0iK3b7qHrwQ/OOAn9B0ghzQH6AbW5LHg==",
+      "path": "system.drawing.common/8.0.2",
+      "hashPath": "system.drawing.common.8.0.2.nupkg.sha512"
     },
     "System.Formats.Asn1/8.0.0": {
       "type": "package",

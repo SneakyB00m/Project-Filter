@@ -99,10 +99,10 @@
           "lib/itextsharp.dll": {}
         }
       },
-      "Magick.NET-Q16-AnyCPU/13.5.0": {
+      "Magick.NET-Q16-AnyCPU/13.6.0": {
         "type": "package",
         "dependencies": {
-          "Magick.NET.Core": "13.5.0"
+          "Magick.NET.Core": "13.6.0"
         },
         "compile": {
           "lib/netstandard21/Magick.NET-Q16-AnyCPU.dll": {
@@ -152,7 +152,7 @@
           }
         }
       },
-      "Magick.NET.Core/13.5.0": {
+      "Magick.NET.Core/13.6.0": {
         "type": "package",
         "compile": {
           "lib/netstandard21/Magick.NET.Core.dll": {
@@ -495,7 +495,7 @@
           }
         }
       },
-      "Microsoft.Windows.Compatibility/8.0.0": {
+      "Microsoft.Windows.Compatibility/8.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.Registry.AccessControl": "8.0.0",
@@ -512,7 +512,7 @@
           "System.DirectoryServices": "8.0.0",
           "System.DirectoryServices.AccountManagement": "8.0.0",
           "System.DirectoryServices.Protocols": "8.0.0",
-          "System.Drawing.Common": "8.0.0",
+          "System.Drawing.Common": "8.0.2",
           "System.IO.Packaging": "8.0.0",
           "System.IO.Ports": "8.0.0",
           "System.Management": "8.0.0",
@@ -851,7 +851,7 @@
           }
         }
       },
-      "SharpCompress/0.35.0": {
+      "SharpCompress/0.36.0": {
         "type": "package",
         "dependencies": {
           "ZstdSharp.Port": "0.7.4"
@@ -997,7 +997,7 @@
           }
         }
       },
-      "System.Data.SqlClient/4.8.5": {
+      "System.Data.SqlClient/4.8.6": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.Registry": "4.7.0",
@@ -1174,7 +1174,7 @@
           }
         }
       },
-      "System.Drawing.Common/8.0.0": {
+      "System.Drawing.Common/8.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.SystemEvents": "8.0.0"
@@ -1993,10 +1993,10 @@
         "notice.txt"
       ]
     },
-    "Magick.NET-Q16-AnyCPU/13.5.0": {
-      "sha512": "Kl3uDaaQkK9LVM9CUexnerlTOGFxA0CQHDU9be960W2VZVD45KtE5Yvtq3Mg0rUq7LlwXGCNr1FxEw/hhS2D/Q==",
+    "Magick.NET-Q16-AnyCPU/13.6.0": {
+      "sha512": "yuRR9pMdf6DoQ0aa9u/CAANeaeMW4PxzCw4EMSm349/VLVa3bLv70hm2w6kQXpTpf+IPf2Th1+5AbcNA12sHrw==",
       "type": "package",
-      "path": "magick.net-q16-anycpu/13.5.0",
+      "path": "magick.net-q16-anycpu/13.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2011,7 +2011,7 @@
         "lib/netstandard20/Magick.NET-Q16-AnyCPU.xml",
         "lib/netstandard21/Magick.NET-Q16-AnyCPU.dll",
         "lib/netstandard21/Magick.NET-Q16-AnyCPU.xml",
-        "magick.net-q16-anycpu.13.5.0.nupkg.sha512",
+        "magick.net-q16-anycpu.13.6.0.nupkg.sha512",
         "magick.net-q16-anycpu.nuspec",
         "runtimes/linux-arm64/native/Magick.Native-Q16-arm64.dll.so",
         "runtimes/linux-musl-x64/native/Magick.Native-Q16-x64.dll.so",
@@ -2023,10 +2023,10 @@
         "runtimes/win-x86/native/Magick.Native-Q16-x86.dll"
       ]
     },
-    "Magick.NET.Core/13.5.0": {
-      "sha512": "/jKqfhbLvaVqxsV+DkOA5TjfrbO/Q3LdN3OL/xuewdC2EVBN4pTnAekAetn3CsbHOolfvc1xQLxY0MUN3nfwsg==",
+    "Magick.NET.Core/13.6.0": {
+      "sha512": "VHW7fxIM/5z0m7pm6XXkAqTTCg6DlvVyn6MS/DhJ1bwY9v8W27AdhYDWOLns2P9zkD0WR72YAXPlcVbbIBVW6A==",
       "type": "package",
-      "path": "magick.net.core/13.5.0",
+      "path": "magick.net.core/13.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2037,7 +2037,7 @@
         "lib/netstandard20/Magick.NET.Core.xml",
         "lib/netstandard21/Magick.NET.Core.dll",
         "lib/netstandard21/Magick.NET.Core.xml",
-        "magick.net.core.13.5.0.nupkg.sha512",
+        "magick.net.core.13.6.0.nupkg.sha512",
         "magick.net.core.nuspec"
       ]
     },
@@ -2505,16 +2505,16 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Windows.Compatibility/8.0.0": {
-      "sha512": "4hIR9/0mJe1YWCPJ8ChPf6V+R0SjxF5Uj5RhviRoUk3gri0hQeRrdeGFGjJjAKQRu1OgpF2GnbHIwBTRvZGUuQ==",
+    "Microsoft.Windows.Compatibility/8.0.2": {
+      "sha512": "3m3XQBDQKsJWCmBqoYmMLdgjUc69tFFFEumcGb89y8ZOqyGfkdDicK6WLnCmogZLpDSp6tCqo/sYn/L0g0nWOQ==",
       "type": "package",
-      "path": "microsoft.windows.compatibility/8.0.0",
+      "path": "microsoft.windows.compatibility/8.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "PACKAGE.md",
-        "microsoft.windows.compatibility.8.0.0.nupkg.sha512",
+        "microsoft.windows.compatibility.8.0.2.nupkg.sha512",
         "microsoft.windows.compatibility.nuspec"
       ]
     },
@@ -2907,10 +2907,10 @@
         "version.txt"
       ]
     },
-    "SharpCompress/0.35.0": {
-      "sha512": "pR64DKzJ63zt3me8VvhfWqxxzXA0+1S/gRjDUBVovlQ0wCGXGATp/zpVL1Bdoo5tRy887tR5vYS9Bd5MaErEDA==",
+    "SharpCompress/0.36.0": {
+      "sha512": "48am//T6Ou+GmyPmBaxaFN1ym0VNidRcBeANr9+OYTzpKRz8QMGzAkHVkCV30lFQ/gnWqGr50AuebahpG1C6xA==",
       "type": "package",
-      "path": "sharpcompress/0.35.0",
+      "path": "sharpcompress/0.36.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2920,7 +2920,7 @@
         "lib/net8.0/SharpCompress.dll",
         "lib/netstandard2.0/SharpCompress.dll",
         "lib/netstandard2.1/SharpCompress.dll",
-        "sharpcompress.0.35.0.nupkg.sha512",
+        "sharpcompress.0.36.0.nupkg.sha512",
         "sharpcompress.nuspec"
       ]
     },
@@ -3141,10 +3141,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Data.SqlClient/4.8.5": {
-      "sha512": "fRqxut4lrndPHrXD+ht1XRmCL3obuKldm4XjCRYS9p5f7FSR7shBxAwTkDrpFMsHC9BhNgjjmUtiIjvehn5zkg==",
+    "System.Data.SqlClient/4.8.6": {
+      "sha512": "2Ij/LCaTQRyAi5lAv7UUTV9R2FobC8xN9mE0fXBZohum/xLl8IZVmE98Rq5ugQHjCgTBRKqpXRb4ORulRdA6Ig==",
       "type": "package",
-      "path": "system.data.sqlclient/4.8.5",
+      "path": "system.data.sqlclient/4.8.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3221,7 +3221,7 @@
         "runtimes/win/lib/netstandard2.0/System.Data.SqlClient.xml",
         "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.dll",
         "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.xml",
-        "system.data.sqlclient.4.8.5.nupkg.sha512",
+        "system.data.sqlclient.4.8.6.nupkg.sha512",
         "system.data.sqlclient.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -3438,10 +3438,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Drawing.Common/8.0.0": {
-      "sha512": "JkbHJjtI/dWc5dfmEdJlbe3VwgZqCkZRtfuWFh5GOv0f+gGCfBtzMpIVkmdkj2AObO9y+oiOi81UGwH3aBYuqA==",
+    "System.Drawing.Common/8.0.2": {
+      "sha512": "oDedGrYVyzvtGZhgtURpeneHq9D3HQtrvU7q6iCRa+BbIXvTZayGFo0iK3b7qHrwQ/OOAn9B0ghzQH6AbW5LHg==",
       "type": "package",
-      "path": "system.drawing.common/8.0.0",
+      "path": "system.drawing.common/8.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3473,7 +3473,7 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "system.drawing.common.8.0.0.nupkg.sha512",
+        "system.drawing.common.8.0.2.nupkg.sha512",
         "system.drawing.common.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -4649,13 +4649,14 @@
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "Bunifu.UI.WinForms >= 6.1.0",
-      "Magick.NET-Q16-AnyCPU >= 13.5.0",
-      "Microsoft.Windows.Compatibility >= 8.0.0",
+      "Magick.NET-Q16-AnyCPU >= 13.6.0",
+      "Microsoft.Windows.Compatibility >= 8.0.2",
       "NAudio >= 2.2.1",
       "NReco.VideoInfo >= 1.2.0",
       "Newtonsoft.Json >= 13.0.3",
       "PDFsharp >= 6.0.0",
-      "SharpCompress >= 0.35.0",
+      "SharpCompress >= 0.36.0",
+      "System.Data.SqlClient >= 4.8.6",
       "System.Security.Cryptography.Pkcs >= 8.0.0",
       "iTextSharp >= 5.5.13.3"
     ]
@@ -4710,11 +4711,11 @@
           },
           "Magick.NET-Q16-AnyCPU": {
             "target": "Package",
-            "version": "[13.5.0, )"
+            "version": "[13.6.0, )"
           },
           "Microsoft.Windows.Compatibility": {
             "target": "Package",
-            "version": "[8.0.0, )"
+            "version": "[8.0.2, )"
           },
           "NAudio": {
             "target": "Package",
@@ -4734,7 +4735,11 @@
           },
           "SharpCompress": {
             "target": "Package",
-            "version": "[0.35.0, )"
+            "version": "[0.36.0, )"
+          },
+          "System.Data.SqlClient": {
+            "target": "Package",
+            "version": "[4.8.6, )"
           },
           "System.Security.Cryptography.Pkcs": {
             "target": "Package",
