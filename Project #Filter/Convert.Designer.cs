@@ -32,32 +32,37 @@
             panel4 = new Panel();
             panel2 = new Panel();
             panel1 = new Panel();
-            button1 = new Button();
+            button_Path = new Button();
             panel5 = new Panel();
             label2 = new Label();
             progressBar_Time = new ProgressBar();
             checkBox_Delete = new CheckBox();
-            button_Filter = new Button();
+            button_Convert = new Button();
             panel6 = new Panel();
             textBox_Path = new TextBox();
             panel3 = new Panel();
-            comboBox1 = new ComboBox();
+            panel7 = new Panel();
+            radioButton_Folder = new RadioButton();
+            radioButton_Custom = new RadioButton();
+            label4 = new Label();
+            comboBox_Select = new ComboBox();
             label3 = new Label();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
             panel3.SuspendLayout();
+            panel7.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(64, 64, 64);
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label1.ForeColor = Color.White;
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(89, 41);
+            label1.Size = new Size(71, 32);
             label1.TabIndex = 17;
             label1.Text = "Path:";
             // 
@@ -65,111 +70,122 @@
             // 
             panel4.BackColor = Color.FromArgb(0, 64, 64);
             panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(762, 43);
+            panel4.Location = new Point(667, 32);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(37, 454);
+            panel4.Size = new Size(32, 341);
             panel4.TabIndex = 26;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(0, 64, 64);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 497);
+            panel2.Location = new Point(0, 373);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(799, 43);
+            panel2.Size = new Size(699, 32);
             panel2.TabIndex = 24;
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 64, 64);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(button_Path);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(799, 43);
+            panel1.Size = new Size(699, 32);
             panel1.TabIndex = 23;
             // 
-            // button1
+            // button_Path
             // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button1.BackColor = Color.FromArgb(0, 64, 64);
-            button1.BackgroundImageLayout = ImageLayout.Stretch;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(726, 6);
-            button1.Name = "button1";
-            button1.Size = new Size(30, 30);
-            button1.TabIndex = 0;
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            button_Path.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_Path.BackColor = Color.FromArgb(0, 64, 64);
+            button_Path.BackgroundImage = Properties.Resources.icons8_add_file_50;
+            button_Path.BackgroundImageLayout = ImageLayout.Stretch;
+            button_Path.FlatAppearance.BorderSize = 0;
+            button_Path.FlatStyle = FlatStyle.Flat;
+            button_Path.Location = new Point(635, 4);
+            button_Path.Margin = new Padding(3, 2, 3, 2);
+            button_Path.Name = "button_Path";
+            button_Path.Size = new Size(25, 25);
+            button_Path.TabIndex = 0;
+            button_Path.UseVisualStyleBackColor = false;
+            button_Path.Click += button_Path_Click;
             // 
             // panel5
             // 
             panel5.Controls.Add(label2);
             panel5.Controls.Add(progressBar_Time);
             panel5.Controls.Add(checkBox_Delete);
-            panel5.Controls.Add(button_Filter);
+            panel5.Controls.Add(button_Convert);
             panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(0, 412);
+            panel5.Location = new Point(0, 309);
+            panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(762, 85);
+            panel5.Size = new Size(667, 64);
             panel5.TabIndex = 39;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(64, 64, 64);
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(3, 14);
+            label2.Location = new Point(3, 10);
             label2.Name = "label2";
-            label2.Size = new Size(367, 23);
+            label2.Size = new Size(307, 19);
             label2.TabIndex = 43;
             label2.Text = "Would you like to delete unused directories?";
             // 
             // progressBar_Time
             // 
             progressBar_Time.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            progressBar_Time.Location = new Point(3, 51);
+            progressBar_Time.Location = new Point(3, 38);
+            progressBar_Time.Margin = new Padding(3, 2, 3, 2);
             progressBar_Time.Name = "progressBar_Time";
-            progressBar_Time.Size = new Size(753, 29);
+            progressBar_Time.Size = new Size(659, 22);
             progressBar_Time.Step = 1;
             progressBar_Time.TabIndex = 42;
             // 
             // checkBox_Delete
             // 
             checkBox_Delete.AutoSize = true;
-            checkBox_Delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_Delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             checkBox_Delete.ForeColor = Color.White;
-            checkBox_Delete.Location = new Point(382, 17);
+            checkBox_Delete.Location = new Point(334, 13);
+            checkBox_Delete.Margin = new Padding(3, 2, 3, 2);
             checkBox_Delete.Name = "checkBox_Delete";
-            checkBox_Delete.Size = new Size(18, 17);
+            checkBox_Delete.Size = new Size(15, 14);
             checkBox_Delete.TabIndex = 44;
             checkBox_Delete.UseVisualStyleBackColor = true;
             // 
-            // button_Filter
+            // button_Convert
             // 
-            button_Filter.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button_Filter.BackColor = Color.Teal;
-            button_Filter.FlatAppearance.BorderSize = 0;
-            button_Filter.FlatStyle = FlatStyle.Flat;
-            button_Filter.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Filter.ForeColor = Color.White;
-            button_Filter.Location = new Point(490, 8);
-            button_Filter.Name = "button_Filter";
-            button_Filter.Size = new Size(266, 35);
-            button_Filter.TabIndex = 45;
-            button_Filter.Text = "Filter";
-            button_Filter.UseVisualStyleBackColor = false;
+            button_Convert.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_Convert.BackColor = Color.Teal;
+            button_Convert.FlatAppearance.BorderSize = 0;
+            button_Convert.FlatStyle = FlatStyle.Flat;
+            button_Convert.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            button_Convert.ForeColor = Color.White;
+            button_Convert.Location = new Point(429, 6);
+            button_Convert.Margin = new Padding(3, 2, 3, 2);
+            button_Convert.Name = "button_Convert";
+            button_Convert.Size = new Size(233, 26);
+            button_Convert.TabIndex = 45;
+            button_Convert.Text = "Convert";
+            button_Convert.UseVisualStyleBackColor = false;
+            button_Convert.Click += button_Convert_Click;
             // 
             // panel6
             // 
             panel6.Controls.Add(textBox_Path);
             panel6.Controls.Add(label1);
             panel6.Dock = DockStyle.Top;
-            panel6.Location = new Point(0, 43);
+            panel6.Location = new Point(0, 32);
+            panel6.Margin = new Padding(3, 2, 3, 2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(762, 96);
+            panel6.Size = new Size(667, 72);
             panel6.TabIndex = 40;
             // 
             // textBox_Path
@@ -177,54 +193,107 @@
             textBox_Path.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBox_Path.BackColor = Color.FromArgb(64, 64, 64);
             textBox_Path.BorderStyle = BorderStyle.FixedSingle;
-            textBox_Path.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            textBox_Path.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             textBox_Path.ForeColor = Color.White;
-            textBox_Path.Location = new Point(98, 5);
+            textBox_Path.Location = new Point(86, 4);
+            textBox_Path.Margin = new Padding(3, 2, 3, 2);
             textBox_Path.Name = "textBox_Path";
             textBox_Path.ReadOnly = true;
-            textBox_Path.Size = new Size(654, 39);
+            textBox_Path.Size = new Size(572, 33);
             textBox_Path.TabIndex = 26;
             // 
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(64, 64, 64);
-            panel3.Controls.Add(comboBox1);
+            panel3.Controls.Add(panel7);
+            panel3.Controls.Add(comboBox_Select);
             panel3.Controls.Add(label3);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 139);
+            panel3.Location = new Point(0, 104);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(762, 273);
+            panel3.Size = new Size(667, 205);
             panel3.TabIndex = 41;
             // 
-            // comboBox1
+            // panel7
             // 
-            comboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            comboBox1.BackColor = Color.FromArgb(64, 64, 64);
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            comboBox1.ForeColor = Color.White;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "IMAGE To PDF (TITLE)", "IMAGE To PDF (NO TITLE)", "IMAGE To ICO", "IMAGE To WEBP", "IMAGE To BMP", "VIDEO To GIF", "VIDEO To AUDIO", "VIDEO To WEBM", "VIDEO To AVI", "AUDIO To WAV" });
-            comboBox1.Location = new Point(139, 20);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(613, 36);
-            comboBox1.TabIndex = 40;
+            panel7.Controls.Add(radioButton_Folder);
+            panel7.Controls.Add(radioButton_Custom);
+            panel7.Controls.Add(label4);
+            panel7.Dock = DockStyle.Bottom;
+            panel7.Location = new Point(0, 75);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(667, 130);
+            panel7.TabIndex = 41;
+            // 
+            // radioButton_Folder
+            // 
+            radioButton_Folder.AutoSize = true;
+            radioButton_Folder.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            radioButton_Folder.ForeColor = Color.White;
+            radioButton_Folder.Location = new Point(127, 54);
+            radioButton_Folder.Name = "radioButton_Folder";
+            radioButton_Folder.Size = new Size(93, 21);
+            radioButton_Folder.TabIndex = 2;
+            radioButton_Folder.TabStop = true;
+            radioButton_Folder.Text = "Folder Title";
+            radioButton_Folder.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Custom
+            // 
+            radioButton_Custom.AutoSize = true;
+            radioButton_Custom.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            radioButton_Custom.ForeColor = Color.White;
+            radioButton_Custom.Location = new Point(19, 54);
+            radioButton_Custom.Name = "radioButton_Custom";
+            radioButton_Custom.Size = new Size(102, 21);
+            radioButton_Custom.TabIndex = 1;
+            radioButton_Custom.TabStop = true;
+            radioButton_Custom.Text = "Custom Title";
+            radioButton_Custom.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.FromArgb(255, 128, 0);
+            label4.Location = new Point(3, 10);
+            label4.Name = "label4";
+            label4.Size = new Size(64, 25);
+            label4.TabIndex = 0;
+            label4.Text = "label4";
+            // 
+            // comboBox_Select
+            // 
+            comboBox_Select.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_Select.BackColor = Color.FromArgb(64, 64, 64);
+            comboBox_Select.FlatStyle = FlatStyle.Flat;
+            comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            comboBox_Select.ForeColor = Color.White;
+            comboBox_Select.FormattingEnabled = true;
+            comboBox_Select.Items.AddRange(new object[] { "IMAGE To PDF (TITLE)", "IMAGE To PDF (NO TITLE)", "IMAGE To ICO", "IMAGE To WEBP", "IMAGE To BMP", "IMAGE To ASCII", "VIDEO To GIF", "VIDEO To AUDIO", "VIDEO To WEBM", "VIDEO To AVI", "AUDIO To WAV" });
+            comboBox_Select.Location = new Point(122, 15);
+            comboBox_Select.Margin = new Padding(3, 2, 3, 2);
+            comboBox_Select.Name = "comboBox_Select";
+            comboBox_Select.Size = new Size(537, 29);
+            comboBox_Select.TabIndex = 40;
+            comboBox_Select.SelectedIndexChanged += comboBox_Select_SelectedIndexChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.FromArgb(64, 64, 64);
-            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(3, 18);
+            label3.Location = new Point(3, 14);
             label3.Name = "label3";
-            label3.Size = new Size(130, 41);
+            label3.Size = new Size(104, 32);
             label3.TabIndex = 39;
             label3.Text = "Options";
             // 
             // Convert
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             Controls.Add(panel3);
@@ -233,9 +302,9 @@
             Controls.Add(panel4);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Convert";
-            Size = new Size(799, 540);
-            Load += Convert_Load;
+            Size = new Size(699, 405);
             panel1.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
@@ -243,6 +312,8 @@
             panel6.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -251,7 +322,7 @@
         private Panel panel4;
         private Panel panel2;
         private Panel panel1;
-        private Button button1;
+        private Button button_Path;
         private Panel panel5;
         private Panel panel6;
         private TextBox textBox_Path;
@@ -260,7 +331,11 @@
         private Label label2;
         private ProgressBar progressBar_Time;
         private CheckBox checkBox_Delete;
-        private Button button_Filter;
-        private ComboBox comboBox1;
+        private Button button_Convert;
+        private ComboBox comboBox_Select;
+        private Panel panel7;
+        private RadioButton radioButton_Custom;
+        private Label label4;
+        private RadioButton radioButton_Folder;
     }
 }
