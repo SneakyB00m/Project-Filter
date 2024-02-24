@@ -40,6 +40,11 @@ namespace Project__Filter
                 {
                     selectedPath = fbd.SelectedPath;
                     textBox_Path.Text = selectedPath;
+
+                    comboBox_Select.Enabled = true;
+                    radioButton_Custom.Enabled = true;
+                    radioButton_Folder.Enabled = true;
+                    button_Convert.Enabled = true;
                 }
             }
         }

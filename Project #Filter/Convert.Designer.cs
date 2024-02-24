@@ -42,6 +42,7 @@
             textBox_Path = new TextBox();
             panel_Middle = new Panel();
             panel1 = new Panel();
+            label4 = new Label();
             listBox_File = new ListBox();
             panel3 = new Panel();
             label3 = new Label();
@@ -51,7 +52,6 @@
             radioButton_Folder = new RadioButton();
             radioButton_Custom = new RadioButton();
             label_Warning = new Label();
-            label4 = new Label();
             panel_T.SuspendLayout();
             panel_button.SuspendLayout();
             panel_Path.SuspendLayout();
@@ -171,6 +171,7 @@
             // 
             button_Convert.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_Convert.BackColor = Color.Teal;
+            button_Convert.Enabled = false;
             button_Convert.FlatAppearance.BorderSize = 0;
             button_Convert.FlatStyle = FlatStyle.Flat;
             button_Convert.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
@@ -232,6 +233,17 @@
             panel1.Size = new Size(247, 205);
             panel1.TabIndex = 43;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(3, 5);
+            label4.Name = "label4";
+            label4.Size = new Size(67, 21);
+            label4.TabIndex = 1;
+            label4.Text = "File List";
+            // 
             // listBox_File
             // 
             listBox_File.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -268,6 +280,7 @@
             // 
             comboBox_Select.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             comboBox_Select.BackColor = Color.FromArgb(64, 64, 64);
+            comboBox_Select.Enabled = false;
             comboBox_Select.FlatStyle = FlatStyle.Flat;
             comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             comboBox_Select.ForeColor = Color.White;
@@ -307,6 +320,7 @@
             // 
             radioButton_Folder.Anchor = AnchorStyles.None;
             radioButton_Folder.AutoSize = true;
+            radioButton_Folder.Enabled = false;
             radioButton_Folder.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             radioButton_Folder.ForeColor = Color.White;
             radioButton_Folder.Location = new Point(213, 47);
@@ -321,6 +335,7 @@
             // 
             radioButton_Custom.Anchor = AnchorStyles.None;
             radioButton_Custom.AutoSize = true;
+            radioButton_Custom.Enabled = false;
             radioButton_Custom.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             radioButton_Custom.ForeColor = Color.White;
             radioButton_Custom.Location = new Point(66, 47);
@@ -340,17 +355,6 @@
             label_Warning.Name = "label_Warning";
             label_Warning.Size = new Size(0, 25);
             label_Warning.TabIndex = 0;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(3, 5);
-            label4.Name = "label4";
-            label4.Size = new Size(67, 21);
-            label4.TabIndex = 1;
-            label4.Text = "File List";
             // 
             // Convert
             // 
