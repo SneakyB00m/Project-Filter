@@ -554,11 +554,6 @@ namespace Project__Filter
 
             MessageBox.Show($"WAV created successfully at: {wavPath}");
         }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 

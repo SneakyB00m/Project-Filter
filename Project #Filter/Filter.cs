@@ -33,6 +33,13 @@ namespace Project__Filter
                 {
                     selectedPath = fbd.SelectedPath;
                     textBox_Path.Text = selectedPath;
+
+                    checkBox_Size.Enabled = true;
+                    checkBox_Resolution.Enabled = true;
+                    checkBox_AtoZ.Enabled = true;
+                    checkBox_Duration.Enabled = true;
+                    checkBox_Include.Enabled = true;
+                    button_Filter.Enabled = true;
                 }
             }
         }

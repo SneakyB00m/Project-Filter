@@ -105,6 +105,7 @@
             // 
             checkBox_AtoZ.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             checkBox_AtoZ.AutoSize = true;
+            checkBox_AtoZ.Enabled = false;
             checkBox_AtoZ.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_AtoZ.ForeColor = Color.White;
             checkBox_AtoZ.Location = new Point(392, 125);
@@ -120,6 +121,7 @@
             // 
             checkBox_Size.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Size.AutoSize = true;
+            checkBox_Size.Enabled = false;
             checkBox_Size.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Size.ForeColor = Color.White;
             checkBox_Size.Location = new Point(238, 125);
@@ -135,6 +137,7 @@
             // 
             checkBox_Include.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Include.AutoSize = true;
+            checkBox_Include.Enabled = false;
             checkBox_Include.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Include.ForeColor = Color.White;
             checkBox_Include.Location = new Point(80, 125);
@@ -150,6 +153,7 @@
             // 
             checkBox_Duration.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Duration.AutoSize = true;
+            checkBox_Duration.Enabled = false;
             checkBox_Duration.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Duration.ForeColor = Color.White;
             checkBox_Duration.Location = new Point(392, 58);
@@ -165,6 +169,7 @@
             // 
             checkBox_Resolution.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Resolution.AutoSize = true;
+            checkBox_Resolution.Enabled = false;
             checkBox_Resolution.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
             checkBox_Resolution.ForeColor = Color.White;
             checkBox_Resolution.Location = new Point(80, 58);
@@ -218,6 +223,7 @@
             // 
             button_Filter.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_Filter.BackColor = Color.Teal;
+            button_Filter.Enabled = false;
             button_Filter.FlatAppearance.BorderSize = 0;
             button_Filter.FlatStyle = FlatStyle.Flat;
             button_Filter.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);

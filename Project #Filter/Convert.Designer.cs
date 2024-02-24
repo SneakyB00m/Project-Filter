@@ -285,7 +285,7 @@
             comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             comboBox_Select.ForeColor = Color.White;
             comboBox_Select.FormattingEnabled = true;
-            comboBox_Select.Items.AddRange(new object[] { "IMAGE To PDF (TITLE)", "IMAGE To PDF (NO TITLE)", "IMAGE To ICO", "IMAGE To WEBP", "IMAGE To BMP", "IMAGE To ASCII", "VIDEO To GIF", "VIDEO To AUDIO", "VIDEO To WEBM", "VIDEO To AVI", "AUDIO To WAV" });
+            comboBox_Select.Items.AddRange(new object[] { "IMAGE To PDF (TITLE)", "IMAGE To PDF (NO TITLE)", "IMAGE To ICO", "IMAGE To WEBP", "IMAGE To BMP", "IMAGE To ASCII", "VIDEO To AUDIO", "VIDEO To WEBM", "VIDEO To AVI", "AUDIO To WAV" });
             comboBox_Select.Location = new Point(107, 10);
             comboBox_Select.Margin = new Padding(3, 2, 3, 2);
             comboBox_Select.Name = "comboBox_Select";
