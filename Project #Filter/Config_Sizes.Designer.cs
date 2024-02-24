@@ -84,9 +84,9 @@
             groupBox.Dock = DockStyle.Fill;
             groupBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox.ForeColor = Color.White;
-            groupBox.Location = new Point(206, 32);
+            groupBox.Location = new Point(267, 32);
             groupBox.Name = "groupBox";
-            groupBox.Size = new Size(373, 306);
+            groupBox.Size = new Size(312, 306);
             groupBox.TabIndex = 57;
             groupBox.TabStop = false;
             groupBox.Text = "Configuration";
@@ -101,7 +101,7 @@
             groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 2, 3, 2);
-            groupBox2.Size = new Size(360, 94);
+            groupBox2.Size = new Size(299, 94);
             groupBox2.TabIndex = 50;
             groupBox2.TabStop = false;
             groupBox2.Text = "Merge";
@@ -112,7 +112,7 @@
             radioButton_Extension.AutoSize = true;
             radioButton_Extension.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             radioButton_Extension.ForeColor = Color.White;
-            radioButton_Extension.Location = new Point(301, 42);
+            radioButton_Extension.Location = new Point(240, 42);
             radioButton_Extension.Name = "radioButton_Extension";
             radioButton_Extension.Size = new Size(54, 24);
             radioButton_Extension.TabIndex = 49;
@@ -143,7 +143,7 @@
             button_Remove.FlatStyle = FlatStyle.Flat;
             button_Remove.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             button_Remove.ForeColor = Color.White;
-            button_Remove.Location = new Point(239, 262);
+            button_Remove.Location = new Point(178, 262);
             button_Remove.Margin = new Padding(3, 2, 3, 2);
             button_Remove.Name = "button_Remove";
             button_Remove.Size = new Size(128, 39);
@@ -178,7 +178,7 @@
             textBox_Item.ForeColor = Color.White;
             textBox_Item.Location = new Point(7, 67);
             textBox_Item.Name = "textBox_Item";
-            textBox_Item.Size = new Size(361, 33);
+            textBox_Item.Size = new Size(300, 33);
             textBox_Item.TabIndex = 45;
             // 
             // label1
@@ -204,7 +204,7 @@
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(206, 306);
+            groupBox1.Size = new Size(267, 306);
             groupBox1.TabIndex = 58;
             groupBox1.TabStop = false;
             groupBox1.Text = "Folder / Size";
@@ -221,7 +221,7 @@
             listBox_Folders.ItemHeight = 18;
             listBox_Folders.Location = new Point(3, 24);
             listBox_Folders.Name = "listBox_Folders";
-            listBox_Folders.Size = new Size(94, 280);
+            listBox_Folders.Size = new Size(143, 280);
             listBox_Folders.TabIndex = 40;
             listBox_Folders.SelectedIndexChanged += listBox_Folders_SelectedIndexChanged;
             // 
@@ -235,9 +235,9 @@
             listBox_Extension.ForeColor = Color.White;
             listBox_Extension.FormattingEnabled = true;
             listBox_Extension.ItemHeight = 18;
-            listBox_Extension.Location = new Point(109, 24);
+            listBox_Extension.Location = new Point(154, 24);
             listBox_Extension.Name = "listBox_Extension";
-            listBox_Extension.Size = new Size(94, 280);
+            listBox_Extension.Size = new Size(110, 280);
             listBox_Extension.TabIndex = 41;
             // 
             // Config_Sizes

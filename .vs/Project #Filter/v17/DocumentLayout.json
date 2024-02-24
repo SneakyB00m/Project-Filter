@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "E:\\ReposVisualStudio\\Project #Filter\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|e:\\reposvisualstudio\\project #filter\\project #filter\\config_sizes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\config_sizes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|e:\\reposvisualstudio\\project #filter\\project #filter\\config_extensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\config_extensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|e:\\reposvisualstudio\\project #filter\\project #filter\\filter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\filter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,7 +34,31 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Config_Extensions.cs [Design]",
+              "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Config_Extensions.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\Config_Extensions.cs",
+              "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Config_Extensions.cs [Design]",
+              "RelativeToolTip": "Project #Filter\\Config_Extensions.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-24T08:39:54.56Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Config_Sizes.cs [Design]",
+              "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Config_Sizes.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\Config_Sizes.cs",
+              "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Config_Sizes.cs [Design]",
+              "RelativeToolTip": "Project #Filter\\Config_Sizes.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-24T08:39:53.952Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Filter.cs",
               "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Filter.cs",
               "RelativeDocumentMoniker": "Project #Filter\\Filter.cs",
@@ -39,7 +71,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Filter.cs [Design]",
               "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Filter.cs",
               "RelativeDocumentMoniker": "Project #Filter\\Filter.cs",
