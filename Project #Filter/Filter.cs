@@ -46,38 +46,31 @@ namespace Project__Filter
 
         private void button_Filter_Click(object sender, EventArgs e)
         {
-            List<string> checkedBoxes = new List<string>();
+            // Create a new List to hold the names of checked CheckBoxes
+            List<string> checkedCheckBoxNames = new List<string>();
 
-            foreach (Control control in this.Controls)
+            if (checkBox_AtoZ.Checked)
             {
-                if (control is CheckBox)
-                {
-                    CheckBox checkBox = control as CheckBox;
-                    if (checkBox.Checked)
-                    {
-                        checkedBoxes.Add(checkBox.Name);
-                    }
-                }
+                checkedCheckBoxNames.Add(checkBox_AtoZ.Name);
             }
-
-            if (checkedBoxes.Count > 0)
+            if (checkBox_Size.Checked)
             {
-
-                // Call the Filter function
-                if (!string.IsNullOrEmpty(selectedPath))
-                {
-                    FilterSort(selectedPath, myDict, checkedBoxes);
-                }
-                else
-                {
-                    MessageBox.Show("Not selected path");
-                }
+                checkedCheckBoxNames.Add(checkBox_Size.Name);
             }
-            else
+            if (checkBox_Include.Checked)
             {
-                MessageBox.Show("No checkboxes are checked.");
+                checkedCheckBoxNames.Add(checkBox_Include.Name);
+            }
+            if (checkBox_Duration.Checked)
+            {
+                checkedCheckBoxNames.Add(checkBox_Duration.Name);
+            }
+            if (checkBox_Resolution.Checked)
+            {
+                checkedCheckBoxNames.Add(checkBox_Resolution.Name);
             }
         }
+
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
