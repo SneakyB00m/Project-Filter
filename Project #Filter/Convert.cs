@@ -1,29 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
+﻿using System.Data;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using PdfSharp.Drawing;
-using PdfSharp.Pdf;
-using com.itextpdf.text.pdf;
 using ImageMagick;
-using SharpCompress.Common;
-using static System.Net.Mime.MediaTypeNames;
-using NReco.VideoInfo;
 
 namespace Project__Filter
 {
     public partial class Convert : UserControl
     {
         string selectedPath;
-        string SelectedBox;
 
         public Convert()
         {

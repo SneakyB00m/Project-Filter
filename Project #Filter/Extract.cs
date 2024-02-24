@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using com.itextpdf.text.pdf;
 
 namespace Project__Filter
 {
@@ -19,7 +20,7 @@ namespace Project__Filter
             InitializeComponent();
         }
 
-        private void button_Folder_Click(object sender, EventArgs e)
+        private void button_Path_Click(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
             {
@@ -29,71 +30,73 @@ namespace Project__Filter
                 {
                     selectedPath = fbd.SelectedPath;
                     textBox_Path.Text = selectedPath;
+
+                    radioButton_Folder.Enabled = true;
+                    radioButton_Unrar.Enabled = true;
+                    radioButton_Untar.Enabled = true;
+                    radioButton_Unzip.Enabled = true;
+                    button_Extract.Enabled = true;
+
+                    // Create a new List to hold the file paths
+                    List<string> filePaths = new List<string>();
+
+                    // Use the Directory class from System.IO to get all files recursively
+                    filePaths.AddRange(Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories));
+
+                    // Add the file paths to the ListBox
+                    foreach (string filePath in filePaths)
+                    {
+                        listBox_File.Items.Add(filePath);
+                    }
+
+                    label_Count.Text = $"{filePaths.Count}";
                 }
+
             }
         }
 
         private void button_Extract_Click(object sender, EventArgs e)
         {
-            List<string> checkedRadios = new List<string>();
-
-            foreach (Control control in this.Controls)
+            if (radioButton_Folder.Checked)
             {
-                if (control is RadioButton)
+                ExtractFiles();
+            }
+            else if (radioButton_Unrar.Checked)
+            {
+
+            }
+            else if (radioButton_Untar.Checked)
+            {
+
+            }
+            else if (radioButton_Unzip.Checked)
+            {
+
+            }
+
+            if (checkBox_Delete.Checked)
+            {
+                // Get all directories from the selected directory
+                string[] directories = Directory.GetDirectories(selectedPath, "*", SearchOption.AllDirectories);
+
+                // Check each directory
+                foreach (string dir in directories)
                 {
-                    RadioButton radioButton = control as RadioButton;
-                    if (radioButton.Checked)
+                    // Get all files and subdirectories in the directory
+                    if (Directory.GetFiles(dir).Length == 0 && Directory.GetDirectories(dir).Length == 0)
                     {
-                        checkedRadios.Add(radioButton.Name);
+                        // If the directory is empty, delete it
+                        Directory.Delete(dir);
                     }
                 }
             }
 
-            if (checkedRadios.Count > 0)
-            {
-                // Call the Filter function
-                if (!string.IsNullOrEmpty(selectedPath))
-                {
-                    switch (checkedRadios[0]) // Assuming only one radio button can be selected at a time
-                    {
-                        case "radioButton_Folder":
-                            ExtractFiles(selectedPath);
-                            break;
-                        case "radioButton_Unrar":
-                            // Handle radioButton2
-                            break;
-                        case "radioButton_Zip":
-                            // Handle radioButton2
-                            break;
-                        case "radioButton_Unzip":
-                            // Handle radioButton2
-                            break;
-                        case "radioButton_Tar":
-                            // Handle radioButton2
-                            break;
-                        case "radioButton_Untar":
-                            // Handle radioButton2
-                            break;
-                        // Add more cases as needed
-                        default:
-                            MessageBox.Show("Unexpected radio button selection.");
-                            break;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Not selected path");
-                }
-            }
-            else
-            {
-                MessageBox.Show("No radio buttons are checked.");
-            }
         }
 
-        private void ExtractFiles(string path)
-        {  // Handle radioButton_Folder
-            string targetPath = Path.Combine(path, "extracted"); // The path of the target directory
+        private void ExtractFiles()
+        {
+            // Handle radioButton_Folder
+            string targetPath = Path.Combine(selectedPath, "Extracted"); // The path of the target directory
 
             // Create the target directory if it doesn't exist
             if (!Directory.Exists(targetPath))
@@ -101,13 +104,20 @@ namespace Project__Filter
                 Directory.CreateDirectory(targetPath);
             }
 
-            // Get the files in the source directory and move them to the target directory
-            string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
-            foreach (string sourceFile in files)
+            // Get all files from the selected directory and its subdirectories
+            string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
+
+            // Move each file to the target directory
+            foreach (string file in files)
             {
-                string fileName = Path.GetFileName(sourceFile);
-                string targetFile = Path.Combine(targetPath, fileName);
-                File.Move(sourceFile, targetFile);
+                // Get the file name
+                string fileName = Path.GetFileName(file);
+
+                // Combine the target directory with the file name
+                string destFile = Path.Combine(targetPath, fileName);
+
+                // Move the file to the target directory
+                File.Move(file, destFile);
             }
         }
     }
