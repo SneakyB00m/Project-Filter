@@ -29,34 +29,36 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            panel4 = new Panel();
-            panel2 = new Panel();
-            panel1 = new Panel();
+            panel_R = new Panel();
+            panel_B = new Panel();
+            panel_T = new Panel();
             button_Path = new Button();
-            panel5 = new Panel();
+            panel_button = new Panel();
             label2 = new Label();
             progressBar_Time = new ProgressBar();
             checkBox_Delete = new CheckBox();
             button_Convert = new Button();
-            panel6 = new Panel();
+            panel_Path = new Panel();
             textBox_Path = new TextBox();
-            panel3 = new Panel();
-            panel7 = new Panel();
-            label6 = new Label();
-            panel8 = new Panel();
-            label5 = new Label();
+            panel_Middle = new Panel();
+            panel1 = new Panel();
             listBox_File = new ListBox();
+            panel3 = new Panel();
+            label3 = new Label();
+            comboBox_Select = new ComboBox();
+            panel_Action = new Panel();
+            label6 = new Label();
             radioButton_Folder = new RadioButton();
             radioButton_Custom = new RadioButton();
             label_Warning = new Label();
-            comboBox_Select = new ComboBox();
-            label3 = new Label();
+            label4 = new Label();
+            panel_T.SuspendLayout();
+            panel_button.SuspendLayout();
+            panel_Path.SuspendLayout();
+            panel_Middle.SuspendLayout();
             panel1.SuspendLayout();
-            panel5.SuspendLayout();
-            panel6.SuspendLayout();
             panel3.SuspendLayout();
-            panel7.SuspendLayout();
-            panel8.SuspendLayout();
+            panel_Action.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -71,36 +73,36 @@
             label1.TabIndex = 17;
             label1.Text = "Path:";
             // 
-            // panel4
+            // panel_R
             // 
-            panel4.BackColor = Color.FromArgb(0, 64, 64);
-            panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(667, 32);
-            panel4.Margin = new Padding(3, 2, 3, 2);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(32, 341);
-            panel4.TabIndex = 26;
+            panel_R.BackColor = Color.FromArgb(0, 64, 64);
+            panel_R.Dock = DockStyle.Right;
+            panel_R.Location = new Point(667, 32);
+            panel_R.Margin = new Padding(3, 2, 3, 2);
+            panel_R.Name = "panel_R";
+            panel_R.Size = new Size(32, 341);
+            panel_R.TabIndex = 26;
             // 
-            // panel2
+            // panel_B
             // 
-            panel2.BackColor = Color.FromArgb(0, 64, 64);
-            panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 373);
-            panel2.Margin = new Padding(3, 2, 3, 2);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(699, 32);
-            panel2.TabIndex = 24;
+            panel_B.BackColor = Color.FromArgb(0, 64, 64);
+            panel_B.Dock = DockStyle.Bottom;
+            panel_B.Location = new Point(0, 373);
+            panel_B.Margin = new Padding(3, 2, 3, 2);
+            panel_B.Name = "panel_B";
+            panel_B.Size = new Size(699, 32);
+            panel_B.TabIndex = 24;
             // 
-            // panel1
+            // panel_T
             // 
-            panel1.BackColor = Color.FromArgb(0, 64, 64);
-            panel1.Controls.Add(button_Path);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 2, 3, 2);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(699, 32);
-            panel1.TabIndex = 23;
+            panel_T.BackColor = Color.FromArgb(0, 64, 64);
+            panel_T.Controls.Add(button_Path);
+            panel_T.Dock = DockStyle.Top;
+            panel_T.Location = new Point(0, 0);
+            panel_T.Margin = new Padding(3, 2, 3, 2);
+            panel_T.Name = "panel_T";
+            panel_T.Size = new Size(699, 32);
+            panel_T.TabIndex = 23;
             // 
             // button_Path
             // 
@@ -118,18 +120,18 @@
             button_Path.UseVisualStyleBackColor = false;
             button_Path.Click += button_Path_Click;
             // 
-            // panel5
+            // panel_button
             // 
-            panel5.Controls.Add(label2);
-            panel5.Controls.Add(progressBar_Time);
-            panel5.Controls.Add(checkBox_Delete);
-            panel5.Controls.Add(button_Convert);
-            panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(0, 309);
-            panel5.Margin = new Padding(3, 2, 3, 2);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(667, 64);
-            panel5.TabIndex = 39;
+            panel_button.Controls.Add(label2);
+            panel_button.Controls.Add(progressBar_Time);
+            panel_button.Controls.Add(checkBox_Delete);
+            panel_button.Controls.Add(button_Convert);
+            panel_button.Dock = DockStyle.Bottom;
+            panel_button.Location = new Point(0, 309);
+            panel_button.Margin = new Padding(3, 2, 3, 2);
+            panel_button.Name = "panel_button";
+            panel_button.Size = new Size(667, 64);
+            panel_button.TabIndex = 39;
             // 
             // label2
             // 
@@ -182,16 +184,16 @@
             button_Convert.UseVisualStyleBackColor = false;
             button_Convert.Click += button_Convert_Click;
             // 
-            // panel6
+            // panel_Path
             // 
-            panel6.Controls.Add(textBox_Path);
-            panel6.Controls.Add(label1);
-            panel6.Dock = DockStyle.Top;
-            panel6.Location = new Point(0, 32);
-            panel6.Margin = new Padding(3, 2, 3, 2);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(667, 72);
-            panel6.TabIndex = 40;
+            panel_Path.Controls.Add(textBox_Path);
+            panel_Path.Controls.Add(label1);
+            panel_Path.Dock = DockStyle.Top;
+            panel_Path.Location = new Point(0, 32);
+            panel_Path.Margin = new Padding(3, 2, 3, 2);
+            panel_Path.Name = "panel_Path";
+            panel_Path.Size = new Size(667, 72);
+            panel_Path.TabIndex = 40;
             // 
             // textBox_Path
             // 
@@ -207,110 +209,60 @@
             textBox_Path.Size = new Size(572, 33);
             textBox_Path.TabIndex = 26;
             // 
-            // panel3
+            // panel_Middle
             // 
-            panel3.BackColor = Color.FromArgb(64, 64, 64);
-            panel3.Controls.Add(panel7);
-            panel3.Controls.Add(comboBox_Select);
-            panel3.Controls.Add(label3);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 104);
-            panel3.Margin = new Padding(3, 2, 3, 2);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(667, 205);
-            panel3.TabIndex = 41;
+            panel_Middle.BackColor = Color.FromArgb(64, 64, 64);
+            panel_Middle.Controls.Add(panel1);
+            panel_Middle.Controls.Add(panel3);
+            panel_Middle.Controls.Add(panel_Action);
+            panel_Middle.Dock = DockStyle.Fill;
+            panel_Middle.Location = new Point(0, 104);
+            panel_Middle.Margin = new Padding(3, 2, 3, 2);
+            panel_Middle.Name = "panel_Middle";
+            panel_Middle.Size = new Size(667, 205);
+            panel_Middle.TabIndex = 41;
             // 
-            // panel7
+            // panel1
             // 
-            panel7.Controls.Add(label6);
-            panel7.Controls.Add(panel8);
-            panel7.Controls.Add(radioButton_Folder);
-            panel7.Controls.Add(radioButton_Custom);
-            panel7.Controls.Add(label_Warning);
-            panel7.Dock = DockStyle.Bottom;
-            panel7.Location = new Point(0, 75);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(667, 130);
-            panel7.TabIndex = 41;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(3, 35);
-            label6.Name = "label6";
-            label6.Size = new Size(78, 25);
-            label6.TabIndex = 2;
-            label6.Text = "Actions";
-            // 
-            // panel8
-            // 
-            panel8.Controls.Add(label5);
-            panel8.Controls.Add(listBox_File);
-            panel8.Dock = DockStyle.Right;
-            panel8.Location = new Point(391, 0);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(276, 130);
-            panel8.TabIndex = 3;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Dock = DockStyle.Top;
-            label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(0, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(40, 20);
-            label5.TabIndex = 1;
-            label5.Text = "Files";
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(listBox_File);
+            panel1.Dock = DockStyle.Right;
+            panel1.Location = new Point(420, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(247, 205);
+            panel1.TabIndex = 43;
             // 
             // listBox_File
             // 
             listBox_File.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listBox_File.FormattingEnabled = true;
             listBox_File.ItemHeight = 15;
-            listBox_File.Location = new Point(3, 20);
+            listBox_File.Location = new Point(9, 37);
             listBox_File.Name = "listBox_File";
-            listBox_File.Size = new Size(270, 109);
+            listBox_File.Size = new Size(233, 169);
             listBox_File.TabIndex = 0;
             // 
-            // radioButton_Folder
+            // panel3
             // 
-            radioButton_Folder.AutoSize = true;
-            radioButton_Folder.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            radioButton_Folder.ForeColor = Color.White;
-            radioButton_Folder.Location = new Point(14, 94);
-            radioButton_Folder.Name = "radioButton_Folder";
-            radioButton_Folder.Size = new Size(93, 21);
-            radioButton_Folder.TabIndex = 2;
-            radioButton_Folder.TabStop = true;
-            radioButton_Folder.Text = "Folder Title";
-            radioButton_Folder.UseVisualStyleBackColor = true;
+            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel3.Controls.Add(label3);
+            panel3.Controls.Add(comboBox_Select);
+            panel3.Location = new Point(0, 5);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(414, 64);
+            panel3.TabIndex = 42;
             // 
-            // radioButton_Custom
+            // label3
             // 
-            radioButton_Custom.AutoSize = true;
-            radioButton_Custom.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            radioButton_Custom.ForeColor = Color.White;
-            radioButton_Custom.Location = new Point(14, 67);
-            radioButton_Custom.Name = "radioButton_Custom";
-            radioButton_Custom.Size = new Size(102, 21);
-            radioButton_Custom.TabIndex = 1;
-            radioButton_Custom.TabStop = true;
-            radioButton_Custom.Text = "Custom Title";
-            radioButton_Custom.UseVisualStyleBackColor = true;
-            // 
-            // label_Warning
-            // 
-            label_Warning.AutoSize = true;
-            label_Warning.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_Warning.ForeColor = Color.FromArgb(255, 128, 0);
-            label_Warning.Location = new Point(3, 10);
-            label_Warning.Name = "label_Warning";
-            label_Warning.Size = new Size(0, 25);
-            label_Warning.TabIndex = 0;
+            label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(64, 64, 64);
+            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(3, 7);
+            label3.Name = "label3";
+            label3.Size = new Size(104, 32);
+            label3.TabIndex = 39;
+            label3.Text = "Options";
             // 
             // comboBox_Select
             // 
@@ -321,76 +273,138 @@
             comboBox_Select.ForeColor = Color.White;
             comboBox_Select.FormattingEnabled = true;
             comboBox_Select.Items.AddRange(new object[] { "IMAGE To PDF (TITLE)", "IMAGE To PDF (NO TITLE)", "IMAGE To ICO", "IMAGE To WEBP", "IMAGE To BMP", "IMAGE To ASCII", "VIDEO To GIF", "VIDEO To AUDIO", "VIDEO To WEBM", "VIDEO To AVI", "AUDIO To WAV" });
-            comboBox_Select.Location = new Point(122, 15);
+            comboBox_Select.Location = new Point(107, 10);
             comboBox_Select.Margin = new Padding(3, 2, 3, 2);
             comboBox_Select.Name = "comboBox_Select";
-            comboBox_Select.Size = new Size(537, 29);
+            comboBox_Select.Size = new Size(304, 29);
             comboBox_Select.TabIndex = 40;
             comboBox_Select.SelectedIndexChanged += comboBox_Select_SelectedIndexChanged;
             // 
-            // label3
+            // panel_Action
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.FromArgb(64, 64, 64);
-            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(3, 14);
-            label3.Name = "label3";
-            label3.Size = new Size(104, 32);
-            label3.TabIndex = 39;
-            label3.Text = "Options";
+            panel_Action.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel_Action.Controls.Add(label6);
+            panel_Action.Controls.Add(radioButton_Folder);
+            panel_Action.Controls.Add(radioButton_Custom);
+            panel_Action.Controls.Add(label_Warning);
+            panel_Action.Location = new Point(0, 75);
+            panel_Action.Name = "panel_Action";
+            panel_Action.Size = new Size(414, 130);
+            panel_Action.TabIndex = 41;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(3, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(78, 25);
+            label6.TabIndex = 2;
+            label6.Text = "Actions";
+            // 
+            // radioButton_Folder
+            // 
+            radioButton_Folder.Anchor = AnchorStyles.None;
+            radioButton_Folder.AutoSize = true;
+            radioButton_Folder.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            radioButton_Folder.ForeColor = Color.White;
+            radioButton_Folder.Location = new Point(213, 47);
+            radioButton_Folder.Name = "radioButton_Folder";
+            radioButton_Folder.Size = new Size(114, 25);
+            radioButton_Folder.TabIndex = 2;
+            radioButton_Folder.TabStop = true;
+            radioButton_Folder.Text = "Folder Title";
+            radioButton_Folder.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Custom
+            // 
+            radioButton_Custom.Anchor = AnchorStyles.None;
+            radioButton_Custom.AutoSize = true;
+            radioButton_Custom.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            radioButton_Custom.ForeColor = Color.White;
+            radioButton_Custom.Location = new Point(66, 47);
+            radioButton_Custom.Name = "radioButton_Custom";
+            radioButton_Custom.Size = new Size(124, 25);
+            radioButton_Custom.TabIndex = 1;
+            radioButton_Custom.TabStop = true;
+            radioButton_Custom.Text = "Custom Title";
+            radioButton_Custom.UseVisualStyleBackColor = true;
+            // 
+            // label_Warning
+            // 
+            label_Warning.AutoSize = true;
+            label_Warning.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label_Warning.ForeColor = Color.FromArgb(255, 128, 0);
+            label_Warning.Location = new Point(3, 103);
+            label_Warning.Name = "label_Warning";
+            label_Warning.Size = new Size(0, 25);
+            label_Warning.TabIndex = 0;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(3, 5);
+            label4.Name = "label4";
+            label4.Size = new Size(67, 21);
+            label4.TabIndex = 1;
+            label4.Text = "File List";
             // 
             // Convert
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
-            Controls.Add(panel3);
-            Controls.Add(panel6);
-            Controls.Add(panel5);
-            Controls.Add(panel4);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            Controls.Add(panel_Middle);
+            Controls.Add(panel_Path);
+            Controls.Add(panel_button);
+            Controls.Add(panel_R);
+            Controls.Add(panel_B);
+            Controls.Add(panel_T);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Convert";
             Size = new Size(699, 405);
+            panel_T.ResumeLayout(false);
+            panel_button.ResumeLayout(false);
+            panel_button.PerformLayout();
+            panel_Path.ResumeLayout(false);
+            panel_Path.PerformLayout();
+            panel_Middle.ResumeLayout(false);
             panel1.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            panel6.ResumeLayout(false);
-            panel6.PerformLayout();
+            panel1.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
-            panel8.ResumeLayout(false);
-            panel8.PerformLayout();
+            panel_Action.ResumeLayout(false);
+            panel_Action.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
         private Label label1;
-        private Panel panel4;
-        private Panel panel2;
-        private Panel panel1;
+        private Panel panel_R;
+        private Panel panel_B;
+        private Panel panel_T;
         private Button button_Path;
-        private Panel panel5;
-        private Panel panel6;
+        private Panel panel_button;
+        private Panel panel_Path;
         private TextBox textBox_Path;
-        private Panel panel3;
+        private Panel panel_Middle;
         private Label label3;
         private Label label2;
         private ProgressBar progressBar_Time;
         private CheckBox checkBox_Delete;
         private Button button_Convert;
         private ComboBox comboBox_Select;
-        private Panel panel7;
+        private Panel panel_Action;
         private RadioButton radioButton_Custom;
         private Label label_Warning;
         private RadioButton radioButton_Folder;
-        private Panel panel8;
         private ListBox listBox_File;
-        private Label label5;
         private Label label6;
+        private Panel panel3;
+        private Panel panel1;
+        private Label label4;
     }
 }
