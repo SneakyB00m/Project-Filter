@@ -12,6 +12,8 @@ using iTextSharp.text.pdf;
 using iTextSharp.text;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
+using com.itextpdf.text.pdf;
+using ImageMagick;
 
 namespace Project__Filter
 {
@@ -41,49 +43,104 @@ namespace Project__Filter
 
         private void comboBox_Select_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Get the ComboBox from the sender
-            ComboBox comboBox = sender as ComboBox;
+            if (!string.IsNullOrEmpty(selectedPath))
+            {
+                ComboBox comboBox = sender as ComboBox;
 
-            // Get the selected item
-            string selectedItem = comboBox.SelectedItem.ToString();
+                // Get the selected item
+                string selectedItem = comboBox.SelectedItem.ToString();
 
-            SelectedBox = selectedItem;
+                switch (selectedItem)
+                {
+                    case "IMAGE To WEBP":
+                    case "IMAGE To BMP":
+                    case "IMAGE To ASCII":
+                    case "IMAGE To ICO":
+                        // Get all the image files in the directory
+                        string[] imageFiles = Directory.EnumerateFiles(selectedPath)
+                                                       .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("png"))
+                                                       .ToArray();
+
+                        // Clear the ListBox
+                        listBox_File.Items.Clear();
+
+                        // Add each file name to the ListBox
+                        foreach (string imageFile in imageFiles)
+                        {
+                            listBox_File.Items.Add(Path.GetFileName(imageFile));
+                        }
+                        break;
+                    default:
+                        listBox_File.Items.Clear();
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Path not selected");
+            }
         }
 
         private void button_Convert_Click(object sender, EventArgs e)
         {
-            switch (SelectedBox)
+            if (!string.IsNullOrEmpty(selectedPath))
             {
-                case "IMAGE To PDF (TITLE)":
-                    PDFTitle();
-                    break;
-                case "IMAGE To PDF (NO TITLE)":
-                    PDFNoTitle();
-                    break;
-                case "IMAGE To ICO":
+                // Get the selected item
+                string selectedItem = comboBox_Select.SelectedItem.ToString();
 
-                    break;
-                case "IMAGE To WEBP":
-                    break;
-                case "IMAGE To BMP":
-                    break;
-                case "IMAGE To ASCII":
-                    break;
-                case "VIDEO To GIF":
-                    break;
-                case "VIDEO To AUDIO":
-                    break;
-                case "VIDEO To WEBM":
-                    break;
-                case "VIDEO To AVI":
-                    break;
-                case "AUDIO To WAV":
-                    break;
-                default:
-                    break;
+                switch (selectedItem)
+                {
+                    case "IMAGE To PDF (TITLE)":
+                        PDFTitle();
+                        break;
+                    case "IMAGE To PDF (NO TITLE)":
+                        PDFNoTitle();
+                        break;
+                    case "IMAGE To ICO":
+                        // Get all the image files in the directory
+                        ImageIcon();
+                        break;
+                    case "IMAGE To WEBP":
+                        ImageWebp();
+                        break;
+                    case "IMAGE To BMP":
+                        ImageBMP();
+                        break;
+                    case "IMAGE To ASCII":
+                        ImageAscii();
+                        break;
+                    case "VIDEO To GIF":
+                        // Call your method to convert video to GIF here
+                        break;
+                    case "VIDEO To AUDIO":
+                        // Call your method to convert video to AUDIO here
+                        break;
+                    case "VIDEO To WEBM":
+                        // Call your method to convert video to WEBM here
+                        break;
+                    case "VIDEO To AVI":
+                        // Call your method to convert video to AVI here
+                        break;
+                    case "AUDIO To WAV":
+                        // Call your method to convert audio to WAV here
+                        break;
+                    default:
+                        MessageBox.Show("Invalid selection");
+                        break;
+                }
+                if (checkBox_Delete.Checked)
+                {
+
+                }
             }
-            DeleteFiles();
+            else
+            {
+                MessageBox.Show("Path not selected");
+            }
         }
+
+
+
 
         private void PDFTitle()
         {
@@ -168,17 +225,136 @@ namespace Project__Filter
             MessageBox.Show($"PDF created successfully at: {pdfPath}");
         }
 
-        private void ImageIcon() {
-
-        }
-
-        private void DeleteFiles()
+        private void ImageIcon()
         {
-            if (checkBox_Delete.Checked)
-            {
+            // Get the selected image file
+            string selectedImage = listBox_File.SelectedItem.ToString();
 
+            // Create the full path to the image file
+            string imagePath = Path.Combine(selectedPath, selectedImage);
+
+            // Load the image file
+            using (Bitmap bitmap = new Bitmap(imagePath))
+            {
+                // Get an Hicon for the Bitmap
+                IntPtr hIcon = bitmap.GetHicon();
+
+                // Create a new icon from the handle
+                Icon icon = Icon.FromHandle(hIcon);
+
+                // Create the full path to the ICO file
+                string icoPath = Path.Combine(selectedPath, Path.GetFileNameWithoutExtension(imagePath) + ".ico");
+
+                // Write the Icon to a File Stream
+                using (FileStream fs = new FileStream(icoPath, FileMode.OpenOrCreate))
+                {
+                    icon.Save(fs);
+                }
+
+                MessageBox.Show($"ICO created successfully at: {icoPath}");
             }
         }
+
+        private void ImageWebp()
+        {
+            // Get the selected image file
+            string selectedImage = listBox_File.SelectedItem.ToString();
+
+            // Create the full path to the image file
+            string imagePath = Path.Combine(selectedPath, selectedImage);
+
+            // Create the full path to the WEBP file
+            string webpPath = Path.Combine(selectedPath, Path.GetFileNameWithoutExtension(imagePath) + ".webp");
+
+            // Load the image file
+            using (MagickImage image = new MagickImage(imagePath))
+            {
+                // Convert the image to WEBP and save it
+                image.Format = MagickFormat.WebP;
+                image.Write(webpPath);
+            }
+
+            MessageBox.Show($"WEBP created successfully at: {webpPath}");
+        }
+
+        private void ImageBMP()
+        {
+            // Get the selected image file
+            string selectedImage = listBox_File.SelectedItem.ToString();
+
+            // Create the full path to the image file
+            string imagePath = Path.Combine(selectedPath, selectedImage);
+
+            // Create the full path to the BMP file
+            string bmpPath = Path.Combine(selectedPath, Path.GetFileNameWithoutExtension(imagePath) + ".bmp");
+
+            // Load the image file
+            using (MagickImage image = new MagickImage(imagePath))
+            {
+                // Convert the image to BMP and save it
+                image.Format = MagickFormat.Bmp;
+                image.Write(bmpPath);
+            }
+
+            MessageBox.Show($"BMP created successfully at: {bmpPath}");
+        }
+
+        private void ImageAscii()
+        {
+            // Get the selected image file
+            string selectedImage = listBox_File.SelectedItem.ToString();
+
+            // Create the full path to the image file
+            string imagePath = Path.Combine(selectedPath, selectedImage);
+
+            // Load the image file
+            using (MagickImage image = new MagickImage(imagePath))
+            {
+                // Resize the image
+                image.Resize(100, 0);
+
+                // Convert the image to grayscale
+                image.ColorType = ColorType.Grayscale;
+
+                // Define the ASCII characters
+                string chars = "@%#*+=-:. ";
+
+                // Create the ASCII art
+                StringBuilder asciiArt = new StringBuilder();
+                using (var pixels = image.GetPixelsUnsafe())
+                {
+                    for (int y = 0; y < image.Height; y++)
+                    {
+                        for (int x = 0; x < image.Width; x++)
+                        {
+                            var pixel = pixels.GetPixel(x, y);
+                            int gray = (pixel[0] + pixel[1] + pixel[2]) / 3;
+                            int index = gray * (chars.Length - 1) / 255;
+                            asciiArt.Append(chars[index]);
+                        }
+                        asciiArt.AppendLine();
+                    }
+                }
+
+                // Write the ASCII art to a text file
+                string asciiPath = Path.Combine(selectedPath, "asciiArt.txt");
+                System.IO.File.WriteAllText(asciiPath, asciiArt.ToString());
+
+                MessageBox.Show($"ASCII art created successfully at: {asciiPath}");
+            }
+        }
+
+
+        private void VideoGif()
+        {
+
+        }
+        private void VideoAudio() { }
+        private void VideoWemb() { }
+        private void VideoAvi() { }
+        private void AudioWav() { }
+
+
     }
 }
 

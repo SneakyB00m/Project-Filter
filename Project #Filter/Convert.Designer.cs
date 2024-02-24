@@ -42,9 +42,13 @@
             textBox_Path = new TextBox();
             panel3 = new Panel();
             panel7 = new Panel();
+            label6 = new Label();
+            panel8 = new Panel();
+            label5 = new Label();
+            listBox_File = new ListBox();
             radioButton_Folder = new RadioButton();
             radioButton_Custom = new RadioButton();
-            label4 = new Label();
+            label_Warning = new Label();
             comboBox_Select = new ComboBox();
             label3 = new Label();
             panel1.SuspendLayout();
@@ -52,6 +56,7 @@
             panel6.SuspendLayout();
             panel3.SuspendLayout();
             panel7.SuspendLayout();
+            panel8.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -217,21 +222,66 @@
             // 
             // panel7
             // 
+            panel7.Controls.Add(label6);
+            panel7.Controls.Add(panel8);
             panel7.Controls.Add(radioButton_Folder);
             panel7.Controls.Add(radioButton_Custom);
-            panel7.Controls.Add(label4);
+            panel7.Controls.Add(label_Warning);
             panel7.Dock = DockStyle.Bottom;
             panel7.Location = new Point(0, 75);
             panel7.Name = "panel7";
             panel7.Size = new Size(667, 130);
             panel7.TabIndex = 41;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(3, 35);
+            label6.Name = "label6";
+            label6.Size = new Size(78, 25);
+            label6.TabIndex = 2;
+            label6.Text = "Actions";
+            // 
+            // panel8
+            // 
+            panel8.Controls.Add(label5);
+            panel8.Controls.Add(listBox_File);
+            panel8.Dock = DockStyle.Right;
+            panel8.Location = new Point(391, 0);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(276, 130);
+            panel8.TabIndex = 3;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Dock = DockStyle.Top;
+            label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(0, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(40, 20);
+            label5.TabIndex = 1;
+            label5.Text = "Files";
+            // 
+            // listBox_File
+            // 
+            listBox_File.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            listBox_File.FormattingEnabled = true;
+            listBox_File.ItemHeight = 15;
+            listBox_File.Location = new Point(3, 20);
+            listBox_File.Name = "listBox_File";
+            listBox_File.Size = new Size(270, 109);
+            listBox_File.TabIndex = 0;
+            // 
             // radioButton_Folder
             // 
             radioButton_Folder.AutoSize = true;
             radioButton_Folder.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             radioButton_Folder.ForeColor = Color.White;
-            radioButton_Folder.Location = new Point(127, 54);
+            radioButton_Folder.Location = new Point(14, 94);
             radioButton_Folder.Name = "radioButton_Folder";
             radioButton_Folder.Size = new Size(93, 21);
             radioButton_Folder.TabIndex = 2;
@@ -244,7 +294,7 @@
             radioButton_Custom.AutoSize = true;
             radioButton_Custom.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             radioButton_Custom.ForeColor = Color.White;
-            radioButton_Custom.Location = new Point(19, 54);
+            radioButton_Custom.Location = new Point(14, 67);
             radioButton_Custom.Name = "radioButton_Custom";
             radioButton_Custom.Size = new Size(102, 21);
             radioButton_Custom.TabIndex = 1;
@@ -252,16 +302,15 @@
             radioButton_Custom.Text = "Custom Title";
             radioButton_Custom.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // label_Warning
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.FromArgb(255, 128, 0);
-            label4.Location = new Point(3, 10);
-            label4.Name = "label4";
-            label4.Size = new Size(64, 25);
-            label4.TabIndex = 0;
-            label4.Text = "label4";
+            label_Warning.AutoSize = true;
+            label_Warning.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label_Warning.ForeColor = Color.FromArgb(255, 128, 0);
+            label_Warning.Location = new Point(3, 10);
+            label_Warning.Name = "label_Warning";
+            label_Warning.Size = new Size(0, 25);
+            label_Warning.TabIndex = 0;
             // 
             // comboBox_Select
             // 
@@ -314,6 +363,8 @@
             panel3.PerformLayout();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -335,7 +386,11 @@
         private ComboBox comboBox_Select;
         private Panel panel7;
         private RadioButton radioButton_Custom;
-        private Label label4;
+        private Label label_Warning;
         private RadioButton radioButton_Folder;
+        private Panel panel8;
+        private ListBox listBox_File;
+        private Label label5;
+        private Label label6;
     }
 }
