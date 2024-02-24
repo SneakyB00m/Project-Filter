@@ -63,6 +63,8 @@ namespace Project__Filter
                         break;
                     case "IMAGE To PDF (NO TITLE)":
                         // Get all image files in the selected directory that can be converted to PDF
+                        radioButton_Custom.Enabled = false;
+                        radioButton_Folder.Enabled = false;
                         string[] imageFilesNotitle = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("bmp"))
                                                         .ToArray();
@@ -76,6 +78,8 @@ namespace Project__Filter
                         break;
                     case "IMAGE To ICO":
                         // Get all image files in the selected directory that can be converted to ICO
+                        radioButton_Custom.Enabled = false;
+                        radioButton_Folder.Enabled = false;
                         string[] imageFilesIco = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("bmp") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("svg"))
                                                         .ToArray();
@@ -89,6 +93,8 @@ namespace Project__Filter
                         break;
                     case "IMAGE To WEBP":
                         // Get all image files in the selected directory that can be converted to WEBP
+                        radioButton_Custom.Enabled = false;
+                        radioButton_Folder.Enabled = false;
                         string[] imageFilesWEBP = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("bmp") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("ico"))
                                                         .ToArray();
@@ -102,6 +108,8 @@ namespace Project__Filter
                         break;
                     case "IMAGE To BMP":
                         // Get all image files in the selected directory that can be converted to BMP
+                        radioButton_Custom.Enabled = false;
+                        radioButton_Folder.Enabled = false;
                         string[] imageFilesBmp = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("ico") || file.ToLower().EndsWith("webp"))
                                                         .ToArray();
@@ -130,6 +138,8 @@ namespace Project__Filter
                         break;
                     case "VIDEO To AUDIO":
                         // Get all video files in the selected directory
+                        radioButton_Custom.Enabled = false;
+                        radioButton_Folder.Enabled = false;
                         string[] videoFilestoAudio = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("mp4") || file.ToLower().EndsWith("avi")
                                                         || file.ToLower().EndsWith("mkv") || file.ToLower().EndsWith("flv")
@@ -145,6 +155,8 @@ namespace Project__Filter
                         break;
                     case "VIDEO To WEBM":
                         // Get all video files in the selected directory that can be converted to WebM
+                        radioButton_Custom.Enabled = false;
+                        radioButton_Folder.Enabled = false;
                         string[] videoFilestoWebm = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("mp4") || file.ToLower().EndsWith("avi")
                                                         || file.ToLower().EndsWith("mkv") || file.ToLower().EndsWith("flv") ||
@@ -162,6 +174,8 @@ namespace Project__Filter
                         break;
                     case "VIDEO To AVI":
                         // Get all video files in the selected directory that can be converted to AVI
+                        radioButton_Custom.Enabled = false;
+                        radioButton_Folder.Enabled = false;
                         string[] videoFiles = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("mp4") || file.ToLower().EndsWith("mkv") || file.ToLower().EndsWith("flv") || file.ToLower().EndsWith("mov") || file.ToLower().EndsWith("wmv") || file.ToLower().EndsWith("m4v") || file.ToLower().EndsWith("mpeg") || file.ToLower().EndsWith("mpg"))
                                                         .ToArray();
@@ -175,6 +189,8 @@ namespace Project__Filter
                         break;
                     case "AUDIO To WAV":
                         // Get all audio files in the selected directory that can be converted to WAV
+                        radioButton_Custom.Enabled = false;
+                        radioButton_Folder.Enabled = false;
                         string[] audioFiles = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("mp3") || file.ToLower().EndsWith("aac") || file.ToLower().EndsWith("flac") || file.ToLower().EndsWith("m4a") || file.ToLower().EndsWith("ogg") || file.ToLower().EndsWith("wma"))
                                                         .ToArray();
