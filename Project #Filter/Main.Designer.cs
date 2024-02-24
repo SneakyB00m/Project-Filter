@@ -332,7 +332,7 @@
             extract1.Location = new Point(219, 82);
             extract1.Margin = new Padding(3, 2, 3, 2);
             extract1.Name = "extract1";
-            extract1.Size = new Size(781, 430);
+            extract1.Size = new Size(774, 430);
             extract1.TabIndex = 9;
             // 
             // merge1
@@ -341,7 +341,7 @@
             merge1.Location = new Point(219, 82);
             merge1.Margin = new Padding(3, 4, 3, 4);
             merge1.Name = "merge1";
-            merge1.Size = new Size(781, 430);
+            merge1.Size = new Size(774, 430);
             merge1.TabIndex = 10;
             // 
             // privacy1
@@ -350,7 +350,7 @@
             privacy1.Location = new Point(219, 82);
             privacy1.Margin = new Padding(3, 2, 3, 2);
             privacy1.Name = "privacy1";
-            privacy1.Size = new Size(781, 430);
+            privacy1.Size = new Size(774, 430);
             privacy1.TabIndex = 11;
             // 
             // DragControl_Accent
