@@ -115,7 +115,6 @@
             checkBox_AtoZ.TabIndex = 12;
             checkBox_AtoZ.Text = "Alphabetical Order";
             checkBox_AtoZ.UseVisualStyleBackColor = true;
-            checkBox_AtoZ.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // checkBox_Size
             // 
@@ -131,7 +130,6 @@
             checkBox_Size.TabIndex = 14;
             checkBox_Size.Text = "File Size";
             checkBox_Size.UseVisualStyleBackColor = true;
-            checkBox_Size.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // checkBox_Include
             // 
@@ -147,7 +145,6 @@
             checkBox_Include.TabIndex = 15;
             checkBox_Include.Text = "Includes";
             checkBox_Include.UseVisualStyleBackColor = true;
-            checkBox_Include.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // checkBox_Duration
             // 
@@ -163,7 +160,6 @@
             checkBox_Duration.TabIndex = 20;
             checkBox_Duration.Text = "Duration";
             checkBox_Duration.UseVisualStyleBackColor = true;
-            checkBox_Duration.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // checkBox_Resolution
             // 
@@ -179,7 +175,6 @@
             checkBox_Resolution.TabIndex = 19;
             checkBox_Resolution.Text = "Display Resolution";
             checkBox_Resolution.UseVisualStyleBackColor = true;
-            checkBox_Resolution.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // label1
             // 
@@ -235,7 +230,6 @@
             button_Filter.TabIndex = 28;
             button_Filter.Text = "Filter";
             button_Filter.UseVisualStyleBackColor = false;
-            button_Filter.Click += button_Filter_Click;
             // 
             // progressBar_Time
             // 

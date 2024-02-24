@@ -44,59 +44,7 @@ namespace Project__Filter
             }
         }
 
-        private void button_Filter_Click(object sender, EventArgs e)
-        {
-            // Create a new List to hold the names of checked CheckBoxes
-            List<string> checkedCheckBoxNames = new List<string>();
-
-            if (checkBox_AtoZ.Checked)
-            {
-                checkedCheckBoxNames.Add(checkBox_AtoZ.Name);
-            }
-            if (checkBox_Size.Checked)
-            {
-                checkedCheckBoxNames.Add(checkBox_Size.Name);
-            }
-            if (checkBox_Include.Checked)
-            {
-                checkedCheckBoxNames.Add(checkBox_Include.Name);
-            }
-            if (checkBox_Duration.Checked)
-            {
-                checkedCheckBoxNames.Add(checkBox_Duration.Name);
-            }
-            if (checkBox_Resolution.Checked)
-            {
-                checkedCheckBoxNames.Add(checkBox_Resolution.Name);
-            }
-        }
-
-
-        private void CheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            List<string> checkedBoxes = new List<string>();
-
-            foreach (Control control in this.Controls)
-            {
-                if (control is CheckBox)
-                {
-                    CheckBox checkBox = control as CheckBox;
-                    if (checkBox.Checked)
-                    {
-                        checkedBoxes.Add(checkBox.Name);
-                    }
-                }
-            }
-
-            if (checkedBoxes.Count > 1)
-            {
-                label_Warning.Text = "This may affect the result.";
-            }
-            else
-            {
-                label_Warning.Text = "";
-            }
-        }
+ 
 
         // Functions
         private void FilterSort(string path, Dictionary<string, List<string>> myDict, List<string> Check)
