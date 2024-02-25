@@ -86,8 +86,10 @@ namespace Project__Filter
                         Include();
                         break;
                     case "checkBox_Size":
+                        FileSize();
                         break;
                     case "checkBox_AtoZ":
+                        Alphabetical();
                         break;
                     default:
                         // Optional: Perform a default action
@@ -200,7 +202,15 @@ namespace Project__Filter
 
         }
 
-     
+        private void FileSize()
+        {
+
+        }
+
+        private void Alphabetical()
+        {
+
+        }
 
         //private void sortContain(string path, string searchText)
         //{
