@@ -49,6 +49,9 @@ namespace Project__Filter
                     case "IMAGE To PDF (TITLE)":
                         radioButton_Custom.Enabled = true;
                         radioButton_Folder.Enabled = true;
+                        radioButton_Name.Enabled = true;
+                        radioButton_Size.Enabled = true;
+                        radioButton_Date.Enabled = true;
                         // Get all image files in the selected directory that can be converted to PDF
                         string[] imageFilesTitle = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("bmp"))
@@ -65,6 +68,10 @@ namespace Project__Filter
                         // Get all image files in the selected directory that can be converted to PDF
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        radioButton_Name.Enabled = true;
+                        radioButton_Size.Enabled = true;
+                        radioButton_Date.Enabled = true;
+
                         string[] imageFilesNotitle = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("bmp"))
                                                         .ToArray();
@@ -80,6 +87,10 @@ namespace Project__Filter
                         // Get all image files in the selected directory that can be converted to ICO
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        radioButton_Name.Enabled = false;
+                        radioButton_Size.Enabled = false;
+                        radioButton_Date.Enabled = false;
+
                         string[] imageFilesIco = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("bmp") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("svg"))
                                                         .ToArray();
@@ -95,6 +106,10 @@ namespace Project__Filter
                         // Get all image files in the selected directory that can be converted to WEBP
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        radioButton_Name.Enabled = false;
+                        radioButton_Size.Enabled = false;
+                        radioButton_Date.Enabled = false;
+
                         string[] imageFilesWEBP = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("bmp") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("ico"))
                                                         .ToArray();
@@ -110,6 +125,11 @@ namespace Project__Filter
                         // Get all image files in the selected directory that can be converted to BMP
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        radioButton_Name.Enabled = false;
+                        radioButton_Size.Enabled = false;
+                        radioButton_Date.Enabled = false;
+
+
                         string[] imageFilesBmp = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("ico") || file.ToLower().EndsWith("webp"))
                                                         .ToArray();
@@ -124,6 +144,10 @@ namespace Project__Filter
                     case "IMAGE To ASCII":
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        radioButton_Name.Enabled = false;
+                        radioButton_Size.Enabled = false;
+                        radioButton_Date.Enabled = false;
+
 
                         string[] imageFilesAscii = Directory.EnumerateFiles(selectedPath)
                                                        .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("png"))
@@ -140,6 +164,11 @@ namespace Project__Filter
                         // Get all video files in the selected directory
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        radioButton_Name.Enabled = false;
+                        radioButton_Size.Enabled = false;
+                        radioButton_Date.Enabled = false;
+
+
                         string[] videoFilestoAudio = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("mp4") || file.ToLower().EndsWith("avi")
                                                         || file.ToLower().EndsWith("mkv") || file.ToLower().EndsWith("flv")
@@ -157,6 +186,11 @@ namespace Project__Filter
                         // Get all video files in the selected directory that can be converted to WebM
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        radioButton_Name.Enabled = false;
+                        radioButton_Size.Enabled = false;
+                        radioButton_Date.Enabled = false;
+
+
                         string[] videoFilestoWebm = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("mp4") || file.ToLower().EndsWith("avi")
                                                         || file.ToLower().EndsWith("mkv") || file.ToLower().EndsWith("flv") ||
@@ -176,6 +210,11 @@ namespace Project__Filter
                         // Get all video files in the selected directory that can be converted to AVI
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        radioButton_Name.Enabled = false;
+                        radioButton_Size.Enabled = false;
+                        radioButton_Date.Enabled = false;
+
+
                         string[] videoFiles = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("mp4") || file.ToLower().EndsWith("mkv") || file.ToLower().EndsWith("flv") || file.ToLower().EndsWith("mov") || file.ToLower().EndsWith("wmv") || file.ToLower().EndsWith("m4v") || file.ToLower().EndsWith("mpeg") || file.ToLower().EndsWith("mpg"))
                                                         .ToArray();
@@ -191,6 +230,11 @@ namespace Project__Filter
                         // Get all audio files in the selected directory that can be converted to WAV
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        radioButton_Name.Enabled = false;
+                        radioButton_Size.Enabled = false;
+                        radioButton_Date.Enabled = false;
+
+
                         string[] audioFiles = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("mp3") || file.ToLower().EndsWith("aac") || file.ToLower().EndsWith("flac") || file.ToLower().EndsWith("m4a") || file.ToLower().EndsWith("ogg") || file.ToLower().EndsWith("wma"))
                                                         .ToArray();
@@ -206,6 +250,10 @@ namespace Project__Filter
                         listBox_File.Items.Clear();
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        radioButton_Name.Enabled = false;
+                        radioButton_Size.Enabled = false;
+                        radioButton_Date.Enabled = false;
+
                         break;
                 }
             }
@@ -274,6 +322,7 @@ namespace Project__Filter
         {
             if (radioButton_Custom.Checked)
             {
+
                 string Title = Microsoft.VisualBasic.Interaction.InputBox("Enter the title for:", "Title Text", "Default", -1, -1);
 
                 string pdfPath = Path.Combine(selectedPath, $"{Title}.pdf");

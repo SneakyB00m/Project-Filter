@@ -48,10 +48,13 @@
             label3 = new Label();
             panel_Footer = new Panel();
             panel_Options = new Panel();
+            treeView1 = new TreeView();
+            panel1 = new Panel();
             panel_Top.SuspendLayout();
             panel_Header.SuspendLayout();
             panel_Footer.SuspendLayout();
             panel_Options.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel_Top
@@ -106,12 +109,12 @@
             checkBox_AtoZ.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             checkBox_AtoZ.AutoSize = true;
             checkBox_AtoZ.Enabled = false;
-            checkBox_AtoZ.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
+            checkBox_AtoZ.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_AtoZ.ForeColor = Color.White;
-            checkBox_AtoZ.Location = new Point(392, 125);
+            checkBox_AtoZ.Location = new Point(244, 125);
             checkBox_AtoZ.Margin = new Padding(3, 2, 3, 2);
             checkBox_AtoZ.Name = "checkBox_AtoZ";
-            checkBox_AtoZ.Size = new Size(207, 27);
+            checkBox_AtoZ.Size = new Size(168, 22);
             checkBox_AtoZ.TabIndex = 12;
             checkBox_AtoZ.Text = "Alphabetical Order";
             checkBox_AtoZ.UseVisualStyleBackColor = true;
@@ -122,12 +125,12 @@
             checkBox_Size.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Size.AutoSize = true;
             checkBox_Size.Enabled = false;
-            checkBox_Size.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
+            checkBox_Size.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Size.ForeColor = Color.White;
-            checkBox_Size.Location = new Point(238, 125);
+            checkBox_Size.Location = new Point(147, 125);
             checkBox_Size.Margin = new Padding(3, 2, 3, 2);
             checkBox_Size.Name = "checkBox_Size";
-            checkBox_Size.Size = new Size(108, 27);
+            checkBox_Size.Size = new Size(91, 22);
             checkBox_Size.TabIndex = 14;
             checkBox_Size.Text = "File Size";
             checkBox_Size.UseVisualStyleBackColor = true;
@@ -138,12 +141,12 @@
             checkBox_Include.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Include.AutoSize = true;
             checkBox_Include.Enabled = false;
-            checkBox_Include.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
+            checkBox_Include.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Include.ForeColor = Color.White;
-            checkBox_Include.Location = new Point(80, 125);
+            checkBox_Include.Location = new Point(50, 125);
             checkBox_Include.Margin = new Padding(3, 2, 3, 2);
             checkBox_Include.Name = "checkBox_Include";
-            checkBox_Include.Size = new Size(111, 27);
+            checkBox_Include.Size = new Size(91, 22);
             checkBox_Include.TabIndex = 15;
             checkBox_Include.Text = "Includes";
             checkBox_Include.UseVisualStyleBackColor = true;
@@ -154,12 +157,12 @@
             checkBox_Duration.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Duration.AutoSize = true;
             checkBox_Duration.Enabled = false;
-            checkBox_Duration.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
+            checkBox_Duration.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Duration.ForeColor = Color.White;
-            checkBox_Duration.Location = new Point(392, 58);
+            checkBox_Duration.Location = new Point(223, 58);
             checkBox_Duration.Margin = new Padding(3, 2, 3, 2);
             checkBox_Duration.Name = "checkBox_Duration";
-            checkBox_Duration.Size = new Size(112, 27);
+            checkBox_Duration.Size = new Size(92, 22);
             checkBox_Duration.TabIndex = 20;
             checkBox_Duration.Text = "Duration";
             checkBox_Duration.UseVisualStyleBackColor = true;
@@ -170,12 +173,12 @@
             checkBox_Resolution.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Resolution.AutoSize = true;
             checkBox_Resolution.Enabled = false;
-            checkBox_Resolution.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
+            checkBox_Resolution.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Resolution.ForeColor = Color.White;
-            checkBox_Resolution.Location = new Point(80, 58);
+            checkBox_Resolution.Location = new Point(50, 58);
             checkBox_Resolution.Margin = new Padding(3, 2, 3, 2);
             checkBox_Resolution.Name = "checkBox_Resolution";
-            checkBox_Resolution.Size = new Size(208, 27);
+            checkBox_Resolution.Size = new Size(167, 22);
             checkBox_Resolution.TabIndex = 19;
             checkBox_Resolution.Text = "Display Resolution";
             checkBox_Resolution.UseVisualStyleBackColor = true;
@@ -309,6 +312,7 @@
             // 
             // panel_Options
             // 
+            panel_Options.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel_Options.Controls.Add(label3);
             panel_Options.Controls.Add(checkBox_Size);
             panel_Options.Controls.Add(checkBox_Include);
@@ -318,14 +322,32 @@
             panel_Options.Location = new Point(0, 109);
             panel_Options.Margin = new Padding(3, 2, 3, 2);
             panel_Options.Name = "panel_Options";
-            panel_Options.Size = new Size(662, 196);
+            panel_Options.Size = new Size(427, 196);
             panel_Options.TabIndex = 33;
+            // 
+            // treeView1
+            // 
+            treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            treeView1.Location = new Point(0, 0);
+            treeView1.Name = "treeView1";
+            treeView1.Size = new Size(233, 205);
+            treeView1.TabIndex = 27;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(treeView1);
+            panel1.Dock = DockStyle.Right;
+            panel1.Location = new Point(429, 104);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(238, 205);
+            panel1.TabIndex = 34;
             // 
             // Filter
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
+            Controls.Add(panel1);
             Controls.Add(panel_Options);
             Controls.Add(panel_Footer);
             Controls.Add(panel_Header);
@@ -343,6 +365,7 @@
             panel_Footer.PerformLayout();
             panel_Options.ResumeLayout(false);
             panel_Options.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -367,5 +390,7 @@
         private Panel panel_Footer;
         private Label label3;
         private Panel panel_Options;
+        private TreeView treeView1;
+        private Panel panel1;
     }
 }
