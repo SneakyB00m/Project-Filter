@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
+using System.Windows.Forms;
 using Newtonsoft.Json;
 using SharpCompress;
 
@@ -75,10 +77,13 @@ namespace Project__Filter
                 switch (checkBoxName)
                 {
                     case "checkBox_Resolution":
+                        Resolution();
                         break;
                     case "checkBox_Duration":
+                        Duration();
                         break;
                     case "checkBox_Include":
+                        Include();
                         break;
                     case "checkBox_Size":
                         break;
@@ -89,6 +94,7 @@ namespace Project__Filter
                         break;
                 }
             }
+
             if (checkBox_Delete.Checked)
             {
 
@@ -122,153 +128,79 @@ namespace Project__Filter
 
         private void Resolution()
         {
-
-        }
-
-        private void sortresolution(string path)
-        {
-            // create a new instance of the ffprobe class
-            var ffprobe = new nreco.videoinfo.ffprobe();
+            var ffprobe = new NReco.VideoInfo.FFProbe();
 
             // get the path of the "videos" directory
-            string videospath = path.combine(path, "videos");
+            string videospath = Path.Combine(selectedPath, "videos");
 
             // check if the "videos" directory exists
-            if (!directory.exists(videospath))
+            if (!Directory.Exists(videospath))
             {
-                messagebox.show("no 'videos' folder or video files found in the directory: " + path);
+                MessageBox.Show("no 'videos' folder or video files found in the directory: " + selectedPath);
                 return;
             }
 
             // get all video files in the "videos" directory and its subdirectories
-            string[] videofiles = directory.getfiles(videospath, "*.*", searchoption.alldirectories);
+            string[] videofiles = Directory.GetFiles(videospath, "*.*", SearchOption.AllDirectories);
 
             foreach (string videofile in videofiles)
             {
-                try
+                var videoInfo = ffprobe.GetMediaInfo(videofile);
+                string resolution = videoInfo.Streams[0].Width.ToString() + "x" + videoInfo.Streams[0].Height.ToString();
+
+                string destinationDirectory = Path.Combine(videospath, resolution);
+                Directory.CreateDirectory(destinationDirectory);
+
+                string destinationFile = Path.Combine(destinationDirectory, Path.GetFileName(videofile));
+                File.Move(videofile, destinationFile);
+            }
+        }
+
+        private void Duration()
+        {
+            var ffProbe = new NReco.VideoInfo.FFProbe();
+
+            // Get the path of the "Videos" directory
+            string videosPath = Path.Combine(selectedPath, "Videos");
+
+            // Check if the "Videos" directory exists
+            if (!Directory.Exists(videosPath))
+            {
+                MessageBox.Show("No 'Videos' folder or video files found in the directory: " + selectedPath);
+                return;
+            }
+
+            // Get all video files in the "Videos" directory and its subdirectories
+            string[] videoFiles = Directory.GetFiles(videosPath, "*.*", SearchOption.AllDirectories);
+
+            // Read the duration categories from a JSON file
+            string json = File.ReadAllText("Duration.json"); // replace with the path to your JSON file
+            Dictionary<string, int> durationCategories = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
+
+            foreach (var videoFile in videoFiles)
+            {
+                var videoInfo = ffProbe.GetMediaInfo(videoFile);
+                var duration = videoInfo.Duration.TotalSeconds;
+
+                foreach (var category in durationCategories)
                 {
-                    // get the media information of the video file
-                    var videoinfo = ffprobe.getmediainfo(videofile);
-
-                    // get the resolution of the video
-                    string resolution = videoinfo.streams[0].width + "x" + videoinfo.streams[0].height;
-
-                    // create the directory if it doesn't exist
-                    var directorypath = path.combine(new fileinfo(videofile).directoryname, resolution);
-                    directory.createdirectory(directorypath);
-
-                    // move the file to the new directory
-                    var destinationpath = path.combine(directorypath, path.getfilename(videofile));
-                    file.move(videofile, destinationpath);
-                }
-                catch
-                {
-                    // if the file doesn't have a resolution or is damaged, move it to a separate folder
-                    var errordirectorypath = path.combine(new fileinfo(videofile).directoryname, "error");
-                    directory.createdirectory(errordirectorypath);
-                    var errordestinationpath = path.combine(errordirectorypath, path.getfilename(videofile));
-                    file.move(videofile, errordestinationpath);
+                    if (duration <= category.Value)
+                    {
+                        var destinationFolder = Path.Combine(Path.GetDirectoryName(videoFile), category.Key);
+                        Directory.CreateDirectory(destinationFolder);
+                        File.Move(videoFile, Path.Combine(destinationFolder, Path.GetFileName(videoFile)));
+                        break;
+                    }
                 }
             }
         }
 
+        private void Include()
+        {
 
-        //private void FilterSort(string path, Dictionary<string, List<string>> myDict, List<string> Check)
-        //{
-        //    string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
+        }
 
-        //    foreach (string file in files)
-        //    {
-        //        // Get the file extension
-        //        string extension = Path.GetExtension(file).TrimStart('.').ToLower();
-        //        bool found = false;
-
-        //        // Check if the dictionary contains the extension
-        //        foreach (var entry in myDict)
-        //        {
-        //            if (entry.Value.Contains(extension))
-        //            {
-        //                // Get the destination folder
-        //                string destinationFolder = Path.Combine(path, entry.Key);
-
-        //                // Create the destination folder, if it doesn't exist
-        //                Directory.CreateDirectory(destinationFolder);
-
-        //                // Get the destination file path
-        //                string destinationFile = Path.Combine(destinationFolder, Path.GetFileName(file));
-
-        //                // Check if the destination file already exists
-        //                int count = 1;
-        //                while (File.Exists(destinationFile))
-        //                {
-        //                    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file);
-        //                    string fileExtension = Path.GetExtension(file);
-        //                    destinationFile = Path.Combine(destinationFolder, $"{fileNameWithoutExtension}_{count++}{fileExtension}");
-        //                }
-
-        //                // Move the file
-        //                File.Move(file, destinationFile);
-
-        //                found = true;
-        //                break;
-        //            }
-        //        }
-
-        //        // If the extension was not found in the dictionary, move the file to a new folder
-        //        if (!found)
-        //        {
-        //            string destinationFolder = Path.Combine(path, "Others");
-
-        //            // Create the destination folder, if it doesn't exist
-        //            Directory.CreateDirectory(destinationFolder);
-
-        //            // Get the destination file path
-        //            string destinationFile = Path.Combine(destinationFolder, Path.GetFileName(file));
-
-        //            // Check if the destination file already exists
-        //            int count = 1;
-        //            while (File.Exists(destinationFile))
-        //            {
-        //                string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file);
-        //                string fileExtension = Path.GetExtension(file);
-        //                destinationFile = Path.Combine(destinationFolder, $"{fileNameWithoutExtension}_{count++}{fileExtension}");
-        //            }
-
-        //            // Move the file
-        //            File.Move(file, destinationFile);
-        //        }
-        //    }
-
-        //    // Call the appropriate sorting method based on the Check list
-        //    foreach (string check in Check)
-        //    {
-        //        switch (check)
-        //        {
-        //            case "checkBox_Include":
-        //                string searchText = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "Default", -1, -1);
-        //                if (!string.IsNullOrEmpty(searchText))
-        //                {
-        //                    sortContain(selectedPath, searchText);
-        //                }
-        //                break;
-        //            case "checkBox_AtoZ":
-        //                sortAlphabetical(selectedPath);
-        //                break;
-        //            case "checkBox_Resolution":
-        //                sortResolution(selectedPath);
-        //                break;
-        //            case "checkBox_Size":
-        //                sortSize(selectedPath);
-        //                break;
-        //            case "checkBox_Duration":
-        //                sortDuration(selectedPath);
-        //                break;
-        //            case "checkBox_Delete":
-        //                DeleteDirectories(selectedPath);
-        //                break;
-        //        }
-        //    }
-        //}
+     
 
         //private void sortContain(string path, string searchText)
         //{
