@@ -48,9 +48,9 @@
             label3 = new Label();
             comboBox_Select = new ComboBox();
             panel_Action = new Panel();
-            radioButton_Date = new RadioButton();
-            radioButton_Size = new RadioButton();
-            radioButton_Name = new RadioButton();
+            checkBox_Date = new CheckBox();
+            checkBox_Size = new CheckBox();
+            checkBox_Name = new CheckBox();
             label6 = new Label();
             radioButton_Folder = new RadioButton();
             radioButton_Custom = new RadioButton();
@@ -299,9 +299,9 @@
             // panel_Action
             // 
             panel_Action.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel_Action.Controls.Add(radioButton_Date);
-            panel_Action.Controls.Add(radioButton_Size);
-            panel_Action.Controls.Add(radioButton_Name);
+            panel_Action.Controls.Add(checkBox_Date);
+            panel_Action.Controls.Add(checkBox_Size);
+            panel_Action.Controls.Add(checkBox_Name);
             panel_Action.Controls.Add(label6);
             panel_Action.Controls.Add(radioButton_Folder);
             panel_Action.Controls.Add(radioButton_Custom);
@@ -311,50 +311,44 @@
             panel_Action.Size = new Size(414, 130);
             panel_Action.TabIndex = 41;
             // 
-            // radioButton_Date
+            // checkBox_Date
             // 
-            radioButton_Date.Anchor = AnchorStyles.None;
-            radioButton_Date.AutoSize = true;
-            radioButton_Date.Enabled = false;
-            radioButton_Date.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            radioButton_Date.ForeColor = Color.White;
-            radioButton_Date.Location = new Point(287, 78);
-            radioButton_Date.Name = "radioButton_Date";
-            radioButton_Date.Size = new Size(122, 25);
-            radioButton_Date.TabIndex = 5;
-            radioButton_Date.TabStop = true;
-            radioButton_Date.Text = "Sort by Date";
-            radioButton_Date.UseVisualStyleBackColor = true;
+            checkBox_Date.Anchor = AnchorStyles.None;
+            checkBox_Date.AutoSize = true;
+            checkBox_Date.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            checkBox_Date.ForeColor = Color.White;
+            checkBox_Date.Location = new Point(273, 90);
+            checkBox_Date.Name = "checkBox_Date";
+            checkBox_Date.Size = new Size(123, 25);
+            checkBox_Date.TabIndex = 5;
+            checkBox_Date.Text = "Sort by Date";
+            checkBox_Date.UseVisualStyleBackColor = true;
             // 
-            // radioButton_Size
+            // checkBox_Size
             // 
-            radioButton_Size.Anchor = AnchorStyles.None;
-            radioButton_Size.AutoSize = true;
-            radioButton_Size.Enabled = false;
-            radioButton_Size.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            radioButton_Size.ForeColor = Color.White;
-            radioButton_Size.Location = new Point(160, 78);
-            radioButton_Size.Name = "radioButton_Size";
-            radioButton_Size.Size = new Size(117, 25);
-            radioButton_Size.TabIndex = 4;
-            radioButton_Size.TabStop = true;
-            radioButton_Size.Text = "Sort by Size";
-            radioButton_Size.UseVisualStyleBackColor = true;
+            checkBox_Size.Anchor = AnchorStyles.None;
+            checkBox_Size.AutoSize = true;
+            checkBox_Size.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            checkBox_Size.ForeColor = Color.White;
+            checkBox_Size.Location = new Point(155, 90);
+            checkBox_Size.Name = "checkBox_Size";
+            checkBox_Size.Size = new Size(118, 25);
+            checkBox_Size.TabIndex = 4;
+            checkBox_Size.Text = "Sort by Size";
+            checkBox_Size.UseVisualStyleBackColor = true;
             // 
-            // radioButton_Name
+            // checkBox_Name
             // 
-            radioButton_Name.Anchor = AnchorStyles.None;
-            radioButton_Name.AutoSize = true;
-            radioButton_Name.Enabled = false;
-            radioButton_Name.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            radioButton_Name.ForeColor = Color.White;
-            radioButton_Name.Location = new Point(18, 78);
-            radioButton_Name.Name = "radioButton_Name";
-            radioButton_Name.Size = new Size(132, 25);
-            radioButton_Name.TabIndex = 3;
-            radioButton_Name.TabStop = true;
-            radioButton_Name.Text = "Sort by Name";
-            radioButton_Name.UseVisualStyleBackColor = true;
+            checkBox_Name.Anchor = AnchorStyles.None;
+            checkBox_Name.AutoSize = true;
+            checkBox_Name.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            checkBox_Name.ForeColor = Color.White;
+            checkBox_Name.Location = new Point(22, 90);
+            checkBox_Name.Name = "checkBox_Name";
+            checkBox_Name.Size = new Size(133, 25);
+            checkBox_Name.TabIndex = 3;
+            checkBox_Name.Text = "Sort by Name";
+            checkBox_Name.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -461,8 +455,8 @@
         private Panel panel3;
         private Panel panel1;
         private Label label4;
-        private RadioButton radioButton_Size;
-        private RadioButton radioButton_Name;
-        private RadioButton radioButton_Date;
+        private CheckBox checkBox_Name;
+        private CheckBox checkBox_Date;
+        private CheckBox checkBox_Size;
     }
 }
