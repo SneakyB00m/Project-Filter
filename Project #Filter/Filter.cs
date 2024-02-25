@@ -69,6 +69,30 @@ namespace Project__Filter
             }
 
             FirstSort();
+
+            foreach (string checkBoxName in checkedBoxesNames)
+            {
+                switch (checkBoxName)
+                {
+                    case "checkBox_Resolution":
+                        break;
+                    case "checkBox_Duration":
+                        break;
+                    case "checkBox_Include":
+                        break;
+                    case "checkBox_Size":
+                        break;
+                    case "checkBox_AtoZ":
+                        break;
+                    default:
+                        // Optional: Perform a default action
+                        break;
+                }
+            }
+            if (checkBox_Delete.Checked)
+            {
+
+            }
         }
 
         // Functions
@@ -95,6 +119,59 @@ namespace Project__Filter
                 File.Move(file, Path.Combine(destinationDirectory, Path.GetFileName(file)));
             }
         }
+
+        private void Resolution()
+        {
+
+        }
+
+        private void sortresolution(string path)
+        {
+            // create a new instance of the ffprobe class
+            var ffprobe = new nreco.videoinfo.ffprobe();
+
+            // get the path of the "videos" directory
+            string videospath = path.combine(path, "videos");
+
+            // check if the "videos" directory exists
+            if (!directory.exists(videospath))
+            {
+                messagebox.show("no 'videos' folder or video files found in the directory: " + path);
+                return;
+            }
+
+            // get all video files in the "videos" directory and its subdirectories
+            string[] videofiles = directory.getfiles(videospath, "*.*", searchoption.alldirectories);
+
+            foreach (string videofile in videofiles)
+            {
+                try
+                {
+                    // get the media information of the video file
+                    var videoinfo = ffprobe.getmediainfo(videofile);
+
+                    // get the resolution of the video
+                    string resolution = videoinfo.streams[0].width + "x" + videoinfo.streams[0].height;
+
+                    // create the directory if it doesn't exist
+                    var directorypath = path.combine(new fileinfo(videofile).directoryname, resolution);
+                    directory.createdirectory(directorypath);
+
+                    // move the file to the new directory
+                    var destinationpath = path.combine(directorypath, path.getfilename(videofile));
+                    file.move(videofile, destinationpath);
+                }
+                catch
+                {
+                    // if the file doesn't have a resolution or is damaged, move it to a separate folder
+                    var errordirectorypath = path.combine(new fileinfo(videofile).directoryname, "error");
+                    directory.createdirectory(errordirectorypath);
+                    var errordestinationpath = path.combine(errordirectorypath, path.getfilename(videofile));
+                    file.move(videofile, errordestinationpath);
+                }
+            }
+        }
+
 
         //private void FilterSort(string path, Dictionary<string, List<string>> myDict, List<string> Check)
         //{
