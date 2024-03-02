@@ -208,20 +208,30 @@ namespace Project__Filter
 
             foreach (var videoFile in videoFiles)
             {
-                var videoInfo = ffProbe.GetMediaInfo(videoFile);
-                var duration = videoInfo.Duration.TotalSeconds;
-
-                foreach (var category in durationCategories)
+                try
                 {
-                    if (duration <= category.Value)
+                    var videoInfo = ffProbe.GetMediaInfo(videoFile);
+                    var duration = videoInfo.Duration.TotalSeconds;
+
+                    foreach (var category in durationCategories)
                     {
-                        var destinationFolder = Path.Combine(Path.GetDirectoryName(videoFile), category.Key);
-                        Directory.CreateDirectory(destinationFolder);
-                        File.Move(videoFile, Path.Combine(destinationFolder, Path.GetFileName(videoFile)));
-                        break;
+                        if (duration <= category.Value)
+                        {
+                            var destinationFolder = Path.Combine(Path.GetDirectoryName(videoFile), category.Key);
+                            Directory.CreateDirectory(destinationFolder);
+                            File.Move(videoFile, Path.Combine(destinationFolder, Path.GetFileName(videoFile)));
+                            break;
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    // Log the error message if needed
+                    Console.WriteLine($"Error processing file {videoFile}: {ex.Message}");
+                    continue; // Skip this file and move on to the next one
+                }
             }
+
         }
 
         private void Include()

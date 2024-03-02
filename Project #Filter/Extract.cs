@@ -105,9 +105,14 @@
                 // Combine the target directory with the file name
                 string destFile = Path.Combine(targetPath, fileName);
 
-                // Move the file to the target directory
-                File.Move(file, destFile);
+                // Check if the file already exists in the target directory
+                if (!File.Exists(destFile))
+                {
+                    // Move the file to the target directory
+                    File.Move(file, destFile);
+                }
             }
         }
+
     }
 }

@@ -154,12 +154,12 @@
             // 
             // checkBox_Duration
             // 
-            checkBox_Duration.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_Duration.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Duration.AutoSize = true;
             checkBox_Duration.Enabled = false;
             checkBox_Duration.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Duration.ForeColor = Color.White;
-            checkBox_Duration.Location = new Point(223, 58);
+            checkBox_Duration.Location = new Point(223, 57);
             checkBox_Duration.Margin = new Padding(3, 2, 3, 2);
             checkBox_Duration.Name = "checkBox_Duration";
             checkBox_Duration.Size = new Size(92, 22);
@@ -170,12 +170,12 @@
             // 
             // checkBox_Resolution
             // 
-            checkBox_Resolution.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_Resolution.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Resolution.AutoSize = true;
             checkBox_Resolution.Enabled = false;
             checkBox_Resolution.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Resolution.ForeColor = Color.White;
-            checkBox_Resolution.Location = new Point(50, 58);
+            checkBox_Resolution.Location = new Point(50, 57);
             checkBox_Resolution.Margin = new Padding(3, 2, 3, 2);
             checkBox_Resolution.Name = "checkBox_Resolution";
             checkBox_Resolution.Size = new Size(167, 22);
