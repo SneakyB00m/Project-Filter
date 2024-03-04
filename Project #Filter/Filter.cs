@@ -3,6 +3,7 @@ using System.Text;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using SharpCompress;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Project__Filter
 {
@@ -157,186 +158,258 @@ namespace Project__Filter
 
         private void Resolution()
         {
-            var ffprobe = new NReco.VideoInfo.FFProbe();
-
-            // get the path of the "videos" directory
-            string videospath = Path.Combine(selectedPath, "videos");
-
-            // check if the "videos" directory exists
-            if (!Directory.Exists(videospath))
+            // Run on a separate thread to avoid freezing the UI
+            Task.Run(() =>
             {
-                MessageBox.Show("no 'videos' folder or video files found in the directory: " + selectedPath);
-                return;
-            }
+                var ffprobe = new NReco.VideoInfo.FFProbe();
 
-            // get all video files in the "videos" directory and its subdirectories
-            string[] videofiles = Directory.GetFiles(videospath, "*.*", SearchOption.AllDirectories);
+                string videosPath = Path.Combine(selectedPath, "Videos");
 
-            foreach (string videofile in videofiles)
-            {
-                var videoInfo = ffprobe.GetMediaInfo(videofile);
-                string resolution = videoInfo.Streams[0].Width.ToString() + "x" + videoInfo.Streams[0].Height.ToString();
+                if (!Directory.Exists(videosPath))
+                {
+                    MessageBox.Show("No 'Videos' folder or video files found in the directory: " + selectedPath);
+                    return;
+                }
 
-                string destinationDirectory = Path.Combine(videospath, resolution);
-                Directory.CreateDirectory(destinationDirectory);
+                string[] videoFiles = Directory.GetFiles(videosPath, "*.*", SearchOption.AllDirectories);
 
-                string destinationFile = Path.Combine(destinationDirectory, Path.GetFileName(videofile));
-                File.Move(videofile, destinationFile);
-            }
+                // Set the maximum value of the progress bar
+                Invoke((Action)(() => progressBar_Time.Maximum = videoFiles.Length));
+
+                for (int i = 0; i < videoFiles.Length; i++)
+                {
+                    try
+                    {
+                        var videoInfo = ffprobe.GetMediaInfo(videoFiles[i]);
+                        string resolution = videoInfo.Streams[0].Width.ToString() + "x" + videoInfo.Streams[0].Height.ToString();
+
+                        string destinationDirectory = Path.Combine(videosPath, resolution);
+                        Directory.CreateDirectory(destinationDirectory);
+
+                        string destinationFile = Path.Combine(destinationDirectory, Path.GetFileName(videoFiles[i]));
+                        File.Move(videoFiles[i], destinationFile);
+                    }
+                    catch (NReco.VideoInfo.FFProbeException ex)
+                    {
+                        // Log the error message if needed
+                        Console.WriteLine($"Error processing file {videoFiles[i]}: {ex.Message}");
+                        continue; // Skip this file and move on to the next one
+                    }
+
+                    // Update the progress bar
+                    Invoke((Action)(() => progressBar_Time.Value = i + 1));
+                }
+
+                Invoke((Action)(() => MessageBox.Show("Filterd completed")));
+
+                Invoke((Action)(() => progressBar_Time.Value = 0));
+            });
         }
 
         private void Duration()
         {
-            var ffProbe = new NReco.VideoInfo.FFProbe();
-
-            // Get the path of the "Videos" directory
-            string videosPath = Path.Combine(selectedPath, "Videos");
-
-            // Check if the "Videos" directory exists
-            if (!Directory.Exists(videosPath))
+            // Run on a separate thread to avoid freezing the UI
+            Task.Run(() =>
             {
-                MessageBox.Show("No 'Videos' folder or video files found in the directory: " + selectedPath);
-                return;
-            }
+                var ffprobe = new NReco.VideoInfo.FFProbe();
 
-            // Get all video files in the "Videos" directory and its subdirectories
-            string[] videoFiles = Directory.GetFiles(videosPath, "*.*", SearchOption.AllDirectories);
+                string videosPath = Path.Combine(selectedPath, "Videos");
 
-            // Read the duration categories from a JSON file
-            string json = File.ReadAllText("Duration.json"); // replace with the path to your JSON file
-            Dictionary<string, int> durationCategories = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
-
-            foreach (var videoFile in videoFiles)
-            {
-                try
+                if (!Directory.Exists(videosPath))
                 {
-                    var videoInfo = ffProbe.GetMediaInfo(videoFile);
-                    var duration = videoInfo.Duration.TotalSeconds;
+                    MessageBox.Show("No 'Videos' folder or video files found in the directory: " + selectedPath);
+                    return;
+                }
 
-                    foreach (var category in durationCategories)
+                // Get all video files in the "Videos" directory and its subdirectories
+                string[] videoFiles = Directory.GetFiles(videosPath, "*.*", SearchOption.AllDirectories);
+
+                // Read the duration categories from a JSON file
+                string json = File.ReadAllText("Duration.json"); // replace with the path to your JSON file
+                Dictionary<string, int> durationCategories = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
+
+
+                // Set the maximum value of the progress bar
+                Invoke((Action)(() => progressBar_Time.Maximum = videoFiles.Length));
+
+                for (int i = 0; i < videoFiles.Length; i++)
+                {
+                    try
                     {
-                        if (duration <= category.Value)
+                        var videoInfo = ffprobe.GetMediaInfo(videoFiles[i]);
+                        var duration = videoInfo.Duration.TotalSeconds;
+
+                        foreach (var category in durationCategories)
                         {
-                            var destinationFolder = Path.Combine(Path.GetDirectoryName(videoFile), category.Key);
-                            Directory.CreateDirectory(destinationFolder);
-                            File.Move(videoFile, Path.Combine(destinationFolder, Path.GetFileName(videoFile)));
-                            break;
+                            if (duration <= category.Value)
+                            {
+                                var destinationFolder = Path.Combine(Path.GetDirectoryName(videoFiles[i]), category.Key);
+                                Directory.CreateDirectory(destinationFolder);
+                                File.Move(videoFiles[i], Path.Combine(destinationFolder, Path.GetFileName(videoFiles[i])));
+                                break;
+                            }
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    // Log the error message if needed
-                    Console.WriteLine($"Error processing file {videoFile}: {ex.Message}");
-                    continue; // Skip this file and move on to the next one
-                }
-            }
+                    catch (Exception ex)
+                    {
+                        // Log the error message if needed
+                        Console.WriteLine($"Error processing file {videoFiles[i]}: {ex.Message}");
+                        continue; // Skip this file and move on to the next one
+                    }
 
+                    // Update the progress bar
+                    Invoke((Action)(() => progressBar_Time.Value = i + 1));
+                }
+                Invoke((Action)(() => MessageBox.Show("Filterd completed")));
+
+                Invoke((Action)(() => progressBar_Time.Value = 0));
+            });
         }
 
         private void Include()
         {
-            string inputInclude = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "", -1, -1);
-
-            // If the cancel button is clicked, the input box will return an empty string
-            if (string.IsNullOrEmpty(inputInclude))
+            // Run on a separate thread to avoid freezing the UI
+            Task.Run(() =>
             {
-                return; // Stop the operation
-            }
+                string inputInclude = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "", -1, -1);
 
-            string searchPath = selectedPath; // replace with the path to your directory
-
-            // Get all files in the directory and its subdirectories
-            string[] files = Directory.GetFiles(searchPath, "*.*", SearchOption.AllDirectories);
-
-            string lowerCaseSearchText = inputInclude.ToLower();
-
-            // Filter the files that contain the search text in their name, excluding the extension
-            var foundFiles = files.Where(file => Path.GetFileNameWithoutExtension(file).ToLower().Contains(lowerCaseSearchText)).ToList();
-
-            foreach (var file in foundFiles)
-            {
-                try
+                // If the cancel button is clicked, the input box will return an empty string
+                if (string.IsNullOrEmpty(inputInclude))
                 {
-                    var destinationFolder = Path.Combine(Path.GetDirectoryName(file), "Match");
-                    Directory.CreateDirectory(destinationFolder);
-                    File.Move(file, Path.Combine(destinationFolder, Path.GetFileName(file)));
+                    return; // Stop the operation
                 }
-                catch (Exception ex)
-                {
-                    // Handle exceptions here, e.g. file in use, insufficient permissions, etc.
-                }
-            }
 
-            MessageBox.Show(foundFiles.Count + " files found that contain the text '" + inputInclude + "' in their name.");
+                string searchPath = selectedPath; // replace with the path to your directory
+
+                // Get all files in the directory and its subdirectories
+                string[] files = Directory.GetFiles(searchPath, "*.*", SearchOption.AllDirectories);
+
+                // Set the maximum value of the progress bar
+                Invoke((Action)(() => progressBar_Time.Maximum = files.Length));
+
+                string lowerCaseSearchText = inputInclude.ToLower();
+
+                // Filter the files that contain the search text in their name, excluding the extension
+                var foundFiles = files.Where(file => Path.GetFileNameWithoutExtension(file).ToLower().Contains(lowerCaseSearchText)).ToList();
+
+                for (int i = 0; i < foundFiles.Count; i++)
+                {
+                    try
+                    {
+                        var destinationFolder = Path.Combine(Path.GetDirectoryName(foundFiles[i]), "Match");
+                        Directory.CreateDirectory(destinationFolder);
+                        File.Move(foundFiles[i], Path.Combine(destinationFolder, Path.GetFileName(foundFiles[i])));
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle exceptions here, e.g. file in use, insufficient permissions, etc.
+                        Console.WriteLine($"Error processing file {foundFiles[i]}: {ex.Message}");
+                        continue; // Skip this file and move on to the next one
+                    }
+
+                    // Update the progress bar
+                    Invoke((Action)(() => progressBar_Time.Value = i + 1));
+                }
+
+                Invoke((Action)(() => MessageBox.Show(foundFiles.Count + " files found that contain the text '" + inputInclude + "' in their name.")));
+
+                Invoke((Action)(() => progressBar_Time.Value = 0));
+            });
         }
-
 
         private void FileSize()
         {
-            // Get all files in the selected directory and its subdirectories
-            string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
-
-            // Read the size categories from a JSON file
-            string json = File.ReadAllText("Sizes.json"); // replace with the path to your JSON file
-            Dictionary<string, long> sizeCategories = JsonConvert.DeserializeObject<Dictionary<string, long>>(json);
-
-            foreach (var file in files)
+            // Run on a separate thread to avoid freezing the UI
+            Task.Run(() =>
             {
-                var fileInfo = new FileInfo(file);
-                var fileSize = fileInfo.Length; // Get the file size in bytes
+                // Get all files in the selected directory and its subdirectories
+                string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
 
-                foreach (var category in sizeCategories)
+                // Set the maximum value of the progress bar
+                Invoke((Action)(() => progressBar_Time.Maximum = files.Length));
+
+                // Read the size categories from a JSON file
+                string json = File.ReadAllText("Sizes.json"); // replace with the path to your JSON file
+                Dictionary<string, long> sizeCategories = JsonConvert.DeserializeObject<Dictionary<string, long>>(json);
+
+                for (int i = 0; i < files.Length; i++)
                 {
-                    // Convert category value from MB to bytes
-                    long maxSizeInBytes = category.Value * 1024 * 1024;
+                    var fileInfo = new FileInfo(files[i]);
+                    var fileSize = fileInfo.Length; // Get the file size in bytes
 
-                    if (fileSize <= maxSizeInBytes)
+                    foreach (var category in sizeCategories)
                     {
-                        var destinationFolder = Path.Combine(Path.GetDirectoryName(file), category.Key);
-                        Directory.CreateDirectory(destinationFolder);
-                        File.Move(file, Path.Combine(destinationFolder, Path.GetFileName(file)));
-                        break;
-                    }
-                }
-            }
-        }
+                        // Convert category value from MB to bytes
+                        long maxSizeInBytes = category.Value * 1024 * 1024;
 
+                        if (fileSize <= maxSizeInBytes)
+                        {
+                            var destinationFolder = Path.Combine(Path.GetDirectoryName(files[i]), category.Key);
+                            Directory.CreateDirectory(destinationFolder);
+                            File.Move(files[i], Path.Combine(destinationFolder, Path.GetFileName(files[i])));
+                            break;
+                        }
+                    }
+
+                    // Update the progress bar
+                    Invoke((Action)(() => progressBar_Time.Value = i + 1));
+                }
+
+                Invoke((Action)(() => MessageBox.Show("Filterd completed")));
+
+                Invoke((Action)(() => progressBar_Time.Value = 0));
+            });
+        }
 
         private void Alphabetical()
         {
-            // Get all files in the selected directory and its subdirectories
-            string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
-
-            foreach (var file in files)
+            // Run on a separate thread to avoid freezing the UI
+            Task.Run(() =>
             {
-                try
+                // Get all files in the selected directory and its subdirectories
+                string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
+
+                // Set the maximum value of the progress bar
+                Invoke((Action)(() => progressBar_Time.Maximum = files.Length));
+
+                for (int i = 0; i < files.Length; i++)
                 {
-                    string fileName = Path.GetFileNameWithoutExtension(file);
-                    char firstChar = fileName[0];
-
-                    string folderName;
-
-                    if (char.IsLetter(firstChar) && Encoding.UTF8.GetByteCount(new char[] { firstChar }) == 1)
+                    try
                     {
-                        // If the first character is a UTF-8 letter, use it as the folder name
-                        folderName = firstChar.ToString().ToUpper();
+                        string fileName = Path.GetFileNameWithoutExtension(files[i]);
+                        char firstChar = fileName[0];
+
+                        string folderName;
+
+                        if (char.IsLetter(firstChar) && Encoding.UTF8.GetByteCount(new char[] { firstChar }) == 1)
+                        {
+                            // If the first character is a UTF-8 letter, use it as the folder name
+                            folderName = firstChar.ToString().ToUpper();
+                        }
+                        else
+                        {
+                            // If the first character is not a UTF-8 letter, use "Special characters" as the folder name
+                            folderName = "Special characters";
+                        }
+
+                        var destinationFolder = Path.Combine(Path.GetDirectoryName(files[i]), folderName);
+                        Directory.CreateDirectory(destinationFolder);
+                        File.Move(files[i], Path.Combine(destinationFolder, Path.GetFileName(files[i])));
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        // If the first character is not a UTF-8 letter, use "Special characters" as the folder name
-                        folderName = "Special characters";
+                        // Handle exceptions here, e.g. file in use, insufficient permissions, etc.
+                        Console.WriteLine($"Error processing file {files[i]}: {ex.Message}");
+                        continue; // Skip this file and move on to the next one
                     }
 
-                    var destinationFolder = Path.Combine(Path.GetDirectoryName(file), folderName);
-                    Directory.CreateDirectory(destinationFolder);
-                    File.Move(file, Path.Combine(destinationFolder, Path.GetFileName(file)));
+                    // Update the progress bar
+                    Invoke((Action)(() => progressBar_Time.Value = i + 1));
                 }
-                catch (Exception ex)
-                {
-                    // Handle exceptions here, e.g. file in use, insufficient permissions, etc.
-                }
-            }
+                Invoke((Action)(() => MessageBox.Show("Filterd completed")));
+
+                Invoke((Action)(() => progressBar_Time.Value = 0));
+            });
         }
 
     }

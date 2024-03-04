@@ -65,53 +65,64 @@
 
             if (checkBox_Delete.Checked)
             {
-                // Get all directories from the selected directory
-                string[] directories = Directory.GetDirectories(selectedPath, "*", SearchOption.AllDirectories);
-
-                // Check each directory
-                foreach (string dir in directories)
-                {
-                    // Get all files and subdirectories in the directory
-                    if (Directory.GetFiles(dir).Length == 0 && Directory.GetDirectories(dir).Length == 0)
-                    {
-                        // If the directory is empty, delete it
-                        Directory.Delete(dir);
-                    }
-                }
+                   DeleteFolders();
             }
 
         }
 
-        private void ExtractFiles()
-        {
-            // Handle radioButton_Folder
-            string targetPath = Path.Combine(selectedPath, "Extracted"); // The path of the target directory
+        public void DeleteFolders() {
+            // Get all directories from the selected directory
+            string[] directories = Directory.GetDirectories(selectedPath, "*", SearchOption.AllDirectories);
 
-            // Create the target directory if it doesn't exist
-            if (!Directory.Exists(targetPath))
+            // Check each directory
+            foreach (string dir in directories)
             {
-                Directory.CreateDirectory(targetPath);
-            }
-
-            // Get all files from the selected directory and its subdirectories
-            string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
-
-            // Move each file to the target directory
-            foreach (string file in files)
-            {
-                // Get the file name
-                string fileName = Path.GetFileName(file);
-
-                // Combine the target directory with the file name
-                string destFile = Path.Combine(targetPath, fileName);
-
-                // Check if the file already exists in the target directory
-                if (!File.Exists(destFile))
+                // Get all files and subdirectories in the directory
+                if (Directory.GetFiles(dir).Length == 0 && Directory.GetDirectories(dir).Length == 0)
                 {
-                    // Move the file to the target directory
-                    File.Move(file, destFile);
+                    // If the directory is empty, delete it
+                    Directory.Delete(dir);
                 }
             }
+        }
+
+        private void ExtractFiles()
+        {
+            // Run on a separate thread to avoid freezing the UI
+            Task.Run(() =>
+            {
+                string targetPath = Path.Combine(selectedPath, "Extracted"); // The path of the target directory
+
+                if (!Directory.Exists(targetPath))
+                {
+                    Directory.CreateDirectory(targetPath);
+                }
+
+                string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
+
+                // Set the maximum value of the progress bar
+                Invoke((Action)(() => progressBar_Time.Maximum = files.Length));
+
+                for (int i = 0; i < files.Length; i++)
+                {
+                    string fileName = Path.GetFileName(files[i]);
+                    string destFile = Path.Combine(targetPath, fileName);
+
+                    if (!File.Exists(destFile))
+                    {
+                        File.Move(files[i], destFile);
+                    }
+
+                    // Update the progress bar
+                    Invoke((Action)(() => progressBar_Time.Value = i + 1));
+                }
+
+                // Show a message box when done
+                Invoke((Action)(() => MessageBox.Show("File extraction completed!")));
+
+                // Reset the progress bar
+                Invoke((Action)(() => progressBar_Time.Value = 0));
+            });
         }
 
     }
