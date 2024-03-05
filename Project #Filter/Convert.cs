@@ -27,8 +27,6 @@ namespace Project__Filter
                     selectedPath = fbd.SelectedPath;
                     textBox_Path.Text = selectedPath;
                     comboBox_Select.Enabled = true;
-                    radioButton_Custom.Enabled = true;
-                    radioButton_Folder.Enabled = true;
                     button_Convert.Enabled = true;
                 }
             }
@@ -48,6 +46,9 @@ namespace Project__Filter
                     case "IMAGE To PDF (TITLE)":
                         radioButton_Custom.Enabled = true;
                         radioButton_Folder.Enabled = true;
+                        checkBox_Name.Enabled = true;
+                        checkBox_Date.Enabled = true;
+                        checkBox_Size.Enabled = true;
 
                         // Get all image files in the selected directory that can be converted to PDF
                         string[] imageFilesTitle = Directory.EnumerateFiles(selectedPath)
@@ -65,7 +66,9 @@ namespace Project__Filter
                         // Get all image files in the selected directory that can be converted to PDF
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
-
+                        checkBox_Name.Enabled = true;
+                        checkBox_Date.Enabled = true;
+                        checkBox_Size.Enabled = true;
 
                         string[] imageFilesNotitle = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("bmp"))
@@ -82,7 +85,9 @@ namespace Project__Filter
                         // Get all image files in the selected directory that can be converted to ICO
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
-
+                        checkBox_Name.Enabled = false;
+                        checkBox_Date.Enabled = false;
+                        checkBox_Size.Enabled = false;
 
                         string[] imageFilesIco = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("bmp") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("svg"))
@@ -99,7 +104,9 @@ namespace Project__Filter
                         // Get all image files in the selected directory that can be converted to WEBP
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
-
+                        checkBox_Name.Enabled = false;
+                        checkBox_Date.Enabled = false;
+                        checkBox_Size.Enabled = false;
 
                         string[] imageFilesWEBP = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("bmp") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("ico"))
@@ -116,8 +123,9 @@ namespace Project__Filter
                         // Get all image files in the selected directory that can be converted to BMP
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
-
-
+                        checkBox_Name.Enabled = false;
+                        checkBox_Date.Enabled = false;
+                        checkBox_Size.Enabled = false;
 
                         string[] imageFilesBmp = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("ico") || file.ToLower().EndsWith("webp"))
@@ -133,6 +141,9 @@ namespace Project__Filter
                     case "IMAGE To ASCII":
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        checkBox_Name.Enabled = false;
+                        checkBox_Date.Enabled = false;
+                        checkBox_Size.Enabled = false;
 
                         string[] imageFilesAscii = Directory.EnumerateFiles(selectedPath)
                                                        .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("png"))
@@ -149,6 +160,9 @@ namespace Project__Filter
                         // Get all video files in the selected directory
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        checkBox_Name.Enabled = false;
+                        checkBox_Date.Enabled = false;
+                        checkBox_Size.Enabled = false;
 
                         string[] videoFilestoAudio = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("mp4") || file.ToLower().EndsWith("avi")
@@ -167,6 +181,9 @@ namespace Project__Filter
                         // Get all video files in the selected directory that can be converted to WebM
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        checkBox_Name.Enabled = false;
+                        checkBox_Date.Enabled = false;
+                        checkBox_Size.Enabled = false;
 
                         string[] videoFilestoWebm = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("mp4") || file.ToLower().EndsWith("avi")
@@ -187,6 +204,9 @@ namespace Project__Filter
                         // Get all video files in the selected directory that can be converted to AVI
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        checkBox_Name.Enabled = false;
+                        checkBox_Date.Enabled = false;
+                        checkBox_Size.Enabled = false;
 
                         string[] videoFiles = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("mp4") || file.ToLower().EndsWith("mkv") || file.ToLower().EndsWith("flv") || file.ToLower().EndsWith("mov") || file.ToLower().EndsWith("wmv") || file.ToLower().EndsWith("m4v") || file.ToLower().EndsWith("mpeg") || file.ToLower().EndsWith("mpg"))
@@ -203,6 +223,9 @@ namespace Project__Filter
                         // Get all audio files in the selected directory that can be converted to WAV
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        checkBox_Name.Enabled = false;
+                        checkBox_Date.Enabled = false;
+                        checkBox_Size.Enabled = false;
 
                         string[] audioFiles = Directory.EnumerateFiles(selectedPath)
                                                         .Where(file => file.ToLower().EndsWith("mp3") || file.ToLower().EndsWith("aac") || file.ToLower().EndsWith("flac") || file.ToLower().EndsWith("m4a") || file.ToLower().EndsWith("ogg") || file.ToLower().EndsWith("wma"))
@@ -219,6 +242,9 @@ namespace Project__Filter
                         listBox_File.Items.Clear();
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
+                        checkBox_Name.Enabled = false;
+                        checkBox_Date.Enabled = false;
+                        checkBox_Size.Enabled = false;
                         break;
                 }
             }

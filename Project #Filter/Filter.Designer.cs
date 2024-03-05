@@ -106,12 +106,12 @@
             // 
             // checkBox_AtoZ
             // 
-            checkBox_AtoZ.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_AtoZ.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             checkBox_AtoZ.AutoSize = true;
             checkBox_AtoZ.Enabled = false;
             checkBox_AtoZ.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_AtoZ.ForeColor = Color.White;
-            checkBox_AtoZ.Location = new Point(244, 125);
+            checkBox_AtoZ.Location = new Point(226, 153);
             checkBox_AtoZ.Margin = new Padding(3, 2, 3, 2);
             checkBox_AtoZ.Name = "checkBox_AtoZ";
             checkBox_AtoZ.Size = new Size(168, 22);
@@ -122,12 +122,12 @@
             // 
             // checkBox_Size
             // 
-            checkBox_Size.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_Size.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Size.AutoSize = true;
             checkBox_Size.Enabled = false;
             checkBox_Size.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Size.ForeColor = Color.White;
-            checkBox_Size.Location = new Point(147, 125);
+            checkBox_Size.Location = new Point(117, 153);
             checkBox_Size.Margin = new Padding(3, 2, 3, 2);
             checkBox_Size.Name = "checkBox_Size";
             checkBox_Size.Size = new Size(91, 22);
@@ -138,12 +138,12 @@
             // 
             // checkBox_Include
             // 
-            checkBox_Include.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_Include.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Include.AutoSize = true;
             checkBox_Include.Enabled = false;
             checkBox_Include.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Include.ForeColor = Color.White;
-            checkBox_Include.Location = new Point(50, 125);
+            checkBox_Include.Location = new Point(8, 153);
             checkBox_Include.Margin = new Padding(3, 2, 3, 2);
             checkBox_Include.Name = "checkBox_Include";
             checkBox_Include.Size = new Size(91, 22);
@@ -154,12 +154,12 @@
             // 
             // checkBox_Duration
             // 
-            checkBox_Duration.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_Duration.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Duration.AutoSize = true;
             checkBox_Duration.Enabled = false;
             checkBox_Duration.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Duration.ForeColor = Color.White;
-            checkBox_Duration.Location = new Point(223, 57);
+            checkBox_Duration.Location = new Point(189, 84);
             checkBox_Duration.Margin = new Padding(3, 2, 3, 2);
             checkBox_Duration.Name = "checkBox_Duration";
             checkBox_Duration.Size = new Size(92, 22);
@@ -170,12 +170,12 @@
             // 
             // checkBox_Resolution
             // 
-            checkBox_Resolution.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_Resolution.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             checkBox_Resolution.AutoSize = true;
             checkBox_Resolution.Enabled = false;
             checkBox_Resolution.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Resolution.ForeColor = Color.White;
-            checkBox_Resolution.Location = new Point(50, 57);
+            checkBox_Resolution.Location = new Point(8, 84);
             checkBox_Resolution.Margin = new Padding(3, 2, 3, 2);
             checkBox_Resolution.Name = "checkBox_Resolution";
             checkBox_Resolution.Size = new Size(167, 22);
@@ -293,9 +293,9 @@
             label3.ForeColor = Color.White;
             label3.Location = new Point(3, 14);
             label3.Name = "label3";
-            label3.Size = new Size(104, 32);
+            label3.Size = new Size(100, 32);
             label3.TabIndex = 26;
-            label3.Text = "Options";
+            label3.Text = "Actions";
             // 
             // panel_Footer
             // 
