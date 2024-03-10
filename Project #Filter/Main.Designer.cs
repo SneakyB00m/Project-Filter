@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             panel_Menu = new Panel();
+            button_Downloader = new Button();
             Panel_Index = new Panel();
             button_Privacy = new Button();
             button_Merge = new Button();
@@ -58,6 +59,7 @@
             DragControl_Main = new Bunifu.Framework.UI.BunifuDragControl(components);
             panel1 = new Panel();
             config_Menu1 = new Config_Menu();
+            downloader1 = new Downloader();
             panel_Menu.SuspendLayout();
             panel_Accent.SuspendLayout();
             Panel_Banner.SuspendLayout();
@@ -67,6 +69,7 @@
             // panel_Menu
             // 
             panel_Menu.BackColor = Color.FromArgb(0, 64, 64);
+            panel_Menu.Controls.Add(button_Downloader);
             panel_Menu.Controls.Add(Panel_Index);
             panel_Menu.Controls.Add(button_Privacy);
             panel_Menu.Controls.Add(button_Merge);
@@ -81,6 +84,25 @@
             panel_Menu.Name = "panel_Menu";
             panel_Menu.Size = new Size(219, 512);
             panel_Menu.TabIndex = 0;
+            // 
+            // button_Downloader
+            // 
+            button_Downloader.BackColor = Color.Transparent;
+            button_Downloader.Cursor = Cursors.Hand;
+            button_Downloader.FlatAppearance.BorderSize = 0;
+            button_Downloader.FlatStyle = FlatStyle.Flat;
+            button_Downloader.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            button_Downloader.ForeColor = Color.White;
+            button_Downloader.Image = Properties.Resources.FingerPrint;
+            button_Downloader.Location = new Point(27, 290);
+            button_Downloader.Margin = new Padding(3, 2, 3, 2);
+            button_Downloader.Name = "button_Downloader";
+            button_Downloader.Size = new Size(186, 40);
+            button_Downloader.TabIndex = 9;
+            button_Downloader.Text = "    Downloader";
+            button_Downloader.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_Downloader.UseVisualStyleBackColor = false;
+            button_Downloader.Click += button_Downloader_Click;
             // 
             // Panel_Index
             // 
@@ -407,6 +429,15 @@
             config_Menu1.Size = new Size(774, 430);
             config_Menu1.TabIndex = 14;
             // 
+            // downloader1
+            // 
+            downloader1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            downloader1.BackColor = Color.FromArgb(64, 64, 64);
+            downloader1.Location = new Point(219, 82);
+            downloader1.Name = "downloader1";
+            downloader1.Size = new Size(774, 430);
+            downloader1.TabIndex = 15;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -422,6 +453,7 @@
             Controls.Add(merge1);
             Controls.Add(privacy1);
             Controls.Add(config_Menu1);
+            Controls.Add(downloader1);
             Controls.Add(Panel_Banner);
             Controls.Add(panel_Accent);
             Controls.Add(panel_Menu);
@@ -469,5 +501,7 @@
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Main;
         private Panel panel1;
         private Config_Menu config_Menu1;
+        private Downloader downloader1;
+        private Button button_Downloader;
     }
 }

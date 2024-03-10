@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pZci9Xb5YG/AHG4SbH95nmdWmvCe19WW/8Sh3IQ+wVDhEa+hjX6qmym29b5hqps4SpbjpYum3ormzd/FMEt+2g==",
+  "dgSpecHash": "XbxlxOEKoKYYU436uIsY2QFMxLPA9ppPXEfo2I8GfKwZBd5bEUzwIoKhsu2UvWbICEOli3adsLmXkHIK+XRS7w==",
   "success": true,
   "projectFilePath": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Project #Filter.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\Alan_\\.nuget\\packages\\bunifu.ui.winforms.1.5.3\\1.0.0\\bunifu.ui.winforms.1.5.3.1.0.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\costura.fody\\3.3.3\\costura.fody.3.3.3.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\fody\\4.0.2\\fody.4.0.2.nupkg.sha512",
+    "C:\\Users\\Alan_\\.nuget\\packages\\htmlagilitypack\\1.11.59\\htmlagilitypack.1.11.59.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\itextsharp\\5.5.13.3\\itextsharp.5.5.13.3.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\magick.net-q16-anycpu\\13.6.0\\magick.net-q16-anycpu.13.6.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\magick.net.core\\13.6.0\\magick.net.core.13.6.0.nupkg.sha512",
