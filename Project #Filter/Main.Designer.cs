@@ -93,7 +93,7 @@
             button_Downloader.FlatStyle = FlatStyle.Flat;
             button_Downloader.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Downloader.ForeColor = Color.White;
-            button_Downloader.Image = Properties.Resources.FingerPrint;
+            button_Downloader.Image = Properties.Resources.icons8_download_30;
             button_Downloader.Location = new Point(27, 290);
             button_Downloader.Margin = new Padding(3, 2, 3, 2);
             button_Downloader.Name = "button_Downloader";
@@ -107,7 +107,7 @@
             // Panel_Index
             // 
             Panel_Index.BackColor = Color.Teal;
-            Panel_Index.Location = new Point(3, 26);
+            Panel_Index.Location = new Point(2, 26);
             Panel_Index.Margin = new Padding(3, 2, 3, 2);
             Panel_Index.Name = "Panel_Index";
             Panel_Index.Size = new Size(22, 40);
@@ -122,7 +122,7 @@
             button_Privacy.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Privacy.ForeColor = Color.White;
             button_Privacy.Image = Properties.Resources.FingerPrint;
-            button_Privacy.Location = new Point(30, 246);
+            button_Privacy.Location = new Point(27, 246);
             button_Privacy.Margin = new Padding(3, 2, 3, 2);
             button_Privacy.Name = "button_Privacy";
             button_Privacy.Size = new Size(186, 40);
@@ -141,7 +141,7 @@
             button_Merge.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Merge.ForeColor = Color.White;
             button_Merge.Image = Properties.Resources.Merge;
-            button_Merge.Location = new Point(30, 202);
+            button_Merge.Location = new Point(27, 202);
             button_Merge.Margin = new Padding(3, 2, 3, 2);
             button_Merge.Name = "button_Merge";
             button_Merge.Size = new Size(186, 40);
@@ -176,7 +176,7 @@
             button_Extract.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Extract.ForeColor = Color.White;
             button_Extract.Image = Properties.Resources.Undo;
-            button_Extract.Location = new Point(30, 158);
+            button_Extract.Location = new Point(27, 158);
             button_Extract.Margin = new Padding(3, 2, 3, 2);
             button_Extract.Name = "button_Extract";
             button_Extract.Size = new Size(186, 40);
@@ -195,7 +195,7 @@
             button_Convert.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Convert.ForeColor = Color.White;
             button_Convert.Image = Properties.Resources.Convert;
-            button_Convert.Location = new Point(30, 114);
+            button_Convert.Location = new Point(27, 114);
             button_Convert.Margin = new Padding(3, 2, 3, 2);
             button_Convert.Name = "button_Convert";
             button_Convert.Size = new Size(186, 40);
@@ -214,7 +214,7 @@
             button_Filter.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Filter.ForeColor = Color.White;
             button_Filter.Image = Properties.Resources.Filter;
-            button_Filter.Location = new Point(30, 70);
+            button_Filter.Location = new Point(27, 70);
             button_Filter.Margin = new Padding(3, 2, 3, 2);
             button_Filter.Name = "button_Filter";
             button_Filter.Size = new Size(186, 40);
@@ -233,7 +233,7 @@
             button_Home.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button_Home.ForeColor = Color.White;
             button_Home.Image = Properties.Resources.Windows;
-            button_Home.Location = new Point(30, 26);
+            button_Home.Location = new Point(27, 26);
             button_Home.Margin = new Padding(3, 2, 3, 2);
             button_Home.Name = "button_Home";
             button_Home.Size = new Size(186, 40);

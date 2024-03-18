@@ -282,7 +282,7 @@
             panel_Header.Location = new Point(0, 32);
             panel_Header.Margin = new Padding(3, 2, 3, 2);
             panel_Header.Name = "panel_Header";
-            panel_Header.Size = new Size(667, 72);
+            panel_Header.Size = new Size(667, 73);
             panel_Header.TabIndex = 30;
             // 
             // label3
@@ -330,16 +330,16 @@
             treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             treeView1.Location = new Point(0, 0);
             treeView1.Name = "treeView1";
-            treeView1.Size = new Size(233, 205);
+            treeView1.Size = new Size(233, 204);
             treeView1.TabIndex = 27;
             // 
             // panel1
             // 
             panel1.Controls.Add(treeView1);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(429, 104);
+            panel1.Location = new Point(429, 105);
             panel1.Name = "panel1";
-            panel1.Size = new Size(238, 205);
+            panel1.Size = new Size(238, 204);
             panel1.TabIndex = 34;
             // 
             // Filter

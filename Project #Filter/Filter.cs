@@ -152,9 +152,17 @@ namespace Project__Filter
                 }
 
                 Directory.CreateDirectory(destinationDirectory);
-                File.Move(file, Path.Combine(destinationDirectory, Path.GetFileName(file)));
+                string destinationFile = Path.Combine(destinationDirectory, Path.GetFileName(file));
+
+                // Check if the file already exists in the destination directory
+                if (!File.Exists(destinationFile))
+                {
+                    // If the file does not exist, move the file
+                    File.Move(file, destinationFile);
+                }
             }
         }
+
 
         private void Resolution()
         {
