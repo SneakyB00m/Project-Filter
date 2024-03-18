@@ -41,13 +41,12 @@
             panel_Path = new Panel();
             textBox_Path = new TextBox();
             panel_Middle = new Panel();
+            panel_Action = new Panel();
+            label3 = new Label();
+            comboBox_Select = new ComboBox();
             panel1 = new Panel();
             label4 = new Label();
             listBox_File = new ListBox();
-            panel3 = new Panel();
-            label3 = new Label();
-            comboBox_Select = new ComboBox();
-            panel_Action = new Panel();
             checkBox_Date = new CheckBox();
             checkBox_Size = new CheckBox();
             checkBox_Name = new CheckBox();
@@ -59,9 +58,8 @@
             panel_button.SuspendLayout();
             panel_Path.SuspendLayout();
             panel_Middle.SuspendLayout();
-            panel1.SuspendLayout();
-            panel3.SuspendLayout();
             panel_Action.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -216,8 +214,6 @@
             // panel_Middle
             // 
             panel_Middle.BackColor = Color.FromArgb(64, 64, 64);
-            panel_Middle.Controls.Add(panel1);
-            panel_Middle.Controls.Add(panel3);
             panel_Middle.Controls.Add(panel_Action);
             panel_Middle.Dock = DockStyle.Fill;
             panel_Middle.Location = new Point(0, 104);
@@ -225,6 +221,53 @@
             panel_Middle.Name = "panel_Middle";
             panel_Middle.Size = new Size(667, 205);
             panel_Middle.TabIndex = 41;
+            // 
+            // panel_Action
+            // 
+            panel_Action.Controls.Add(label3);
+            panel_Action.Controls.Add(comboBox_Select);
+            panel_Action.Controls.Add(panel1);
+            panel_Action.Controls.Add(checkBox_Date);
+            panel_Action.Controls.Add(checkBox_Size);
+            panel_Action.Controls.Add(checkBox_Name);
+            panel_Action.Controls.Add(label6);
+            panel_Action.Controls.Add(radioButton_Folder);
+            panel_Action.Controls.Add(radioButton_Custom);
+            panel_Action.Controls.Add(label_Warning);
+            panel_Action.Dock = DockStyle.Fill;
+            panel_Action.Location = new Point(0, 0);
+            panel_Action.Name = "panel_Action";
+            panel_Action.Size = new Size(667, 205);
+            panel_Action.TabIndex = 41;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(64, 64, 64);
+            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(3, 5);
+            label3.Name = "label3";
+            label3.Size = new Size(104, 32);
+            label3.TabIndex = 39;
+            label3.Text = "Options";
+            // 
+            // comboBox_Select
+            // 
+            comboBox_Select.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_Select.BackColor = Color.FromArgb(64, 64, 64);
+            comboBox_Select.Enabled = false;
+            comboBox_Select.FlatStyle = FlatStyle.Flat;
+            comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            comboBox_Select.ForeColor = Color.White;
+            comboBox_Select.FormattingEnabled = true;
+            comboBox_Select.Items.AddRange(new object[] { "IMAGE To PDF (TITLE)", "IMAGE To PDF (NO TITLE)", "IMAGE To ICO", "IMAGE To WEBP", "IMAGE To BMP", "IMAGE To ASCII", "VIDEO To AUDIO", "VIDEO To WEBM", "VIDEO To AVI", "AUDIO To WAV" });
+            comboBox_Select.Location = new Point(113, 7);
+            comboBox_Select.Margin = new Padding(3, 2, 3, 2);
+            comboBox_Select.Name = "comboBox_Select";
+            comboBox_Select.Size = new Size(301, 29);
+            comboBox_Select.TabIndex = 40;
+            comboBox_Select.SelectedIndexChanged += comboBox_Select_SelectedIndexChanged;
             // 
             // panel1
             // 
@@ -252,64 +295,10 @@
             listBox_File.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listBox_File.FormattingEnabled = true;
             listBox_File.ItemHeight = 15;
-            listBox_File.Location = new Point(9, 29);
+            listBox_File.Location = new Point(9, 37);
             listBox_File.Name = "listBox_File";
             listBox_File.Size = new Size(233, 169);
             listBox_File.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel3.Controls.Add(label3);
-            panel3.Controls.Add(comboBox_Select);
-            panel3.Location = new Point(0, 5);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(414, 64);
-            panel3.TabIndex = 42;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.FromArgb(64, 64, 64);
-            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(3, 16);
-            label3.Name = "label3";
-            label3.Size = new Size(104, 32);
-            label3.TabIndex = 39;
-            label3.Text = "Options";
-            // 
-            // comboBox_Select
-            // 
-            comboBox_Select.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            comboBox_Select.BackColor = Color.FromArgb(64, 64, 64);
-            comboBox_Select.Enabled = false;
-            comboBox_Select.FlatStyle = FlatStyle.Flat;
-            comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
-            comboBox_Select.ForeColor = Color.White;
-            comboBox_Select.FormattingEnabled = true;
-            comboBox_Select.Items.AddRange(new object[] { "IMAGE To PDF (TITLE)", "IMAGE To PDF (NO TITLE)", "IMAGE To ICO", "IMAGE To WEBP", "IMAGE To BMP", "IMAGE To ASCII", "VIDEO To AUDIO", "VIDEO To WEBM", "VIDEO To AVI", "AUDIO To WAV" });
-            comboBox_Select.Location = new Point(113, 18);
-            comboBox_Select.Margin = new Padding(3, 2, 3, 2);
-            comboBox_Select.Name = "comboBox_Select";
-            comboBox_Select.Size = new Size(298, 29);
-            comboBox_Select.TabIndex = 40;
-            comboBox_Select.SelectedIndexChanged += comboBox_Select_SelectedIndexChanged;
-            // 
-            // panel_Action
-            // 
-            panel_Action.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel_Action.Controls.Add(checkBox_Date);
-            panel_Action.Controls.Add(checkBox_Size);
-            panel_Action.Controls.Add(checkBox_Name);
-            panel_Action.Controls.Add(label6);
-            panel_Action.Controls.Add(radioButton_Folder);
-            panel_Action.Controls.Add(radioButton_Custom);
-            panel_Action.Controls.Add(label_Warning);
-            panel_Action.Location = new Point(0, 75);
-            panel_Action.Name = "panel_Action";
-            panel_Action.Size = new Size(414, 125);
-            panel_Action.TabIndex = 41;
             // 
             // checkBox_Date
             // 
@@ -318,7 +307,7 @@
             checkBox_Date.Enabled = false;
             checkBox_Date.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox_Date.ForeColor = Color.White;
-            checkBox_Date.Location = new Point(288, 87);
+            checkBox_Date.Location = new Point(288, 151);
             checkBox_Date.Name = "checkBox_Date";
             checkBox_Date.Size = new Size(123, 25);
             checkBox_Date.TabIndex = 5;
@@ -332,7 +321,7 @@
             checkBox_Size.Enabled = false;
             checkBox_Size.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox_Size.ForeColor = Color.White;
-            checkBox_Size.Location = new Point(156, 87);
+            checkBox_Size.Location = new Point(156, 151);
             checkBox_Size.Name = "checkBox_Size";
             checkBox_Size.Size = new Size(118, 25);
             checkBox_Size.TabIndex = 4;
@@ -346,7 +335,7 @@
             checkBox_Name.Enabled = false;
             checkBox_Name.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox_Name.ForeColor = Color.White;
-            checkBox_Name.Location = new Point(9, 87);
+            checkBox_Name.Location = new Point(9, 151);
             checkBox_Name.Name = "checkBox_Name";
             checkBox_Name.Size = new Size(133, 25);
             checkBox_Name.TabIndex = 3;
@@ -358,7 +347,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(3, 0);
+            label6.Location = new Point(3, 64);
             label6.Name = "label6";
             label6.Size = new Size(78, 25);
             label6.TabIndex = 2;
@@ -371,7 +360,7 @@
             radioButton_Folder.Enabled = false;
             radioButton_Folder.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             radioButton_Folder.ForeColor = Color.White;
-            radioButton_Folder.Location = new Point(156, 44);
+            radioButton_Folder.Location = new Point(156, 108);
             radioButton_Folder.Name = "radioButton_Folder";
             radioButton_Folder.Size = new Size(114, 25);
             radioButton_Folder.TabIndex = 2;
@@ -386,7 +375,7 @@
             radioButton_Custom.Enabled = false;
             radioButton_Custom.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             radioButton_Custom.ForeColor = Color.White;
-            radioButton_Custom.Location = new Point(9, 44);
+            radioButton_Custom.Location = new Point(9, 108);
             radioButton_Custom.Name = "radioButton_Custom";
             radioButton_Custom.Size = new Size(124, 25);
             radioButton_Custom.TabIndex = 1;
@@ -424,12 +413,10 @@
             panel_Path.ResumeLayout(false);
             panel_Path.PerformLayout();
             panel_Middle.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             panel_Action.ResumeLayout(false);
             panel_Action.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -455,7 +442,6 @@
         private RadioButton radioButton_Folder;
         private ListBox listBox_File;
         private Label label6;
-        private Panel panel3;
         private Panel panel1;
         private Label label4;
         private CheckBox checkBox_Name;

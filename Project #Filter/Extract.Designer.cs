@@ -41,15 +41,15 @@
             checkBox_Delete = new CheckBox();
             button_Extract = new Button();
             panel1 = new Panel();
-            radioButton_Untar = new RadioButton();
-            radioButton_Unzip = new RadioButton();
-            radioButton_Unrar = new RadioButton();
             label5 = new Label();
-            radioButton_Folder = new RadioButton();
             panel2 = new Panel();
             label_Count = new Label();
             label4 = new Label();
             listBox_File = new ListBox();
+            radioButton_Folder = new RadioButton();
+            radioButton_Unrar = new RadioButton();
+            radioButton_Unzip = new RadioButton();
+            radioButton_Untar = new RadioButton();
             panel_Path.SuspendLayout();
             panel_T.SuspendLayout();
             panel_button.SuspendLayout();
@@ -220,51 +220,6 @@
             panel1.Size = new Size(667, 205);
             panel1.TabIndex = 49;
             // 
-            // radioButton_Untar
-            // 
-            radioButton_Untar.Anchor = AnchorStyles.Top;
-            radioButton_Untar.AutoSize = true;
-            radioButton_Untar.Enabled = false;
-            radioButton_Untar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            radioButton_Untar.ForeColor = Color.White;
-            radioButton_Untar.Location = new Point(255, 141);
-            radioButton_Untar.Name = "radioButton_Untar";
-            radioButton_Untar.Size = new Size(67, 24);
-            radioButton_Untar.TabIndex = 44;
-            radioButton_Untar.TabStop = true;
-            radioButton_Untar.Text = "Untar";
-            radioButton_Untar.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_Unzip
-            // 
-            radioButton_Unzip.Anchor = AnchorStyles.Top;
-            radioButton_Unzip.AutoSize = true;
-            radioButton_Unzip.Enabled = false;
-            radioButton_Unzip.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            radioButton_Unzip.ForeColor = Color.White;
-            radioButton_Unzip.Location = new Point(255, 62);
-            radioButton_Unzip.Name = "radioButton_Unzip";
-            radioButton_Unzip.Size = new Size(67, 24);
-            radioButton_Unzip.TabIndex = 43;
-            radioButton_Unzip.TabStop = true;
-            radioButton_Unzip.Text = "Unzip";
-            radioButton_Unzip.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_Unrar
-            // 
-            radioButton_Unrar.Anchor = AnchorStyles.Top;
-            radioButton_Unrar.AutoSize = true;
-            radioButton_Unrar.Enabled = false;
-            radioButton_Unrar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            radioButton_Unrar.ForeColor = Color.White;
-            radioButton_Unrar.Location = new Point(64, 141);
-            radioButton_Unrar.Name = "radioButton_Unrar";
-            radioButton_Unrar.Size = new Size(67, 24);
-            radioButton_Unrar.TabIndex = 42;
-            radioButton_Unrar.TabStop = true;
-            radioButton_Unrar.Text = "Unrar";
-            radioButton_Unrar.UseVisualStyleBackColor = true;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -276,21 +231,6 @@
             label5.Size = new Size(104, 32);
             label5.TabIndex = 40;
             label5.Text = "Options";
-            // 
-            // radioButton_Folder
-            // 
-            radioButton_Folder.Anchor = AnchorStyles.Top;
-            radioButton_Folder.AutoSize = true;
-            radioButton_Folder.Enabled = false;
-            radioButton_Folder.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            radioButton_Folder.ForeColor = Color.White;
-            radioButton_Folder.Location = new Point(64, 62);
-            radioButton_Folder.Name = "radioButton_Folder";
-            radioButton_Folder.Size = new Size(71, 24);
-            radioButton_Folder.TabIndex = 1;
-            radioButton_Folder.TabStop = true;
-            radioButton_Folder.Text = "Folder";
-            radioButton_Folder.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -335,6 +275,66 @@
             listBox_File.Size = new Size(233, 169);
             listBox_File.TabIndex = 1;
             // 
+            // radioButton_Folder
+            // 
+            radioButton_Folder.Anchor = AnchorStyles.Top;
+            radioButton_Folder.AutoSize = true;
+            radioButton_Folder.Enabled = false;
+            radioButton_Folder.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            radioButton_Folder.ForeColor = Color.White;
+            radioButton_Folder.Location = new Point(64, 62);
+            radioButton_Folder.Name = "radioButton_Folder";
+            radioButton_Folder.Size = new Size(71, 24);
+            radioButton_Folder.TabIndex = 1;
+            radioButton_Folder.TabStop = true;
+            radioButton_Folder.Text = "Folder";
+            radioButton_Folder.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Unrar
+            // 
+            radioButton_Unrar.Anchor = AnchorStyles.Top;
+            radioButton_Unrar.AutoSize = true;
+            radioButton_Unrar.Enabled = false;
+            radioButton_Unrar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            radioButton_Unrar.ForeColor = Color.White;
+            radioButton_Unrar.Location = new Point(64, 141);
+            radioButton_Unrar.Name = "radioButton_Unrar";
+            radioButton_Unrar.Size = new Size(67, 24);
+            radioButton_Unrar.TabIndex = 42;
+            radioButton_Unrar.TabStop = true;
+            radioButton_Unrar.Text = "Unrar";
+            radioButton_Unrar.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Unzip
+            // 
+            radioButton_Unzip.Anchor = AnchorStyles.Top;
+            radioButton_Unzip.AutoSize = true;
+            radioButton_Unzip.Enabled = false;
+            radioButton_Unzip.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            radioButton_Unzip.ForeColor = Color.White;
+            radioButton_Unzip.Location = new Point(255, 62);
+            radioButton_Unzip.Name = "radioButton_Unzip";
+            radioButton_Unzip.Size = new Size(67, 24);
+            radioButton_Unzip.TabIndex = 43;
+            radioButton_Unzip.TabStop = true;
+            radioButton_Unzip.Text = "Unzip";
+            radioButton_Unzip.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Untar
+            // 
+            radioButton_Untar.Anchor = AnchorStyles.Top;
+            radioButton_Untar.AutoSize = true;
+            radioButton_Untar.Enabled = false;
+            radioButton_Untar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            radioButton_Untar.ForeColor = Color.White;
+            radioButton_Untar.Location = new Point(255, 141);
+            radioButton_Untar.Name = "radioButton_Untar";
+            radioButton_Untar.Size = new Size(67, 24);
+            radioButton_Untar.TabIndex = 44;
+            radioButton_Untar.TabStop = true;
+            radioButton_Untar.Text = "Untar";
+            radioButton_Untar.UseVisualStyleBackColor = true;
+            // 
             // Extract
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -376,13 +376,13 @@
         private Panel panel1;
         private Panel panel2;
         private ListBox listBox_File;
-        private RadioButton radioButton_Folder;
-        private RadioButton radioButton_Untar;
-        private RadioButton radioButton_Unzip;
-        private RadioButton radioButton_Unrar;
         private Label label5;
         private Label label4;
         private Button button_Path;
         private Label label_Count;
+        private RadioButton radioButton_Untar;
+        private RadioButton radioButton_Unzip;
+        private RadioButton radioButton_Unrar;
+        private RadioButton radioButton_Folder;
     }
 }

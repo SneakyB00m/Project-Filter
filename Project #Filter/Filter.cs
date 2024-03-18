@@ -104,31 +104,8 @@ namespace Project__Filter
             }
 
             // Populate the TreeView control
-            PopulateTreeView(selectedPath, treeView1.Nodes);
         }
 
-        private void PopulateTreeView(string directoryValue, TreeNodeCollection parentNode)
-        {
-            string[] directoryArray = Directory.GetDirectories(directoryValue);
-            try
-            {
-                if (directoryArray.Length != 0)
-                {
-                    foreach (string directory in directoryArray)
-                    {
-                        string dir = Path.GetFileName(directory);
-                        TreeNode myNode = new TreeNode(dir);
-                        parentNode.Add(myNode);
-                        PopulateTreeView(directory, myNode.Nodes);
-                    }
-                }
-            }
-            catch (UnauthorizedAccessException)
-            {
-                // Catch exception if the code doesn't have access to the folder
-                parentNode.Add("Access denied");
-            }
-        }
 
 
         // Functions
