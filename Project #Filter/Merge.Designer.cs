@@ -42,11 +42,12 @@
             panel_Top = new Panel();
             button_Path = new Button();
             panel1 = new Panel();
-            label5 = new Label();
             panel2 = new Panel();
             label_Count = new Label();
             label4 = new Label();
             listBox_File = new ListBox();
+            label3 = new Label();
+            comboBox_Select = new ComboBox();
             panel_Footer.SuspendLayout();
             panel_Header.SuspendLayout();
             panel_Top.SuspendLayout();
@@ -215,25 +216,14 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(label5);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(comboBox_Select);
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 104);
             panel1.Name = "panel1";
             panel1.Size = new Size(667, 205);
             panel1.TabIndex = 50;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.FromArgb(64, 64, 64);
-            label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(3, 2);
-            label5.Name = "label5";
-            label5.Size = new Size(104, 32);
-            label5.TabIndex = 40;
-            label5.Text = "Options";
             // 
             // panel2
             // 
@@ -277,6 +267,34 @@
             listBox_File.Name = "listBox_File";
             listBox_File.Size = new Size(233, 169);
             listBox_File.TabIndex = 1;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(64, 64, 64);
+            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(3, 5);
+            label3.Name = "label3";
+            label3.Size = new Size(104, 32);
+            label3.TabIndex = 41;
+            label3.Text = "Options";
+            // 
+            // comboBox_Select
+            // 
+            comboBox_Select.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_Select.BackColor = Color.FromArgb(64, 64, 64);
+            comboBox_Select.Enabled = false;
+            comboBox_Select.FlatStyle = FlatStyle.Flat;
+            comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            comboBox_Select.ForeColor = Color.White;
+            comboBox_Select.FormattingEnabled = true;
+            comboBox_Select.Items.AddRange(new object[] { "TEXT", "PDF - NO TITLES", "PDF - TITLES" });
+            comboBox_Select.Location = new Point(113, 7);
+            comboBox_Select.Margin = new Padding(3, 2, 3, 2);
+            comboBox_Select.Name = "comboBox_Select";
+            comboBox_Select.Size = new Size(301, 29);
+            comboBox_Select.TabIndex = 42;
             // 
             // Merge
             // 
@@ -323,6 +341,7 @@
         private Label label4;
         private ListBox listBox_File;
         private Panel panel1;
-        private Label label5;
+        private Label label3;
+        private ComboBox comboBox_Select;
     }
 }
