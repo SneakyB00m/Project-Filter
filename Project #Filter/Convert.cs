@@ -308,7 +308,6 @@ namespace Project__Filter
             }
         }
 
-
         private void PDFTitle()
         {
             if (radioButton_Custom.Checked)
@@ -347,6 +346,20 @@ namespace Project__Filter
                 // Open the Document
                 document.Open();
 
+                // Add a title page
+                document.NewPage();
+                for (int i = 0; i < 20; i++) // Adjust this value to move the title up or down
+                {
+                    document.Add(new Paragraph("\n"));
+                }
+                Paragraph title = new Paragraph(Title, FontFactory.GetFont(FontFactory.HELVETICA, 50f, iTextSharp.text.Font.BOLD));
+                title.Alignment = Element.ALIGN_CENTER;
+                document.Add(title);
+                for (int i = 0; i < 10; i++) // Adjust this value to move the title up or down
+                {
+                    document.Add(new Paragraph("\n"));
+                }
+
                 foreach (string imageFile in imageFiles)
                 {
                     iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageFile);
@@ -382,6 +395,19 @@ namespace Project__Filter
                 // Open the Document
                 document.Open();
 
+                // Add a title page
+                document.NewPage();
+                for (int i = 0; i < 20; i++) // Adjust this value to move the title up or down
+                {
+                    document.Add(new Paragraph("\n"));
+                }
+                Paragraph title = new Paragraph(folderName, FontFactory.GetFont(FontFactory.HELVETICA, 50f, iTextSharp.text.Font.BOLD)); // Increase the font size here
+                title.Alignment = Element.ALIGN_CENTER;
+                document.Add(title);
+                for (int i = 0; i < 10; i++) // Adjust this value to move the title up or down
+                {
+                    document.Add(new Paragraph("\n"));
+                }
                 // Get all image files in the selected directory and its subdirectories
                 List<string> imageFiles = Directory.EnumerateFiles(selectedPath, "*.*", SearchOption.AllDirectories)
                     .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png"))
@@ -421,6 +447,7 @@ namespace Project__Filter
                 document.Close();
 
                 MessageBox.Show($"PDF created successfully at: {pdfPath}");
+
             }
             else
             {

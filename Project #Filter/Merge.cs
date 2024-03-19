@@ -60,11 +60,8 @@ namespace Project__Filter
                     case "WORD":
                         Word_Files(selectedItems);
                         break;
-                    case "PDF - NO TITLE":
-                        PDF_NotTitle_Files(selectedItems);
-                        break;
-                    case "PDF - TITLE":
-                        PDF_Title_Files(selectedItems);
+                    case "PDF":
+                        PDF_Files(selectedItems);
                         break;
                     default:
                         MessageBox.Show("Invalid selection");
@@ -93,11 +90,9 @@ namespace Project__Filter
                 case "WORD":
                     Word_Populated();
                     break;
-                case "PDF - NO TITLE":
-                case "PDF - TITLE":
+                case "PDF":
                     PDF_Populated();
                     break;
-
                 default:
                     MessageBox.Show("Invalid selection");
                     break;
@@ -174,12 +169,12 @@ namespace Project__Filter
 
         }
 
-        private void PDF_NotTitle_Files(List<string> filePaths)
+        private void PDF_Files(List<string> filePaths)
         {
             // Create a new PDF document
             Document document = new Document();
             // Create a new PdfCopy using the document and a new FileStream for the output PDF
-            PdfCopy copy = new PdfCopy(document, new FileStream(Path.Combine(selectedPath, "No Title Merge.pdf"), FileMode.Create));
+            PdfCopy copy = new PdfCopy(document, new FileStream(Path.Combine(selectedPath, "Merge.pdf"), FileMode.Create));
 
             // Open the document for writing
             document.Open();
@@ -199,55 +194,6 @@ namespace Project__Filter
 
             // Close the document
             document.Close();
-        }
-
-        private void PDF_Title_Files(List<string> filePaths)
-        {
-            // Create a new PDF document
-            Document document = new Document();
-            // Create a new PdfCopy using the document and a new FileStream for the output PDF
-            PdfCopy copy = new PdfCopy(document, new FileStream(Path.Combine(selectedPath, "Title Merge.pdf"), FileMode.Create));
-
-            // Open the document for writing
-            document.Open();
-
-            foreach (string filePath in filePaths)
-            {
-                // Create a new PDF with the title in the middle of the page
-                Document titleDocument = new Document();
-                PdfWriter.GetInstance(titleDocument, new FileStream(Path.Combine(selectedPath, "title.pdf"), FileMode.Create));
-                titleDocument.Open();
-                Paragraph title = new Paragraph(Path.GetFileNameWithoutExtension(filePath), new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 24));
-                title.Alignment = Element.ALIGN_MIDDLE;
-                titleDocument.Add(title);
-                titleDocument.Close();
-
-                // Create a new PdfReader for the title document
-                PdfReader titleReader = new PdfReader(Path.Combine(selectedPath, "title.pdf"));
-                // Add each page from the titleReader to the PdfCopy
-                for (int i = 1; i <= titleReader.NumberOfPages; i++)
-                {
-                    copy.AddPage(copy.GetImportedPage(titleReader, i));
-                }
-                // Close the titleReader
-                titleReader.Close();
-
-                // Create a new PdfReader for the current document
-                PdfReader reader = new PdfReader(filePath);
-                // Add each page from the reader to the PdfCopy
-                for (int i = 1; i <= reader.NumberOfPages; i++)
-                {
-                    copy.AddPage(copy.GetImportedPage(reader, i));
-                }
-                // Close the reader
-                reader.Close();
-            }
-
-            // Close the document
-            document.Close();
-
-            // Delete the temporary file
-            File.Delete(Path.Combine(selectedPath, "temp.pdf"));
         }
     }
 }
