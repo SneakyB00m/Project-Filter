@@ -246,7 +246,7 @@
             checkBox_Date.Enabled = false;
             checkBox_Date.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox_Date.ForeColor = Color.White;
-            checkBox_Date.Location = new Point(288, 151);
+            checkBox_Date.Location = new Point(291, 148);
             checkBox_Date.Name = "checkBox_Date";
             checkBox_Date.Size = new Size(123, 25);
             checkBox_Date.TabIndex = 48;
@@ -260,7 +260,7 @@
             checkBox_Size.Enabled = false;
             checkBox_Size.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox_Size.ForeColor = Color.White;
-            checkBox_Size.Location = new Point(156, 151);
+            checkBox_Size.Location = new Point(159, 148);
             checkBox_Size.Name = "checkBox_Size";
             checkBox_Size.Size = new Size(118, 25);
             checkBox_Size.TabIndex = 47;
@@ -274,7 +274,7 @@
             checkBox_Name.Enabled = false;
             checkBox_Name.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox_Name.ForeColor = Color.White;
-            checkBox_Name.Location = new Point(9, 151);
+            checkBox_Name.Location = new Point(12, 148);
             checkBox_Name.Name = "checkBox_Name";
             checkBox_Name.Size = new Size(133, 25);
             checkBox_Name.TabIndex = 46;
@@ -299,7 +299,7 @@
             radioButton_Folder.Enabled = false;
             radioButton_Folder.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             radioButton_Folder.ForeColor = Color.White;
-            radioButton_Folder.Location = new Point(158, 108);
+            radioButton_Folder.Location = new Point(161, 105);
             radioButton_Folder.Name = "radioButton_Folder";
             radioButton_Folder.Size = new Size(114, 25);
             radioButton_Folder.TabIndex = 45;
@@ -309,12 +309,11 @@
             // 
             // radioButton_Custom
             // 
-            radioButton_Custom.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             radioButton_Custom.AutoSize = true;
             radioButton_Custom.Enabled = false;
             radioButton_Custom.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             radioButton_Custom.ForeColor = Color.White;
-            radioButton_Custom.Location = new Point(9, 108);
+            radioButton_Custom.Location = new Point(12, 105);
             radioButton_Custom.Name = "radioButton_Custom";
             radioButton_Custom.Size = new Size(124, 25);
             radioButton_Custom.TabIndex = 43;
