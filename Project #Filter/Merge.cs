@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
-using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace Project__Filter
 {
@@ -97,7 +88,6 @@ namespace Project__Filter
                     MessageBox.Show("Invalid selection");
                     break;
             }
-
         }
 
         private void Text_Populated()
@@ -164,15 +154,39 @@ namespace Project__Filter
             }
         }
 
-        private void Word_Files(List<string> filePaths)
+        public void Word_Files(List<string> filePaths)
         {
+            // Get the directory of the first file in the list
+            string directory = Path.GetDirectoryName(filePaths[0]);
 
+            // Create the output file path
+            string outputFilePath = Path.Combine(directory, "Merged.docx");
+
+            using (WordprocessingDocument myDoc = WordprocessingDocument.Create(outputFilePath, DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
+            {
+                MainDocumentPart mainPart = myDoc.AddMainDocumentPart();
+
+                foreach (string file in filePaths)
+                {
+                    using (WordprocessingDocument myWordDoc = WordprocessingDocument.Open(file, true))
+                    {
+                        DocumentFormat.OpenXml.Wordprocessing.Body body = myWordDoc.MainDocumentPart.Document.Body;
+
+                        foreach (var element in body.Elements())
+                        {
+                            mainPart.Document.Body.Append(element.CloneNode(true));
+                        }
+                    }
+                }
+
+                mainPart.Document.Save();
+            }
         }
 
         private void PDF_Files(List<string> filePaths)
         {
             // Create a new PDF document
-            Document document = new Document();
+            iTextSharp.text.Document document = new iTextSharp.text.Document();
             // Create a new PdfCopy using the document and a new FileStream for the output PDF
             PdfCopy copy = new PdfCopy(document, new FileStream(Path.Combine(selectedPath, "Merge.pdf"), FileMode.Create));
 

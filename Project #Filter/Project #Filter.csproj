@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Bunifu.UI.WinForms" Version="6.1.0" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.0.2" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
     <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="13.6.0" />

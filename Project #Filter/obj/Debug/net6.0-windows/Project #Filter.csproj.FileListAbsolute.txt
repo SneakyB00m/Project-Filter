@@ -358,3 +358,5 @@ E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\NR
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net6.0-windows\NReco.VideoConverter.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\HtmlAgilityPack.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net6.0-windows\Project__Filter.Downloader.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\DocumentFormat.OpenXml.dll
+E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net6.0-windows\DocumentFormat.OpenXml.Framework.dll

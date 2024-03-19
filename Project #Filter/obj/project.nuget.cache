@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "E1AL6RA2TtXq4sP+xMMv8Z2gZb8SjKjuRCuWxRMysUHN9qv+nlDPA565GEoNl96xvU12RulQtlkuillli12zMA==",
+  "dgSpecHash": "q5Aab2/eEVGbj/6ArFCYYLDOJ6dYCKroWPGIN68SaAk4/LEJRaEkK3jTT5r7/rmLcHGDu+6v9ZzthMW5iEIEUQ==",
   "success": true,
   "projectFilePath": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Project #Filter.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,8 @@
     "C:\\Users\\Alan_\\.nuget\\packages\\bunifu.ui.winforms\\6.1.0\\bunifu.ui.winforms.6.1.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\bunifu.ui.winforms.1.5.3\\1.0.0\\bunifu.ui.winforms.1.5.3.1.0.0.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\costura.fody\\3.3.3\\costura.fody.3.3.3.nupkg.sha512",
+    "C:\\Users\\Alan_\\.nuget\\packages\\documentformat.openxml\\3.0.2\\documentformat.openxml.3.0.2.nupkg.sha512",
+    "C:\\Users\\Alan_\\.nuget\\packages\\documentformat.openxml.framework\\3.0.2\\documentformat.openxml.framework.3.0.2.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\fody\\4.0.2\\fody.4.0.2.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\htmlagilitypack\\1.11.59\\htmlagilitypack.1.11.59.nupkg.sha512",
     "C:\\Users\\Alan_\\.nuget\\packages\\itextsharp\\5.5.13.3\\itextsharp.5.5.13.3.nupkg.sha512",
