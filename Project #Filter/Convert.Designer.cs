@@ -360,7 +360,7 @@
             radioButton_Folder.Enabled = false;
             radioButton_Folder.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             radioButton_Folder.ForeColor = Color.White;
-            radioButton_Folder.Location = new Point(156, 108);
+            radioButton_Folder.Location = new Point(158, 108);
             radioButton_Folder.Name = "radioButton_Folder";
             radioButton_Folder.Size = new Size(114, 25);
             radioButton_Folder.TabIndex = 2;
