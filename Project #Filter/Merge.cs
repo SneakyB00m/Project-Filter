@@ -1,8 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;
-using iTextSharp.text;
 using iTextSharp.text.pdf;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace Project__Filter
 {
