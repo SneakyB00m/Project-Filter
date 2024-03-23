@@ -1,5 +1,9 @@
-﻿using DocumentFormat.OpenXml.Packaging;
+﻿using System.Text;
+using DocumentFormat.OpenXml.Packaging;
+using HtmlAgilityPack;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
+using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace Project__Filter
 {
@@ -51,6 +55,9 @@ namespace Project__Filter
                     case "PDF":
                         PDF_Files(selectedItems);
                         break;
+                    case "HTML":
+                        HTML_Files(selectedItems);
+                        break;
                     default:
                         MessageBox.Show("Invalid selection");
                         break;
@@ -69,142 +76,249 @@ namespace Project__Filter
         private void comboBox_Select_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedItem = comboBox_Select.SelectedItem.ToString();
-
-            switch (selectedItem)
-            {
-                case "TEXT":
-                    Text_Populated();
-                    break;
-                case "WORD":
-                    Word_Populated();
-                    break;
-                case "PDF":
-                    PDF_Populated();
-                    break;
-                default:
-                    MessageBox.Show("Invalid selection");
-                    break;
-            }
+            PopulateFiles(selectedItem);
         }
 
-        private void Text_Populated()
+        //Function
+        private void PopulateFiles(string fileType)
         {
-            listBox_File.Items.Clear();
-
-            List<string> filePaths = new List<string>();
-
-            // Use the Directory class from System.IO to get all text files recursively
-            filePaths.AddRange(Directory.GetFiles(selectedPath, "*.txt", SearchOption.AllDirectories));
-
-            // Add the file paths to the ListBox
-            foreach (string filePath in filePaths)
+            Task.Run(() =>
             {
-                listBox_File.Items.Add(filePath);
-            }
+                List<string> filePaths = new List<string>();
+
+                // Use the Directory class from System.IO to get all files of the specified type recursively
+                switch (fileType)
+                {
+                    case "TEXT":
+                        filePaths.AddRange(Directory.GetFiles(selectedPath, "*.txt", SearchOption.AllDirectories));
+                        break;
+                    case "WORD":
+                        filePaths.AddRange(Directory.GetFiles(selectedPath, "*.doc", SearchOption.AllDirectories));
+                        filePaths.AddRange(Directory.GetFiles(selectedPath, "*.docx", SearchOption.AllDirectories));
+                        break;
+                    case "PDF":
+                        filePaths.AddRange(Directory.GetFiles(selectedPath, "*.pdf", SearchOption.AllDirectories));
+                        break;
+                    case "HTML":
+                        filePaths.AddRange(Directory.GetFiles(selectedPath, "*.html", SearchOption.AllDirectories));
+                        break;
+                    default:
+                        MessageBox.Show("Invalid selection");
+                        return;
+                }
+
+                // Run on the UI thread
+                Invoke((MethodInvoker)delegate
+                {
+                    // Clear the ListBox items
+                    listBox_File.Items.Clear();
+
+                    // Add the file paths to the ListBox
+                    foreach (string filePath in filePaths)
+                    {
+                        listBox_File.Items.Add(filePath);
+                    }
+                });
+            });
         }
 
-        private void Word_Populated()
-        {
-            listBox_File.Items.Clear();
-
-            List<string> filePaths = new List<string>();
-
-            // Use the Directory class from System.IO to get all Word files recursively
-            filePaths.AddRange(Directory.GetFiles(selectedPath, "*.doc", SearchOption.AllDirectories));
-            filePaths.AddRange(Directory.GetFiles(selectedPath, "*.docx", SearchOption.AllDirectories));
-
-            // Add the file paths to the ListBox
-            foreach (string filePath in filePaths)
-            {
-                listBox_File.Items.Add(filePath);
-            }
-        }
-
-        private void PDF_Populated()
-        {
-            listBox_File.Items.Clear();
-
-            List<string> filePaths = new List<string>();
-
-            // Use the Directory class from System.IO to get all PDF files recursively
-            filePaths.AddRange(Directory.GetFiles(selectedPath, "*.pdf", SearchOption.AllDirectories));
-
-            // Add the file paths to the ListBox
-            foreach (string filePath in filePaths)
-            {
-                listBox_File.Items.Add(filePath);
-            }
-        }
 
         private void Text_Files(List<string> filePaths)
         {
-            using (StreamWriter fileDest = new StreamWriter(Path.Combine(selectedPath, "Merge.txt"), true))
+            Task.Run(() =>
             {
-                foreach (string filePath in filePaths)
+                using (StreamWriter fileDest = new StreamWriter(Path.Combine(selectedPath, "Merge.txt"), true))
                 {
-                    string[] lines = File.ReadAllLines(filePath);
-                    foreach (string line in lines)
+                    int totalFiles = filePaths.Count;
+                    int processedFiles = 0;
+
+                    foreach (string filePath in filePaths)
                     {
-                        fileDest.WriteLine(line);
+                        using (StreamReader fileSrc = new StreamReader(filePath))
+                        {
+                            string line;
+                            while ((line = fileSrc.ReadLine()) != null)
+                            {
+                                fileDest.WriteLine(line);
+                            }
+                        }
+
+                        // Calculate the progress percentage
+                        processedFiles++;
+                        int progressPercentage = (int)((double)processedFiles / totalFiles * 100);
+
+                        // Report the progress
+                        Invoke((MethodInvoker)delegate
+                        {
+                            // Running on the UI thread
+                            progressBar_Time.Value = progressPercentage;
+                        });
                     }
                 }
-            }
+
+                // Reset the progress bar to 0 when done
+                Invoke((MethodInvoker)delegate
+                {
+                    // Running on the UI thread
+                    progressBar_Time.Value = 0;
+                });
+            });
         }
 
-        public void Word_Files(List<string> filePaths)
+        private void Word_Files(List<string> filePaths)
         {
-            // Get the directory of the first file in the list
-            string directory = Path.GetDirectoryName(filePaths[0]);
-
-            // Create the output file path
-            string outputFilePath = Path.Combine(directory, "Merged.docx");
-
-            using (WordprocessingDocument myDoc = WordprocessingDocument.Create(outputFilePath, DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
+            Task.Run(() =>
             {
-                MainDocumentPart mainPart = myDoc.AddMainDocumentPart();
+                // Get the directory of the first file in the list
+                string directory = Path.GetDirectoryName(filePaths[0]);
 
-                foreach (string file in filePaths)
+                // Create the output file path
+                string outputFilePath = Path.Combine(directory, "Merged.docx");
+
+                using (WordprocessingDocument myDoc = WordprocessingDocument.Create(outputFilePath, DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
                 {
-                    using (WordprocessingDocument myWordDoc = WordprocessingDocument.Open(file, true))
+                    MainDocumentPart mainPart = myDoc.AddMainDocumentPart();
+
+                    int totalFiles = filePaths.Count;
+                    int processedFiles = 0;
+
+                    foreach (string file in filePaths)
                     {
-                        DocumentFormat.OpenXml.Wordprocessing.Body body = myWordDoc.MainDocumentPart.Document.Body;
-
-                        foreach (var element in body.Elements())
+                        using (WordprocessingDocument myWordDoc = WordprocessingDocument.Open(file, true))
                         {
-                            mainPart.Document.Body.Append(element.CloneNode(true));
-                        }
-                    }
-                }
+                            DocumentFormat.OpenXml.Wordprocessing.Body body = myWordDoc.MainDocumentPart.Document.Body;
 
-                mainPart.Document.Save();
-            }
+                            foreach (var element in body.Elements())
+                            {
+                                mainPart.Document.Body.Append(element.CloneNode(true));
+                            }
+                        }
+
+                        // Calculate the progress percentage
+                        processedFiles++;
+                        int progressPercentage = (int)((double)processedFiles / totalFiles * 100);
+
+                        // Report the progress
+                        Invoke((MethodInvoker)delegate
+                        {
+                            // Running on the UI thread
+                            progressBar_Time.Value = progressPercentage;
+                        });
+                    }
+
+                    mainPart.Document.Save();
+
+                    // Reset the progress bar to 0 when done
+                    Invoke((MethodInvoker)delegate
+                    {
+                        // Running on the UI thread
+                        progressBar_Time.Value = 0;
+                    });
+                }
+            });
         }
 
         private void PDF_Files(List<string> filePaths)
         {
-            // Create a new PDF document
-            iTextSharp.text.Document document = new iTextSharp.text.Document();
-            // Create a new PdfCopy using the document and a new FileStream for the output PDF
-            PdfCopy copy = new PdfCopy(document, new FileStream(Path.Combine(selectedPath, "Merge.pdf"), FileMode.Create));
-
-            // Open the document for writing
-            document.Open();
-
-            foreach (string filePath in filePaths)
+            Task.Run(() =>
             {
-                // Create a new PdfReader for the current document
-                PdfReader reader = new PdfReader(filePath);
-                // Add each page from the reader to the PdfCopy
-                for (int i = 1; i <= reader.NumberOfPages; i++)
-                {
-                    copy.AddPage(copy.GetImportedPage(reader, i));
-                }
-                // Close the reader
-                reader.Close();
-            }
+                // Create the output file path
+                string outputFilePath = Path.Combine(selectedPath, "Merge.pdf");
 
-            // Close the document
-            document.Close();
+                // Create a new PDF document
+                Document document = new Document();
+                PdfCopy copy = new PdfCopy(document, new FileStream(outputFilePath, FileMode.Create));
+
+                // Open the document for writing
+                document.Open();
+
+                int totalFiles = filePaths.Count;
+                int processedFiles = 0;
+
+                foreach (string filePath in filePaths)
+                {
+                    // Create a new PdfReader for the current document
+                    PdfReader reader = new PdfReader(filePath);
+
+                    // Add each page from the reader to the PdfCopy
+                    for (int i = 1; i <= reader.NumberOfPages; i++)
+                    {
+                        copy.AddPage(copy.GetImportedPage(reader, i));
+                    }
+
+                    // Close the reader
+                    reader.Close();
+
+                    // Calculate the progress percentage
+                    processedFiles++;
+                    int progressPercentage = (int)((double)processedFiles / totalFiles * 100);
+
+                    // Report the progress
+                    Invoke((MethodInvoker)delegate
+                    {
+                        // Running on the UI thread
+                        progressBar_Time.Value = progressPercentage;
+                    });
+                }
+
+                // Close the document
+                document.Close();
+
+                // Reset the progress bar to 0 when done
+                Invoke((MethodInvoker)delegate
+                {
+                    // Running on the UI thread
+                    progressBar_Time.Value = 0;
+                });
+            });
+        }
+
+        public void HTML_Files(List<string> filePaths)
+        {
+            Task.Run(() =>
+            {
+                HtmlDocument doc = new HtmlDocument();
+                HtmlNode bodyNode = doc.CreateElement("body");
+
+                int totalFiles = filePaths.Count;
+                int processedFiles = 0;
+
+                foreach (string filePath in filePaths)
+                {
+                    HtmlDocument fileDoc = new HtmlDocument();
+                    fileDoc.Load(filePath);
+                    HtmlNode fileBody = fileDoc.DocumentNode.SelectSingleNode("//body");
+                    if (fileBody != null)
+                    {
+                        foreach (HtmlNode child in fileBody.ChildNodes)
+                        {
+                            bodyNode.AppendChild(child.CloneNode(true));
+                        }
+                    }
+
+                    // Calculate the progress percentage
+                    processedFiles++;
+                    int progressPercentage = (int)((double)processedFiles / totalFiles * 100);
+
+                    // Report the progress
+                    Invoke((MethodInvoker)delegate
+                    {
+                        // Running on the UI thread
+                        progressBar_Time.Value = progressPercentage;
+                    });
+                }
+
+                doc.DocumentNode.AppendChild(bodyNode);
+                string outputFilePath = Path.Combine(Path.GetDirectoryName(filePaths[0]), "Merged.html");
+                File.WriteAllText(outputFilePath, doc.DocumentNode.OuterHtml, Encoding.UTF8);
+
+                // Reset the progress bar to 0 when done
+                Invoke((MethodInvoker)delegate
+                {
+                    // Running on the UI thread
+                    progressBar_Time.Value = 0;
+                });
+            });
         }
     }
 }
