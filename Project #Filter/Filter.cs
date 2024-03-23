@@ -102,44 +102,42 @@ namespace Project__Filter
             {
                 // Perform delete operation
             }
-
-            // Populate the TreeView control
         }
-
-
 
         // Functions
         private void FirstSort()
         {
-            string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
-
-            foreach (var file in files)
+            Task.Run(() =>
             {
-                string extension = Path.GetExtension(file).TrimStart('.').ToLower();
-                string destinationDirectory;
+                string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
 
-                if (myDict.Any(kvp => kvp.Value.Contains(extension)))
+                foreach (var file in files)
                 {
-                    string key = myDict.First(kvp => kvp.Value.Contains(extension)).Key;
-                    destinationDirectory = Path.Combine(selectedPath, key);
-                }
-                else
-                {
-                    destinationDirectory = Path.Combine(selectedPath, "Other");
-                }
+                    string extension = Path.GetExtension(file).TrimStart('.').ToLower();
+                    string destinationDirectory;
 
-                Directory.CreateDirectory(destinationDirectory);
-                string destinationFile = Path.Combine(destinationDirectory, Path.GetFileName(file));
+                    if (myDict.Any(kvp => kvp.Value.Contains(extension)))
+                    {
+                        string key = myDict.First(kvp => kvp.Value.Contains(extension)).Key;
+                        destinationDirectory = Path.Combine(selectedPath, key);
+                    }
+                    else
+                    {
+                        destinationDirectory = Path.Combine(selectedPath, "Other");
+                    }
 
-                // Check if the file already exists in the destination directory
-                if (!File.Exists(destinationFile))
-                {
-                    // If the file does not exist, move the file
-                    File.Move(file, destinationFile);
+                    Directory.CreateDirectory(destinationDirectory);
+                    string destinationFile = Path.Combine(destinationDirectory, Path.GetFileName(file));
+
+                    // Check if the file already exists in the destination directory
+                    if (!File.Exists(destinationFile))
+                    {
+                        // If the file does not exist, move the file
+                        File.Move(file, destinationFile);
+                    }
                 }
-            }
+            });
         }
-
 
         private void Resolution()
         {
