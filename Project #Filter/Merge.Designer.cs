@@ -342,7 +342,7 @@
             comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             comboBox_Select.ForeColor = Color.White;
             comboBox_Select.FormattingEnabled = true;
-            comboBox_Select.Items.AddRange(new object[] { "TEXT", "WORD", "PDF" });
+            comboBox_Select.Items.AddRange(new object[] { "TEXT", "WORD", "PDF", "HTML" });
             comboBox_Select.Location = new Point(113, 7);
             comboBox_Select.Margin = new Padding(3, 2, 3, 2);
             comboBox_Select.Name = "comboBox_Select";
