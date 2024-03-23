@@ -296,6 +296,9 @@ namespace Project__Filter
                         }
                     }
 
+                    // Dispose of the HtmlDocument manually
+                    fileDoc = null;
+
                     // Calculate the progress percentage
                     processedFiles++;
                     int progressPercentage = (int)((double)processedFiles / totalFiles * 100);
@@ -306,6 +309,10 @@ namespace Project__Filter
                         // Running on the UI thread
                         progressBar_Time.Value = progressPercentage;
                     });
+
+                    // Force a garbage collection to free up memory
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
                 }
 
                 doc.DocumentNode.AppendChild(bodyNode);
