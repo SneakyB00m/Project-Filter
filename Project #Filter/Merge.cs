@@ -122,7 +122,6 @@ namespace Project__Filter
             });
         }
 
-
         private void Text_Files(List<string> filePaths)
         {
             Task.Run(() =>
