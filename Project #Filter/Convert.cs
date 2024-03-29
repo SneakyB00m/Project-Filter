@@ -737,6 +737,78 @@ namespace Project__Filter
                 MessageBox.Show($"WAV created successfully at: {wavPath}");
             });
         }
+
+
+        private void CreatedPDF()
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
+            // Create a FolderBrowserDialog to request the path of the folder containing the images.
+            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+            folderBrowserDialog1.Description = "Select the folder containing the images";
+            folderBrowserDialog1.ShowDialog();
+
+            // If the folder path is not an empty string, get all image files in the folder.
+            if (folderBrowserDialog1.SelectedPath != "")
+            {
+                string[] imageFiles = Directory.EnumerateFiles(folderBrowserDialog1.SelectedPath)
+                    .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("png"))
+                    .ToArray();
+
+                // Create a PDF document
+                PdfSharp.Pdf.PdfDocument doc = new PdfSharp.Pdf.PdfDocument();
+
+                // Add an image to each page of the PDF document
+                foreach (string imageFile in imageFiles)
+                {
+                    PdfSharp.Pdf.PdfPage page = doc.AddPage();
+                    XGraphics gfx = XGraphics.FromPdfPage(page);
+                    using (XImage image = XImage.FromFile(imageFile))
+                    {
+                        // Get the size of the PDF page
+                        double pageWidth = page.Width;
+                        double pageHeight = page.Height;
+
+                        // Get the size of the image
+                        double imageWidth = image.PixelWidth;
+                        double imageHeight = image.PixelHeight;
+
+                        // Calculate the scaling factor to fit the image within the page
+                        double scale = Math.Min(pageWidth / imageWidth, pageHeight / imageHeight);
+
+                        // Calculate the new size of the image
+                        double scaledImageWidth = imageWidth * scale;
+                        double scaledImageHeight = imageHeight * scale;
+
+                        // Draw the image centered on the page
+                        gfx.DrawImage(image, (pageWidth - scaledImageWidth) / 2, (pageHeight - scaledImageHeight) / 2, scaledImageWidth, scaledImageHeight);
+                    }
+
+
+                }
+
+                // Save and close the PDF document
+                string pdfFileName = Path.Combine(folderBrowserDialog1.SelectedPath, "images.pdf");
+                doc.Save(pdfFileName);
+                doc.Close();
+
+                // Ask before deleting the images from the selected folder
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete all images?", "Confirm Delete", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    foreach (string imageFile in imageFiles)
+                    {
+                        File.Delete(imageFile);
+                    }
+                    MessageBox.Show($"Done! Successfully moved {imageFiles.Length} images to {pdfFileName} and deleted them.");
+                }
+                else
+                {
+                    MessageBox.Show($"Done! Successfully moved {imageFiles.Length} images to {pdfFileName}. The images were not deleted.");
+                }
+            }
+        }
+
     }
 }
 
