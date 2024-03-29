@@ -4,20 +4,27 @@
     "m4v",
     "avi",
     "mkv",
-    "webm"
+    "webm",
+    "mov",
+    "mpg",
+    "ts",
+    "wmv",
+    "3gp"
   ],
   "Documents": [
     "txt",
     "docx",
     "pdf",
-    "pptx"
+    "pptx",
+    "xlsx"
   ],
   "Images": [
     "jpg",
     "png",
     "gif",
     "bmp",
-    "jpeg"
+    "jpeg",
+    "webp"
   ],
   "Archives": [
     "001",
