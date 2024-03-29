@@ -1,0 +1,6 @@
+{
+  "Less than 5 Min": 300,
+  "5 Min to 10 Min": 600,
+  "10 Min to 1 Hr": 3600,
+  "More than 1 Hr": 3601
+}

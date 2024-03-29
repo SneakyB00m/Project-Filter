@@ -1,0 +1,20 @@
+{
+  "Videos": [
+    "mp4",
+    "m4v",
+    "avi",
+    "mkv"
+  ],
+  "Documents": [
+    "txt",
+    "docx",
+    "pdf",
+    "pptx"
+  ],
+  "Images": [
+    "jpg",
+    "png",
+    "gif",
+    "bmp"
+  ]
+}
