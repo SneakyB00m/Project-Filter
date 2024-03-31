@@ -1,8 +1,10 @@
 ﻿using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using DocumentFormat.OpenXml.Wordprocessing;
 using Newtonsoft.Json;
 using SharpCompress;
+using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Project__Filter
@@ -11,7 +13,6 @@ namespace Project__Filter
     {
         string selectedPath;
         Dictionary<string, List<string>> myDict;
-        List<CheckBox> checkedBoxesInOrder = new List<CheckBox>();
 
         public Filter()
         {
@@ -20,9 +21,9 @@ namespace Project__Filter
 
         private void Filter_Load(object sender, EventArgs e)
         {
-            if (File.Exists("Folders.json"))
+            if (System.IO.File.Exists("Folders.json"))
             {
-                string json = File.ReadAllText("Folders.json");
+                string json = System.IO.File.ReadAllText("Folders.json");
                 myDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(json);
             }
         }
@@ -38,6 +39,7 @@ namespace Project__Filter
                     selectedPath = fbd.SelectedPath;
                     textBox_Path.Text = selectedPath;
 
+                    comboBox_Select.Enabled = true;
                     checkBox_Size.Enabled = true;
                     checkBox_Resolution.Enabled = true;
                     checkBox_AtoZ.Enabled = true;
@@ -48,59 +50,69 @@ namespace Project__Filter
             }
         }
 
-        private void CheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox checkBox = sender as CheckBox;
-            if (checkBox.Checked)
-            {
-                checkedBoxesInOrder.Add(checkBox);
-            }
-            else
-            {
-                checkedBoxesInOrder.Remove(checkBox);
-            }
-        }
-
         private void button_Filter_Click(object sender, EventArgs e)
         {
-            List<string> checkedBoxesNames = new List<string>();
+            string selectedItem = comboBox_Select.SelectedItem.ToString();
 
-            // Now checkedBoxesInOrder contains the CheckBoxes in the order they were checked
-            foreach (CheckBox checkBox in checkedBoxesInOrder)
+            switch (selectedItem)
             {
-                checkedBoxesNames.Add(checkBox.Name);
+                case "BASIC (NO RENAME)":
+                    FirstSort();
+                    break;
+                case "BASIC (RENAME)":
+
+                    break;
+                case "RENAME & MOVE (FILE NAME)":
+
+                    break;
+                case "RENAME & MOVE (FOLDER NAME)":
+
+                    break;
+                case "RENAME & MOVE (CUSTOM)":
+
+                    break;
+                case "MOVE ONLY (CUSTOM FOLDER)":
+
+                    break;
+                case "MOVE ONLY(FILE NAME)":
+
+                    break;
+                default:
+                    MessageBox.Show("Invalid selection");
+                    break;
             }
 
-            FirstSort();
-
-            foreach (string checkBoxName in checkedBoxesNames)
+            foreach (System.Windows.Forms.Control control in this.Controls)
             {
-                switch (checkBoxName)
+                if (control is System.Windows.Forms.CheckBox)
                 {
-                    case "checkBox_Resolution":
-                        Resolution();
-                        break;
-                    case "checkBox_Duration":
-                        Duration();
-                        break;
-                    case "checkBox_Include":
-                        Include();
-                        break;
-                    case "checkBox_Size":
-                        FileSize();
-                        break;
-                    case "checkBox_AtoZ":
-                        Alphabetical();
-                        break;
-                    default:
-                        // Optional: Perform a default action
-                        break;
+                    System.Windows.Forms.CheckBox checkbox = control as System.Windows.Forms.CheckBox;
+                    if (checkbox.Checked)
+                    {
+                        // Perform operation for each checked checkbox
+                        switch (checkbox.Name)
+                        {
+                            case "checkBox1":
+                                // Call function1
+                                break;
+                            case "checkBox2":
+                                // Call function2
+                                break;
+                            case "checkBox3":
+                                // Call function3
+                                break;
+                            case "checkBox4":
+                                // Call function4
+                                break;
+                            case "checkBox5":
+                                // Call function5
+                                break;
+                            default:
+                                Console.WriteLine(checkbox.Name + " is checked but no function is associated with it.");
+                                break;
+                        }
+                    }
                 }
-            }
-
-            if (checkBox_Delete.Checked)
-            {
-                // Perform delete operation
             }
         }
 
@@ -110,6 +122,10 @@ namespace Project__Filter
             Task.Run(() =>
             {
                 string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
+
+                // Set the maximum value of the progress bar
+                Invoke((Action)(() => progressBar_Time.Maximum = files.Length));
+                Invoke((Action)(() => progressBar_Time.Value = 0));
 
                 foreach (var file in files)
                 {
@@ -130,12 +146,19 @@ namespace Project__Filter
                     string destinationFile = Path.Combine(destinationDirectory, Path.GetFileName(file));
 
                     // Check if the file already exists in the destination directory
-                    if (!File.Exists(destinationFile))
+                    if (!System.IO.File.Exists(destinationFile))
                     {
                         // If the file does not exist, move the file
-                        File.Move(file, destinationFile);
+                        System.IO.File.Move(file, destinationFile);
                     }
+
+                    // Update the progress bar
+                    Invoke((Action)(() => progressBar_Time.Value++));
                 }
+
+                Invoke((Action)(() => MessageBox.Show("Filterd completed")));
+
+                Invoke((Action)(() => progressBar_Time.Value = 0));
             });
         }
 
@@ -170,7 +193,7 @@ namespace Project__Filter
                         Directory.CreateDirectory(destinationDirectory);
 
                         string destinationFile = Path.Combine(destinationDirectory, Path.GetFileName(videoFiles[i]));
-                        File.Move(videoFiles[i], destinationFile);
+                        System.IO.File.Move(videoFiles[i], destinationFile);
                     }
                     catch (NReco.VideoInfo.FFProbeException ex)
                     {
@@ -208,7 +231,7 @@ namespace Project__Filter
                 string[] videoFiles = Directory.GetFiles(videosPath, "*.*", SearchOption.AllDirectories);
 
                 // Read the duration categories from a JSON file
-                string json = File.ReadAllText("Duration.json"); // replace with the path to your JSON file
+                string json = System.IO.File.ReadAllText("Duration.json"); // replace with the path to your JSON file
                 Dictionary<string, int> durationCategories = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
 
 
@@ -228,7 +251,7 @@ namespace Project__Filter
                             {
                                 var destinationFolder = Path.Combine(Path.GetDirectoryName(videoFiles[i]), category.Key);
                                 Directory.CreateDirectory(destinationFolder);
-                                File.Move(videoFiles[i], Path.Combine(destinationFolder, Path.GetFileName(videoFiles[i])));
+                                System.IO.File.Move(videoFiles[i], Path.Combine(destinationFolder, Path.GetFileName(videoFiles[i])));
                                 break;
                             }
                         }
@@ -281,7 +304,7 @@ namespace Project__Filter
                     {
                         var destinationFolder = Path.Combine(Path.GetDirectoryName(foundFiles[i]), "Match");
                         Directory.CreateDirectory(destinationFolder);
-                        File.Move(foundFiles[i], Path.Combine(destinationFolder, Path.GetFileName(foundFiles[i])));
+                        System.IO.File.Move(foundFiles[i], Path.Combine(destinationFolder, Path.GetFileName(foundFiles[i])));
                     }
                     catch (Exception ex)
                     {
@@ -312,7 +335,7 @@ namespace Project__Filter
                 Invoke((Action)(() => progressBar_Time.Maximum = files.Length));
 
                 // Read the size categories from a JSON file
-                string json = File.ReadAllText("Sizes.json"); // replace with the path to your JSON file
+                string json = System.IO.File.ReadAllText("Sizes.json"); // replace with the path to your JSON file
                 Dictionary<string, long> sizeCategories = JsonConvert.DeserializeObject<Dictionary<string, long>>(json);
 
                 for (int i = 0; i < files.Length; i++)
@@ -329,7 +352,7 @@ namespace Project__Filter
                         {
                             var destinationFolder = Path.Combine(Path.GetDirectoryName(files[i]), category.Key);
                             Directory.CreateDirectory(destinationFolder);
-                            File.Move(files[i], Path.Combine(destinationFolder, Path.GetFileName(files[i])));
+                            System.IO.File.Move(files[i], Path.Combine(destinationFolder, Path.GetFileName(files[i])));
                             break;
                         }
                     }
@@ -377,7 +400,7 @@ namespace Project__Filter
 
                         var destinationFolder = Path.Combine(Path.GetDirectoryName(files[i]), folderName);
                         Directory.CreateDirectory(destinationFolder);
-                        File.Move(files[i], Path.Combine(destinationFolder, Path.GetFileName(files[i])));
+                        System.IO.File.Move(files[i], Path.Combine(destinationFolder, Path.GetFileName(files[i])));
                     }
                     catch (Exception ex)
                     {
@@ -394,6 +417,5 @@ namespace Project__Filter
                 Invoke((Action)(() => progressBar_Time.Value = 0));
             });
         }
-
     }
 }

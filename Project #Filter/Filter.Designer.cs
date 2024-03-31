@@ -45,9 +45,11 @@
             label2 = new Label();
             label_Warning = new Label();
             panel_Header = new Panel();
-            label3 = new Label();
             panel_Footer = new Panel();
             panel_Options = new Panel();
+            label6 = new Label();
+            label5 = new Label();
+            comboBox_Select = new ComboBox();
             panel2 = new Panel();
             label_Count = new Label();
             label4 = new Label();
@@ -113,14 +115,13 @@
             checkBox_AtoZ.Enabled = false;
             checkBox_AtoZ.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_AtoZ.ForeColor = Color.White;
-            checkBox_AtoZ.Location = new Point(246, 153);
+            checkBox_AtoZ.Location = new Point(210, 153);
             checkBox_AtoZ.Margin = new Padding(3, 2, 3, 2);
             checkBox_AtoZ.Name = "checkBox_AtoZ";
             checkBox_AtoZ.Size = new Size(168, 22);
             checkBox_AtoZ.TabIndex = 12;
             checkBox_AtoZ.Text = "Alphabetical Order";
             checkBox_AtoZ.UseVisualStyleBackColor = true;
-            checkBox_AtoZ.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // checkBox_Size
             // 
@@ -129,14 +130,13 @@
             checkBox_Size.Enabled = false;
             checkBox_Size.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Size.ForeColor = Color.White;
-            checkBox_Size.Location = new Point(137, 153);
+            checkBox_Size.Location = new Point(113, 153);
             checkBox_Size.Margin = new Padding(3, 2, 3, 2);
             checkBox_Size.Name = "checkBox_Size";
             checkBox_Size.Size = new Size(91, 22);
             checkBox_Size.TabIndex = 14;
             checkBox_Size.Text = "File Size";
             checkBox_Size.UseVisualStyleBackColor = true;
-            checkBox_Size.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // checkBox_Include
             // 
@@ -145,14 +145,13 @@
             checkBox_Include.Enabled = false;
             checkBox_Include.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Include.ForeColor = Color.White;
-            checkBox_Include.Location = new Point(28, 153);
+            checkBox_Include.Location = new Point(9, 153);
             checkBox_Include.Margin = new Padding(3, 2, 3, 2);
             checkBox_Include.Name = "checkBox_Include";
             checkBox_Include.Size = new Size(91, 22);
             checkBox_Include.TabIndex = 15;
             checkBox_Include.Text = "Includes";
             checkBox_Include.UseVisualStyleBackColor = true;
-            checkBox_Include.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // checkBox_Duration
             // 
@@ -161,14 +160,13 @@
             checkBox_Duration.Enabled = false;
             checkBox_Duration.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Duration.ForeColor = Color.White;
-            checkBox_Duration.Location = new Point(209, 84);
+            checkBox_Duration.Location = new Point(182, 108);
             checkBox_Duration.Margin = new Padding(3, 2, 3, 2);
             checkBox_Duration.Name = "checkBox_Duration";
             checkBox_Duration.Size = new Size(92, 22);
             checkBox_Duration.TabIndex = 20;
             checkBox_Duration.Text = "Duration";
             checkBox_Duration.UseVisualStyleBackColor = true;
-            checkBox_Duration.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // checkBox_Resolution
             // 
@@ -177,14 +175,13 @@
             checkBox_Resolution.Enabled = false;
             checkBox_Resolution.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Resolution.ForeColor = Color.White;
-            checkBox_Resolution.Location = new Point(28, 84);
+            checkBox_Resolution.Location = new Point(9, 108);
             checkBox_Resolution.Margin = new Padding(3, 2, 3, 2);
             checkBox_Resolution.Name = "checkBox_Resolution";
             checkBox_Resolution.Size = new Size(167, 22);
             checkBox_Resolution.TabIndex = 19;
             checkBox_Resolution.Text = "Display Resolution";
             checkBox_Resolution.UseVisualStyleBackColor = true;
-            checkBox_Resolution.CheckedChanged += CheckBox_CheckedChanged;
             // 
             // label1
             // 
@@ -287,18 +284,6 @@
             panel_Header.Size = new Size(667, 72);
             panel_Header.TabIndex = 30;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.FromArgb(64, 64, 64);
-            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(3, 14);
-            label3.Name = "label3";
-            label3.Size = new Size(100, 32);
-            label3.TabIndex = 26;
-            label3.Text = "Actions";
-            // 
             // panel_Footer
             // 
             panel_Footer.Controls.Add(label2);
@@ -314,8 +299,10 @@
             // 
             // panel_Options
             // 
+            panel_Options.Controls.Add(label6);
+            panel_Options.Controls.Add(label5);
+            panel_Options.Controls.Add(comboBox_Select);
             panel_Options.Controls.Add(panel2);
-            panel_Options.Controls.Add(label3);
             panel_Options.Controls.Add(checkBox_Size);
             panel_Options.Controls.Add(checkBox_Include);
             panel_Options.Controls.Add(checkBox_AtoZ);
@@ -327,6 +314,45 @@
             panel_Options.Name = "panel_Options";
             panel_Options.Size = new Size(667, 205);
             panel_Options.TabIndex = 33;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(3, 64);
+            label6.Name = "label6";
+            label6.Size = new Size(78, 25);
+            label6.TabIndex = 43;
+            label6.Text = "Actions";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.FromArgb(64, 64, 64);
+            label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(3, 5);
+            label5.Name = "label5";
+            label5.Size = new Size(104, 32);
+            label5.TabIndex = 41;
+            label5.Text = "Options";
+            // 
+            // comboBox_Select
+            // 
+            comboBox_Select.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_Select.BackColor = Color.FromArgb(64, 64, 64);
+            comboBox_Select.Enabled = false;
+            comboBox_Select.FlatStyle = FlatStyle.Flat;
+            comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            comboBox_Select.ForeColor = Color.White;
+            comboBox_Select.FormattingEnabled = true;
+            comboBox_Select.Items.AddRange(new object[] { "BASIC (NO RENAME)", "BASIC (RENAME)", "RENAME & MOVE (FILE NAME)", "RENAME & MOVE (FOLDER NAME)", "RENAME & MOVE (CUSTOM)", "MOVE ONLY (CUSTOM FOLDER)", "MOVE ONLY (FILE NAME)" });
+            comboBox_Select.Location = new Point(113, 7);
+            comboBox_Select.Margin = new Padding(3, 2, 3, 2);
+            comboBox_Select.Name = "comboBox_Select";
+            comboBox_Select.Size = new Size(301, 29);
+            comboBox_Select.TabIndex = 42;
             // 
             // panel2
             // 
@@ -417,11 +443,13 @@
         private Label label2;
         private Label label_Warning;
         private Panel panel_Footer;
-        private Label label3;
         private Panel panel_Options;
         private Panel panel2;
         private Label label_Count;
         private Label label4;
         private ListBox listBox_File;
+        private Label label5;
+        private ComboBox comboBox_Select;
+        private Label label6;
     }
 }
