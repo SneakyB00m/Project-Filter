@@ -77,13 +77,6 @@ namespace Project__Filter
             Panel_Index.Top = button_Home.Top;
         }
 
-        private void button_Downloader_Click(object sender, EventArgs e)
-        {
-            downloader1.BringToFront();
-            Panel_Index.Height = button_Home.Height;
-            Panel_Index.Top = button_Home.Top;
-        }
-
         private void Main_Load(object sender, EventArgs e)
         {
             if (!File.Exists("Folders.json") || !File.Exists("Sizes.json") || !File.Exists("Duration.json"))

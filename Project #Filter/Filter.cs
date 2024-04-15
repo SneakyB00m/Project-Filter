@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Newtonsoft.Json;
@@ -13,6 +15,7 @@ namespace Project__Filter
     {
         string selectedPath;
         Dictionary<string, List<string>> myDict;
+        List<string> checkedOrder = new List<string>();
 
         public Filter()
         {
@@ -53,71 +56,132 @@ namespace Project__Filter
         private void button_Filter_Click(object sender, EventArgs e)
         {
             string selectedItem = comboBox_Select.SelectedItem.ToString();
-
-            switch (selectedItem)
+            if (!string.IsNullOrWhiteSpace(selectedItem))
             {
-                case "BASIC (NO RENAME)":
-                    FirstSort();
-                    break;
-                case "BASIC (RENAME)":
+                switch (selectedItem)
+                {
+                    case "SORT":
+                        BasicSort();
+                        ProcessCheckedOrder();
+                        break;
+                    case "SORT & MOVE (RENAME FILE)":
+                        Sort_Rename();
+                        ProcessCheckedOrder();
+                        break;
+                    case "SORT & MOVE (FOLDER NAME)":
 
-                    break;
-                case "RENAME & MOVE (FILE NAME)":
+                        ProcessCheckedOrder();
+                        break;
+                    case "SORT & MOVE (CUSTOM)":
 
-                    break;
-                case "RENAME & MOVE (FOLDER NAME)":
+                        ProcessCheckedOrder();
+                        break;
+                    case "MOVE ONLY (CUSTOM FOLDER)":
 
-                    break;
-                case "RENAME & MOVE (CUSTOM)":
-
-                    break;
-                case "MOVE ONLY (CUSTOM FOLDER)":
-
-                    break;
-                case "MOVE ONLY(FILE NAME)":
-
-                    break;
-                default:
-                    MessageBox.Show("Invalid selection");
-                    break;
+                        ProcessCheckedOrder();
+                        break;
+                    case "MOVE ONLY (FILE NAME)":
+                        break;
+                    default:
+                        MessageBox.Show("ERROR");
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid selection");
             }
 
-            foreach (System.Windows.Forms.Control control in this.Controls)
+        }
+
+        private void checkBox_Resolution_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_Resolution.Checked)
             {
-                if (control is System.Windows.Forms.CheckBox)
+                checkedOrder.Add("Resolution");
+            }
+            else
+            {
+                checkedOrder.Remove("Resolution");
+            }
+        }
+
+        private void checkBox_Duration_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_Duration.Checked)
+            {
+                checkedOrder.Add("Duration");
+            }
+            else
+            {
+                checkedOrder.Remove("Duration");
+            }
+        }
+
+        private void checkBox_Include_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_Include.Checked)
+            {
+                checkedOrder.Add("Include");
+            }
+            else
+            {
+                checkedOrder.Remove("Include");
+            }
+        }
+
+        private void checkBox_Size_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_Size.Checked)
+            {
+                checkedOrder.Add("Size");
+            }
+            else
+            {
+                checkedOrder.Remove("Size");
+            }
+        }
+
+        private void checkBox_AtoZ_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_AtoZ.Checked)
+            {
+                checkedOrder.Add("AtoZ");
+            }
+            else
+            {
+                checkedOrder.Remove("AtoZ");
+            }
+        }
+
+        // Function
+        private void ProcessCheckedOrder()
+        {
+            foreach (string checkboxName in checkedOrder)
+            {
+                switch (checkboxName)
                 {
-                    System.Windows.Forms.CheckBox checkbox = control as System.Windows.Forms.CheckBox;
-                    if (checkbox.Checked)
-                    {
-                        // Perform operation for each checked checkbox
-                        switch (checkbox.Name)
-                        {
-                            case "checkBox1":
-                                // Call function1
-                                break;
-                            case "checkBox2":
-                                // Call function2
-                                break;
-                            case "checkBox3":
-                                // Call function3
-                                break;
-                            case "checkBox4":
-                                // Call function4
-                                break;
-                            case "checkBox5":
-                                // Call function5
-                                break;
-                            default:
-                                Console.WriteLine(checkbox.Name + " is checked but no function is associated with it.");
-                                break;
-                        }
-                    }
+                    case "Resolution":
+                        Resolution();
+                        break;
+                    case "Duration":
+                        Duration();
+                        break;
+                    case "Include":
+                        Include();
+                        break;
+                    case "Size":
+                        FileSize();
+                        break;
+                    case "AtoZ":
+                        Alphabetical();
+                        break;
                 }
             }
         }
 
-        // Functions
-        private void FirstSort()
+        // Sorts
+        private void BasicSort()
         {
             Task.Run(() =>
             {
@@ -162,6 +226,68 @@ namespace Project__Filter
             });
         }
 
+        private void Sort_Rename()
+        {
+            Task.Run(() =>
+            {
+                string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
+
+                // Set the maximum value of the progress bar
+                Invoke((Action)(() => progressBar_Time.Maximum = files.Length));
+                Invoke((Action)(() => progressBar_Time.Value = 0));
+
+                Dictionary<string, int> fileCountDict = new Dictionary<string, int>();
+
+                foreach (var file in files)
+                {
+                    string extension = Path.GetExtension(file).TrimStart('.').ToLower();
+                    string destinationDirectory;
+
+                    if (myDict.Any(kvp => kvp.Value.Contains(extension)))
+                    {
+                        string key = myDict.First(kvp => kvp.Value.Contains(extension)).Key;
+                        destinationDirectory = Path.Combine(selectedPath, key);
+                    }
+                    else
+                    {
+                        destinationDirectory = Path.Combine(selectedPath, "Other");
+                    }
+
+                    Directory.CreateDirectory(destinationDirectory);
+
+                    // Get the count for the current directory
+                    if (!fileCountDict.ContainsKey(destinationDirectory))
+                    {
+                        fileCountDict[destinationDirectory] = 0;
+                    }
+
+                    // Increment the count
+                    fileCountDict[destinationDirectory]++;
+
+                    // Get the new filename
+                    string inputFilename = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "", -1, -1);
+                    string newFileName = $"{inputFilename} ({fileCountDict[destinationDirectory]}).{extension}";
+
+                    string destinationFile = Path.Combine(destinationDirectory, newFileName);
+
+                    // Check if the file already exists in the destination directory
+                    if (!System.IO.File.Exists(destinationFile))
+                    {
+                        // If the file does not exist, move the file
+                        System.IO.File.Move(file, destinationFile);
+                    }
+
+                    // Update the progress bar
+                    Invoke((Action)(() => progressBar_Time.Value++));
+                }
+
+                Invoke((Action)(() => MessageBox.Show("Filterd completed")));
+
+                Invoke((Action)(() => progressBar_Time.Value = 0));
+            });
+        }
+
+        // Extra sort
         private void Resolution()
         {
             // Run on a separate thread to avoid freezing the UI

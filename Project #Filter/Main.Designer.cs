@@ -31,7 +31,6 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             panel_Menu = new Panel();
-            button_Downloader = new Button();
             Panel_Index = new Panel();
             button_Privacy = new Button();
             button_Merge = new Button();
@@ -69,7 +68,6 @@
             // panel_Menu
             // 
             panel_Menu.BackColor = Color.FromArgb(0, 64, 64);
-            panel_Menu.Controls.Add(button_Downloader);
             panel_Menu.Controls.Add(Panel_Index);
             panel_Menu.Controls.Add(button_Privacy);
             panel_Menu.Controls.Add(button_Merge);
@@ -84,25 +82,6 @@
             panel_Menu.Name = "panel_Menu";
             panel_Menu.Size = new Size(219, 512);
             panel_Menu.TabIndex = 0;
-            // 
-            // button_Downloader
-            // 
-            button_Downloader.BackColor = Color.Transparent;
-            button_Downloader.Cursor = Cursors.Hand;
-            button_Downloader.FlatAppearance.BorderSize = 0;
-            button_Downloader.FlatStyle = FlatStyle.Flat;
-            button_Downloader.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            button_Downloader.ForeColor = Color.White;
-            button_Downloader.Image = Properties.Resources.icons8_download_30;
-            button_Downloader.Location = new Point(27, 290);
-            button_Downloader.Margin = new Padding(3, 2, 3, 2);
-            button_Downloader.Name = "button_Downloader";
-            button_Downloader.Size = new Size(186, 40);
-            button_Downloader.TabIndex = 9;
-            button_Downloader.Text = "    Downloader";
-            button_Downloader.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button_Downloader.UseVisualStyleBackColor = false;
-            button_Downloader.Click += button_Downloader_Click;
             // 
             // Panel_Index
             // 
@@ -127,7 +106,7 @@
             button_Privacy.Name = "button_Privacy";
             button_Privacy.Size = new Size(186, 40);
             button_Privacy.TabIndex = 8;
-            button_Privacy.Text = "    Encipher";
+            button_Privacy.Text = "    ENCRYPT";
             button_Privacy.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Privacy.UseVisualStyleBackColor = false;
             button_Privacy.Click += button_Privacy_Click;
@@ -146,7 +125,7 @@
             button_Merge.Name = "button_Merge";
             button_Merge.Size = new Size(186, 40);
             button_Merge.TabIndex = 5;
-            button_Merge.Text = "    Merge";
+            button_Merge.Text = "    MERGE";
             button_Merge.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Merge.UseVisualStyleBackColor = false;
             button_Merge.Click += button_Merge_Click;
@@ -181,7 +160,7 @@
             button_Extract.Name = "button_Extract";
             button_Extract.Size = new Size(186, 40);
             button_Extract.TabIndex = 4;
-            button_Extract.Text = "    Extract";
+            button_Extract.Text = "    EXTRACT";
             button_Extract.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Extract.UseVisualStyleBackColor = false;
             button_Extract.Click += button_Extract_Click;
@@ -200,7 +179,7 @@
             button_Convert.Name = "button_Convert";
             button_Convert.Size = new Size(186, 40);
             button_Convert.TabIndex = 3;
-            button_Convert.Text = "    Transform";
+            button_Convert.Text = "    TRANSFROM";
             button_Convert.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Convert.UseVisualStyleBackColor = false;
             button_Convert.Click += button_Convert_Click;
@@ -219,7 +198,7 @@
             button_Filter.Name = "button_Filter";
             button_Filter.Size = new Size(186, 40);
             button_Filter.TabIndex = 2;
-            button_Filter.Text = "    Filter";
+            button_Filter.Text = "    SORT";
             button_Filter.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Filter.UseVisualStyleBackColor = false;
             button_Filter.Click += button_Filter_Click_1;
@@ -238,7 +217,7 @@
             button_Home.Name = "button_Home";
             button_Home.Size = new Size(186, 40);
             button_Home.TabIndex = 0;
-            button_Home.Text = "    Home";
+            button_Home.Text = "    HOME";
             button_Home.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Home.UseVisualStyleBackColor = false;
             button_Home.Click += button_Home_Click;
@@ -502,6 +481,5 @@
         private Panel panel1;
         private Config_Menu config_Menu1;
         private Downloader downloader1;
-        private Button button_Downloader;
     }
 }

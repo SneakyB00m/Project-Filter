@@ -122,6 +122,7 @@
             checkBox_AtoZ.TabIndex = 12;
             checkBox_AtoZ.Text = "Alphabetical Order";
             checkBox_AtoZ.UseVisualStyleBackColor = true;
+            checkBox_AtoZ.CheckedChanged += checkBox_AtoZ_CheckedChanged;
             // 
             // checkBox_Size
             // 
@@ -137,6 +138,7 @@
             checkBox_Size.TabIndex = 14;
             checkBox_Size.Text = "File Size";
             checkBox_Size.UseVisualStyleBackColor = true;
+            checkBox_Size.CheckedChanged += checkBox_Size_CheckedChanged;
             // 
             // checkBox_Include
             // 
@@ -152,6 +154,7 @@
             checkBox_Include.TabIndex = 15;
             checkBox_Include.Text = "Includes";
             checkBox_Include.UseVisualStyleBackColor = true;
+            checkBox_Include.CheckedChanged += checkBox_Include_CheckedChanged;
             // 
             // checkBox_Duration
             // 
@@ -167,6 +170,7 @@
             checkBox_Duration.TabIndex = 20;
             checkBox_Duration.Text = "Duration";
             checkBox_Duration.UseVisualStyleBackColor = true;
+            checkBox_Duration.CheckedChanged += checkBox_Duration_CheckedChanged;
             // 
             // checkBox_Resolution
             // 
@@ -182,6 +186,7 @@
             checkBox_Resolution.TabIndex = 19;
             checkBox_Resolution.Text = "Display Resolution";
             checkBox_Resolution.UseVisualStyleBackColor = true;
+            checkBox_Resolution.CheckedChanged += checkBox_Resolution_CheckedChanged;
             // 
             // label1
             // 
@@ -347,7 +352,7 @@
             comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             comboBox_Select.ForeColor = Color.White;
             comboBox_Select.FormattingEnabled = true;
-            comboBox_Select.Items.AddRange(new object[] { "BASIC (NO RENAME)", "BASIC (RENAME)", "RENAME & MOVE (FILE NAME)", "RENAME & MOVE (FOLDER NAME)", "RENAME & MOVE (CUSTOM)", "MOVE ONLY (CUSTOM FOLDER)", "MOVE ONLY (FILE NAME)" });
+            comboBox_Select.Items.AddRange(new object[] { "BASIC SORT", "SORT & MOVE (RENAME FILE)", "SORT & MOVE (FOLDER NAME)", "SORT & MOVE (RENAME)", "MOVE (CUSTOM FOLDER)", "MOVE (FILE NAME)" });
             comboBox_Select.Location = new Point(113, 7);
             comboBox_Select.Margin = new Padding(3, 2, 3, 2);
             comboBox_Select.Name = "comboBox_Select";
