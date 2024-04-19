@@ -1,18 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\",
+  "WorkspaceRootPath": "E:\\ReposVisualStudio\\Project #Filter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|e:\\reposvisualstudio\\project #filter\\project #filter\\extract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\extract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\filter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|e:\\reposvisualstudio\\project #filter\\project #filter\\extract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\extract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|E:\\ReposVisualStudio\\Project #Filter\\project #filter\\filter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\filter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\filter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|E:\\ReposVisualStudio\\Project #Filter\\project #filter\\filter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\filter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|e:\\reposvisualstudio\\project #filter\\project #filter\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,26 +34,26 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Filter.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Filter.cs",
+              "DocumentIndex": 2,
+              "Title": "Filter.cs [Design]",
+              "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Filter.cs",
               "RelativeDocumentMoniker": "Project #Filter\\Filter.cs",
-              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Filter.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Project #Filter\\Filter.cs [Dise\u00F1o]",
+              "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Filter.cs [Design]",
+              "RelativeToolTip": "Project #Filter\\Filter.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-31T05:05:04.404Z",
               "IsPinned": true,
-              "EditorCaption": " [Dise\u00F1o]"
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Filter.cs",
-              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Filter.cs",
+              "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Filter.cs",
               "RelativeDocumentMoniker": "Project #Filter\\Filter.cs",
-              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Filter.cs",
+              "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Filter.cs",
               "RelativeToolTip": "Project #Filter\\Filter.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAD4AAAAeAAAA",
+              "ViewState": "AQIAAIAAAAAAAAAAAAAuwD4AAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-31T05:14:48.887Z",
               "IsPinned": true,
@@ -58,14 +66,39 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Main.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Main.cs",
+              "Title": "Extract.cs",
+              "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Extract.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\Extract.cs",
+              "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Extract.cs",
+              "RelativeToolTip": "Project #Filter\\Extract.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAgwIEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T04:35:51.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Extract.cs [Design]",
+              "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Extract.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\Extract.cs",
+              "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Extract.cs [Design]",
+              "RelativeToolTip": "Project #Filter\\Extract.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T04:35:50.213Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Main.cs [Design]",
+              "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Main.cs",
               "RelativeDocumentMoniker": "Project #Filter\\Main.cs",
-              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Main.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Project #Filter\\Main.cs [Dise\u00F1o]",
+              "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Main.cs [Design]",
+              "RelativeToolTip": "Project #Filter\\Main.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-15T21:48:51.33Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "EditorCaption": " [Design]"
             }
           ]
         }

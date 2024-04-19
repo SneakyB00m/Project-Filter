@@ -62,23 +62,23 @@ namespace Project__Filter
                 {
                     case "SORT":
                         BasicSort();
-                        ProcessCheckedOrder();
+                        //ProcessCheckedOrder();
                         break;
                     case "SORT & MOVE (RENAME FILE)":
                         Sort_Rename();
-                        ProcessCheckedOrder();
+                        //ProcessCheckedOrder();
                         break;
                     case "SORT & MOVE (FOLDER NAME)":
 
-                        ProcessCheckedOrder();
+                        //ProcessCheckedOrder();
                         break;
                     case "SORT & MOVE (CUSTOM)":
 
-                        ProcessCheckedOrder();
+                        //ProcessCheckedOrder();
                         break;
                     case "MOVE ONLY (CUSTOM FOLDER)":
 
-                        ProcessCheckedOrder();
+                        //ProcessCheckedOrder();
                         break;
                     case "MOVE ONLY (FILE NAME)":
                         break;
