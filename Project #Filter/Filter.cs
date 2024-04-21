@@ -13,9 +13,9 @@ namespace Project__Filter
 {
     public partial class Filter : UserControl
     {
-        string selectedPath;
-        Dictionary<string, List<string>> myDict;
+
         List<string> checkedOrder = new List<string>();
+        string selectedPath;
 
         public Filter()
         {
@@ -47,7 +47,7 @@ namespace Project__Filter
                         //ProcessCheckedOrder();
                         break;
                     case "SORT & MOVE (RENAME FILE)":
-                     //ProcessCheckedOrder();
+                        //ProcessCheckedOrder();
                         break;
                     case "SORT & MOVE (FOLDER NAME)":
 
@@ -144,25 +144,77 @@ namespace Project__Filter
                 switch (checkboxName)
                 {
                     case "Resolution":
-                        Resolution();
+
                         break;
                     case "Duration":
-                        Duration();
+
                         break;
                     case "Include":
-                        Include();
+
                         break;
                     case "Size":
-                        FileSize();
+
                         break;
                     case "AtoZ":
-                        Alphabetical();
+
                         break;
                 }
             }
         }
 
         // Sorts
-       
+        public static void SortFiles(string jsonFile, string rootPath)
+        {
+            // Load the JSON file
+            var folders = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(System.IO.File.ReadAllText(jsonFile));
+
+            // Walk through the directory
+            foreach (var file in Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories))
+            {
+                // Get the file extension
+                string fileExt = Path.GetExtension(file).ToLower();
+
+                // Check if the file extension is in the dictionary
+                foreach (var folder in folders)
+                {
+                    if (folder.Value.Contains(fileExt))
+                    {
+                        // Construct the source and destination paths
+                        string srcPath = file;
+                        string destPath = Path.Combine(rootPath, folder.Key, Path.GetFileName(file));
+
+                        // Create the destination folder if it doesn't exist
+                        Directory.CreateDirectory(Path.GetDirectoryName(destPath));
+
+                        // Move the file
+                        System.IO.File.Move(srcPath, destPath);
+
+                        break;
+                    }
+                }
+            }
+        }
+
+        public static void SortAlphabetically(string rootPath)
+        {
+            // Get all directories
+            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
+
+            foreach (var directory in directories)
+            {
+                // Get all files in the directory
+                var files = Directory.GetFiles(directory);
+
+                // Sort the files alphabetically
+                var sortedFiles = files.OrderBy(f => f).ToList();
+
+                // Rename the files to sort them alphabetically
+                for (int i = 0; i < sortedFiles.Count; i++)
+                {
+                    string newPath = Path.Combine(directory, $"{i}_{Path.GetFileName(sortedFiles[i])}");
+                    System.IO.File.Move(sortedFiles[i], newPath);
+                }
+            }
+        }
     }
 }

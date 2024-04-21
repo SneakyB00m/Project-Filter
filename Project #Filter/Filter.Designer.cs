@@ -352,7 +352,6 @@
             comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             comboBox_Select.ForeColor = Color.White;
             comboBox_Select.FormattingEnabled = true;
-            comboBox_Select.Items.AddRange(new object[] { "SORT", "SORT & MOVE (RENAME FILE)", "SORT & MOVE (FOLDER NAME)", "SORT & MOVE (RENAME)", "MOVE (CUSTOM FOLDER)", "MOVE (FILE NAME)" });
             comboBox_Select.Location = new Point(113, 7);
             comboBox_Select.Margin = new Padding(3, 2, 3, 2);
             comboBox_Select.Name = "comboBox_Select";
