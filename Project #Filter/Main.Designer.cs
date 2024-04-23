@@ -47,10 +47,10 @@
             pictureBox1 = new PictureBox();
             home1 = new Home();
             filter1 = new Sort();
-            convert1 = new Convert();
+            convert1 = new Transform();
             extract1 = new Extract();
             merge1 = new Merge();
-            privacy1 = new Privacy();
+            privacy1 = new Encrypt();
             DragControl_Accent = new Bunifu.Framework.UI.BunifuDragControl(components);
             DragControl_Tittle = new Bunifu.Framework.UI.BunifuDragControl(components);
             DragControl_Menu = new Bunifu.Framework.UI.BunifuDragControl(components);
@@ -444,10 +444,10 @@
         private Button button_Privacy;
         private Label label_Title;
         private Button button_Git;
-        private Convert convert1;
+        private Transform convert1;
         private Extract extract1;
         private Merge merge1;
-        private Privacy privacy1;
+        private Encrypt privacy1;
         private Button button_Config;
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Accent;
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Tittle;

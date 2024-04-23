@@ -13,7 +13,7 @@
     <Compile Update="Config_Sizes.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Convert.cs">
+    <Compile Update="Transform.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Extract.cs">
@@ -31,7 +31,7 @@
     <Compile Update="Merge.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Privacy.cs">
+    <Compile Update="Encrypt.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

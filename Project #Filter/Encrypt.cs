@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Project__Filter
 {
-    public partial class Privacy : UserControl
+    public partial class Encrypt : UserControl
     {
        
 
-        public Privacy()
+        public Encrypt()
         {
             InitializeComponent();
         }

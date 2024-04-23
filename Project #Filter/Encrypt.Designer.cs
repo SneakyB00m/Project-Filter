@@ -1,6 +1,6 @@
 ﻿namespace Project__Filter
 {
-    partial class Privacy
+    partial class Encrypt
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

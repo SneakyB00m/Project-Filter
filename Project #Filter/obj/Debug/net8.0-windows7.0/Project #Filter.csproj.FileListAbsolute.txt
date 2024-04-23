@@ -299,12 +299,10 @@ C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Config_Extensions.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Config_Menu.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Config_Sizes.resources
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Convert.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Extract.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Home.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Main.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Merge.resources
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Privacy.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Properties.Resources.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.csproj.GenerateResource.cache
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.GeneratedMSBuildEditorConfig.editorconfig
@@ -319,3 +317,5 @@ C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.genruntimeconfig.cache
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\ref\Project #Filter.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Sort.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Encrypt.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Transform.resources
