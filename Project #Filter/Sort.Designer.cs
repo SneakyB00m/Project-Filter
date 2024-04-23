@@ -42,13 +42,18 @@
             panel_Header = new Panel();
             panel_Footer = new Panel();
             panel_Options = new Panel();
+            checkBox2 = new CheckBox();
+            checkBox1 = new CheckBox();
+            checkBox_Date = new CheckBox();
+            checkBox_Size = new CheckBox();
+            checkBox_Name = new CheckBox();
             label6 = new Label();
             label5 = new Label();
             comboBox_Select = new ComboBox();
             panel2 = new Panel();
             label_Count = new Label();
             label4 = new Label();
-            listBox_File = new ListBox();
+            treeView1 = new TreeView();
             panel_Top.SuspendLayout();
             panel_Header.SuspendLayout();
             panel_Footer.SuspendLayout();
@@ -209,6 +214,11 @@
             // 
             // panel_Options
             // 
+            panel_Options.Controls.Add(checkBox2);
+            panel_Options.Controls.Add(checkBox1);
+            panel_Options.Controls.Add(checkBox_Date);
+            panel_Options.Controls.Add(checkBox_Size);
+            panel_Options.Controls.Add(checkBox_Name);
             panel_Options.Controls.Add(label6);
             panel_Options.Controls.Add(label5);
             panel_Options.Controls.Add(comboBox_Select);
@@ -219,6 +229,81 @@
             panel_Options.Size = new Size(762, 273);
             panel_Options.TabIndex = 33;
             // 
+            // checkBox2
+            // 
+            checkBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            checkBox2.AutoSize = true;
+            checkBox2.Enabled = false;
+            checkBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            checkBox2.ForeColor = Color.White;
+            checkBox2.Location = new Point(168, 144);
+            checkBox2.Margin = new Padding(3, 4, 3, 4);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(148, 32);
+            checkBox2.TabIndex = 56;
+            checkBox2.Text = "By Duration";
+            checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            checkBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            checkBox1.AutoSize = true;
+            checkBox1.Enabled = false;
+            checkBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            checkBox1.ForeColor = Color.White;
+            checkBox1.Location = new Point(3, 144);
+            checkBox1.Margin = new Padding(3, 4, 3, 4);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(165, 32);
+            checkBox1.TabIndex = 55;
+            checkBox1.Text = "By Resolution";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Date
+            // 
+            checkBox_Date.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_Date.AutoSize = true;
+            checkBox_Date.Enabled = false;
+            checkBox_Date.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            checkBox_Date.ForeColor = Color.White;
+            checkBox_Date.Location = new Point(238, 197);
+            checkBox_Date.Margin = new Padding(3, 4, 3, 4);
+            checkBox_Date.Name = "checkBox_Date";
+            checkBox_Date.Size = new Size(150, 32);
+            checkBox_Date.TabIndex = 54;
+            checkBox_Date.Text = "By Alphabet";
+            checkBox_Date.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Size
+            // 
+            checkBox_Size.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_Size.AutoSize = true;
+            checkBox_Size.Enabled = false;
+            checkBox_Size.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            checkBox_Size.ForeColor = Color.White;
+            checkBox_Size.Location = new Point(136, 197);
+            checkBox_Size.Margin = new Padding(3, 4, 3, 4);
+            checkBox_Size.Name = "checkBox_Size";
+            checkBox_Size.Size = new Size(102, 32);
+            checkBox_Size.TabIndex = 53;
+            checkBox_Size.Text = "By Size";
+            checkBox_Size.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Name
+            // 
+            checkBox_Name.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_Name.AutoSize = true;
+            checkBox_Name.Enabled = false;
+            checkBox_Name.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            checkBox_Name.ForeColor = Color.White;
+            checkBox_Name.Location = new Point(3, 197);
+            checkBox_Name.Margin = new Padding(3, 4, 3, 4);
+            checkBox_Name.Name = "checkBox_Name";
+            checkBox_Name.Size = new Size(133, 32);
+            checkBox_Name.TabIndex = 52;
+            checkBox_Name.Text = "By Include";
+            checkBox_Name.UseVisualStyleBackColor = true;
+            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -227,7 +312,7 @@
             label6.Location = new Point(3, 85);
             label6.Name = "label6";
             label6.Size = new Size(100, 32);
-            label6.TabIndex = 43;
+            label6.TabIndex = 50;
             label6.Text = "Actions";
             // 
             // label5
@@ -258,9 +343,9 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(treeView1);
             panel2.Controls.Add(label_Count);
             panel2.Controls.Add(label4);
-            panel2.Controls.Add(listBox_File);
             panel2.Dock = DockStyle.Right;
             panel2.Location = new Point(480, 0);
             panel2.Margin = new Padding(3, 4, 3, 4);
@@ -270,10 +355,11 @@
             // 
             // label_Count
             // 
+            label_Count.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label_Count.AutoSize = true;
             label_Count.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_Count.ForeColor = Color.White;
-            label_Count.Location = new Point(147, 7);
+            label_Count.Location = new Point(165, 7);
             label_Count.Name = "label_Count";
             label_Count.Size = new Size(84, 28);
             label_Count.TabIndex = 3;
@@ -281,6 +367,7 @@
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.White;
@@ -290,17 +377,15 @@
             label4.TabIndex = 2;
             label4.Text = "File List           #";
             // 
-            // listBox_File
+            // treeView1
             // 
-            listBox_File.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            listBox_File.FormattingEnabled = true;
-            listBox_File.Location = new Point(10, 49);
-            listBox_File.Margin = new Padding(3, 4, 3, 4);
-            listBox_File.Name = "listBox_File";
-            listBox_File.Size = new Size(266, 224);
-            listBox_File.TabIndex = 1;
+            treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            treeView1.Location = new Point(10, 49);
+            treeView1.Name = "treeView1";
+            treeView1.Size = new Size(266, 224);
+            treeView1.TabIndex = 4;
             // 
-            // Filter
+            // Sort
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -311,7 +396,7 @@
             Controls.Add(panel_Right);
             Controls.Add(panel_Bottom);
             Controls.Add(panel_Top);
-            Name = "Filter";
+            Name = "Sort";
             Size = new Size(799, 540);
             panel_Top.ResumeLayout(false);
             panel_Header.ResumeLayout(false);
@@ -343,9 +428,14 @@
         private Panel panel2;
         private Label label_Count;
         private Label label4;
-        private ListBox listBox_File;
         private Label label5;
         private ComboBox comboBox_Select;
+        private CheckBox checkBox_Date;
         private Label label6;
+        private CheckBox checkBox2;
+        private CheckBox checkBox1;
+        private CheckBox checkBox_Size;
+        private CheckBox checkBox_Name;
+        private TreeView treeView1;
     }
 }

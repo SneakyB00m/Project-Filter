@@ -1,13 +1,4 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
-using DocumentFormat.OpenXml.Wordprocessing;
-using Newtonsoft.Json;
-using SharpCompress;
-using static System.Net.WebRequestMethods;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿using Newtonsoft.Json;
 
 namespace Project__Filter
 {
@@ -32,7 +23,38 @@ namespace Project__Filter
                 {
                     selectedPath = fbd.SelectedPath;
                     textBox_Path.Text = selectedPath;
+
+                    // Clear the TreeView
+                    treeView1.Nodes.Clear();
+
+                    // Create the root node
+                    TreeNode rootNode = new TreeNode(selectedPath);
+                    treeView1.Nodes.Add(rootNode);
+
+                    // Populate the TreeView with directories and files
+                    PopulateTreeView(selectedPath, rootNode);
+
+                    // Expand the root node
+                    rootNode.Expand();
                 }
+            }
+        }
+
+        private void PopulateTreeView(string directoryValue, TreeNode parentNode)
+        {
+            string[] directories = Directory.GetDirectories(directoryValue);
+            foreach (string directory in directories)
+            {
+                TreeNode directoryNode = new TreeNode(Path.GetFileName(directory));
+                parentNode.Nodes.Add(directoryNode);
+                PopulateTreeView(directory, directoryNode); // Recursively add subdirectories
+            }
+
+            string[] files = Directory.GetFiles(directoryValue);
+            foreach (string file in files)
+            {
+                // Add files to the TreeView
+                parentNode.Nodes.Add(new TreeNode(Path.GetFileName(file)));
             }
         }
 

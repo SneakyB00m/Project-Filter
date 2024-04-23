@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +18,25 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Sort.cs",
+              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Sort.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\Sort.cs",
+              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Sort.cs",
+              "RelativeToolTip": "Project #Filter\\Sort.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAqwDsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-23T22:12:46.689Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -33,38 +46,7 @@
               "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Sort.cs [Dise\u00F1o]",
               "RelativeToolTip": "Project #Filter\\Sort.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-31T05:05:04.404Z",
-              "IsPinned": true,
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Sort.cs",
-              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Sort.cs",
-              "RelativeDocumentMoniker": "Project #Filter\\Sort.cs",
-              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Sort.cs",
-              "RelativeToolTip": "Project #Filter\\Sort.cs",
-              "ViewState": "AQIAAEYAAAAAAAAAAAD4v0oAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-31T05:14:48.887Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Main.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Main.cs",
-              "RelativeDocumentMoniker": "Project #Filter\\Main.cs",
-              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Main.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Project #Filter\\Main.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T16:41:33.873Z",
+              "WhenOpened": "2024-04-23T22:07:29.272Z",
               "EditorCaption": " [Dise\u00F1o]"
             }
           ]
