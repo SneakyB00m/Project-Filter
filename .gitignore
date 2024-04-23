@@ -43,3 +43,8 @@ Project \#Filter/obj/Debug/net6.0-windows/Project \#Filter.AssemblyInfo.cs
 .vs/ProjectEvaluation/project \#filter.metadata.v7.bin
 .vs/Project \#Filter/v17/.suo
 .vs/Project \#Filter/DesignTimeBuild/.dtbcache.v2
+*.bin
+*.v2
+*.json
+*.v2
+*.v2
