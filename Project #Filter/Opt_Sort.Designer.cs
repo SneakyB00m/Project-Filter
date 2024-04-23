@@ -51,9 +51,9 @@
             label5 = new Label();
             comboBox_Select = new ComboBox();
             panel2 = new Panel();
+            treeView1 = new TreeView();
             label_Count = new Label();
             label4 = new Label();
-            treeView1 = new TreeView();
             panel_Top.SuspendLayout();
             panel_Header.SuspendLayout();
             panel_Footer.SuspendLayout();
@@ -236,7 +236,7 @@
             checkBox2.Enabled = false;
             checkBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox2.ForeColor = Color.White;
-            checkBox2.Location = new Point(168, 144);
+            checkBox2.Location = new Point(184, 140);
             checkBox2.Margin = new Padding(3, 4, 3, 4);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(148, 32);
@@ -251,7 +251,7 @@
             checkBox1.Enabled = false;
             checkBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(3, 144);
+            checkBox1.Location = new Point(3, 140);
             checkBox1.Margin = new Padding(3, 4, 3, 4);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(165, 32);
@@ -266,7 +266,7 @@
             checkBox_Date.Enabled = false;
             checkBox_Date.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox_Date.ForeColor = Color.White;
-            checkBox_Date.Location = new Point(238, 197);
+            checkBox_Date.Location = new Point(310, 203);
             checkBox_Date.Margin = new Padding(3, 4, 3, 4);
             checkBox_Date.Name = "checkBox_Date";
             checkBox_Date.Size = new Size(150, 32);
@@ -281,7 +281,7 @@
             checkBox_Size.Enabled = false;
             checkBox_Size.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox_Size.ForeColor = Color.White;
-            checkBox_Size.Location = new Point(136, 197);
+            checkBox_Size.Location = new Point(184, 203);
             checkBox_Size.Margin = new Padding(3, 4, 3, 4);
             checkBox_Size.Name = "checkBox_Size";
             checkBox_Size.Size = new Size(102, 32);
@@ -296,7 +296,7 @@
             checkBox_Name.Enabled = false;
             checkBox_Name.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox_Name.ForeColor = Color.White;
-            checkBox_Name.Location = new Point(3, 197);
+            checkBox_Name.Location = new Point(3, 203);
             checkBox_Name.Margin = new Padding(3, 4, 3, 4);
             checkBox_Name.Name = "checkBox_Name";
             checkBox_Name.Size = new Size(133, 32);
@@ -353,6 +353,14 @@
             panel2.Size = new Size(282, 273);
             panel2.TabIndex = 27;
             // 
+            // treeView1
+            // 
+            treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            treeView1.Location = new Point(10, 49);
+            treeView1.Name = "treeView1";
+            treeView1.Size = new Size(266, 224);
+            treeView1.TabIndex = 4;
+            // 
             // label_Count
             // 
             label_Count.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -377,15 +385,7 @@
             label4.TabIndex = 2;
             label4.Text = "File List           #";
             // 
-            // treeView1
-            // 
-            treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            treeView1.Location = new Point(10, 49);
-            treeView1.Name = "treeView1";
-            treeView1.Size = new Size(266, 224);
-            treeView1.TabIndex = 4;
-            // 
-            // Sort
+            // Opt_Sort
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -396,7 +396,7 @@
             Controls.Add(panel_Right);
             Controls.Add(panel_Bottom);
             Controls.Add(panel_Top);
-            Name = "Sort";
+            Name = "Opt_Sort";
             Size = new Size(799, 540);
             panel_Top.ResumeLayout(false);
             panel_Header.ResumeLayout(false);

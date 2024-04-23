@@ -24,6 +24,15 @@ namespace Project__Filter
                     selectedPath = fbd.SelectedPath;
                     textBox_Path.Text = selectedPath;
 
+                    // Get all files in the directory and subdirectories
+                    string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
+
+                    // Count the files
+                    int fileCount = files.Length;
+
+                    // Display just the count in label_Count
+                    label_Count.Text = fileCount.ToString();
+
                     // Clear the TreeView
                     treeView1.Nodes.Clear();
 
@@ -38,6 +47,7 @@ namespace Project__Filter
                     rootNode.Expand();
                 }
             }
+
         }
 
         private void PopulateTreeView(string directoryValue, TreeNode parentNode)
@@ -57,6 +67,7 @@ namespace Project__Filter
                 parentNode.Nodes.Add(new TreeNode(Path.GetFileName(file)));
             }
         }
+
 
         private void button_Filter_Click(object sender, EventArgs e)
         {
@@ -177,5 +188,6 @@ namespace Project__Filter
                 }
             }
         }
+
     }
 }
