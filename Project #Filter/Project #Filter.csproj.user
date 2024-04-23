@@ -16,13 +16,10 @@
     <Compile Update="Convert.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Downloader.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="Extract.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Filter.cs">
+    <Compile Update="Sort.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Home.cs">

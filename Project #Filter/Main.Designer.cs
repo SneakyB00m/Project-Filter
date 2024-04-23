@@ -46,7 +46,7 @@
             Panel_Banner = new Panel();
             pictureBox1 = new PictureBox();
             home1 = new Home();
-            filter1 = new Filter();
+            filter1 = new Sort();
             convert1 = new Convert();
             extract1 = new Extract();
             merge1 = new Merge();
@@ -58,7 +58,6 @@
             DragControl_Main = new Bunifu.Framework.UI.BunifuDragControl(components);
             panel1 = new Panel();
             config_Menu1 = new Config_Menu();
-            downloader1 = new Downloader();
             bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(components);
             panel_Menu.SuspendLayout();
             panel_Accent.SuspendLayout();
@@ -93,7 +92,7 @@
             // 
             // button_Privacy
             // 
-            button_Privacy.BackColor = Color.Transparent;
+            button_Privacy.BackColor = Color.FromArgb(0, 64, 64);
             button_Privacy.Cursor = Cursors.Hand;
             button_Privacy.FlatAppearance.BorderSize = 0;
             button_Privacy.FlatStyle = FlatStyle.Flat;
@@ -111,7 +110,7 @@
             // 
             // button_Merge
             // 
-            button_Merge.BackColor = Color.Transparent;
+            button_Merge.BackColor = Color.FromArgb(0, 64, 64);
             button_Merge.Cursor = Cursors.Hand;
             button_Merge.FlatAppearance.BorderSize = 0;
             button_Merge.FlatStyle = FlatStyle.Flat;
@@ -129,22 +128,21 @@
             // 
             // button_Git
             // 
-            button_Git.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             button_Git.BackgroundImage = Properties.Resources.icons8_github_50;
-            button_Git.BackgroundImageLayout = ImageLayout.Stretch;
+            button_Git.BackgroundImageLayout = ImageLayout.Zoom;
             button_Git.Cursor = Cursors.Hand;
             button_Git.FlatAppearance.BorderSize = 0;
             button_Git.FlatStyle = FlatStyle.Flat;
-            button_Git.Location = new Point(3, 635);
+            button_Git.Location = new Point(0, 643);
             button_Git.Name = "button_Git";
-            button_Git.Size = new Size(34, 40);
+            button_Git.Size = new Size(40, 40);
             button_Git.TabIndex = 7;
             button_Git.UseVisualStyleBackColor = true;
             button_Git.Click += button_Git_Click;
             // 
             // button_Extract
             // 
-            button_Extract.BackColor = Color.Transparent;
+            button_Extract.BackColor = Color.FromArgb(0, 64, 64);
             button_Extract.Cursor = Cursors.Hand;
             button_Extract.FlatAppearance.BorderSize = 0;
             button_Extract.FlatStyle = FlatStyle.Flat;
@@ -162,7 +160,7 @@
             // 
             // button_Convert
             // 
-            button_Convert.BackColor = Color.Transparent;
+            button_Convert.BackColor = Color.FromArgb(0, 64, 64);
             button_Convert.Cursor = Cursors.Hand;
             button_Convert.FlatAppearance.BorderSize = 0;
             button_Convert.FlatStyle = FlatStyle.Flat;
@@ -180,7 +178,7 @@
             // 
             // button_Filter
             // 
-            button_Filter.BackColor = Color.Transparent;
+            button_Filter.BackColor = Color.FromArgb(0, 64, 64);
             button_Filter.Cursor = Cursors.Hand;
             button_Filter.FlatAppearance.BorderSize = 0;
             button_Filter.FlatStyle = FlatStyle.Flat;
@@ -198,7 +196,7 @@
             // 
             // button_Home
             // 
-            button_Home.BackColor = Color.Transparent;
+            button_Home.BackColor = Color.FromArgb(0, 64, 64);
             button_Home.Cursor = Cursors.Hand;
             button_Home.FlatAppearance.BorderSize = 0;
             button_Home.FlatStyle = FlatStyle.Flat;
@@ -248,9 +246,9 @@
             label_Title.ForeColor = Color.White;
             label_Title.Location = new Point(93, 15);
             label_Title.Name = "label_Title";
-            label_Title.Size = new Size(339, 24);
+            label_Title.Size = new Size(143, 24);
             label_Title.TabIndex = 6;
-            label_Title.Text = "TOOL KIT 2.0  BY @SneakyB00m";
+            label_Title.Text = "TOOL KIT 2.0";
             // 
             // button_Exit
             // 
@@ -315,6 +313,7 @@
             // 
             extract1.BackColor = Color.FromArgb(64, 64, 64);
             extract1.Location = new Point(250, 109);
+            extract1.Margin = new Padding(3, 4, 3, 4);
             extract1.Name = "extract1";
             extract1.Size = new Size(885, 573);
             extract1.TabIndex = 9;
@@ -391,16 +390,6 @@
             config_Menu1.Size = new Size(885, 573);
             config_Menu1.TabIndex = 14;
             // 
-            // downloader1
-            // 
-            downloader1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            downloader1.BackColor = Color.FromArgb(64, 64, 64);
-            downloader1.Location = new Point(250, 109);
-            downloader1.Margin = new Padding(3, 5, 3, 5);
-            downloader1.Name = "downloader1";
-            downloader1.Size = new Size(885, 573);
-            downloader1.TabIndex = 15;
-            // 
             // bunifuElipse1
             // 
             bunifuElipse1.ElipseRadius = 30;
@@ -421,7 +410,6 @@
             Controls.Add(merge1);
             Controls.Add(privacy1);
             Controls.Add(config_Menu1);
-            Controls.Add(downloader1);
             Controls.Add(Panel_Banner);
             Controls.Add(panel_Accent);
             Controls.Add(panel_Menu);
@@ -452,7 +440,7 @@
         private Button button_Home;
         private Button button_Exit;
         private Home home1;
-        private Filter filter1;
+        private Sort filter1;
         private Button button_Privacy;
         private Label label_Title;
         private Button button_Git;
@@ -468,7 +456,6 @@
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Main;
         private Panel panel1;
         private Config_Menu config_Menu1;
-        private Downloader downloader1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
     }
 }

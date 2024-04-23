@@ -11,13 +11,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Project__Filter
 {
-    public partial class Filter : UserControl
+    public partial class Sort : UserControl
     {
 
         List<string> checkedOrder = new List<string>();
         string selectedPath;
 
-        public Filter()
+        public Sort()
         {
             InitializeComponent();
         }
@@ -72,67 +72,6 @@ namespace Project__Filter
             else
             {
                 MessageBox.Show("Invalid selection");
-            }
-
-        }
-
-        private void checkBox_Resolution_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_Resolution.Checked)
-            {
-                checkedOrder.Add("Resolution");
-            }
-            else
-            {
-                checkedOrder.Remove("Resolution");
-            }
-        }
-
-        private void checkBox_Duration_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_Duration.Checked)
-            {
-                checkedOrder.Add("Duration");
-            }
-            else
-            {
-                checkedOrder.Remove("Duration");
-            }
-        }
-
-        private void checkBox_Include_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_Include.Checked)
-            {
-                checkedOrder.Add("Include");
-            }
-            else
-            {
-                checkedOrder.Remove("Include");
-            }
-        }
-
-        private void checkBox_Size_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_Size.Checked)
-            {
-                checkedOrder.Add("Size");
-            }
-            else
-            {
-                checkedOrder.Remove("Size");
-            }
-        }
-
-        private void checkBox_AtoZ_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_AtoZ.Checked)
-            {
-                checkedOrder.Add("AtoZ");
-            }
-            else
-            {
-                checkedOrder.Remove("AtoZ");
             }
         }
 
