@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Project__Filter
 {
-    public partial class Config_Sizes : UserControl
+    public partial class Menu_Sizes : UserControl
     {
         private Dictionary<string, int> myDict;
 
-        public Config_Sizes()
+        public Menu_Sizes()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace Project__Filter
 {
-    partial class Home
+    partial class Opt_Home
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

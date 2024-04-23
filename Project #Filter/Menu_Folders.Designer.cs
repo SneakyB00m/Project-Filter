@@ -1,6 +1,6 @@
 ﻿namespace Project__Filter
 {
-    partial class Config_Extensions
+    partial class Menu_Folders
     {
         /// <summary> 
         /// Required designer variable.

@@ -1,6 +1,6 @@
 ﻿namespace Project__Filter
 {
-    partial class Transform
+    partial class Opt_Transform
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

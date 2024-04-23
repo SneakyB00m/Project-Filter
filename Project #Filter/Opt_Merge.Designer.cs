@@ -1,6 +1,6 @@
 ﻿namespace Project__Filter
 {
-    partial class Merge
+    partial class Opt_Merge
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

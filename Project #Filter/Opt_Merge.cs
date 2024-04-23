@@ -7,11 +7,11 @@ using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace Project__Filter
 {
-    public partial class Merge : UserControl
+    public partial class Opt_Merge : UserControl
     {
         string selectedPath;
 
-        public Merge()
+        public Opt_Merge()
         {
             InitializeComponent();
         }

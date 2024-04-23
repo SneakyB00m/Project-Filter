@@ -1,6 +1,6 @@
 ﻿namespace Project__Filter
 {
-    partial class Encrypt
+    partial class Opt_Encrypt
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

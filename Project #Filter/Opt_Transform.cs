@@ -7,11 +7,11 @@ using ImageMagick;
 
 namespace Project__Filter
 {
-    public partial class Transform : UserControl
+    public partial class Opt_Transform : UserControl
     {
         string selectedPath;
 
-        public Transform()
+        public Opt_Transform()
         {
             InitializeComponent();
         }

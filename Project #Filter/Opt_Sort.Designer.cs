@@ -1,6 +1,6 @@
 ﻿namespace Project__Filter
 {
-    partial class Sort
+    partial class Opt_Sort
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

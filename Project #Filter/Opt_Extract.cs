@@ -1,10 +1,10 @@
 ﻿namespace Project__Filter
 {
-    public partial class Extract : UserControl
+    public partial class Opt_Extract : UserControl
     {
         string selectedPath;
 
-        public Extract()
+        public Opt_Extract()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace Project__Filter
 {
-    partial class Extract
+    partial class Opt_Extract
     {
         /// <summary> 
         /// Required designer variable.

@@ -45,19 +45,19 @@
             button_Exit = new Button();
             Panel_Banner = new Panel();
             pictureBox1 = new PictureBox();
-            home1 = new Home();
-            filter1 = new Sort();
-            convert1 = new Transform();
-            extract1 = new Extract();
-            merge1 = new Merge();
-            privacy1 = new Encrypt();
+            home1 = new Opt_Home();
+            filter1 = new Opt_Sort();
+            convert1 = new Opt_Transform();
+            extract1 = new Opt_Extract();
+            merge1 = new Opt_Merge();
+            privacy1 = new Opt_Encrypt();
             DragControl_Accent = new Bunifu.Framework.UI.BunifuDragControl(components);
             DragControl_Tittle = new Bunifu.Framework.UI.BunifuDragControl(components);
             DragControl_Menu = new Bunifu.Framework.UI.BunifuDragControl(components);
             DragControl_Banner = new Bunifu.Framework.UI.BunifuDragControl(components);
             DragControl_Main = new Bunifu.Framework.UI.BunifuDragControl(components);
             panel1 = new Panel();
-            config_Menu1 = new Config_Menu();
+            config_Menu1 = new Menu_Config();
             bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(components);
             panel_Menu.SuspendLayout();
             panel_Accent.SuspendLayout();
@@ -439,15 +439,15 @@
         private Panel Panel_Index;
         private Button button_Home;
         private Button button_Exit;
-        private Home home1;
-        private Sort filter1;
+        private Opt_Home home1;
+        private Opt_Sort filter1;
         private Button button_Privacy;
         private Label label_Title;
         private Button button_Git;
-        private Transform convert1;
-        private Extract extract1;
-        private Merge merge1;
-        private Encrypt privacy1;
+        private Opt_Transform convert1;
+        private Opt_Extract extract1;
+        private Opt_Merge merge1;
+        private Opt_Encrypt privacy1;
         private Button button_Config;
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Accent;
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Tittle;
@@ -455,7 +455,7 @@
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Banner;
         private Bunifu.Framework.UI.BunifuDragControl DragControl_Main;
         private Panel panel1;
-        private Config_Menu config_Menu1;
+        private Menu_Config config_Menu1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
     }
 }

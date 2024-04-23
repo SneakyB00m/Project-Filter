@@ -1,6 +1,6 @@
 ﻿namespace Project__Filter
 {
-    partial class Config_Sizes
+    partial class Menu_Sizes
     {
         /// <summary> 
         /// Required designer variable.

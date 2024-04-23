@@ -2,13 +2,13 @@
 
 namespace Project__Filter
 {
-    public partial class Sort : UserControl
+    public partial class Opt_Sort : UserControl
     {
 
         List<string> checkedOrder = new List<string>();
         string selectedPath;
 
-        public Sort()
+        public Opt_Sort()
         {
             InitializeComponent();
         }
