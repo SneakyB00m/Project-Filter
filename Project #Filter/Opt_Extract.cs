@@ -48,7 +48,7 @@
         {
             if (radioButton_Folder.Checked)
             {
-                ExtractFiles();
+                MoveFiles(selectedPath);
             }
             else if (radioButton_Unrar.Checked)
             {
@@ -65,12 +65,13 @@
 
             if (checkBox_Delete.Checked)
             {
-                   DeleteFolders();
+                DeleteFolders();
             }
 
         }
 
-        public void DeleteFolders() {
+        public void DeleteFolders()
+        {
             // Get all directories from the selected directory
             string[] directories = Directory.GetDirectories(selectedPath, "*", SearchOption.AllDirectories);
 
@@ -86,43 +87,32 @@
             }
         }
 
-        private void ExtractFiles()
+        public void MoveFiles(string rootPath)
         {
-            // Run on a separate thread to avoid freezing the UI
-            Task.Run(() =>
+            // Construct the destination folder path
+            string destinationFolder = Path.Combine(rootPath, "Extracted");
+
+            // Ensure the destination folder exists
+            Directory.CreateDirectory(destinationFolder);
+
+            // Get all files in the root path and its subdirectories
+            string[] files = Directory.GetFiles(rootPath, "*.*", SearchOption.AllDirectories);
+
+            foreach (string file in files)
             {
-                string targetPath = Path.Combine(selectedPath, "Extracted"); // The path of the target directory
+                // Skip if the file is in the destination folder
+                if (file.StartsWith(destinationFolder))
+                    continue;
 
-                if (!Directory.Exists(targetPath))
-                {
-                    Directory.CreateDirectory(targetPath);
-                }
+                // Get the file name
+                string fileName = Path.GetFileName(file);
 
-                string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
+                // Construct the destination path
+                string destPath = Path.Combine(destinationFolder, fileName);
 
-                // Set the maximum value of the progress bar
-                Invoke((Action)(() => progressBar_Time.Maximum = files.Length));
-
-                for (int i = 0; i < files.Length; i++)
-                {
-                    string fileName = Path.GetFileName(files[i]);
-                    string destFile = Path.Combine(targetPath, fileName);
-
-                    if (!File.Exists(destFile))
-                    {
-                        File.Move(files[i], destFile);
-                    }
-
-                    // Update the progress bar
-                    Invoke((Action)(() => progressBar_Time.Value = i + 1));
-                }
-
-                // Show a message box when done
-                Invoke((Action)(() => MessageBox.Show("File extraction completed!")));
-
-                // Reset the progress bar
-                Invoke((Action)(() => progressBar_Time.Value = 0));
-            });
+                // Move the file
+                File.Move(file, destPath);
+            }
         }
 
     }
