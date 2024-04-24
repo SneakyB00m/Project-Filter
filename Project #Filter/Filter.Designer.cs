@@ -115,7 +115,7 @@
             checkBox_AtoZ.Enabled = false;
             checkBox_AtoZ.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_AtoZ.ForeColor = Color.White;
-            checkBox_AtoZ.Location = new Point(210, 153);
+            checkBox_AtoZ.Location = new Point(218, 153);
             checkBox_AtoZ.Margin = new Padding(3, 2, 3, 2);
             checkBox_AtoZ.Name = "checkBox_AtoZ";
             checkBox_AtoZ.Size = new Size(168, 22);
@@ -163,7 +163,7 @@
             checkBox_Duration.Enabled = false;
             checkBox_Duration.Font = new Font("Tahoma", 11.25F, FontStyle.Bold);
             checkBox_Duration.ForeColor = Color.White;
-            checkBox_Duration.Location = new Point(182, 108);
+            checkBox_Duration.Location = new Point(190, 108);
             checkBox_Duration.Margin = new Padding(3, 2, 3, 2);
             checkBox_Duration.Name = "checkBox_Duration";
             checkBox_Duration.Size = new Size(92, 22);
@@ -352,6 +352,7 @@
             comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             comboBox_Select.ForeColor = Color.White;
             comboBox_Select.FormattingEnabled = true;
+            comboBox_Select.Items.AddRange(new object[] { "FILTER", "HISTORY", "PREVIEW", "BINARIES", "RECONVERT" });
             comboBox_Select.Location = new Point(113, 7);
             comboBox_Select.Margin = new Padding(3, 2, 3, 2);
             comboBox_Select.Name = "comboBox_Select";
