@@ -303,7 +303,6 @@ C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.AssemblyInfoInputs.cache
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.AssemblyInfo.cs
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.csproj.CoreCompileInputs.cache
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.sourcelink.json
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project .74F23F9C.Up2Date
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\refint\Project #Filter.dll
@@ -319,3 +318,4 @@ C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Merge.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Sort.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Transform.resources
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Spammer.resources

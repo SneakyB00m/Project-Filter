@@ -188,6 +188,5 @@ namespace Project__Filter
                 }
             }
         }
-
     }
 }
