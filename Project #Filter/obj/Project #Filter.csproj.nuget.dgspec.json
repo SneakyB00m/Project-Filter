@@ -63,7 +63,7 @@
             },
             "Magick.NET-Q16-AnyCPU": {
               "target": "Package",
-              "version": "[13.6.0, )"
+              "version": "[13.7.0, )"
             },
             "Microsoft.Windows.Compatibility": {
               "target": "Package",

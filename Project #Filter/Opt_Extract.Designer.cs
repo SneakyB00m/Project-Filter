@@ -47,9 +47,9 @@
             label5 = new Label();
             radioButton_Folder = new RadioButton();
             panel2 = new Panel();
+            treeView1 = new TreeView();
             label_Count = new Label();
             label4 = new Label();
-            treeView1 = new TreeView();
             panel_Path.SuspendLayout();
             panel_T.SuspendLayout();
             panel_button.SuspendLayout();
@@ -187,6 +187,7 @@
             checkBox_Delete.Size = new Size(15, 14);
             checkBox_Delete.TabIndex = 44;
             checkBox_Delete.UseVisualStyleBackColor = true;
+            checkBox_Delete.CheckedChanged += checkBox_Delete_CheckedChanged;
             // 
             // button_Extract
             // 
@@ -303,6 +304,15 @@
             panel2.Size = new Size(247, 205);
             panel2.TabIndex = 0;
             // 
+            // treeView1
+            // 
+            treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            treeView1.Location = new Point(9, 37);
+            treeView1.Margin = new Padding(3, 2, 3, 2);
+            treeView1.Name = "treeView1";
+            treeView1.Size = new Size(233, 169);
+            treeView1.TabIndex = 5;
+            // 
             // label_Count
             // 
             label_Count.AutoSize = true;
@@ -324,15 +334,6 @@
             label4.Size = new Size(120, 21);
             label4.TabIndex = 2;
             label4.Text = "File List           #";
-            // 
-            // treeView1
-            // 
-            treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            treeView1.Location = new Point(9, 37);
-            treeView1.Margin = new Padding(3, 2, 3, 2);
-            treeView1.Name = "treeView1";
-            treeView1.Size = new Size(233, 169);
-            treeView1.TabIndex = 5;
             // 
             // Opt_Extract
             // 

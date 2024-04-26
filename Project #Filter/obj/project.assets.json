@@ -144,10 +144,10 @@
           "lib/itextsharp.dll": {}
         }
       },
-      "Magick.NET-Q16-AnyCPU/13.6.0": {
+      "Magick.NET-Q16-AnyCPU/13.7.0": {
         "type": "package",
         "dependencies": {
-          "Magick.NET.Core": "13.6.0"
+          "Magick.NET.Core": "13.7.0"
         },
         "compile": {
           "lib/netstandard21/Magick.NET-Q16-AnyCPU.dll": {
@@ -160,7 +160,7 @@
           }
         },
         "build": {
-          "build/netstandard20/Magick.NET-Q16-AnyCPU.targets": {}
+          "buildTransitive/netstandard20/Magick.NET-Q16-AnyCPU.targets": {}
         },
         "runtimeTargets": {
           "runtimes/linux-arm64/native/Magick.Native-Q16-arm64.dll.so": {
@@ -197,7 +197,7 @@
           }
         }
       },
-      "Magick.NET.Core/13.6.0": {
+      "Magick.NET.Core/13.7.0": {
         "type": "package",
         "compile": {
           "lib/netstandard21/Magick.NET.Core.dll": {
@@ -2193,10 +2193,10 @@
         "notice.txt"
       ]
     },
-    "Magick.NET-Q16-AnyCPU/13.6.0": {
-      "sha512": "yuRR9pMdf6DoQ0aa9u/CAANeaeMW4PxzCw4EMSm349/VLVa3bLv70hm2w6kQXpTpf+IPf2Th1+5AbcNA12sHrw==",
+    "Magick.NET-Q16-AnyCPU/13.7.0": {
+      "sha512": "qSnjW4MAE0jE0RJRhUyZnm0HZWIMXVWg0MrAMdsbQNZh7+4ymtkBwj93eK8zEkMH5AF/xbXGh6qvZ+apO+9W/w==",
       "type": "package",
-      "path": "magick.net-q16-anycpu/13.6.0",
+      "path": "magick.net-q16-anycpu/13.7.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2206,12 +2206,13 @@
         "Notice.osx.txt",
         "Notice.win.txt",
         "build/netstandard20/Magick.NET-Q16-AnyCPU.targets",
+        "buildTransitive/netstandard20/Magick.NET-Q16-AnyCPU.targets",
         "docs/Readme.md",
         "lib/netstandard20/Magick.NET-Q16-AnyCPU.dll",
         "lib/netstandard20/Magick.NET-Q16-AnyCPU.xml",
         "lib/netstandard21/Magick.NET-Q16-AnyCPU.dll",
         "lib/netstandard21/Magick.NET-Q16-AnyCPU.xml",
-        "magick.net-q16-anycpu.13.6.0.nupkg.sha512",
+        "magick.net-q16-anycpu.13.7.0.nupkg.sha512",
         "magick.net-q16-anycpu.nuspec",
         "runtimes/linux-arm64/native/Magick.Native-Q16-arm64.dll.so",
         "runtimes/linux-musl-x64/native/Magick.Native-Q16-x64.dll.so",
@@ -2223,10 +2224,10 @@
         "runtimes/win-x86/native/Magick.Native-Q16-x86.dll"
       ]
     },
-    "Magick.NET.Core/13.6.0": {
-      "sha512": "VHW7fxIM/5z0m7pm6XXkAqTTCg6DlvVyn6MS/DhJ1bwY9v8W27AdhYDWOLns2P9zkD0WR72YAXPlcVbbIBVW6A==",
+    "Magick.NET.Core/13.7.0": {
+      "sha512": "TzuzYWJpc+dkOrJeFE6KwYfPAyV6dGWA3SHHrCCHgUSIGyoAS3+HMOPyJy0r7lrMM/B1yqQpheWiy1SufmntQA==",
       "type": "package",
-      "path": "magick.net.core/13.6.0",
+      "path": "magick.net.core/13.7.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2237,7 +2238,7 @@
         "lib/netstandard20/Magick.NET.Core.xml",
         "lib/netstandard21/Magick.NET.Core.dll",
         "lib/netstandard21/Magick.NET.Core.xml",
-        "magick.net.core.13.6.0.nupkg.sha512",
+        "magick.net.core.13.7.0.nupkg.sha512",
         "magick.net.core.nuspec"
       ]
     },
@@ -5003,7 +5004,7 @@
       "Bunifu.UI.WinForms >= 6.1.0",
       "DocumentFormat.OpenXml >= 3.0.2",
       "HtmlAgilityPack >= 1.11.60",
-      "Magick.NET-Q16-AnyCPU >= 13.6.0",
+      "Magick.NET-Q16-AnyCPU >= 13.7.0",
       "Microsoft.Windows.Compatibility >= 8.0.4",
       "NAudio >= 2.2.1",
       "NReco.VideoConverter >= 1.2.1",
@@ -5079,7 +5080,7 @@
           },
           "Magick.NET-Q16-AnyCPU": {
             "target": "Package",
-            "version": "[13.6.0, )"
+            "version": "[13.7.0, )"
           },
           "Microsoft.Windows.Compatibility": {
             "target": "Package",

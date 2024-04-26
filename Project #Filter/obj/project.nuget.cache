@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Nol6P1ooXfVm2pzRgHQqlJUa9rCZwlituJE/Nj9DLKHUcRVvLt0K/ZquYS4he48GYZ3MuSq+MuaeBr2XtWrYng==",
+  "dgSpecHash": "ZI4S4aG9tLGO9xcOfpkYUq9+YDM9GuyjSIqSzeNivrfFpoto4cA3c1Y60g3iuAKNk773u5HOlwNBCDpbSqI1fQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Project #Filter.csproj",
   "expectedPackageFiles": [
@@ -14,8 +14,8 @@
     "C:\\Users\\alan_\\.nuget\\packages\\fody\\4.0.2\\fody.4.0.2.nupkg.sha512",
     "C:\\Users\\alan_\\.nuget\\packages\\htmlagilitypack\\1.11.60\\htmlagilitypack.1.11.60.nupkg.sha512",
     "C:\\Users\\alan_\\.nuget\\packages\\itextsharp\\5.5.13.3\\itextsharp.5.5.13.3.nupkg.sha512",
-    "C:\\Users\\alan_\\.nuget\\packages\\magick.net-q16-anycpu\\13.6.0\\magick.net-q16-anycpu.13.6.0.nupkg.sha512",
-    "C:\\Users\\alan_\\.nuget\\packages\\magick.net.core\\13.6.0\\magick.net.core.13.6.0.nupkg.sha512",
+    "C:\\Users\\alan_\\.nuget\\packages\\magick.net-q16-anycpu\\13.7.0\\magick.net-q16-anycpu.13.7.0.nupkg.sha512",
+    "C:\\Users\\alan_\\.nuget\\packages\\magick.net.core\\13.7.0\\magick.net.core.13.7.0.nupkg.sha512",
     "C:\\Users\\alan_\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\alan_\\.nuget\\packages\\microsoft.build.tasks.git\\8.0.0\\microsoft.build.tasks.git.8.0.0.nupkg.sha512",
     "C:\\Users\\alan_\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.0\\microsoft.extensions.configuration.6.0.0.nupkg.sha512",
