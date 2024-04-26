@@ -25,22 +25,46 @@
                     radioButton_Untar.Enabled = true;
                     radioButton_Unzip.Enabled = true;
                     button_Extract.Enabled = true;
+                    // Get all files in the directory and subdirectories
+                    string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
 
-                    // Create a new List to hold the file paths
-                    List<string> filePaths = new List<string>();
+                    // Count the files
+                    int fileCount = files.Length;
 
-                    // Use the Directory class from System.IO to get all files recursively
-                    filePaths.AddRange(Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories));
+                    // Display just the count in label_Count
+                    label_Count.Text = fileCount.ToString();
 
-                    // Add the file paths to the ListBox
-                    foreach (string filePath in filePaths)
-                    {
-                        listBox_File.Items.Add(filePath);
-                    }
+                    // Clear the TreeView
+                    treeView1.Nodes.Clear();
 
-                    label_Count.Text = $"{filePaths.Count}";
+                    // Create the root node
+                    TreeNode rootNode = new TreeNode(selectedPath);
+                    treeView1.Nodes.Add(rootNode);
+
+                    // Populate the TreeView with directories and files
+                    PopulateTreeView(selectedPath, rootNode);
+
+                    // Expand the root node
+                    rootNode.Expand();
                 }
+            }
+        }
 
+        private void PopulateTreeView(string directoryValue, TreeNode parentNode)
+        {
+            string[] directories = Directory.GetDirectories(directoryValue);
+            foreach (string directory in directories)
+            {
+                TreeNode directoryNode = new TreeNode(Path.GetFileName(directory));
+                parentNode.Nodes.Add(directoryNode);
+                PopulateTreeView(directory, directoryNode); // Recursively add subdirectories
+            }
+
+            string[] files = Directory.GetFiles(directoryValue);
+            foreach (string file in files)
+            {
+                // Add files to the TreeView
+                parentNode.Nodes.Add(new TreeNode(Path.GetFileName(file)));
             }
         }
 
