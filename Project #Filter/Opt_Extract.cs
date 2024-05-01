@@ -1,4 +1,11 @@
-﻿namespace Project__Filter
+﻿using SharpCompress.Archives;
+using SharpCompress.Archives.Rar;
+using SharpCompress.Archives.Tar;
+using SharpCompress.Common;
+using SharpCompress.Writers;
+using System.IO.Compression;
+
+namespace Project__Filter
 {
     public partial class Opt_Extract : UserControl
     {
@@ -25,22 +32,46 @@
                     radioButton_Untar.Enabled = true;
                     radioButton_Unzip.Enabled = true;
                     button_Extract.Enabled = true;
+                    // Get all files in the directory and subdirectories
+                    string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
 
-                    // Create a new List to hold the file paths
-                    List<string> filePaths = new List<string>();
+                    // Count the files
+                    int fileCount = files.Length;
 
-                    // Use the Directory class from System.IO to get all files recursively
-                    filePaths.AddRange(Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories));
+                    // Display just the count in label_Count
+                    label_Count.Text = fileCount.ToString();
 
-                    // Add the file paths to the ListBox
-                    foreach (string filePath in filePaths)
-                    {
-                        listBox_File.Items.Add(filePath);
-                    }
+                    // Clear the TreeView
+                    treeView1.Nodes.Clear();
 
-                    label_Count.Text = $"{filePaths.Count}";
+                    // Create the root node
+                    TreeNode rootNode = new TreeNode(selectedPath);
+                    treeView1.Nodes.Add(rootNode);
+
+                    // Populate the TreeView with directories and files
+                    PopulateTreeView(selectedPath, rootNode);
+
+                    // Expand the root node
+                    rootNode.Expand();
                 }
+            }
+        }
 
+        private void PopulateTreeView(string directoryValue, TreeNode parentNode)
+        {
+            string[] directories = Directory.GetDirectories(directoryValue);
+            foreach (string directory in directories)
+            {
+                TreeNode directoryNode = new TreeNode(Path.GetFileName(directory));
+                parentNode.Nodes.Add(directoryNode);
+                PopulateTreeView(directory, directoryNode); // Recursively add subdirectories
+            }
+
+            string[] files = Directory.GetFiles(directoryValue);
+            foreach (string file in files)
+            {
+                // Add files to the TreeView
+                parentNode.Nodes.Add(new TreeNode(Path.GetFileName(file)));
             }
         }
 
@@ -48,81 +79,211 @@
         {
             if (radioButton_Folder.Checked)
             {
-                ExtractFiles();
+                MoveFiles(selectedPath);
             }
             else if (radioButton_Unrar.Checked)
             {
-
+                UncompressRar(selectedPath);
             }
             else if (radioButton_Untar.Checked)
             {
-
+                UncompressTar(selectedPath);
             }
             else if (radioButton_Unzip.Checked)
             {
-
+                UnzipDirectory(selectedPath);
             }
+        }
 
+        private void checkBox_Delete_CheckedChanged(object sender, EventArgs e)
+        {
             if (checkBox_Delete.Checked)
             {
-                   DeleteFolders();
-            }
-
-        }
-
-        public void DeleteFolders() {
-            // Get all directories from the selected directory
-            string[] directories = Directory.GetDirectories(selectedPath, "*", SearchOption.AllDirectories);
-
-            // Check each directory
-            foreach (string dir in directories)
-            {
-                // Get all files and subdirectories in the directory
-                if (Directory.GetFiles(dir).Length == 0 && Directory.GetDirectories(dir).Length == 0)
-                {
-                    // If the directory is empty, delete it
-                    Directory.Delete(dir);
-                }
+                DeleteFolders(selectedPath);
             }
         }
 
-        private void ExtractFiles()
+        public void MoveFiles(string rootPath)
         {
-            // Run on a separate thread to avoid freezing the UI
-            Task.Run(() =>
+            // Construct the destination folder path
+            string destinationFolder = Path.Combine(rootPath, "Extracted");
+
+            // Ensure the destination folder exists
+            Directory.CreateDirectory(destinationFolder);
+
+            // Get all files in the root path and its subdirectories
+            string[] files = Directory.GetFiles(rootPath, "*.*", SearchOption.AllDirectories);
+
+            foreach (string file in files)
             {
-                string targetPath = Path.Combine(selectedPath, "Extracted"); // The path of the target directory
+                // Skip if the file is in the destination folder
+                if (file.StartsWith(destinationFolder))
+                    continue;
 
-                if (!Directory.Exists(targetPath))
+                // Get the file name
+                string fileName = Path.GetFileName(file);
+
+                // Construct the destination path
+                string destPath = Path.Combine(destinationFolder, fileName);
+
+                // Move the file
+                File.Move(file, destPath);
+            }
+        }
+
+        public void UncompressRar(string rootPath)
+        {
+            string destinationPath = Path.Combine(Path.GetDirectoryName(rootPath), Path.GetFileNameWithoutExtension(rootPath));
+            Directory.CreateDirectory(destinationPath);
+
+            try
+            {
+                using (var archive = RarArchive.Open(rootPath))
                 {
-                    Directory.CreateDirectory(targetPath);
-                }
-
-                string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
-
-                // Set the maximum value of the progress bar
-                Invoke((Action)(() => progressBar_Time.Maximum = files.Length));
-
-                for (int i = 0; i < files.Length; i++)
-                {
-                    string fileName = Path.GetFileName(files[i]);
-                    string destFile = Path.Combine(targetPath, fileName);
-
-                    if (!File.Exists(destFile))
+                    foreach (var entry in archive.Entries)
                     {
-                        File.Move(files[i], destFile);
+                        if (!entry.IsDirectory)
+                        {
+                            Console.WriteLine("Extracting: " + entry.Key);
+                            entry.WriteToDirectory(destinationPath, new ExtractionOptions()
+                            {
+                                ExtractFullPath = true,
+                                Overwrite = true
+                            });
+                        }
                     }
-
-                    // Update the progress bar
-                    Invoke((Action)(() => progressBar_Time.Value = i + 1));
                 }
+                Console.WriteLine("Extraction completed successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while extracting the file. Details: " + ex.Message);
+            }
+        }
 
-                // Show a message box when done
-                Invoke((Action)(() => MessageBox.Show("File extraction completed!")));
+        public void UncompressTar(string rootpPath)
+        {
+            string destinationPath = Path.Combine(Path.GetDirectoryName(rootpPath), Path.GetFileNameWithoutExtension(rootpPath));
+            Directory.CreateDirectory(destinationPath);
 
-                // Reset the progress bar
-                Invoke((Action)(() => progressBar_Time.Value = 0));
-            });
+            try
+            {
+                using (var archive = TarArchive.Open(rootpPath))
+                {
+                    foreach (var entry in archive.Entries)
+                    {
+                        if (!entry.IsDirectory)
+                        {
+                            Console.WriteLine("Extracting: " + entry.Key);
+                            entry.WriteToDirectory(destinationPath, new ExtractionOptions()
+                            {
+                                ExtractFullPath = true,
+                                Overwrite = true
+                            });
+                        }
+                    }
+                }
+                Console.WriteLine("Extraction completed successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while extracting the file. Details: " + ex.Message);
+            }
+        }
+
+        public static void CompressTar(string rootPath)
+        {
+            string tarFilePath = Path.Combine(Path.GetDirectoryName(rootPath), Path.GetFileName(rootPath) + ".tar");
+
+            try
+            {
+                using (var stream = File.OpenWrite(tarFilePath))
+                {
+                    using (var writer = WriterFactory.Open(stream, ArchiveType.Tar, CompressionType.None))
+                    {
+                        writer.WriteAll(rootPath, "*", SearchOption.AllDirectories);
+                    }
+                }
+                Console.WriteLine("Compression completed successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while compressing the directory. Details: " + ex.Message);
+            }
+        }
+
+        public static void CompressRar(string rootPath)
+        {
+            string rarFilePath = Path.Combine(Path.GetDirectoryName(rootPath), Path.GetFileName(rootPath) + ".rar");
+
+            try
+            {
+                using (var stream = File.OpenWrite(rarFilePath))
+                {
+                    using (var writer = WriterFactory.Open(stream, ArchiveType.Rar, CompressionType.Rar))
+                    {
+                        writer.WriteAll(rootPath, "*", SearchOption.AllDirectories);
+                    }
+                }
+                Console.WriteLine("Compression completed successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while compressing the directory. Details: " + ex.Message);
+            }
+        }
+
+        public static void ZipDirectory(string rootPath)
+        {
+            string zipFilePath = Path.Combine(rootPath, "archive.zip");
+
+            try
+            {
+                ZipFile.CreateFromDirectory(rootPath, zipFilePath);
+                Console.WriteLine("Zipping completed successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while zipping the directory. Details: " + ex.Message);
+            }
+        }
+
+        public static void UnzipDirectory(string rootPath)
+        {
+            string extractPath = Path.Combine(Path.GetDirectoryName(rootPath), Path.GetFileNameWithoutExtension(rootPath));
+            Directory.CreateDirectory(extractPath);
+
+            try
+            {
+                ZipFile.ExtractToDirectory(rootPath, extractPath);
+                Console.WriteLine("Unzipping completed successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while unzipping the file. Details: " + ex.Message);
+            }
+        }
+
+        public static void DeleteFolders(string rootPath)
+        {
+            foreach (var directory in Directory.GetDirectories(rootPath))
+            {
+                DeleteFolders(directory);  // Recursively call the function for all subdirectories
+
+                if (Directory.GetFiles(directory).Length == 0 &&
+                    Directory.GetDirectories(directory).Length == 0)  // If directory is empty
+                {
+                    try
+                    {
+                        Directory.Delete(directory);  // Delete the directory
+                        Console.WriteLine($"Deleted: {directory}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"An error occurred while deleting the directory. Details: {ex.Message}");
+                    }
+                }
+            }
         }
 
     }

@@ -59,15 +59,15 @@
             },
             "HtmlAgilityPack": {
               "target": "Package",
-              "version": "[1.11.59, )"
+              "version": "[1.11.60, )"
             },
             "Magick.NET-Q16-AnyCPU": {
               "target": "Package",
-              "version": "[13.6.0, )"
+              "version": "[13.7.0, )"
             },
             "Microsoft.Windows.Compatibility": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.4, )"
             },
             "NAudio": {
               "target": "Package",
@@ -91,7 +91,7 @@
             },
             "SharpCompress": {
               "target": "Package",
-              "version": "[0.36.0, )"
+              "version": "[0.37.0, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

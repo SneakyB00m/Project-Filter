@@ -13,6 +13,9 @@
     <Compile Update="Menu_Sizes.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Opt_Spammer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Opt_Transform.cs">
       <SubType>UserControl</SubType>
     </Compile>
