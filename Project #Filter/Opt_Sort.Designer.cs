@@ -47,9 +47,7 @@
             checkBox_Date = new CheckBox();
             checkBox_Size = new CheckBox();
             checkBox_Name = new CheckBox();
-            label6 = new Label();
             label5 = new Label();
-            comboBox_Select = new ComboBox();
             panel2 = new Panel();
             treeView1 = new TreeView();
             label_Count = new Label();
@@ -229,9 +227,7 @@
             panel_Options.Controls.Add(checkBox_Date);
             panel_Options.Controls.Add(checkBox_Size);
             panel_Options.Controls.Add(checkBox_Name);
-            panel_Options.Controls.Add(label6);
             panel_Options.Controls.Add(label5);
-            panel_Options.Controls.Add(comboBox_Select);
             panel_Options.Controls.Add(panel2);
             panel_Options.Dock = DockStyle.Fill;
             panel_Options.Location = new Point(0, 104);
@@ -247,7 +243,7 @@
             checkBox2.Enabled = false;
             checkBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox2.ForeColor = Color.White;
-            checkBox2.Location = new Point(161, 105);
+            checkBox2.Location = new Point(177, 64);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(120, 25);
             checkBox2.TabIndex = 56;
@@ -261,7 +257,7 @@
             checkBox1.Enabled = false;
             checkBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(3, 105);
+            checkBox1.Location = new Point(19, 64);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(134, 25);
             checkBox1.TabIndex = 55;
@@ -275,7 +271,7 @@
             checkBox_Date.Enabled = false;
             checkBox_Date.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox_Date.ForeColor = Color.White;
-            checkBox_Date.Location = new Point(271, 152);
+            checkBox_Date.Location = new Point(287, 111);
             checkBox_Date.Name = "checkBox_Date";
             checkBox_Date.Size = new Size(122, 25);
             checkBox_Date.TabIndex = 54;
@@ -289,7 +285,7 @@
             checkBox_Size.Enabled = false;
             checkBox_Size.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox_Size.ForeColor = Color.White;
-            checkBox_Size.Location = new Point(161, 152);
+            checkBox_Size.Location = new Point(177, 111);
             checkBox_Size.Name = "checkBox_Size";
             checkBox_Size.Size = new Size(83, 25);
             checkBox_Size.TabIndex = 53;
@@ -303,23 +299,12 @@
             checkBox_Name.Enabled = false;
             checkBox_Name.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox_Name.ForeColor = Color.White;
-            checkBox_Name.Location = new Point(3, 152);
+            checkBox_Name.Location = new Point(19, 111);
             checkBox_Name.Name = "checkBox_Name";
             checkBox_Name.Size = new Size(109, 25);
             checkBox_Name.TabIndex = 52;
             checkBox_Name.Text = "By Include";
             checkBox_Name.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(3, 64);
-            label6.Name = "label6";
-            label6.Size = new Size(78, 25);
-            label6.TabIndex = 50;
-            label6.Text = "Actions";
             // 
             // label5
             // 
@@ -332,21 +317,6 @@
             label5.Size = new Size(104, 32);
             label5.TabIndex = 41;
             label5.Text = "Options";
-            // 
-            // comboBox_Select
-            // 
-            comboBox_Select.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            comboBox_Select.BackColor = Color.FromArgb(64, 64, 64);
-            comboBox_Select.Enabled = false;
-            comboBox_Select.FlatStyle = FlatStyle.Flat;
-            comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
-            comboBox_Select.ForeColor = Color.White;
-            comboBox_Select.FormattingEnabled = true;
-            comboBox_Select.Location = new Point(113, 7);
-            comboBox_Select.Margin = new Padding(3, 2, 3, 2);
-            comboBox_Select.Name = "comboBox_Select";
-            comboBox_Select.Size = new Size(301, 29);
-            comboBox_Select.TabIndex = 42;
             // 
             // panel2
             // 
@@ -437,9 +407,7 @@
         private Label label_Count;
         private Label label4;
         private Label label5;
-        private ComboBox comboBox_Select;
         private CheckBox checkBox_Date;
-        private Label label6;
         private CheckBox checkBox2;
         private CheckBox checkBox1;
         private CheckBox checkBox_Size;
