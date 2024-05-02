@@ -8,6 +8,7 @@ namespace Project__Filter
 
         List<string> checkedOrder = new List<string>();
         string selectedPath;
+        int initialFileCount;
 
         public Opt_Sort()
         {
@@ -29,10 +30,10 @@ namespace Project__Filter
                     string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
 
                     // Count the files
-                    int fileCount = files.Length;
+                    initialFileCount = files.Length;
 
                     // Display just the count in label_Count
-                    label_Count.Text = fileCount.ToString();
+                    label_Count.Text = initialFileCount.ToString();
 
                     // Clear the TreeView
                     treeView1.Nodes.Clear();
@@ -66,25 +67,67 @@ namespace Project__Filter
             {
                 switch (checkboxName)
                 {
-                    case "Resolution":
+                    case "checkBox_Resolution":
                         SortByResolution(selectedPath);
                         break;
-                    case "Duration":
+                    case "checkBox_Duration":
                         if (File.Exists("Duration.json"))
                         {
                             SortByDuration("Duration.json", selectedPath);
                         }
                         break;
-                    case "Include":
+                    case "checkBox_Include":
                         string searchText = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "", -1, -1);
                         SortBySimilar(selectedPath, searchText);
                         break;
-                    case "Size":
+                    case "checkBox_Size":
                         SortBySize(selectedPath);
                         break;
-                    case "AtoZ":
+                    case "checkBox_Alphabet":
                         SortAlphabetically(selectedPath);
                         break;
+                }
+            }
+        }
+
+        private void checkBox_Include_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateCheckedOrder(sender as CheckBox);
+        }
+
+        private void checkBox_Resolution_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateCheckedOrder(sender as CheckBox);
+        }
+
+        private void checkBox_Duration_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateCheckedOrder(sender as CheckBox);
+        }
+
+        private void checkBox_Size_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateCheckedOrder(sender as CheckBox);
+        }
+
+        private void checkBox_Alphabet_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateCheckedOrder(sender as CheckBox);
+        }
+
+        private void UpdateCheckedOrder(CheckBox checkBox)
+        {
+            if (checkBox != null)
+            {
+                if (checkBox.Checked)
+                {
+                    // Add the checkbox's name to the list when it's checked
+                    checkedOrder.Add(checkBox.Name);
+                }
+                else
+                {
+                    // Remove the checkbox's name from the list when it's unchecked
+                    checkedOrder.Remove(checkBox.Name);
                 }
             }
         }
@@ -107,7 +150,6 @@ namespace Project__Filter
             }
         }
 
-        // Sorts
         public void SortFiles(string jsonFile, string rootPath)
         {
             // Load the JSON file
@@ -116,27 +158,30 @@ namespace Project__Filter
             // Walk through the directory
             foreach (var file in Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories))
             {
-                // Get the file extension
-                string fileExt = Path.GetExtension(file).ToLower();
+                // Get the file extension and convert it to lowercase
+                string fileExt = Path.GetExtension(file).ToLower().TrimStart('.');
+                string destinationDirectory;
 
                 // Check if the file extension is in the dictionary
-                foreach (var folder in folders)
+                if (folders.Any(kvp => kvp.Value.Contains(fileExt)))
                 {
-                    if (folder.Value.Contains(fileExt))
-                    {
-                        // Construct the source and destination paths
-                        string srcPath = file;
-                        string destPath = Path.Combine(rootPath, folder.Key, Path.GetFileName(file));
-
-                        // Create the destination folder if it doesn't exist
-                        Directory.CreateDirectory(Path.GetDirectoryName(destPath));
-
-                        // Move the file
-                        File.Move(srcPath, destPath);
-
-                        break;
-                    }
+                    string key = folders.First(kvp => kvp.Value.Contains(fileExt)).Key;
+                    destinationDirectory = Path.Combine(rootPath, key);
                 }
+                else
+                {
+                    destinationDirectory = Path.Combine(rootPath, "Other");
+                }
+
+                // Create the destination folder if it doesn't exist
+                Directory.CreateDirectory(destinationDirectory);
+
+                // Construct the source and destination paths
+                string srcPath = file;
+                string destPath = Path.Combine(destinationDirectory, Path.GetFileName(file));
+
+                // Move the file
+                File.Move(srcPath, destPath);
             }
 
             // Clear the TreeView
@@ -151,7 +196,10 @@ namespace Project__Filter
 
             // Expand the root node
             rootNode.Expand();
+
+            ScanFiles(rootPath);
         }
+
 
         public void SortByResolution(string rootPath)
         {
@@ -187,6 +235,7 @@ namespace Project__Filter
                     string newPath = Path.Combine(directory, $"{i}_{Path.GetFileName(sortedFiles[i])}");
                     File.Move(sortedFiles[i], newPath);
                 }
+                ScanFiles(rootPath);
             }
 
             // Clear the TreeView
@@ -236,6 +285,7 @@ namespace Project__Filter
                         break;
                     }
                 }
+                ScanFiles(rootPath);
             }
 
             // Clear the TreeView
@@ -283,6 +333,8 @@ namespace Project__Filter
 
             // Expand the root node
             rootNode.Expand();
+
+            ScanFiles(rootPath);
         }
 
         public void SortBySize(string rootPath)
@@ -318,6 +370,8 @@ namespace Project__Filter
 
             // Expand the root node
             rootNode.Expand();
+
+            ScanFiles(rootPath);
         }
 
         public void SortAlphabetically(string rootPath)
@@ -353,6 +407,22 @@ namespace Project__Filter
 
             // Expand the root node
             rootNode.Expand();
+
+            ScanFiles(rootPath);
         }
+
+        public void ScanFiles(string rootPath)
+        {
+            string[] files = Directory.GetFiles(rootPath, "*.*", SearchOption.AllDirectories);
+
+            int finalFileCount = files.Length;
+
+            if (initialFileCount != finalFileCount)
+            {
+                MessageBox.Show("Some files were lost during the sorting operation.");
+            }
+        }
+
+     
     }
 }
