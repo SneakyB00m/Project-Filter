@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 using NReco.VideoInfo;
 
 namespace Project__Filter
@@ -77,7 +78,6 @@ namespace Project__Filter
                         }
                         break;
                     case "checkBox_Include":
-                        string searchText = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "", -1, -1);
                         SortBySimilar(selectedPath, searchText);
                         break;
                     case "checkBox_Size":
@@ -115,6 +115,8 @@ namespace Project__Filter
             UpdateCheckedOrder(sender as CheckBox);
         }
 
+
+        // Functions
         private void UpdateCheckedOrder(CheckBox checkBox)
         {
             if (checkBox != null)
@@ -199,7 +201,6 @@ namespace Project__Filter
 
             ScanFiles(rootPath);
         }
-
 
         public void SortByResolution(string rootPath)
         {
@@ -302,39 +303,46 @@ namespace Project__Filter
             rootNode.Expand();
         }
 
-        public void SortBySimilar(string rootPath, string searchText)
+        public void SortBySimilar(string rootPath)
         {
             // Get all files in the directory and its subdirectories
             var files = Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories);
 
-            // Filter the files by the search text
-            var similarFiles = files.Where(f => Path.GetFileNameWithoutExtension(f).ToLower().Contains(searchText.ToLower())).ToList();
+            // Group the files by the common part of their names
+            var groupedFiles = files.GroupBy(f => Regex.Match(Path.GetFileNameWithoutExtension(f), @"^\D*").Value);
 
-            // Create a new folder for the similar files
-            string similarFolder = Path.Combine(rootPath, searchText);
-            Directory.CreateDirectory(similarFolder);
-
-            // Move the similar files to the new folder
-            foreach (var file in similarFiles)
+            foreach (var group in groupedFiles)
             {
-                string destPath = Path.Combine(similarFolder, Path.GetFileName(file));
-                File.Move(file, destPath);
+                string commonName = group.Key;
+
+                // Skip the group if the common name is empty
+                if (string.IsNullOrEmpty(commonName))
+                    continue;
+
+                // Create a new folder for the similar files
+                string similarFolder = Path.Combine(rootPath, commonName);
+                Directory.CreateDirectory(similarFolder);
+
+                // Move the similar files to the new folder
+                foreach (var file in group)
+                {
+                    string destPath = Path.Combine(similarFolder, Path.GetFileName(file));
+                    File.Move(file, destPath);
+                }
             }
 
             // Clear the TreeView
             treeView1.Nodes.Clear();
 
             // Create the root node
-            TreeNode rootNode = new TreeNode(selectedPath);
+            TreeNode rootNode = new TreeNode(rootPath);
             treeView1.Nodes.Add(rootNode);
 
             // Populate the TreeView with directories and files
-            PopulateTreeView(selectedPath, rootNode);
+            PopulateTreeView(rootPath, rootNode);
 
             // Expand the root node
             rootNode.Expand();
-
-            ScanFiles(rootPath);
         }
 
         public void SortBySize(string rootPath)
@@ -422,7 +430,5 @@ namespace Project__Filter
                 MessageBox.Show("Some files were lost during the sorting operation.");
             }
         }
-
-     
     }
 }
