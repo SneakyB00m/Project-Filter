@@ -105,31 +105,44 @@ namespace Project__Filter
 
         public void MoveFiles(string rootPath)
         {
-            // Construct the destination folder path
-            string destinationFolder = Path.Combine(rootPath, "Extracted");
+            // Construct the destination folder paths
+            string extractedFolder = Path.Combine(rootPath, "Extracted");
+            string duplicatedFolder = Path.Combine(rootPath, "Duplicated");
 
-            // Ensure the destination folder exists
-            Directory.CreateDirectory(destinationFolder);
+            // Ensure the destination folders exist
+            Directory.CreateDirectory(extractedFolder);
+            Directory.CreateDirectory(duplicatedFolder);
 
             // Get all files in the root path and its subdirectories
             string[] files = Directory.GetFiles(rootPath, "*.*", SearchOption.AllDirectories);
 
             foreach (string file in files)
             {
-                // Skip if the file is in the destination folder
-                if (file.StartsWith(destinationFolder))
+                // Skip if the file is in the destination folders
+                if (file.StartsWith(extractedFolder) || file.StartsWith(duplicatedFolder))
                     continue;
 
                 // Get the file name
                 string fileName = Path.GetFileName(file);
 
-                // Construct the destination path
-                string destPath = Path.Combine(destinationFolder, fileName);
+                // Construct the destination paths
+                string destPathExtracted = Path.Combine(extractedFolder, fileName);
+                string destPathDuplicated = Path.Combine(duplicatedFolder, fileName);
 
-                // Move the file
-                File.Move(file, destPath);
+                // Check if the file already exists in the extracted folder
+                if (File.Exists(destPathExtracted))
+                {
+                    // If the file exists, move it to the duplicated folder
+                    File.Move(file, destPathDuplicated);
+                }
+                else
+                {
+                    // If the file does not exist, move it to the extracted folder
+                    File.Move(file, destPathExtracted);
+                }
             }
         }
+
 
         public void UncompressRar(string rootPath)
         {
