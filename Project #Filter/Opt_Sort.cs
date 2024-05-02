@@ -223,35 +223,41 @@ namespace Project__Filter
             // Initialize FFProbe
             var ffProbe = new FFProbe();
 
-            // Walk through the directory
-            foreach (var file in Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories))
+            // Get all directories
+            var directories = Directory.GetDirectories(rootPath, "Videos", SearchOption.AllDirectories);
+
+            foreach (var directory in directories)
             {
-                // Get the file duration in seconds
-                var videoInfo = ffProbe.GetMediaInfo(file);
-                int fileDuration = (int)videoInfo.Duration.TotalSeconds;
-
-                // Check if the file duration is in the dictionary
-                foreach (var duration in durations)
+                // Walk through the directory
+                foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.AllDirectories))
                 {
-                    int minDuration = duration.Value["Item1"];
-                    int maxDuration = duration.Value["Item2"];
+                    // Get the file duration in seconds
+                    var videoInfo = ffProbe.GetMediaInfo(file);
+                    int fileDuration = (int)videoInfo.Duration.TotalSeconds;
 
-                    if (fileDuration >= minDuration && fileDuration <= maxDuration)
+                    // Check if the file duration is in the dictionary
+                    foreach (var duration in durations)
                     {
-                        // Get the directory of the file
-                        string fileDirectory = Path.GetDirectoryName(file);
+                        int minDuration = duration.Value["Item1"];
+                        int maxDuration = duration.Value["Item2"];
 
-                        // Construct the source and destination paths
-                        string srcPath = file;
-                        string destPath = Path.Combine(fileDirectory, duration.Key, Path.GetFileName(file));
+                        if (fileDuration >= minDuration && fileDuration <= maxDuration)
+                        {
+                            // Get the directory of the file
+                            string fileDirectory = Path.GetDirectoryName(file);
 
-                        // Create the destination folder if it doesn't exist
-                        Directory.CreateDirectory(Path.GetDirectoryName(destPath));
+                            // Construct the source and destination paths
+                            string srcPath = file;
+                            string destPath = Path.Combine(fileDirectory, duration.Key, Path.GetFileName(file));
 
-                        // Move the file
-                        File.Move(srcPath, destPath);
+                            // Create the destination folder if it doesn't exist
+                            Directory.CreateDirectory(Path.GetDirectoryName(destPath));
 
-                        break;
+                            // Move the file
+                            File.Move(srcPath, destPath);
+
+                            break;
+                        }
                     }
                 }
 
@@ -262,23 +268,23 @@ namespace Project__Filter
             treeView1.Nodes.Clear();
 
             // Create the root node
-            TreeNode rootNode = new TreeNode(selectedPath);
+            TreeNode rootNode = new TreeNode(rootPath);
             treeView1.Nodes.Add(rootNode);
 
             // Populate the TreeView with directories and files
-            PopulateTreeView(selectedPath, rootNode);
+            PopulateTreeView(rootPath, rootNode);
 
             // Expand the root node
             rootNode.Expand();
         }
 
-        public void SortByResolution(string rootPath)
+        public void SortByResolution(string rootPath)  // Resolution
         {
             // Initialize FFProbe
             var ffProbe = new FFProbe();
 
-            // Get all directories
-            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
+            // Get all directories named "Videos"
+            var directories = Directory.GetDirectories(rootPath, "Videos", SearchOption.AllDirectories);
 
             foreach (var directory in directories)
             {
@@ -318,18 +324,96 @@ namespace Project__Filter
             treeView1.Nodes.Clear();
 
             // Create the root node
-            TreeNode rootNode = new TreeNode(selectedPath);
+            TreeNode rootNode = new TreeNode(rootPath);
             treeView1.Nodes.Add(rootNode);
 
             // Populate the TreeView with directories and files
-            PopulateTreeView(selectedPath, rootNode);
+            PopulateTreeView(rootPath, rootNode);
 
             // Expand the root node
             rootNode.Expand();
         }
 
+        public void SortBySize(string rootPath)
+        {
+            // Get all directories
+            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
 
+            foreach (var directory in directories)
+            {
+                // Get all files in the directory
+                var files = Directory.GetFiles(directory);
 
+                // Sort the files by size
+                var sortedFiles = files.OrderBy(f => new FileInfo(f).Length).ToList();
+
+                // Create a new folder for the sorted files
+                string sortedFolder = Path.Combine(directory, "SortedBySize");
+                Directory.CreateDirectory(sortedFolder);
+
+                // Rename the files to sort them by size and move them to the new folder
+                for (int i = 0; i < sortedFiles.Count; i++)
+                {
+                    string newPath = Path.Combine(sortedFolder, $"{i}_{Path.GetFileName(sortedFiles[i])}");
+                    File.Move(sortedFiles[i], newPath);
+                }
+            }
+
+            // Clear the TreeView
+            treeView1.Nodes.Clear();
+
+            // Create the root node
+            TreeNode rootNode = new TreeNode(rootPath);
+            treeView1.Nodes.Add(rootNode);
+
+            // Populate the TreeView with directories and files
+            PopulateTreeView(rootPath, rootNode);
+
+            // Expand the root node
+            rootNode.Expand();
+
+            ScanFiles(rootPath);
+        }
+
+        public void SortAlphabetically(string rootPath)
+        {
+            // Get all directories
+            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
+
+            foreach (var directory in directories)
+            {
+                // Get all files in the directory
+                var files = Directory.GetFiles(directory);
+
+                // Sort the files alphabetically by name
+                var sortedFiles = files.OrderBy(f => Path.GetFileName(f)).ToList();
+
+                // Rename the files to sort them alphabetically
+                for (int i = 0; i < sortedFiles.Count; i++)
+                {
+                    string oldPath = sortedFiles[i];
+                    string newPath = Path.Combine(directory, $"{i}_{Path.GetFileName(oldPath)}");
+
+                    // Rename the file
+                    File.Move(oldPath, newPath);
+                }
+            }
+
+            // Clear the TreeView
+            treeView1.Nodes.Clear();
+
+            // Create the root node
+            TreeNode rootNode = new TreeNode(rootPath);
+            treeView1.Nodes.Add(rootNode);
+
+            // Populate the TreeView with directories and files
+            PopulateTreeView(rootPath, rootNode);
+
+            // Expand the root node
+            rootNode.Expand();
+
+            ScanFiles(rootPath);
+        }
 
         public void SortBySimilar(string rootPath)
         {
@@ -347,8 +431,11 @@ namespace Project__Filter
                 if (string.IsNullOrEmpty(commonName))
                     continue;
 
-                // Create a new folder for the similar files
-                string similarFolder = Path.Combine(rootPath, commonName);
+                // Get the directory of the first file in the group
+                string fileDirectory = Path.GetDirectoryName(group.First());
+
+                // Create a new folder for the similar files in the same directory as the file
+                string similarFolder = Path.Combine(fileDirectory, commonName);
                 Directory.CreateDirectory(similarFolder);
 
                 // Move the similar files to the new folder
@@ -372,45 +459,5 @@ namespace Project__Filter
             // Expand the root node
             rootNode.Expand();
         }
-
-
-
-        public void SortAlphabetically(string rootPath)
-        {
-            // Get all directories
-            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
-
-            foreach (var directory in directories)
-            {
-                // Get all files in the directory
-                var files = Directory.GetFiles(directory);
-
-                // Sort the files alphabetically
-                var sortedFiles = files.OrderBy(f => f).ToList();
-
-                // Rename the files to sort them alphabetically
-                for (int i = 0; i < sortedFiles.Count; i++)
-                {
-                    string newPath = Path.Combine(directory, $"{i}_{Path.GetFileName(sortedFiles[i])}");
-                    System.IO.File.Move(sortedFiles[i], newPath);
-                }
-            }
-
-            // Clear the TreeView
-            treeView1.Nodes.Clear();
-
-            // Create the root node
-            TreeNode rootNode = new TreeNode(selectedPath);
-            treeView1.Nodes.Add(rootNode);
-
-            // Populate the TreeView with directories and files
-            PopulateTreeView(selectedPath, rootNode);
-
-            // Expand the root node
-            rootNode.Expand();
-
-            ScanFiles(rootPath);
-        }
-
     }
 }
