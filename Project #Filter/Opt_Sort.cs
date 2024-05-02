@@ -78,7 +78,7 @@ namespace Project__Filter
                         }
                         break;
                     case "checkBox_Include":
-                        SortBySimilar(selectedPath, searchText);
+                        SortBySimilar(selectedPath);
                         break;
                     case "checkBox_Size":
                         SortBySize(selectedPath);
