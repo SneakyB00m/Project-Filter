@@ -79,7 +79,7 @@ namespace Project__Filter
 
         private void Main_Load(object sender, EventArgs e)
         {
-            if (!File.Exists("Folders.json") || !File.Exists("Sizes.json") || !File.Exists("Duration.json"))
+            if (!File.Exists("Folders.json"))
             {
                 var dictsort = new Dictionary<string, List<string>>
                 {
@@ -90,33 +90,27 @@ namespace Project__Filter
 
                 string sort = JsonConvert.SerializeObject(dictsort, Formatting.Indented);
                 File.WriteAllText("Folders.json", sort);
+            }
+            if (!File.Exists("Duration.json"))
+            {
 
-
-                var dictsize = new Dictionary<string, int>
+                var dictduration = new Dictionary<string, Tuple<int, int>>
                 {
-                    { "250MB to 500MB", 250 },
-                    { "500MB to 1GB", 500 },
-                    { "More than 1GB", 1000 }
+                    { "Less than 5 Min", new Tuple<int, int>(1, 299)},
+                    { "5 Min to 10 Min", new Tuple<int, int>(300, 600) },
+                    { "10 Min to 20 Min", new Tuple<int, int>(601, 1200) },
+                    { "20 Min to 30 Min", new Tuple<int, int>(1201, 1800) },
+                    { "30 Min to 40 Min", new Tuple<int, int>(1801, 2400) },
+                    { "40 Min to 50 Min", new Tuple<int, int>(2401, 3000) },
+                    { "50 Min to 1 Hr", new Tuple<int, int>(3001, 3600) },
+                    { "More than 1 Hr", new Tuple<int, int>(3601,284018400) }
                 };
 
-                string sizeJson = JsonConvert.SerializeObject(dictsize, Formatting.Indented);
-                File.WriteAllText("Sizes.json", sizeJson);
-
-
-                var dictduration = new Dictionary<string, int>
-                {
-                    { "Less than 5 Min", 300 },
-                    { "5 Min to 10 Min", 600 },
-                    { "10 Min to 1 Hr", 3600 },
-                    { "More than 1 Hr", 3601 }
-                };
 
                 string durationJson = JsonConvert.SerializeObject(dictduration, Formatting.Indented);
                 File.WriteAllText("Duration.json", durationJson);
 
             }
         }
-
-      
     }
 }
