@@ -202,6 +202,76 @@ namespace Project__Filter
             ScanFiles(rootPath);
         }
 
+        public void ScanFiles(string rootPath)
+        {
+            string[] files = Directory.GetFiles(rootPath, "*.*", SearchOption.AllDirectories);
+
+            int finalFileCount = files.Length;
+
+            if (initialFileCount != finalFileCount)
+            {
+                MessageBox.Show("Some files were lost during the sorting operation.");
+            }
+        }
+
+        // Add sorts
+        public void SortByDuration(string DurationJson, string rootPath)  // Duration
+        {
+            // Load the JSON file
+            var durations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, int>>>(File.ReadAllText(DurationJson));
+
+            // Initialize FFProbe
+            var ffProbe = new FFProbe();
+
+            // Walk through the directory
+            foreach (var file in Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories))
+            {
+                // Get the file duration in seconds
+                var videoInfo = ffProbe.GetMediaInfo(file);
+                int fileDuration = (int)videoInfo.Duration.TotalSeconds;
+
+                // Check if the file duration is in the dictionary
+                foreach (var duration in durations)
+                {
+                    int minDuration = duration.Value["Item1"];
+                    int maxDuration = duration.Value["Item2"];
+
+                    if (fileDuration >= minDuration && fileDuration <= maxDuration)
+                    {
+                        // Get the directory of the file
+                        string fileDirectory = Path.GetDirectoryName(file);
+
+                        // Construct the source and destination paths
+                        string srcPath = file;
+                        string destPath = Path.Combine(fileDirectory, duration.Key, Path.GetFileName(file));
+
+                        // Create the destination folder if it doesn't exist
+                        Directory.CreateDirectory(Path.GetDirectoryName(destPath));
+
+                        // Move the file
+                        File.Move(srcPath, destPath);
+
+                        break;
+                    }
+                }
+
+                ScanFiles(rootPath);
+            }
+
+            // Clear the TreeView
+            treeView1.Nodes.Clear();
+
+            // Create the root node
+            TreeNode rootNode = new TreeNode(selectedPath);
+            treeView1.Nodes.Add(rootNode);
+
+            // Populate the TreeView with directories and files
+            PopulateTreeView(selectedPath, rootNode);
+
+            // Expand the root node
+            rootNode.Expand();
+        }
+
         public void SortByResolution(string rootPath)
         {
             // Initialize FFProbe
@@ -230,65 +300,16 @@ namespace Project__Filter
                     return videoInfo.Streams[0].Width * videoInfo.Streams[0].Height;
                 }).ToList();
 
-                // Rename the files to sort them by resolution
+                // Create a new folder for the sorted files
+                string sortedFolder = Path.Combine(directory, "SortedByResolution");
+                Directory.CreateDirectory(sortedFolder);
+
+                // Rename the files to sort them by resolution and move them to the new folder
                 for (int i = 0; i < sortedFiles.Count; i++)
                 {
-                    string newPath = Path.Combine(directory, $"{i}_{Path.GetFileName(sortedFiles[i])}");
+                    string newPath = Path.Combine(sortedFolder, $"{i}_{Path.GetFileName(sortedFiles[i])}");
                     File.Move(sortedFiles[i], newPath);
                 }
-                ScanFiles(rootPath);
-            }
-
-            // Clear the TreeView
-            treeView1.Nodes.Clear();
-
-            // Create the root node
-            TreeNode rootNode = new TreeNode(selectedPath);
-            treeView1.Nodes.Add(rootNode);
-
-            // Populate the TreeView with directories and files
-            PopulateTreeView(selectedPath, rootNode);
-
-            // Expand the root node
-            rootNode.Expand();
-        }
-
-        public void SortByDuration(string DurationJson, string rootPath)
-        {
-            // Load the JSON file
-            var durations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, int>>>(File.ReadAllText(DurationJson));
-
-            // Initialize FFProbe
-            var ffProbe = new FFProbe();
-
-            // Walk through the directory
-            foreach (var file in Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories))
-            {
-                // Get the file duration in seconds
-                var videoInfo = ffProbe.GetMediaInfo(file);
-                int fileDuration = (int)videoInfo.Duration.TotalSeconds;
-
-                // Check if the file duration is in the dictionary
-                foreach (var duration in durations)
-                {
-                    int minDuration = duration.Value["Item1"];
-                    int maxDuration = duration.Value["Item2"];
-
-                    if (fileDuration >= minDuration && fileDuration <= maxDuration)
-                    {
-                        // Construct the source and destination paths
-                        string srcPath = file;
-                        string destPath = Path.Combine(rootPath, duration.Key, Path.GetFileName(file));
-
-                        // Create the destination folder if it doesn't exist
-                        Directory.CreateDirectory(Path.GetDirectoryName(destPath));
-
-                        // Move the file
-                        File.Move(srcPath, destPath);
-
-                        break;
-                    }
-                }
 
                 ScanFiles(rootPath);
             }
@@ -306,6 +327,8 @@ namespace Project__Filter
             // Expand the root node
             rootNode.Expand();
         }
+
+
 
 
         public void SortBySimilar(string rootPath)
@@ -350,42 +373,7 @@ namespace Project__Filter
             rootNode.Expand();
         }
 
-        public void SortBySize(string rootPath)
-        {
-            // Get all directories
-            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
 
-            foreach (var directory in directories)
-            {
-                // Get all files in the directory
-                var files = Directory.GetFiles(directory);
-
-                // Sort the files by size
-                var sortedFiles = files.OrderBy(f => new FileInfo(f).Length).ToList();
-
-                // Rename the files to sort them by size
-                for (int i = 0; i < sortedFiles.Count; i++)
-                {
-                    string newPath = Path.Combine(directory, $"{i}_{Path.GetFileName(sortedFiles[i])}");
-                    File.Move(sortedFiles[i], newPath);
-                }
-            }
-
-            // Clear the TreeView
-            treeView1.Nodes.Clear();
-
-            // Create the root node
-            TreeNode rootNode = new TreeNode(selectedPath);
-            treeView1.Nodes.Add(rootNode);
-
-            // Populate the TreeView with directories and files
-            PopulateTreeView(selectedPath, rootNode);
-
-            // Expand the root node
-            rootNode.Expand();
-
-            ScanFiles(rootPath);
-        }
 
         public void SortAlphabetically(string rootPath)
         {
@@ -424,16 +412,5 @@ namespace Project__Filter
             ScanFiles(rootPath);
         }
 
-        public void ScanFiles(string rootPath)
-        {
-            string[] files = Directory.GetFiles(rootPath, "*.*", SearchOption.AllDirectories);
-
-            int finalFileCount = files.Length;
-
-            if (initialFileCount != finalFileCount)
-            {
-                MessageBox.Show("Some files were lost during the sorting operation.");
-            }
-        }
     }
 }
