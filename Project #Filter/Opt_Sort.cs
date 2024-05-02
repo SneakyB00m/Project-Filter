@@ -291,30 +291,35 @@ namespace Project__Filter
                 // Get all files in the directory
                 var files = Directory.GetFiles(directory);
 
-                // Filter the files by the resolution
-                var filteredFiles = files.Where(f =>
+                // Filter and sort the files by the resolution
+                var sortedFiles = files.Where(f =>
                 {
                     var videoInfo = ffProbe.GetMediaInfo(f);
                     int resolution = videoInfo.Streams[0].Width * videoInfo.Streams[0].Height;
                     return resolution > 0;
-                }).ToList();
-
-                // Sort the files by resolution
-                var sortedFiles = filteredFiles.OrderBy(f =>
+                })
+                .OrderBy(f =>
                 {
                     var videoInfo = ffProbe.GetMediaInfo(f);
                     return videoInfo.Streams[0].Width * videoInfo.Streams[0].Height;
-                }).ToList();
+                })
+                .ToList();
 
-                // Create a new folder for the sorted files
-                string sortedFolder = Path.Combine(directory, "SortedByResolution");
-                Directory.CreateDirectory(sortedFolder);
-
-                // Rename the files to sort them by resolution and move them to the new folder
-                for (int i = 0; i < sortedFiles.Count; i++)
+                // Move the files to new folders based on their resolution
+                foreach (var file in sortedFiles)
                 {
-                    string newPath = Path.Combine(sortedFolder, $"{i}_{Path.GetFileName(sortedFiles[i])}");
-                    File.Move(sortedFiles[i], newPath);
+                    var videoInfo = ffProbe.GetMediaInfo(file);
+                    string resolution = $"{videoInfo.Streams[0].Width}x{videoInfo.Streams[0].Height}";
+
+                    // Create a new folder for the resolution if it doesn't exist
+                    string resolutionFolder = Path.Combine(directory, resolution);
+                    Directory.CreateDirectory(resolutionFolder);
+
+                    // Construct the destination path
+                    string destPath = Path.Combine(resolutionFolder, Path.GetFileName(file));
+
+                    // Move the file
+                    File.Move(file, destPath);
                 }
 
                 ScanFiles(rootPath);
