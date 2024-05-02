@@ -152,10 +152,10 @@ namespace Project__Filter
             }
         }
 
-        public void SortFiles(string jsonFile, string rootPath)
+        public void SortFiles(string FolderJson, string rootPath)
         {
             // Load the JSON file
-            var folders = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText(jsonFile));
+            var folders = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText(FolderJson));
 
             // Walk through the directory
             foreach (var file in Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories))
@@ -253,10 +253,10 @@ namespace Project__Filter
             rootNode.Expand();
         }
 
-        public void SortByDuration(string durationFile, string rootPath)
+        public void SortByDuration(string DurationJson, string rootPath)
         {
             // Load the JSON file
-            var durations = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText(durationFile));
+            var durations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, int>>>(File.ReadAllText(DurationJson));
 
             // Initialize FFProbe
             var ffProbe = new FFProbe();
@@ -264,14 +264,17 @@ namespace Project__Filter
             // Walk through the directory
             foreach (var file in Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories))
             {
-                // Get the file duration
+                // Get the file duration in seconds
                 var videoInfo = ffProbe.GetMediaInfo(file);
-                string fileDuration = videoInfo.Duration.ToString();
+                int fileDuration = (int)videoInfo.Duration.TotalSeconds;
 
                 // Check if the file duration is in the dictionary
                 foreach (var duration in durations)
                 {
-                    if (duration.Value.Contains(fileDuration))
+                    int minDuration = duration.Value["Item1"];
+                    int maxDuration = duration.Value["Item2"];
+
+                    if (fileDuration >= minDuration && fileDuration <= maxDuration)
                     {
                         // Construct the source and destination paths
                         string srcPath = file;
@@ -286,6 +289,7 @@ namespace Project__Filter
                         break;
                     }
                 }
+
                 ScanFiles(rootPath);
             }
 
@@ -302,6 +306,7 @@ namespace Project__Filter
             // Expand the root node
             rootNode.Expand();
         }
+
 
         public void SortBySimilar(string rootPath)
         {
