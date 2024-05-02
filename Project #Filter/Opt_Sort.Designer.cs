@@ -42,11 +42,11 @@
             panel_Header = new Panel();
             panel_Footer = new Panel();
             panel_Options = new Panel();
-            checkBox2 = new CheckBox();
-            checkBox1 = new CheckBox();
-            checkBox_Date = new CheckBox();
+            checkBox_Duration = new CheckBox();
+            checkBox_Resolution = new CheckBox();
+            checkBox_Alphabet = new CheckBox();
             checkBox_Size = new CheckBox();
-            checkBox_Name = new CheckBox();
+            checkBox_Include = new CheckBox();
             label5 = new Label();
             panel2 = new Panel();
             treeView1 = new TreeView();
@@ -222,11 +222,11 @@
             // 
             // panel_Options
             // 
-            panel_Options.Controls.Add(checkBox2);
-            panel_Options.Controls.Add(checkBox1);
-            panel_Options.Controls.Add(checkBox_Date);
+            panel_Options.Controls.Add(checkBox_Duration);
+            panel_Options.Controls.Add(checkBox_Resolution);
+            panel_Options.Controls.Add(checkBox_Alphabet);
             panel_Options.Controls.Add(checkBox_Size);
-            panel_Options.Controls.Add(checkBox_Name);
+            panel_Options.Controls.Add(checkBox_Include);
             panel_Options.Controls.Add(label5);
             panel_Options.Controls.Add(panel2);
             panel_Options.Dock = DockStyle.Fill;
@@ -236,47 +236,47 @@
             panel_Options.Size = new Size(667, 205);
             panel_Options.TabIndex = 33;
             // 
-            // checkBox2
+            // checkBox_Duration
             // 
-            checkBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            checkBox2.AutoSize = true;
-            checkBox2.Enabled = false;
-            checkBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            checkBox2.ForeColor = Color.White;
-            checkBox2.Location = new Point(177, 64);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(120, 25);
-            checkBox2.TabIndex = 56;
-            checkBox2.Text = "By Duration";
-            checkBox2.UseVisualStyleBackColor = true;
+            checkBox_Duration.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_Duration.AutoSize = true;
+            checkBox_Duration.Enabled = false;
+            checkBox_Duration.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            checkBox_Duration.ForeColor = Color.White;
+            checkBox_Duration.Location = new Point(177, 64);
+            checkBox_Duration.Name = "checkBox_Duration";
+            checkBox_Duration.Size = new Size(120, 25);
+            checkBox_Duration.TabIndex = 56;
+            checkBox_Duration.Text = "By Duration";
+            checkBox_Duration.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // checkBox_Resolution
             // 
-            checkBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            checkBox1.AutoSize = true;
-            checkBox1.Enabled = false;
-            checkBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(19, 64);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(134, 25);
-            checkBox1.TabIndex = 55;
-            checkBox1.Text = "By Resolution";
-            checkBox1.UseVisualStyleBackColor = true;
+            checkBox_Resolution.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_Resolution.AutoSize = true;
+            checkBox_Resolution.Enabled = false;
+            checkBox_Resolution.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            checkBox_Resolution.ForeColor = Color.White;
+            checkBox_Resolution.Location = new Point(19, 64);
+            checkBox_Resolution.Name = "checkBox_Resolution";
+            checkBox_Resolution.Size = new Size(134, 25);
+            checkBox_Resolution.TabIndex = 55;
+            checkBox_Resolution.Text = "By Resolution";
+            checkBox_Resolution.UseVisualStyleBackColor = true;
             // 
-            // checkBox_Date
+            // checkBox_Alphabet
             // 
-            checkBox_Date.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            checkBox_Date.AutoSize = true;
-            checkBox_Date.Enabled = false;
-            checkBox_Date.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            checkBox_Date.ForeColor = Color.White;
-            checkBox_Date.Location = new Point(287, 111);
-            checkBox_Date.Name = "checkBox_Date";
-            checkBox_Date.Size = new Size(122, 25);
-            checkBox_Date.TabIndex = 54;
-            checkBox_Date.Text = "By Alphabet";
-            checkBox_Date.UseVisualStyleBackColor = true;
+            checkBox_Alphabet.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_Alphabet.AutoSize = true;
+            checkBox_Alphabet.Enabled = false;
+            checkBox_Alphabet.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            checkBox_Alphabet.ForeColor = Color.White;
+            checkBox_Alphabet.Location = new Point(280, 135);
+            checkBox_Alphabet.Name = "checkBox_Alphabet";
+            checkBox_Alphabet.Size = new Size(122, 25);
+            checkBox_Alphabet.TabIndex = 54;
+            checkBox_Alphabet.Text = "By Alphabet";
+            checkBox_Alphabet.UseVisualStyleBackColor = true;
             // 
             // checkBox_Size
             // 
@@ -285,26 +285,26 @@
             checkBox_Size.Enabled = false;
             checkBox_Size.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             checkBox_Size.ForeColor = Color.White;
-            checkBox_Size.Location = new Point(177, 111);
+            checkBox_Size.Location = new Point(161, 135);
             checkBox_Size.Name = "checkBox_Size";
             checkBox_Size.Size = new Size(83, 25);
             checkBox_Size.TabIndex = 53;
             checkBox_Size.Text = "By Size";
             checkBox_Size.UseVisualStyleBackColor = true;
             // 
-            // checkBox_Name
+            // checkBox_Include
             // 
-            checkBox_Name.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            checkBox_Name.AutoSize = true;
-            checkBox_Name.Enabled = false;
-            checkBox_Name.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            checkBox_Name.ForeColor = Color.White;
-            checkBox_Name.Location = new Point(19, 111);
-            checkBox_Name.Name = "checkBox_Name";
-            checkBox_Name.Size = new Size(109, 25);
-            checkBox_Name.TabIndex = 52;
-            checkBox_Name.Text = "By Include";
-            checkBox_Name.UseVisualStyleBackColor = true;
+            checkBox_Include.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            checkBox_Include.AutoSize = true;
+            checkBox_Include.Enabled = false;
+            checkBox_Include.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            checkBox_Include.ForeColor = Color.White;
+            checkBox_Include.Location = new Point(19, 135);
+            checkBox_Include.Name = "checkBox_Include";
+            checkBox_Include.Size = new Size(109, 25);
+            checkBox_Include.TabIndex = 52;
+            checkBox_Include.Text = "By Include";
+            checkBox_Include.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -407,11 +407,11 @@
         private Label label_Count;
         private Label label4;
         private Label label5;
-        private CheckBox checkBox_Date;
-        private CheckBox checkBox2;
-        private CheckBox checkBox1;
+        private CheckBox checkBox_Alphabet;
+        private CheckBox checkBox_Duration;
+        private CheckBox checkBox_Resolution;
         private CheckBox checkBox_Size;
-        private CheckBox checkBox_Name;
+        private CheckBox checkBox_Include;
         private TreeView treeView1;
     }
 }

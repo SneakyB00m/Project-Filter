@@ -48,6 +48,12 @@ namespace Project__Filter
                     rootNode.Expand();
                 }
             }
+            checkBox_Resolution.Enabled = true;
+            checkBox_Duration.Enabled = true;
+            checkBox_Include.Enabled = true;
+            checkBox_Size.Enabled = true;
+            checkBox_Alphabet.Enabled = true;
+            button_Filter.Enabled = true;
         }
 
         private void button_Filter_Click(object sender, EventArgs e)

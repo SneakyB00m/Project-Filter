@@ -135,24 +135,13 @@ E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net8.0-windows7.0
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net8.0\System.ServiceProcess.ServiceController.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net8.0\System.Speech.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.csproj.AssemblyReference.cache
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Config_Extensions.resources
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Config_Menu.resources
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Config_Sizes.resources
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Convert.resources
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Downloader.resources
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Extract.resources
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Filter.resources
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Home.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Main.resources
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Merge.resources
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Privacy.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Properties.Resources.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.csproj.GenerateResource.cache
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.GeneratedMSBuildEditorConfig.editorconfig
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.AssemblyInfoInputs.cache
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.AssemblyInfo.cs
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.csproj.CoreCompileInputs.cache
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.sourcelink.json
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project .74F23F9C.Up2Date
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.dll
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\refint\Project #Filter.dll
@@ -319,3 +308,13 @@ C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Sort.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Transform.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Spammer.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Menu_Config.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Menu_Folders.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Menu_Sizes.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Encrypt.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Extract.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Home.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Merge.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Sort.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Spammer.resources
+E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Transform.resources
