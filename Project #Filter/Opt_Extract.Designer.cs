@@ -41,11 +41,8 @@
             checkBox_Delete = new CheckBox();
             button_Extract = new Button();
             panel1 = new Panel();
-            radioButton_Untar = new RadioButton();
-            radioButton_Unzip = new RadioButton();
-            radioButton_Unrar = new RadioButton();
+            comboBox_Options = new ComboBox();
             label5 = new Label();
-            radioButton_Folder = new RadioButton();
             panel2 = new Panel();
             treeView1 = new TreeView();
             label_Count = new Label();
@@ -209,11 +206,8 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(radioButton_Untar);
-            panel1.Controls.Add(radioButton_Unzip);
-            panel1.Controls.Add(radioButton_Unrar);
+            panel1.Controls.Add(comboBox_Options);
             panel1.Controls.Add(label5);
-            panel1.Controls.Add(radioButton_Folder);
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 104);
@@ -221,50 +215,19 @@
             panel1.Size = new Size(667, 205);
             panel1.TabIndex = 49;
             // 
-            // radioButton_Untar
+            // comboBox_Options
             // 
-            radioButton_Untar.Anchor = AnchorStyles.Top;
-            radioButton_Untar.AutoSize = true;
-            radioButton_Untar.Enabled = false;
-            radioButton_Untar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            radioButton_Untar.ForeColor = Color.White;
-            radioButton_Untar.Location = new Point(255, 141);
-            radioButton_Untar.Name = "radioButton_Untar";
-            radioButton_Untar.Size = new Size(67, 24);
-            radioButton_Untar.TabIndex = 44;
-            radioButton_Untar.TabStop = true;
-            radioButton_Untar.Text = "Untar";
-            radioButton_Untar.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_Unzip
-            // 
-            radioButton_Unzip.Anchor = AnchorStyles.Top;
-            radioButton_Unzip.AutoSize = true;
-            radioButton_Unzip.Enabled = false;
-            radioButton_Unzip.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            radioButton_Unzip.ForeColor = Color.White;
-            radioButton_Unzip.Location = new Point(255, 62);
-            radioButton_Unzip.Name = "radioButton_Unzip";
-            radioButton_Unzip.Size = new Size(67, 24);
-            radioButton_Unzip.TabIndex = 43;
-            radioButton_Unzip.TabStop = true;
-            radioButton_Unzip.Text = "Unzip";
-            radioButton_Unzip.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_Unrar
-            // 
-            radioButton_Unrar.Anchor = AnchorStyles.Top;
-            radioButton_Unrar.AutoSize = true;
-            radioButton_Unrar.Enabled = false;
-            radioButton_Unrar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            radioButton_Unrar.ForeColor = Color.White;
-            radioButton_Unrar.Location = new Point(64, 141);
-            radioButton_Unrar.Name = "radioButton_Unrar";
-            radioButton_Unrar.Size = new Size(67, 24);
-            radioButton_Unrar.TabIndex = 42;
-            radioButton_Unrar.TabStop = true;
-            radioButton_Unrar.Text = "Unrar";
-            radioButton_Unrar.UseVisualStyleBackColor = true;
+            comboBox_Options.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_Options.BackColor = Color.FromArgb(64, 64, 64);
+            comboBox_Options.FlatStyle = FlatStyle.Flat;
+            comboBox_Options.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            comboBox_Options.ForeColor = Color.White;
+            comboBox_Options.FormattingEnabled = true;
+            comboBox_Options.Items.AddRange(new object[] { "Extract Files", "Uncompress RAR", "Uncompress TAR", "Uncompress ZIP" });
+            comboBox_Options.Location = new Point(29, 69);
+            comboBox_Options.Name = "comboBox_Options";
+            comboBox_Options.Size = new Size(368, 28);
+            comboBox_Options.TabIndex = 41;
             // 
             // label5
             // 
@@ -277,21 +240,6 @@
             label5.Size = new Size(104, 32);
             label5.TabIndex = 40;
             label5.Text = "Options";
-            // 
-            // radioButton_Folder
-            // 
-            radioButton_Folder.Anchor = AnchorStyles.Top;
-            radioButton_Folder.AutoSize = true;
-            radioButton_Folder.Enabled = false;
-            radioButton_Folder.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            radioButton_Folder.ForeColor = Color.White;
-            radioButton_Folder.Location = new Point(64, 62);
-            radioButton_Folder.Name = "radioButton_Folder";
-            radioButton_Folder.Size = new Size(71, 24);
-            radioButton_Folder.TabIndex = 1;
-            radioButton_Folder.TabStop = true;
-            radioButton_Folder.Text = "Folder";
-            radioButton_Folder.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -379,10 +327,7 @@
         private Label label4;
         private Button button_Path;
         private Label label_Count;
-        private RadioButton radioButton_Untar;
-        private RadioButton radioButton_Unzip;
-        private RadioButton radioButton_Unrar;
-        private RadioButton radioButton_Folder;
         private TreeView treeView1;
+        private ComboBox comboBox_Options;
     }
 }
