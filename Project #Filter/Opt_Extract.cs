@@ -109,10 +109,6 @@ namespace Project__Filter
             string extractedFolder = Path.Combine(rootPath, "Extracted");
             string duplicatedFolder = Path.Combine(rootPath, "Duplicated");
 
-            // Ensure the destination folders exist
-            Directory.CreateDirectory(extractedFolder);
-            Directory.CreateDirectory(duplicatedFolder);
-
             // Get all files in the root path and its subdirectories
             string[] files = Directory.GetFiles(rootPath, "*.*", SearchOption.AllDirectories);
 
@@ -133,16 +129,19 @@ namespace Project__Filter
                 if (File.Exists(destPathExtracted))
                 {
                     // If the file exists, move it to the duplicated folder
+                    // Ensure the destination folder exists
+                    Directory.CreateDirectory(duplicatedFolder);
                     File.Move(file, destPathDuplicated);
                 }
                 else
                 {
                     // If the file does not exist, move it to the extracted folder
+                    // Ensure the destination folder exists
+                    Directory.CreateDirectory(extractedFolder);
                     File.Move(file, destPathExtracted);
                 }
             }
         }
-
 
         public void UncompressRar(string rootPath)
         {
