@@ -52,7 +52,6 @@ namespace Project__Filter
                     rootNode.Expand();
 
                     comboBox_Select.Enabled = true;
-                    comboBox1.Enabled = true;
                 }
             }
         }

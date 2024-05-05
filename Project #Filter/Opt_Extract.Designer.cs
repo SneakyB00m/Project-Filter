@@ -47,7 +47,6 @@
             treeView1 = new TreeView();
             label_Count = new Label();
             label4 = new Label();
-            comboBox1 = new ComboBox();
             panel_Path.SuspendLayout();
             panel_T.SuspendLayout();
             panel_button.SuspendLayout();
@@ -207,7 +206,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(comboBox_Select);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(panel2);
@@ -221,6 +219,7 @@
             // 
             comboBox_Select.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             comboBox_Select.BackColor = Color.FromArgb(64, 64, 64);
+            comboBox_Select.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_Select.Enabled = false;
             comboBox_Select.FlatStyle = FlatStyle.Flat;
             comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
@@ -287,22 +286,6 @@
             label4.TabIndex = 2;
             label4.Text = "File List           #";
             // 
-            // comboBox1
-            // 
-            comboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            comboBox1.BackColor = Color.FromArgb(64, 64, 64);
-            comboBox1.Enabled = false;
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
-            comboBox1.ForeColor = Color.White;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "IMAGE To PDF (TITLE)", "IMAGE To PDF (NO TITLE)", "IMAGE To ICO", "IMAGE To WEBP", "IMAGE To BMP", "IMAGE To ASCII", "VIDEO To AUDIO", "VIDEO To WEBM", "VIDEO To AVI", "AUDIO To WAV" });
-            comboBox1.Location = new Point(57, 134);
-            comboBox1.Margin = new Padding(3, 2, 3, 2);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(301, 29);
-            comboBox1.TabIndex = 43;
-            // 
             // Opt_Extract
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -349,6 +332,5 @@
         private Label label_Count;
         private TreeView treeView1;
         private ComboBox comboBox_Select;
-        private ComboBox comboBox1;
     }
 }
