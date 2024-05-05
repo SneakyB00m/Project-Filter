@@ -331,46 +331,40 @@ namespace Project__Filter
             // Initialize FFProbe
             var ffProbe = new FFProbe();
 
-            // Get all directories named "Videos"
-            var directories = Directory.GetDirectories(rootPath, "Videos", SearchOption.AllDirectories);
+            // Get all directories
+            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
 
             foreach (var directory in directories)
             {
-                // Get all files in the directory
-                var files = Directory.GetFiles(directory);
-
-                // Filter and sort the files by the resolution
-                var sortedFiles = files.Where(f =>
+                // Walk through the directory
+                foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.TopDirectoryOnly))
                 {
-                    var videoInfo = ffProbe.GetMediaInfo(f);
-                    int resolution = videoInfo.Streams[0].Width * videoInfo.Streams[0].Height;
-                    return resolution > 0;
-                })
-                .OrderBy(f =>
-                {
-                    var videoInfo = ffProbe.GetMediaInfo(f);
-                    return videoInfo.Streams[0].Width * videoInfo.Streams[0].Height;
-                })
-                .ToList();
+                    try
+                    {
+                        // Get the video info
+                        var videoInfo = ffProbe.GetMediaInfo(file);
 
-                // Move the files to new folders based on their resolution
-                foreach (var file in sortedFiles)
-                {
-                    var videoInfo = ffProbe.GetMediaInfo(file);
-                    string resolution = $"{videoInfo.Streams[0].Width}x{videoInfo.Streams[0].Height}";
+                        // Get the resolution of the video
+                        string resolution = $"{videoInfo.Streams[0].Width}x{videoInfo.Streams[0].Height}";
 
-                    // Get the directory of the file
-                    string fileDirectory = Path.GetDirectoryName(file);
+                        // Get the directory of the file
+                        string fileDirectory = Path.GetDirectoryName(file);
 
-                    // Create a new folder for the resolution if it doesn't exist
-                    string resolutionFolder = Path.Combine(fileDirectory, resolution);
-                    Directory.CreateDirectory(resolutionFolder);
+                        // Create a new folder for the resolution if it doesn't exist
+                        string resolutionFolder = Path.Combine(fileDirectory, resolution);
+                        Directory.CreateDirectory(resolutionFolder);
 
-                    // Construct the destination path
-                    string destPath = Path.Combine(resolutionFolder, Path.GetFileName(file));
+                        // Construct the destination path
+                        string destPath = Path.Combine(resolutionFolder, Path.GetFileName(file));
 
-                    // Move the file
-                    File.Move(file, destPath);
+                        // Move the file
+                        File.Move(file, destPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Show a message box with the error
+                        MessageBox.Show($"An error occurred while sorting the file {file}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
 
@@ -452,21 +446,36 @@ namespace Project__Filter
                 // Get all files in the directory
                 var files = Directory.GetFiles(directory);
 
-                // Sort the files alphabetically by name
-                var sortedFiles = files.OrderBy(f => Path.GetFileName(f)).ToList();
-
-                // Rename the files to sort them alphabetically
-                for (int i = 0; i < sortedFiles.Count; i++)
+                foreach (var file in files)
                 {
-                    string oldPath = sortedFiles[i];
+                    // Get the first letter of the file name
+                    char firstLetter = Path.GetFileName(file)[0];
+
+                    // If the first letter is not a letter, get the next character that is a letter
+                    if (!char.IsLetter(firstLetter))
+                    {
+                        foreach (char c in Path.GetFileName(file))
+                        {
+                            if (char.IsLetter(c))
+                            {
+                                firstLetter = c;
+                                break;
+                            }
+                        }
+                    }
 
                     // Get the directory of the file
-                    string fileDirectory = Path.GetDirectoryName(oldPath);
+                    string fileDirectory = Path.GetDirectoryName(file);
 
-                    string newPath = Path.Combine(fileDirectory, $"{i}_{Path.GetFileName(oldPath)}");
+                    // Create a new folder for the first letter if it doesn't exist
+                    string letterFolder = Path.Combine(fileDirectory, firstLetter.ToString());
+                    Directory.CreateDirectory(letterFolder);
 
-                    // Rename the file
-                    File.Move(oldPath, newPath);
+                    // Construct the destination path
+                    string destPath = Path.Combine(letterFolder, Path.GetFileName(file));
+
+                    // Move the file
+                    File.Move(file, destPath);
                 }
             }
 
