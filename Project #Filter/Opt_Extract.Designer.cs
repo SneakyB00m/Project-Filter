@@ -219,7 +219,6 @@
             // 
             comboBox_Select.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             comboBox_Select.BackColor = Color.FromArgb(64, 64, 64);
-            comboBox_Select.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_Select.Enabled = false;
             comboBox_Select.FlatStyle = FlatStyle.Flat;
             comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
