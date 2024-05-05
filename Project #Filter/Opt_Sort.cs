@@ -304,42 +304,51 @@ namespace Project__Filter
                 // Walk through the directory
                 foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.TopDirectoryOnly))
                 {
-                    // Get the file duration in seconds
-                    var videoInfo = ffProbe.GetMediaInfo(file);
-                    int fileDuration = (int)videoInfo.Duration.TotalSeconds;
-
-                    // Check if the file duration is in the dictionary
-                    foreach (var duration in durations)
+                    try
                     {
-                        int minDuration = duration.Value["Item1"];
-                        int maxDuration = duration.Value["Item2"];
+                        // Get the file duration in seconds
+                        var videoInfo = ffProbe.GetMediaInfo(file);
+                        int fileDuration = (int)videoInfo.Duration.TotalSeconds;
 
-                        if (fileDuration >= minDuration && fileDuration <= maxDuration)
+                        // Check if the file duration is in the dictionary
+                        foreach (var duration in durations)
                         {
-                            // Get the parent directory of the file
-                            string fileDirectory = Directory.GetParent(file).FullName;
+                            int minDuration = duration.Value["Item1"];
+                            int maxDuration = duration.Value["Item2"];
 
-                            // Construct the source and destination paths
-                            string srcPath = file;
-                            string destPath = Path.Combine(fileDirectory, duration.Key, Path.GetFileName(file));
+                            if (fileDuration >= minDuration && fileDuration <= maxDuration)
+                            {
+                                // Get the parent directory of the file
+                                string fileDirectory = Directory.GetParent(file).FullName;
 
-                            // Skip if the file is already in the correct directory
-                            if (Path.GetDirectoryName(srcPath) == Path.GetDirectoryName(destPath))
-                                continue;
+                                // Construct the source and destination paths
+                                string srcPath = file;
+                                string destPath = Path.Combine(fileDirectory, duration.Key, Path.GetFileName(file));
 
-                            // Create the destination folder if it doesn't exist
-                            Directory.CreateDirectory(Path.GetDirectoryName(destPath));
+                                // Skip if the file is already in the correct directory
+                                if (Path.GetDirectoryName(srcPath) == Path.GetDirectoryName(destPath))
+                                    continue;
 
-                            // Move the file
-                            File.Move(srcPath, destPath);
+                                // Create the destination folder if it doesn't exist
+                                Directory.CreateDirectory(Path.GetDirectoryName(destPath));
 
-                            break;
+                                // Move the file
+                                File.Move(srcPath, destPath);
+
+                                break;
+                            }
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Show a message box with the error
+                        MessageBox.Show($"An error occurred while sorting the file {file}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
                 ScanFiles(rootPath);
             }
+
             RepopulateTreeView(rootPath);
         }
 
@@ -454,7 +463,6 @@ namespace Project__Filter
             RepopulateTreeView(rootPath);
         }
 
-
         public void SortAlphabetically(string rootPath)
         {
             // Get all directories
@@ -490,7 +498,7 @@ namespace Project__Filter
             var files = Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories);
 
             // Group the files by the common part of their names
-            var groupedFiles = files.GroupBy(f => Regex.Match(Path.GetFileNameWithoutExtension(f), @"^\D*").Value);
+            var groupedFiles = files.GroupBy(f => Regex.Match(Path.GetFileNameWithoutExtension(f), @"^[a-zA-Z]*").Value);
 
             foreach (var group in groupedFiles)
             {
