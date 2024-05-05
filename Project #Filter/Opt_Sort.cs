@@ -271,7 +271,7 @@ namespace Project__Filter
             }
         }
 
-        public void RepopultaeTreeView(string rootPath)
+        public void RepopulateTreeView(string rootPath)
         {
             // Clear the TreeView
             treeView1.Nodes.Clear();
@@ -340,7 +340,7 @@ namespace Project__Filter
 
                 ScanFiles(rootPath);
             }
-            RepopultaeTreeView(rootPath);
+            RepopulateTreeView(rootPath);
         }
 
         public void SortByResolution(string rootPath)  // Resolution
@@ -389,11 +389,17 @@ namespace Project__Filter
             }
 
             ScanFiles(rootPath);
-            RepopultaeTreeView(rootPath);
+            RepopulateTreeView(rootPath);
         }
 
         public void SortBySize(string rootPath)
         {
+            // Define the size categories in bytes
+            long below50MB = 50L * 1024 * 1024;
+            long below100MB = 100L * 1024 * 1024;
+            long below500MB = 500L * 1024 * 1024;
+            long above1GB = 1024L * 1024 * 1024;
+
             // Get all directories
             var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
 
@@ -402,25 +408,52 @@ namespace Project__Filter
                 // Get all files in the directory
                 var files = Directory.GetFiles(directory);
 
-                // Sort the files by size
-                var sortedFiles = files.OrderBy(f => new FileInfo(f).Length).ToList();
-
-                // Create a new folder for the sorted files
-                string sortedFolder = Path.Combine(directory, "SortedBySize");
-                Directory.CreateDirectory(sortedFolder);
-
-                // Rename the files to sort them by size and move them to the new folder
-                for (int i = 0; i < sortedFiles.Count; i++)
+                foreach (var file in files)
                 {
-                    string newPath = Path.Combine(sortedFolder, $"{i}_{Path.GetFileName(sortedFiles[i])}");
-                    File.Move(sortedFiles[i], newPath);
+                    // Get the file size
+                    long fileSize = new FileInfo(file).Length;
+
+                    // Determine the destination folder based on the file size
+                    string destinationFolder;
+                    if (fileSize < below50MB)
+                    {
+                        destinationFolder = "Below 50 MB";
+                    }
+                    else if (fileSize < below100MB)
+                    {
+                        destinationFolder = "50 MB to 100 MB";
+                    }
+                    else if (fileSize < below500MB)
+                    {
+                        destinationFolder = "100 MB to 500 MB";
+                    }
+                    else if (fileSize < above1GB)
+                    {
+                        destinationFolder = "500 MB to 1 GB";
+                    }
+                    else
+                    {
+                        destinationFolder = "Above 1 GB";
+                    }
+
+                    // Create the destination folder if it doesn't exist
+                    string destinationDirectory = Path.Combine(directory, destinationFolder);
+                    Directory.CreateDirectory(destinationDirectory);
+
+                    // Construct the source and destination paths
+                    string srcPath = file;
+                    string destPath = Path.Combine(destinationDirectory, Path.GetFileName(file));
+
+                    // Move the file
+                    File.Move(srcPath, destPath);
                 }
             }
 
             ScanFiles(rootPath);
 
-            RepopultaeTreeView(rootPath);
+            RepopulateTreeView(rootPath);
         }
+
 
         public void SortAlphabetically(string rootPath)
         {
@@ -448,7 +481,7 @@ namespace Project__Filter
 
             ScanFiles(rootPath);
 
-            RepopultaeTreeView(rootPath);
+            RepopulateTreeView(rootPath);
         }
 
         public void SortBySimilar(string rootPath)
@@ -484,7 +517,7 @@ namespace Project__Filter
 
             ScanFiles(rootPath);
 
-            RepopultaeTreeView(rootPath);
+            RepopulateTreeView(rootPath);
         }
     }
 }
