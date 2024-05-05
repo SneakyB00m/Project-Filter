@@ -119,7 +119,7 @@
           "build/_._": {}
         }
       },
-      "HtmlAgilityPack/1.11.60": {
+      "HtmlAgilityPack/1.11.61": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/HtmlAgilityPack.dll": {
@@ -221,15 +221,6 @@
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
-        }
-      },
-      "Microsoft.Build.Tasks.Git/8.0.0": {
-        "type": "package",
-        "build": {
-          "build/_._": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
         }
       },
       "Microsoft.Extensions.Configuration/6.0.0": {
@@ -476,28 +467,6 @@
         },
         "runtime": {
           "lib/netstandard1.0/_._": {}
-        }
-      },
-      "Microsoft.SourceLink.Common/8.0.0": {
-        "type": "package",
-        "build": {
-          "build/_._": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
-        }
-      },
-      "Microsoft.SourceLink.GitHub/8.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Build.Tasks.Git": "8.0.0",
-          "Microsoft.SourceLink.Common": "8.0.0"
-        },
-        "build": {
-          "build/_._": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
         }
       },
       "Microsoft.Win32.Registry/4.7.0": {
@@ -940,11 +909,10 @@
           }
         }
       },
-      "SharpCompress/0.37.0": {
+      "SharpCompress/0.37.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SourceLink.GitHub": "8.0.0",
-          "ZstdSharp.Port": "0.7.6"
+          "ZstdSharp.Port": "0.8.0"
         },
         "compile": {
           "lib/net8.0/SharpCompress.dll": {}
@@ -1949,7 +1917,7 @@
           }
         }
       },
-      "ZstdSharp.Port/0.7.6": {
+      "ZstdSharp.Port/0.8.0": {
         "type": "package",
         "compile": {
           "lib/net8.0/ZstdSharp.dll": {}
@@ -2129,14 +2097,14 @@
         "netstandardtask/Mono.Cecil.pdb"
       ]
     },
-    "HtmlAgilityPack/1.11.60": {
-      "sha512": "7Uzaf1Mxeuxne33LpTZfSsuRW4sRRX6FWMolOSxXcaAwcKvFevH2E+P6tb4dMWhdyUdBfi0N0yyPZ8hqodfEYg==",
+    "HtmlAgilityPack/1.11.61": {
+      "sha512": "hqZASeEFHS9quHvfZSwaULoAJLWkOYVPiQjc3P9J4pQS8vSYzrP3bxe04Vm7vYYuxwbQhq9hCSVvZVLTyRaNaQ==",
       "type": "package",
-      "path": "htmlagilitypack/1.11.60",
+      "path": "htmlagilitypack/1.11.61",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "htmlagilitypack.1.11.60.nupkg.sha512",
+        "htmlagilitypack.1.11.61.nupkg.sha512",
         "htmlagilitypack.nuspec",
         "lib/Net35/HtmlAgilityPack.dll",
         "lib/Net35/HtmlAgilityPack.pdb",
@@ -2262,52 +2230,6 @@
         "microsoft.bcl.asyncinterfaces.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
-      ]
-    },
-    "Microsoft.Build.Tasks.Git/8.0.0": {
-      "sha512": "bZKfSIKJRXLTuSzLudMFte/8CempWjVamNUR5eHJizsy+iuOuO/k2gnh7W0dHJmYY0tBf+gUErfluCv5mySAOQ==",
-      "type": "package",
-      "path": "microsoft.build.tasks.git/8.0.0",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "build/Microsoft.Build.Tasks.Git.props",
-        "build/Microsoft.Build.Tasks.Git.targets",
-        "buildMultiTargeting/Microsoft.Build.Tasks.Git.props",
-        "buildMultiTargeting/Microsoft.Build.Tasks.Git.targets",
-        "microsoft.build.tasks.git.8.0.0.nupkg.sha512",
-        "microsoft.build.tasks.git.nuspec",
-        "tools/core/Microsoft.Build.Tasks.Git.dll",
-        "tools/core/cs/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/core/de/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/core/es/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/core/fr/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/core/it/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/core/ja/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/core/ko/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/core/pl/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/core/pt-BR/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/core/ru/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/core/tr/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/core/zh-Hans/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/core/zh-Hant/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/net472/Microsoft.Build.Tasks.Git.dll",
-        "tools/net472/System.Collections.Immutable.dll",
-        "tools/net472/cs/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/net472/de/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/net472/es/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/net472/fr/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/net472/it/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/net472/ja/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/net472/ko/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/net472/pl/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/net472/pt-BR/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/net472/ru/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/net472/tr/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/net472/zh-Hans/Microsoft.Build.Tasks.Git.resources.dll",
-        "tools/net472/zh-Hant/Microsoft.Build.Tasks.Git.resources.dll"
       ]
     },
     "Microsoft.Extensions.Configuration/6.0.0": {
@@ -2633,97 +2555,6 @@
         "runtime.json",
         "useSharedDesignerContext.txt",
         "version.txt"
-      ]
-    },
-    "Microsoft.SourceLink.Common/8.0.0": {
-      "sha512": "dk9JPxTCIevS75HyEQ0E4OVAFhB2N+V9ShCXf8Q6FkUQZDkgLI12y679Nym1YqsiSysuQskT7Z+6nUf3yab6Vw==",
-      "type": "package",
-      "path": "microsoft.sourcelink.common/8.0.0",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "build/InitializeSourceControlInformation.targets",
-        "build/Microsoft.SourceLink.Common.props",
-        "build/Microsoft.SourceLink.Common.targets",
-        "buildMultiTargeting/Microsoft.SourceLink.Common.props",
-        "buildMultiTargeting/Microsoft.SourceLink.Common.targets",
-        "microsoft.sourcelink.common.8.0.0.nupkg.sha512",
-        "microsoft.sourcelink.common.nuspec",
-        "tools/core/Microsoft.SourceLink.Common.dll",
-        "tools/core/cs/Microsoft.SourceLink.Common.resources.dll",
-        "tools/core/de/Microsoft.SourceLink.Common.resources.dll",
-        "tools/core/es/Microsoft.SourceLink.Common.resources.dll",
-        "tools/core/fr/Microsoft.SourceLink.Common.resources.dll",
-        "tools/core/it/Microsoft.SourceLink.Common.resources.dll",
-        "tools/core/ja/Microsoft.SourceLink.Common.resources.dll",
-        "tools/core/ko/Microsoft.SourceLink.Common.resources.dll",
-        "tools/core/pl/Microsoft.SourceLink.Common.resources.dll",
-        "tools/core/pt-BR/Microsoft.SourceLink.Common.resources.dll",
-        "tools/core/ru/Microsoft.SourceLink.Common.resources.dll",
-        "tools/core/tr/Microsoft.SourceLink.Common.resources.dll",
-        "tools/core/zh-Hans/Microsoft.SourceLink.Common.resources.dll",
-        "tools/core/zh-Hant/Microsoft.SourceLink.Common.resources.dll",
-        "tools/net472/Microsoft.SourceLink.Common.dll",
-        "tools/net472/cs/Microsoft.SourceLink.Common.resources.dll",
-        "tools/net472/de/Microsoft.SourceLink.Common.resources.dll",
-        "tools/net472/es/Microsoft.SourceLink.Common.resources.dll",
-        "tools/net472/fr/Microsoft.SourceLink.Common.resources.dll",
-        "tools/net472/it/Microsoft.SourceLink.Common.resources.dll",
-        "tools/net472/ja/Microsoft.SourceLink.Common.resources.dll",
-        "tools/net472/ko/Microsoft.SourceLink.Common.resources.dll",
-        "tools/net472/pl/Microsoft.SourceLink.Common.resources.dll",
-        "tools/net472/pt-BR/Microsoft.SourceLink.Common.resources.dll",
-        "tools/net472/ru/Microsoft.SourceLink.Common.resources.dll",
-        "tools/net472/tr/Microsoft.SourceLink.Common.resources.dll",
-        "tools/net472/zh-Hans/Microsoft.SourceLink.Common.resources.dll",
-        "tools/net472/zh-Hant/Microsoft.SourceLink.Common.resources.dll"
-      ]
-    },
-    "Microsoft.SourceLink.GitHub/8.0.0": {
-      "sha512": "G5q7OqtwIyGTkeIOAc3u2ZuV/kicQaec5EaRnc0pIeSnh9LUjj+PYQrJYBURvDt7twGl2PKA7nSN0kz1Zw5bnQ==",
-      "type": "package",
-      "path": "microsoft.sourcelink.github/8.0.0",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "build/Microsoft.SourceLink.GitHub.props",
-        "build/Microsoft.SourceLink.GitHub.targets",
-        "buildMultiTargeting/Microsoft.SourceLink.GitHub.props",
-        "buildMultiTargeting/Microsoft.SourceLink.GitHub.targets",
-        "microsoft.sourcelink.github.8.0.0.nupkg.sha512",
-        "microsoft.sourcelink.github.nuspec",
-        "tools/core/Microsoft.SourceLink.GitHub.dll",
-        "tools/core/cs/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/core/de/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/core/es/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/core/fr/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/core/it/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/core/ja/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/core/ko/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/core/pl/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/core/pt-BR/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/core/ru/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/core/tr/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/core/zh-Hans/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/core/zh-Hant/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/net472/Microsoft.SourceLink.GitHub.dll",
-        "tools/net472/cs/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/net472/de/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/net472/es/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/net472/fr/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/net472/it/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/net472/ja/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/net472/ko/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/net472/pl/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/net472/pt-BR/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/net472/ru/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/net472/tr/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/net472/zh-Hans/Microsoft.SourceLink.GitHub.resources.dll",
-        "tools/net472/zh-Hant/Microsoft.SourceLink.GitHub.resources.dll"
       ]
     },
     "Microsoft.Win32.Registry/4.7.0": {
@@ -3260,10 +3091,10 @@
         "version.txt"
       ]
     },
-    "SharpCompress/0.37.0": {
-      "sha512": "jkk9tZtebtKKWMiJnePWZ5FAtt6PzK+lZzYDUKl+98gMAQVzGcNBW8rYS9vR7Kg0uD7lQdpJMQAJW/7XmweBMA==",
+    "SharpCompress/0.37.2": {
+      "sha512": "cFBpTct57aubLQXkdqMmgP8GGTFRh7fnRWP53lgE/EYUpDZJ27SSvTkdjB4OYQRZ20SJFpzczUquKLbt/9xkhw==",
       "type": "package",
-      "path": "sharpcompress/0.37.0",
+      "path": "sharpcompress/0.37.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3273,7 +3104,7 @@
         "lib/net8.0/SharpCompress.dll",
         "lib/netstandard2.0/SharpCompress.dll",
         "lib/netstandard2.1/SharpCompress.dll",
-        "sharpcompress.0.37.0.nupkg.sha512",
+        "sharpcompress.0.37.2.nupkg.sha512",
         "sharpcompress.nuspec"
       ]
     },
@@ -4979,10 +4810,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "ZstdSharp.Port/0.7.6": {
-      "sha512": "opRgjMeBTNpZQyJaZOWCHGGpQ+d9T2Eg3q8JPeBj65srJBf1F3JidO2h7sYkK2s0Mcga+skrqypQY39CF8kcfA==",
+    "ZstdSharp.Port/0.8.0": {
+      "sha512": "Z62eNBIu8E8YtbqlMy57tK3dV1+m2b9NhPeaYovB5exmLKvrGCqOhJTzrEUH5VyUWU6vwX3c1XHJGhW5HVs8dA==",
       "type": "package",
-      "path": "zstdsharp.port/0.7.6",
+      "path": "zstdsharp.port/0.8.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4994,7 +4825,7 @@
         "lib/netcoreapp3.1/ZstdSharp.dll",
         "lib/netstandard2.0/ZstdSharp.dll",
         "lib/netstandard2.1/ZstdSharp.dll",
-        "zstdsharp.port.0.7.6.nupkg.sha512",
+        "zstdsharp.port.0.8.0.nupkg.sha512",
         "zstdsharp.port.nuspec"
       ]
     }
@@ -5003,7 +4834,7 @@
     "net8.0-windows7.0": [
       "Bunifu.UI.WinForms >= 6.1.0",
       "DocumentFormat.OpenXml >= 3.0.2",
-      "HtmlAgilityPack >= 1.11.60",
+      "HtmlAgilityPack >= 1.11.61",
       "Magick.NET-Q16-AnyCPU >= 13.7.0",
       "Microsoft.Windows.Compatibility >= 8.0.4",
       "NAudio >= 2.2.1",
@@ -5011,31 +4842,26 @@
       "NReco.VideoInfo >= 1.2.0",
       "Newtonsoft.Json >= 13.0.3",
       "PDFsharp >= 6.0.0",
-      "SharpCompress >= 0.37.0",
+      "SharpCompress >= 0.37.2",
       "System.Data.SqlClient >= 4.8.6",
       "System.Security.Cryptography.Pkcs >= 8.0.0",
       "iTextSharp >= 5.5.13.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alan_\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Alan_\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Project #Filter.csproj",
+      "projectUniqueName": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Project #Filter.csproj",
       "projectName": "Project #Filter",
-      "projectPath": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Project #Filter.csproj",
-      "packagesPath": "C:\\Users\\alan_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\obj\\",
+      "projectPath": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Project #Filter.csproj",
+      "packagesPath": "C:\\Users\\Alan_\\.nuget\\packages\\",
+      "outputPath": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\alan_\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Alan_\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5076,7 +4902,7 @@
           },
           "HtmlAgilityPack": {
             "target": "Package",
-            "version": "[1.11.60, )"
+            "version": "[1.11.61, )"
           },
           "Magick.NET-Q16-AnyCPU": {
             "target": "Package",
@@ -5108,7 +4934,7 @@
           },
           "SharpCompress": {
             "target": "Package",
-            "version": "[0.37.0, )"
+            "version": "[0.37.2, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",
@@ -5151,7 +4977,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"BouncyCastle 1.8.9\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "Package 'BouncyCastle 1.8.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "BouncyCastle",
       "targetGraphs": [
         "net8.0-windows7.0"
@@ -5161,7 +4987,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"Bunifu.UI.WinForms 6.1.0\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "Package 'Bunifu.UI.WinForms 6.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "Bunifu.UI.WinForms",
       "targetGraphs": [
         "net8.0-windows7.0"
@@ -5171,7 +4997,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"iTextSharp 5.5.13.3\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "Package 'iTextSharp 5.5.13.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "iTextSharp",
       "targetGraphs": [
         "net8.0-windows7.0"
@@ -5181,7 +5007,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"RestSharpSigned 105.2.3\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net8.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "Package 'RestSharpSigned 105.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "RestSharpSigned",
       "targetGraphs": [
         "net8.0-windows7.0"
