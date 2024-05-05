@@ -14,7 +14,6 @@ namespace Project__Filter
         public Opt_Extract()
         {
             InitializeComponent();
-            comboBox_Select.SelectedItem = "Extract Files";
         }
 
         private void button_Path_Click(object sender, EventArgs e)
@@ -76,27 +75,34 @@ namespace Project__Filter
 
         private void button_Extract_Click(object sender, EventArgs e)
         {
-            // Get the selected item from the ComboBox
-            string selectedItem = comboBox_Select.SelectedItem.ToString();
-
-            switch (selectedItem)
+            try
             {
-                case "Extract Files":
-                    MoveFiles(selectedPath);
-                    break;
-                case "Uncompress RAR":
-                    UncompressRar(selectedPath);
-                    break;
-                case "Uncompress TAR":
-                    UncompressTar(selectedItem);
-                    break;
-                case "Uncompress ZIP":
-                    UnzipDirectory(selectedItem);
-                    break;
-                default:
-                    // Handle the case where no valid option is selected
-                    MessageBox.Show("Please select a valid option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
+                // Get the selected item from the ComboBox
+                string selectedItem = comboBox_Select.SelectedItem.ToString();
+
+                switch (selectedItem)
+                {
+                    case "Extract Files":
+                        MoveFiles(selectedPath);
+                        break;
+                    case "Uncompress RAR":
+                        UncompressRar(selectedPath);
+                        break;
+                    case "Uncompress TAR":
+                        UncompressTar(selectedItem);
+                        break;
+                    case "Uncompress ZIP":
+                        UnzipDirectory(selectedItem);
+                        break;
+                    default:
+                        // Handle the case where no valid option is selected
+                        MessageBox.Show("Please select a valid option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please select a valid option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
