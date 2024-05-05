@@ -316,6 +316,5 @@ E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Home.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Merge.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Sort.resources
-E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Spammer.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Transform.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.sourcelink.json

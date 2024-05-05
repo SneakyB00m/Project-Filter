@@ -14,7 +14,7 @@ namespace Project__Filter
         public Opt_Extract()
         {
             InitializeComponent();
-            comboBox_Options.SelectedItem = "Extract Files";
+            comboBox_Select.SelectedItem = "Extract Files";
         }
 
         private void button_Path_Click(object sender, EventArgs e)
@@ -50,6 +50,9 @@ namespace Project__Filter
 
                     // Expand the root node
                     rootNode.Expand();
+
+                    comboBox_Select.Enabled = true;
+                    comboBox1.Enabled = true;
                 }
             }
         }
@@ -75,7 +78,7 @@ namespace Project__Filter
         private void button_Extract_Click(object sender, EventArgs e)
         {
             // Get the selected item from the ComboBox
-            string selectedItem = comboBox_Options.SelectedItem.ToString();
+            string selectedItem = comboBox_Select.SelectedItem.ToString();
 
             switch (selectedItem)
             {

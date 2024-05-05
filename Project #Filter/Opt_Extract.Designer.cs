@@ -41,12 +41,13 @@
             checkBox_Delete = new CheckBox();
             button_Extract = new Button();
             panel1 = new Panel();
-            comboBox_Options = new ComboBox();
+            comboBox_Select = new ComboBox();
             label5 = new Label();
             panel2 = new Panel();
             treeView1 = new TreeView();
             label_Count = new Label();
             label4 = new Label();
+            comboBox1 = new ComboBox();
             panel_Path.SuspendLayout();
             panel_T.SuspendLayout();
             panel_button.SuspendLayout();
@@ -206,7 +207,8 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(comboBox_Options);
+            panel1.Controls.Add(comboBox1);
+            panel1.Controls.Add(comboBox_Select);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
@@ -215,19 +217,21 @@
             panel1.Size = new Size(667, 205);
             panel1.TabIndex = 49;
             // 
-            // comboBox_Options
+            // comboBox_Select
             // 
-            comboBox_Options.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            comboBox_Options.BackColor = Color.FromArgb(64, 64, 64);
-            comboBox_Options.FlatStyle = FlatStyle.Flat;
-            comboBox_Options.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            comboBox_Options.ForeColor = Color.White;
-            comboBox_Options.FormattingEnabled = true;
-            comboBox_Options.Items.AddRange(new object[] { "Extract Files", "Uncompress RAR", "Uncompress TAR", "Uncompress ZIP" });
-            comboBox_Options.Location = new Point(29, 69);
-            comboBox_Options.Name = "comboBox_Options";
-            comboBox_Options.Size = new Size(368, 28);
-            comboBox_Options.TabIndex = 41;
+            comboBox_Select.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_Select.BackColor = Color.FromArgb(64, 64, 64);
+            comboBox_Select.Enabled = false;
+            comboBox_Select.FlatStyle = FlatStyle.Flat;
+            comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            comboBox_Select.ForeColor = Color.White;
+            comboBox_Select.FormattingEnabled = true;
+            comboBox_Select.Items.AddRange(new object[] { "Extract Files", "Uncompress RAR", "Uncompress TAR", "Uncompress ZIP" });
+            comboBox_Select.Location = new Point(26, 68);
+            comboBox_Select.Margin = new Padding(3, 2, 3, 2);
+            comboBox_Select.Name = "comboBox_Select";
+            comboBox_Select.Size = new Size(368, 29);
+            comboBox_Select.TabIndex = 42;
             // 
             // label5
             // 
@@ -283,6 +287,22 @@
             label4.TabIndex = 2;
             label4.Text = "File List           #";
             // 
+            // comboBox1
+            // 
+            comboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            comboBox1.BackColor = Color.FromArgb(64, 64, 64);
+            comboBox1.Enabled = false;
+            comboBox1.FlatStyle = FlatStyle.Flat;
+            comboBox1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
+            comboBox1.ForeColor = Color.White;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "IMAGE To PDF (TITLE)", "IMAGE To PDF (NO TITLE)", "IMAGE To ICO", "IMAGE To WEBP", "IMAGE To BMP", "IMAGE To ASCII", "VIDEO To AUDIO", "VIDEO To WEBM", "VIDEO To AVI", "AUDIO To WAV" });
+            comboBox1.Location = new Point(57, 134);
+            comboBox1.Margin = new Padding(3, 2, 3, 2);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(301, 29);
+            comboBox1.TabIndex = 43;
+            // 
             // Opt_Extract
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -328,6 +348,7 @@
         private Button button_Path;
         private Label label_Count;
         private TreeView treeView1;
-        private ComboBox comboBox_Options;
+        private ComboBox comboBox_Select;
+        private ComboBox comboBox1;
     }
 }
