@@ -249,7 +249,7 @@
             checkBox_Duration.TabIndex = 56;
             checkBox_Duration.Text = "By Duration";
             checkBox_Duration.UseVisualStyleBackColor = true;
-            checkBox_Duration.CheckedChanged += checkBox_Duration_CheckedChanged;
+            checkBox_Duration.CheckedChanged += checkBox_CheckedChanged;
             // 
             // checkBox_Resolution
             // 
@@ -264,7 +264,7 @@
             checkBox_Resolution.TabIndex = 55;
             checkBox_Resolution.Text = "By Resolution";
             checkBox_Resolution.UseVisualStyleBackColor = true;
-            checkBox_Resolution.CheckedChanged += checkBox_Resolution_CheckedChanged;
+            checkBox_Resolution.CheckedChanged += checkBox_CheckedChanged;
             // 
             // checkBox_Alphabet
             // 
@@ -279,7 +279,7 @@
             checkBox_Alphabet.TabIndex = 54;
             checkBox_Alphabet.Text = "By Alphabet";
             checkBox_Alphabet.UseVisualStyleBackColor = true;
-            checkBox_Alphabet.CheckedChanged += checkBox_Alphabet_CheckedChanged;
+            checkBox_Alphabet.CheckedChanged += checkBox_CheckedChanged;
             // 
             // checkBox_Size
             // 
@@ -294,7 +294,7 @@
             checkBox_Size.TabIndex = 53;
             checkBox_Size.Text = "By Size";
             checkBox_Size.UseVisualStyleBackColor = true;
-            checkBox_Size.CheckedChanged += checkBox_Size_CheckedChanged;
+            checkBox_Size.CheckedChanged += checkBox_CheckedChanged;
             // 
             // checkBox_Include
             // 
@@ -309,7 +309,7 @@
             checkBox_Include.TabIndex = 52;
             checkBox_Include.Text = "By Name";
             checkBox_Include.UseVisualStyleBackColor = true;
-            checkBox_Include.CheckedChanged += checkBox_Include_CheckedChanged;
+            checkBox_Include.CheckedChanged += checkBox_CheckedChanged;
             // 
             // label5
             // 

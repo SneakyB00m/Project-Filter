@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|E:\\ReposVisualStudio\\Project #Filter\\project #filter\\opt_sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\opt_sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|e:\\reposvisualstudio\\project #filter\\project #filter\\opt_sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\opt_sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,13 +26,25 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Opt_Sort.cs [Design]",
+              "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Opt_Sort.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\Opt_Sort.cs",
+              "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Opt_Sort.cs [Design]*",
+              "RelativeToolTip": "Project #Filter\\Opt_Sort.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-05T06:05:37.67Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Opt_Sort.cs",
               "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Opt_Sort.cs",
               "RelativeDocumentMoniker": "Project #Filter\\Opt_Sort.cs",
-              "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Opt_Sort.cs",
-              "RelativeToolTip": "Project #Filter\\Opt_Sort.cs",
-              "ViewState": "AQIAACQBAAAAAAAAAAAcwGEBAAAAAAAA",
+              "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Opt_Sort.cs*",
+              "RelativeToolTip": "Project #Filter\\Opt_Sort.cs*",
+              "ViewState": "AQIAABMAAAAAAAAAAAAgwG0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-02T01:26:23.158Z",
               "EditorCaption": ""
