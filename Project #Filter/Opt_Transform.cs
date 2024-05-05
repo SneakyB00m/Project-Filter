@@ -290,6 +290,9 @@ namespace Project__Filter
                     case "VIDEO To AVI":
                         VideoAvi();
                         break;
+                    case "VIDEO To GIF":
+                        VideoGif();
+                        break;
                     case "AUDIO To WAV":
                         AudioWav();
                         break;
@@ -714,6 +717,42 @@ namespace Project__Filter
                 MessageBox.Show($"AVI created successfully at: {aviPath}");
             });
         }
+
+        private async Task VideoGif()
+        {
+            await Task.Run(() =>
+            {
+                string selectedVideo = listBox_File.SelectedItem.ToString();
+
+                // Create the full path to the video file
+                string videoPath = Path.Combine(selectedPath, selectedVideo);
+
+                // Get the duration of the video
+                var ffProbe = new NReco.VideoInfo.FFProbe();
+                var videoInfo = ffProbe.GetMediaInfo(videoPath);
+                double videoDuration = videoInfo.Duration.TotalSeconds;
+
+                // Check if the video is 15 seconds or less
+                if (videoDuration <= 15)
+                {
+                    // Create the full path to the output GIF
+                    string gifPath = Path.Combine(selectedPath, Path.GetFileNameWithoutExtension(selectedVideo) + ".gif");
+
+                    // Initialize the converter
+                    var converter = new NReco.VideoConverter.FFMpegConverter();
+
+                    // Convert the video to a GIF
+                    converter.ConvertMedia(videoPath, gifPath, NReco.VideoConverter.Format.gif);
+                }
+                else
+                {
+                    // Show a message box with the error
+                    MessageBox.Show("The video is longer than 15 seconds and cannot be converted to a GIF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            });
+        }
+
+
 
         private void AudioWav()
         {
