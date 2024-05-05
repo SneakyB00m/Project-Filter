@@ -271,6 +271,22 @@ namespace Project__Filter
             }
         }
 
+        public void RepopultaeTreeView(string rootPath)
+        {
+            // Clear the TreeView
+            treeView1.Nodes.Clear();
+
+            // Create the root node
+            TreeNode rootNode = new TreeNode(rootPath);
+            treeView1.Nodes.Add(rootNode);
+
+            // Populate the TreeView with directories and files
+            PopulateTreeView(rootPath, rootNode);
+
+            // Expand the root node
+            rootNode.Expand();
+        }
+
         // Add sorts
         public void SortByDuration(string DurationJson, string rootPath)  // Duration
         {
@@ -281,12 +297,12 @@ namespace Project__Filter
             var ffProbe = new FFProbe();
 
             // Get all directories
-            var directories = Directory.GetDirectories(rootPath, "Videos", SearchOption.AllDirectories);
+            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
 
             foreach (var directory in directories)
             {
                 // Walk through the directory
-                foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.AllDirectories))
+                foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.TopDirectoryOnly))
                 {
                     // Get the file duration in seconds
                     var videoInfo = ffProbe.GetMediaInfo(file);
@@ -324,19 +340,7 @@ namespace Project__Filter
 
                 ScanFiles(rootPath);
             }
-
-            // Clear the TreeView
-            treeView1.Nodes.Clear();
-
-            // Create the root node
-            TreeNode rootNode = new TreeNode(rootPath);
-            treeView1.Nodes.Add(rootNode);
-
-            // Populate the TreeView with directories and files
-            PopulateTreeView(rootPath, rootNode);
-
-            // Expand the root node
-            rootNode.Expand();
+            RepopultaeTreeView(rootPath);
         }
 
         public void SortByResolution(string rootPath)  // Resolution
@@ -382,22 +386,10 @@ namespace Project__Filter
                     // Move the file
                     File.Move(file, destPath);
                 }
-
-                ScanFiles(rootPath);
             }
 
-            // Clear the TreeView
-            treeView1.Nodes.Clear();
-
-            // Create the root node
-            TreeNode rootNode = new TreeNode(rootPath);
-            treeView1.Nodes.Add(rootNode);
-
-            // Populate the TreeView with directories and files
-            PopulateTreeView(rootPath, rootNode);
-
-            // Expand the root node
-            rootNode.Expand();
+            ScanFiles(rootPath);
+            RepopultaeTreeView(rootPath);
         }
 
         public void SortBySize(string rootPath)
@@ -425,20 +417,9 @@ namespace Project__Filter
                 }
             }
 
-            // Clear the TreeView
-            treeView1.Nodes.Clear();
-
-            // Create the root node
-            TreeNode rootNode = new TreeNode(rootPath);
-            treeView1.Nodes.Add(rootNode);
-
-            // Populate the TreeView with directories and files
-            PopulateTreeView(rootPath, rootNode);
-
-            // Expand the root node
-            rootNode.Expand();
-
             ScanFiles(rootPath);
+
+            RepopultaeTreeView(rootPath);
         }
 
         public void SortAlphabetically(string rootPath)
@@ -465,20 +446,9 @@ namespace Project__Filter
                 }
             }
 
-            // Clear the TreeView
-            treeView1.Nodes.Clear();
-
-            // Create the root node
-            TreeNode rootNode = new TreeNode(rootPath);
-            treeView1.Nodes.Add(rootNode);
-
-            // Populate the TreeView with directories and files
-            PopulateTreeView(rootPath, rootNode);
-
-            // Expand the root node
-            rootNode.Expand();
-
             ScanFiles(rootPath);
+
+            RepopultaeTreeView(rootPath);
         }
 
         public void SortBySimilar(string rootPath)
@@ -512,18 +482,9 @@ namespace Project__Filter
                 }
             }
 
-            // Clear the TreeView
-            treeView1.Nodes.Clear();
+            ScanFiles(rootPath);
 
-            // Create the root node
-            TreeNode rootNode = new TreeNode(rootPath);
-            treeView1.Nodes.Add(rootNode);
-
-            // Populate the TreeView with directories and files
-            PopulateTreeView(rootPath, rootNode);
-
-            // Expand the root node
-            rootNode.Expand();
+            RepopultaeTreeView(rootPath);
         }
     }
 }
