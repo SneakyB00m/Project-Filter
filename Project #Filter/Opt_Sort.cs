@@ -339,7 +339,6 @@ namespace Project__Filter
             rootNode.Expand();
         }
 
-
         public void SortByResolution(string rootPath)  // Resolution
         {
             // Initialize FFProbe
