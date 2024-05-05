@@ -59,12 +59,12 @@ namespace Project__Filter
             button_Filter.Enabled = true;
         }
 
-        private void button_Filter_Click(object sender, EventArgs e)
+        private async void button_Filter_Click(object sender, EventArgs e)
         {
             // Call SortFiles first
             if (File.Exists("Folders.json"))
             {
-                SortFiles("Folders.json", selectedPath);
+                await SortFiles("Folders.json", selectedPath);
             }
 
             // Then check the checkboxes
@@ -73,15 +73,15 @@ namespace Project__Filter
                 switch (checkBoxName)
                 {
                     case "checkBox_Include":
-                        SortBySimilar(selectedPath);
+                        await SortBySimilar(selectedPath);
                         break;
                     case "checkBox_Resolution":
-                        SortByResolution(selectedPath);
+                        await SortByResolution(selectedPath);
                         break;
                     case "checkBox_Duration":
                         if (File.Exists("Duration.json"))
                         {
-                            SortByDuration("Duration.json", selectedPath);
+                            await SortByDuration("Duration.json", selectedPath);
                         }
                         else
                         {
@@ -89,14 +89,15 @@ namespace Project__Filter
                         }
                         break;
                     case "checkBox_Size":
-                        SortBySize(selectedPath);
+                        await SortBySize(selectedPath);
                         break;
                     case "checkBox_Alphabet":
-                        SortAlphabetically(selectedPath);
+                        await SortAlphabetically(selectedPath);
                         break;
                 }
             }
         }
+
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -135,43 +136,63 @@ namespace Project__Filter
             }
         }
 
-        public void SortFiles(string FolderJson, string rootPath)
+        public async Task SortFiles(string FolderJson, string rootPath)
         {
             // Load the JSON file
             var folders = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText(FolderJson));
 
-            // Walk through the directory
-            foreach (var file in Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories))
+            // Create a Progress<T> object to report progress from the background task to the UI thread
+            var progress = new Progress<int>(value =>
             {
-                // Get the file extension and convert it to lowercase
-                string fileExt = Path.GetExtension(file).ToLower().TrimStart('.');
-                string destinationDirectory;
+                // Update your progress bar here
+                progressBar_Time.Value = value;
+            });
 
-                // Check if the file extension is in the dictionary
-                if (folders.Any(kvp => kvp.Value.Contains(fileExt)))
+            // Run the sorting operation in a separate thread
+            await Task.Run(() =>
+            {
+                // Get all files
+                var files = Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories).ToList();
+
+                for (int i = 0; i < files.Count; i++)
                 {
-                    string key = folders.First(kvp => kvp.Value.Contains(fileExt)).Key;
-                    destinationDirectory = Path.Combine(rootPath, key);
-                }
-                else
-                {
-                    destinationDirectory = Path.Combine(rootPath, "Other");
-                }
+                    var file = files[i];
 
-                // Create the destination folder if it doesn't exist
-                Directory.CreateDirectory(destinationDirectory);
+                    // Get the file extension and convert it to lowercase
+                    string fileExt = Path.GetExtension(file).ToLower().TrimStart('.');
+                    string destinationDirectory;
 
-                // Construct the source and destination paths
-                string srcPath = file;
-                string destPath = Path.Combine(destinationDirectory, Path.GetFileName(file));
+                    // Check if the file extension is in the dictionary
+                    if (folders.Any(kvp => kvp.Value.Contains(fileExt)))
+                    {
+                        string key = folders.First(kvp => kvp.Value.Contains(fileExt)).Key;
+                        destinationDirectory = Path.Combine(rootPath, key);
+                    }
+                    else
+                    {
+                        destinationDirectory = Path.Combine(rootPath, "Other");
+                    }
 
-                // Check if the file already exists in the destination directory
-                if (!File.Exists(destPath))
-                {
-                    // Move the file
-                    File.Move(srcPath, destPath);
+                    // Create the destination folder if it doesn't exist
+                    Directory.CreateDirectory(destinationDirectory);
+
+                    // Construct the source and destination paths
+                    string srcPath = file;
+                    string destPath = Path.Combine(destinationDirectory, Path.GetFileName(file));
+
+                    // Check if the file already exists in the destination directory
+                    if (!File.Exists(destPath))
+                    {
+                        // Move the file
+                        File.Move(srcPath, destPath);
+                    }
+
+                    // Report progress
+                    ((IProgress<int>)progress).Report((i + 1) * 100 / files.Count);
                 }
-            }
+            });
+
+            progressBar_Time.Value = 0;
 
             if (checkBox_Delete.Checked)
             {
@@ -180,18 +201,7 @@ namespace Project__Filter
 
             ScanFiles(rootPath);
 
-            // Clear the TreeView
-            treeView1.Nodes.Clear();
-
-            // Create the root node
-            TreeNode rootNode = new TreeNode(selectedPath);
-            treeView1.Nodes.Add(rootNode);
-
-            // Populate the TreeView with directories and files
-            PopulateTreeView(selectedPath, rootNode);
-
-            // Expand the root node
-            rootNode.Expand();
+            RepopulateTreeView(rootPath);
         }
 
         public void ScanFiles(string rootPath)
@@ -262,7 +272,7 @@ namespace Project__Filter
         }
 
         // Add sorts
-        public void SortByDuration(string DurationJson, string rootPath)
+        public async Task SortByDuration(string DurationJson, string rootPath)
         {
             // Load the JSON file
             var durations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, int>>>(File.ReadAllText(DurationJson));
@@ -274,108 +284,141 @@ namespace Project__Filter
             var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
 
             // Filter directories to only include those with the name "Videos"
-            var videoDirectories = directories.Where(dir => new DirectoryInfo(dir).Name == "Videos");
+            var videoDirectories = directories.Where(dir => new DirectoryInfo(dir).Name == "Videos").ToList();
 
-            foreach (var directory in videoDirectories)
+            // Create a Progress<T> object to report progress from the background task to the UI thread
+            var progress = new Progress<int>(value =>
             {
-                // Walk through the directory
-                foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.TopDirectoryOnly))
+                // Update your progress bar here
+                progressBar_Time.Value = value;
+            });
+
+            // Run the sorting operation in a separate thread
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < videoDirectories.Count; i++)
                 {
-                    try
+                    var directory = videoDirectories[i];
+
+                    // Walk through the directory
+                    foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.TopDirectoryOnly))
                     {
-                        // Get the file duration in seconds
-                        var videoInfo = ffProbe.GetMediaInfo(file);
-                        int fileDuration = (int)videoInfo.Duration.TotalSeconds;
-
-                        // Check if the file duration is in the dictionary
-                        foreach (var duration in durations)
+                        try
                         {
-                            int minDuration = duration.Value["Item1"];
-                            int maxDuration = duration.Value["Item2"];
+                            // Get the file duration in seconds
+                            var videoInfo = ffProbe.GetMediaInfo(file);
+                            int fileDuration = (int)videoInfo.Duration.TotalSeconds;
 
-                            if (fileDuration >= minDuration && fileDuration <= maxDuration)
+                            // Check if the file duration is in the dictionary
+                            foreach (var duration in durations)
                             {
-                                // Get the parent directory of the file
-                                string fileDirectory = Directory.GetParent(file).FullName;
+                                int minDuration = duration.Value["Item1"];
+                                int maxDuration = duration.Value["Item2"];
 
-                                // Construct the source and destination paths
-                                string srcPath = file;
-                                string destPath = Path.Combine(fileDirectory, duration.Key, Path.GetFileName(file));
+                                if (fileDuration >= minDuration && fileDuration <= maxDuration)
+                                {
+                                    // Get the parent directory of the file
+                                    string fileDirectory = Directory.GetParent(file).FullName;
 
-                                // Skip if the file is already in the correct directory
-                                if (Path.GetDirectoryName(srcPath) == Path.GetDirectoryName(destPath))
-                                    continue;
+                                    // Construct the source and destination paths
+                                    string srcPath = file;
+                                    string destPath = Path.Combine(fileDirectory, duration.Key, Path.GetFileName(file));
 
-                                // Create the destination folder if it doesn't exist
-                                Directory.CreateDirectory(Path.GetDirectoryName(destPath));
+                                    // Skip if the file is already in the correct directory
+                                    if (Path.GetDirectoryName(srcPath) == Path.GetDirectoryName(destPath))
+                                        continue;
 
-                                // Move the file
-                                File.Move(srcPath, destPath);
+                                    // Create the destination folder if it doesn't exist
+                                    Directory.CreateDirectory(Path.GetDirectoryName(destPath));
 
-                                break;
+                                    // Move the file
+                                    File.Move(srcPath, destPath);
+
+                                    break;
+                                }
                             }
                         }
+                        catch (Exception ex)
+                        {
+                            // Show a message box with the error
+                            MessageBox.Show($"An error occurred while sorting the file {file}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        // Show a message box with the error
-                        MessageBox.Show($"An error occurred while sorting the file {file}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+
+                    // Report progress
+                    ((IProgress<int>)progress).Report((i + 1) * 100 / videoDirectories.Count);
                 }
+            });
+            progressBar_Time.Value = 0;
 
-                ScanFiles(rootPath);
-            }
-
+            ScanFiles(rootPath);
             RepopulateTreeView(rootPath);
         }
 
-        public void SortByResolution(string rootPath)
+        public async Task SortByResolution(string rootPath)
         {
             // Initialize FFProbe
             var ffProbe = new FFProbe();
 
             // Get all directories
-            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
+            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories).ToList();
 
-            foreach (var directory in directories)
+            // Create a Progress<T> object to report progress from the background task to the UI thread
+            var progress = new Progress<int>(value =>
             {
-                // Walk through the directory
-                foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.TopDirectoryOnly))
+                // Update your progress bar here
+                progressBar_Time.Value = value;
+            });
+
+            // Run the sorting operation in a separate thread
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < directories.Count; i++)
                 {
-                    try
+                    var directory = directories[i];
+
+                    // Walk through the directory
+                    foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.TopDirectoryOnly))
                     {
-                        // Get the video info
-                        var videoInfo = ffProbe.GetMediaInfo(file);
+                        try
+                        {
+                            // Get the video info
+                            var videoInfo = ffProbe.GetMediaInfo(file);
 
-                        // Get the resolution of the video
-                        string resolution = $"{videoInfo.Streams[0].Width}x{videoInfo.Streams[0].Height}";
+                            // Get the resolution of the video
+                            string resolution = $"{videoInfo.Streams[0].Width}x{videoInfo.Streams[0].Height}";
 
-                        // Get the directory of the file
-                        string fileDirectory = Path.GetDirectoryName(file);
+                            // Get the directory of the file
+                            string fileDirectory = Path.GetDirectoryName(file);
 
-                        // Create a new folder for the resolution if it doesn't exist
-                        string resolutionFolder = Path.Combine(fileDirectory, resolution);
-                        Directory.CreateDirectory(resolutionFolder);
+                            // Create a new folder for the resolution if it doesn't exist
+                            string resolutionFolder = Path.Combine(fileDirectory, resolution);
+                            Directory.CreateDirectory(resolutionFolder);
 
-                        // Construct the destination path
-                        string destPath = Path.Combine(resolutionFolder, Path.GetFileName(file));
+                            // Construct the destination path
+                            string destPath = Path.Combine(resolutionFolder, Path.GetFileName(file));
 
-                        // Move the file
-                        File.Move(file, destPath);
+                            // Move the file
+                            File.Move(file, destPath);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Show a message box with the error
+                            MessageBox.Show($"An error occurred while sorting the file {file}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        // Show a message box with the error
-                        MessageBox.Show($"An error occurred while sorting the file {file}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+
+                    // Report progress
+                    ((IProgress<int>)progress).Report((i + 1) * 100 / directories.Count);
                 }
-                ScanFiles(rootPath);
-            }
+            });
+            progressBar_Time.Value = 0;
 
+            ScanFiles(rootPath);
             RepopulateTreeView(rootPath);
         }
 
-        public void SortBySize(string rootPath)
+        public async Task SortBySize(string rootPath)
         {
             // Define the size categories in bytes
             long below50MB = 50L * 1024 * 1024;
@@ -384,151 +427,202 @@ namespace Project__Filter
             long above1GB = 1024L * 1024 * 1024;
 
             // Get all directories
-            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
+            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories).ToList();
 
-            foreach (var directory in directories)
+            // Create a Progress<T> object to report progress from the background task to the UI thread
+            var progress = new Progress<int>(value =>
             {
-                // Get all files in the directory
-                var files = Directory.GetFiles(directory);
+                // Update your progress bar here
+                progressBar_Time.Value = value;
+            });
 
-                foreach (var file in files)
+            // Run the sorting operation in a separate thread
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < directories.Count; i++)
                 {
-                    // Get the file size
-                    long fileSize = new FileInfo(file).Length;
+                    var directory = directories[i];
 
-                    // Determine the destination folder based on the file size
-                    string destinationFolder;
-                    if (fileSize < below50MB)
+                    // Get all files in the directory
+                    var files = Directory.GetFiles(directory);
+
+                    foreach (var file in files)
                     {
-                        destinationFolder = "Below 50 MB";
-                    }
-                    else if (fileSize < below100MB)
-                    {
-                        destinationFolder = "50 MB to 100 MB";
-                    }
-                    else if (fileSize < below500MB)
-                    {
-                        destinationFolder = "100 MB to 500 MB";
-                    }
-                    else if (fileSize < above1GB)
-                    {
-                        destinationFolder = "500 MB to 1 GB";
-                    }
-                    else
-                    {
-                        destinationFolder = "Above 1 GB";
+                        // Get the file size
+                        long fileSize = new FileInfo(file).Length;
+
+                        // Determine the destination folder based on the file size
+                        string destinationFolder;
+                        if (fileSize < below50MB)
+                        {
+                            destinationFolder = "Below 50 MB";
+                        }
+                        else if (fileSize < below100MB)
+                        {
+                            destinationFolder = "50 MB to 100 MB";
+                        }
+                        else if (fileSize < below500MB)
+                        {
+                            destinationFolder = "100 MB to 500 MB";
+                        }
+                        else if (fileSize < above1GB)
+                        {
+                            destinationFolder = "500 MB to 1 GB";
+                        }
+                        else
+                        {
+                            destinationFolder = "Above 1 GB";
+                        }
+
+                        // Get the directory of the file
+                        string fileDirectory = Path.GetDirectoryName(file);
+
+                        // Create the destination folder if it doesn't exist
+                        string destinationDirectory = Path.Combine(fileDirectory, destinationFolder);
+                        Directory.CreateDirectory(destinationDirectory);
+
+                        // Construct the source and destination paths
+                        string srcPath = file;
+                        string destPath = Path.Combine(destinationDirectory, Path.GetFileName(file));
+
+                        // Move the file
+                        File.Move(srcPath, destPath);
                     }
 
-                    // Get the directory of the file
-                    string fileDirectory = Path.GetDirectoryName(file);
-
-                    // Create the destination folder if it doesn't exist
-                    string destinationDirectory = Path.Combine(fileDirectory, destinationFolder);
-                    Directory.CreateDirectory(destinationDirectory);
-
-                    // Construct the source and destination paths
-                    string srcPath = file;
-                    string destPath = Path.Combine(destinationDirectory, Path.GetFileName(file));
-
-                    // Move the file
-                    File.Move(srcPath, destPath);
+                    // Report progress
+                    ((IProgress<int>)progress).Report((i + 1) * 100 / directories.Count);
                 }
-            }
+            });
+            progressBar_Time.Value = 0;
 
             ScanFiles(rootPath);
             RepopulateTreeView(rootPath);
         }
 
-        public void SortAlphabetically(string rootPath)
+        public async Task SortAlphabetically(string rootPath)
         {
             // Get all directories
-            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
+            var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories).ToList();
 
-            foreach (var directory in directories)
+            // Create a Progress<T> object to report progress from the background task to the UI thread
+            var progress = new Progress<int>(value =>
             {
-                // Get all files in the directory
-                var files = Directory.GetFiles(directory);
+                // Update your progress bar here
+                progressBar_Time.Value = value;
+            });
 
-                foreach (var file in files)
+            // Run the sorting operation in a separate thread
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < directories.Count; i++)
                 {
-                    // Get the first letter of the file name
-                    char firstLetter = Char.ToUpper(Path.GetFileName(file)[0]);
+                    var directory = directories[i];
 
-                    // If the first letter is not a letter, get the next character that is a letter
-                    if (!Char.IsLetter(firstLetter))
+                    // Get all files in the directory
+                    var files = Directory.GetFiles(directory);
+
+                    foreach (var file in files)
                     {
-                        foreach (char c in Path.GetFileName(file))
+                        // Get the first letter of the file name
+                        char firstLetter = Char.ToUpper(Path.GetFileName(file)[0]);
+
+                        // If the first letter is not a letter, get the next character that is a letter
+                        if (!Char.IsLetter(firstLetter))
                         {
-                            if (Char.IsLetter(c))
+                            foreach (char c in Path.GetFileName(file))
                             {
-                                firstLetter = Char.ToUpper(c);
-                                break;
+                                if (Char.IsLetter(c))
+                                {
+                                    firstLetter = Char.ToUpper(c);
+                                    break;
+                                }
                             }
                         }
+
+                        // Get the directory of the file
+                        string fileDirectory = Path.GetDirectoryName(file);
+
+                        // Determine the destination folder based on the first letter
+                        string letterFolder;
+                        if (firstLetter < 128)  // ASCII characters
+                        {
+                            letterFolder = firstLetter.ToString();
+                        }
+                        else  // Non-ASCII characters
+                        {
+                            letterFolder = "Special Characters";
+                        }
+
+                        // Create the destination folder if it doesn't exist
+                        string destinationDirectory = Path.Combine(fileDirectory, letterFolder);
+                        Directory.CreateDirectory(destinationDirectory);
+
+                        // Construct the destination path
+                        string destPath = Path.Combine(destinationDirectory, Path.GetFileName(file));
+
+                        // Move the file
+                        File.Move(file, destPath);
                     }
 
-                    // Get the directory of the file
-                    string fileDirectory = Path.GetDirectoryName(file);
-
-                    // Determine the destination folder based on the first letter
-                    string letterFolder;
-                    if (firstLetter < 128)  // ASCII characters
-                    {
-                        letterFolder = firstLetter.ToString();
-                    }
-                    else  // Non-ASCII characters
-                    {
-                        letterFolder = "Special Characters";
-                    }
-
-                    // Create the destination folder if it doesn't exist
-                    string destinationDirectory = Path.Combine(fileDirectory, letterFolder);
-                    Directory.CreateDirectory(destinationDirectory);
-
-                    // Construct the destination path
-                    string destPath = Path.Combine(destinationDirectory, Path.GetFileName(file));
-
-                    // Move the file
-                    File.Move(file, destPath);
+                    // Report progress
+                    ((IProgress<int>)progress).Report((i + 1) * 100 / directories.Count);
                 }
-                ScanFiles(rootPath);
-            }
+            });
+            progressBar_Time.Value = 0;
 
+            ScanFiles(rootPath);
             RepopulateTreeView(rootPath);
         }
 
-        public void SortBySimilar(string rootPath)
+        public async Task SortBySimilar(string rootPath)
         {
             // Get all files in the directory and its subdirectories
-            var files = Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories);
+            var files = Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories).ToList();
 
             // Group the files by the common part of their names
-            var groupedFiles = files.GroupBy(f => Regex.Match(Path.GetFileNameWithoutExtension(f), @"^[a-zA-Z]*").Value);
+            var groupedFiles = files.GroupBy(f => Regex.Match(Path.GetFileNameWithoutExtension(f), @"^[a-zA-Z]*").Value).ToList();
 
-            foreach (var group in groupedFiles)
+            // Create a Progress<T> object to report progress from the background task to the UI thread
+            var progress = new Progress<int>(value =>
             {
-                string commonName = group.Key;
+                // Update your progress bar here
+                progressBar_Time.Value = value;
+            });
 
-                // Skip the group if the common name is empty
-                if (string.IsNullOrEmpty(commonName))
-                    continue;
-
-                // Get the directory of the first file in the group
-                string fileDirectory = Path.GetDirectoryName(group.First());
-
-                // Create a new folder for the similar files in the same directory as the file
-                string similarFolder = Path.Combine(fileDirectory, commonName);
-                Directory.CreateDirectory(similarFolder);
-
-                // Move the similar files to the new folder
-                foreach (var file in group)
+            // Run the sorting operation in a separate thread
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < groupedFiles.Count; i++)
                 {
-                    string destPath = Path.Combine(similarFolder, Path.GetFileName(file));
-                    File.Move(file, destPath);
-                }
-                ScanFiles(rootPath);
-            }
+                    var group = groupedFiles[i];
 
+                    string commonName = group.Key;
+
+                    // Skip the group if the common name is empty
+                    if (string.IsNullOrEmpty(commonName))
+                        continue;
+
+                    // Get the directory of the first file in the group
+                    string fileDirectory = Path.GetDirectoryName(group.First());
+
+                    // Create a new folder for the similar files in the same directory as the file
+                    string similarFolder = Path.Combine(fileDirectory, commonName);
+                    Directory.CreateDirectory(similarFolder);
+
+                    // Move the similar files to the new folder
+                    foreach (var file in group)
+                    {
+                        string destPath = Path.Combine(similarFolder, Path.GetFileName(file));
+                        File.Move(file, destPath);
+                    }
+
+                    // Report progress
+                    ((IProgress<int>)progress).Report((i + 1) * 100 / groupedFiles.Count);
+                }
+            });
+            progressBar_Time.Value = 0;
+
+            ScanFiles(rootPath);
             RepopulateTreeView(rootPath);
         }
     }
