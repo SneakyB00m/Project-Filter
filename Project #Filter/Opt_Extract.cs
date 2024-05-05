@@ -14,6 +14,7 @@ namespace Project__Filter
         public Opt_Extract()
         {
             InitializeComponent();
+            comboBox_Options.SelectedItem = "Extract Files";
         }
 
         private void button_Path_Click(object sender, EventArgs e)
@@ -27,10 +28,6 @@ namespace Project__Filter
                     selectedPath = fbd.SelectedPath;
                     textBox_Path.Text = selectedPath;
 
-                    radioButton_Folder.Enabled = true;
-                    radioButton_Unrar.Enabled = true;
-                    radioButton_Untar.Enabled = true;
-                    radioButton_Unzip.Enabled = true;
                     button_Extract.Enabled = true;
                     // Get all files in the directory and subdirectories
                     string[] files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories);
@@ -77,21 +74,27 @@ namespace Project__Filter
 
         private void button_Extract_Click(object sender, EventArgs e)
         {
-            if (radioButton_Folder.Checked)
+            // Get the selected item from the ComboBox
+            string selectedItem = comboBox_Options.SelectedItem.ToString();
+
+            switch (selectedItem)
             {
-                MoveFiles(selectedPath);
-            }
-            else if (radioButton_Unrar.Checked)
-            {
-                UncompressRar(selectedPath);
-            }
-            else if (radioButton_Untar.Checked)
-            {
-                UncompressTar(selectedPath);
-            }
-            else if (radioButton_Unzip.Checked)
-            {
-                UnzipDirectory(selectedPath);
+                case "Extract Files":
+                    MoveFiles(selectedPath);
+                    break;
+                case "Uncompress RAR":
+                    UncompressRar(selectedPath);
+                    break;
+                case "Uncompress TAR":
+                    UncompressTar(selectedItem);
+                    break;
+                case "Uncompress ZIP":
+                    UnzipDirectory(selectedItem);
+                    break;
+                default:
+                    // Handle the case where no valid option is selected
+                    MessageBox.Show("Please select a valid option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
             }
         }
 
@@ -297,6 +300,5 @@ namespace Project__Filter
                 }
             }
         }
-
     }
 }
