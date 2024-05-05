@@ -41,6 +41,8 @@ namespace Project__Filter
                 // Get the selected item
                 string selectedItem = comboBox.SelectedItem.ToString();
 
+                // Define the file extensions for each case
+                List<string> fileExtensions = new List<string>();
                 switch (selectedItem)
                 {
                     case "IMAGE To PDF (TITLE)":
@@ -49,56 +51,23 @@ namespace Project__Filter
                         checkBox_Name.Enabled = true;
                         checkBox_Date.Enabled = true;
                         checkBox_Size.Enabled = true;
-
-                        // Get all image files in the selected directory that can be converted to PDF
-                        string[] imageFilesTitle = Directory.EnumerateFiles(selectedPath)
-                                                        .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("bmp"))
-                                                        .ToArray();
-
-                        listBox_File.Items.Clear();
-
-                        foreach (string imageFile in imageFilesTitle)
-                        {
-                            listBox_File.Items.Add(Path.GetFileName(imageFile));
-                        }
+                        fileExtensions = new List<string> { "jpg", "jpeg", "png", "gif", "tiff", "bmp" };
                         break;
                     case "IMAGE To PDF (NO TITLE)":
-                        // Get all image files in the selected directory that can be converted to PDF
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
                         checkBox_Name.Enabled = true;
                         checkBox_Date.Enabled = true;
                         checkBox_Size.Enabled = true;
-
-                        string[] imageFilesNotitle = Directory.EnumerateFiles(selectedPath)
-                                                        .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("bmp"))
-                                                        .ToArray();
-
-                        listBox_File.Items.Clear();
-
-                        foreach (string imageFile in imageFilesNotitle)
-                        {
-                            listBox_File.Items.Add(Path.GetFileName(imageFile));
-                        }
+                        fileExtensions = new List<string> { "jpg", "jpeg", "png", "gif", "tiff", "bmp" };
                         break;
                     case "IMAGE To ICO":
-                        // Get all image files in the selected directory that can be converted to ICO
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
                         checkBox_Name.Enabled = false;
                         checkBox_Date.Enabled = false;
                         checkBox_Size.Enabled = false;
-
-                        string[] imageFilesIco = Directory.EnumerateFiles(selectedPath)
-                                                        .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("bmp") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("svg"))
-                                                        .ToArray();
-
-                        listBox_File.Items.Clear();
-
-                        foreach (string imageFile in imageFilesIco)
-                        {
-                            listBox_File.Items.Add(Path.GetFileName(imageFile));
-                        }
+                        fileExtensions = new List<string> { "jpg", "jpeg", "png", "bmp", "gif", "svg" };
                         break;
                     case "IMAGE To WEBP":
                         // Get all image files in the selected directory that can be converted to WEBP
@@ -107,36 +76,16 @@ namespace Project__Filter
                         checkBox_Name.Enabled = false;
                         checkBox_Date.Enabled = false;
                         checkBox_Size.Enabled = false;
-
-                        string[] imageFilesWEBP = Directory.EnumerateFiles(selectedPath)
-                                                        .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("bmp") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("ico"))
-                                                        .ToArray();
-
-                        listBox_File.Items.Clear();
-
-                        foreach (string imageFile in imageFilesWEBP)
-                        {
-                            listBox_File.Items.Add(Path.GetFileName(imageFile));
-                        }
+                        fileExtensions = new List<string> { "jpg", "jpeg", "png", "bmp", "gif", "svg", "tiff" };
                         break;
                     case "IMAGE To BMP":
-                        // Get all image files in the selected directory that can be converted to BMP
+                        // Get all image files in the selected directory that can be converted to WEBP
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
                         checkBox_Name.Enabled = false;
                         checkBox_Date.Enabled = false;
                         checkBox_Size.Enabled = false;
-
-                        string[] imageFilesBmp = Directory.EnumerateFiles(selectedPath)
-                                                        .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png") || file.ToLower().EndsWith("gif") || file.ToLower().EndsWith("tiff") || file.ToLower().EndsWith("ico") || file.ToLower().EndsWith("webp"))
-                                                        .ToArray();
-
-                        listBox_File.Items.Clear();
-
-                        foreach (string imageFile in imageFilesBmp)
-                        {
-                            listBox_File.Items.Add(Path.GetFileName(imageFile));
-                        }
+                        fileExtensions = new List<string> { "jpg", "jpeg", "png", "bmp", "gif", "svg", "tiff", "webp" };
                         break;
                     case "IMAGE To ASCII":
                         radioButton_Custom.Enabled = false;
@@ -144,99 +93,39 @@ namespace Project__Filter
                         checkBox_Name.Enabled = false;
                         checkBox_Date.Enabled = false;
                         checkBox_Size.Enabled = false;
-
-                        string[] imageFilesAscii = Directory.EnumerateFiles(selectedPath)
-                                                       .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("png"))
-                                                       .ToArray();
-
-                        listBox_File.Items.Clear();
-
-                        foreach (string imageFile in imageFilesAscii)
-                        {
-                            listBox_File.Items.Add(Path.GetFileName(imageFile));
-                        }
+                        fileExtensions = new List<string> { "jpg", "jpeg", "png" };
                         break;
                     case "VIDEO To AUDIO":
-                        // Get all video files in the selected directory
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
                         checkBox_Name.Enabled = false;
                         checkBox_Date.Enabled = false;
                         checkBox_Size.Enabled = false;
-
-                        string[] videoFilestoAudio = Directory.EnumerateFiles(selectedPath)
-                                                        .Where(file => file.ToLower().EndsWith("mp4") || file.ToLower().EndsWith("avi")
-                                                        || file.ToLower().EndsWith("mkv") || file.ToLower().EndsWith("flv")
-                                                        || file.ToLower().EndsWith("mov") || file.ToLower().EndsWith("wmv"))
-                                                        .ToArray();
-
-                        listBox_File.Items.Clear();
-
-                        foreach (string videoFile in videoFilestoAudio)
-                        {
-                            listBox_File.Items.Add(Path.GetFileName(videoFile));
-                        }
+                        fileExtensions = new List<string> { "mp4", "avi", "mkv", "flv", "mov", "wmv" };
                         break;
                     case "VIDEO To WEBM":
-                        // Get all video files in the selected directory that can be converted to WebM
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
                         checkBox_Name.Enabled = false;
                         checkBox_Date.Enabled = false;
                         checkBox_Size.Enabled = false;
-
-                        string[] videoFilestoWebm = Directory.EnumerateFiles(selectedPath)
-                                                        .Where(file => file.ToLower().EndsWith("mp4") || file.ToLower().EndsWith("avi")
-                                                        || file.ToLower().EndsWith("mkv") || file.ToLower().EndsWith("flv") ||
-                                                        file.ToLower().EndsWith("mov") || file.ToLower().EndsWith("wmv") ||
-                                                        file.ToLower().EndsWith("m4v") || file.ToLower().EndsWith("mpeg") ||
-                                                        file.ToLower().EndsWith("mpg"))
-                                                        .ToArray();
-
-                        listBox_File.Items.Clear();
-
-                        foreach (string videoFile in videoFilestoWebm)
-                        {
-                            listBox_File.Items.Add(Path.GetFileName(videoFile));
-                        }
+                        fileExtensions = new List<string> { "mp4", "avi", "mkv", "flv", "mov", "wmv", "m4v", "mpeg", "mpg" };
                         break;
                     case "VIDEO To AVI":
-                        // Get all video files in the selected directory that can be converted to AVI
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
                         checkBox_Name.Enabled = false;
                         checkBox_Date.Enabled = false;
                         checkBox_Size.Enabled = false;
-
-                        string[] videoFiles = Directory.EnumerateFiles(selectedPath)
-                                                        .Where(file => file.ToLower().EndsWith("mp4") || file.ToLower().EndsWith("mkv") || file.ToLower().EndsWith("flv") || file.ToLower().EndsWith("mov") || file.ToLower().EndsWith("wmv") || file.ToLower().EndsWith("m4v") || file.ToLower().EndsWith("mpeg") || file.ToLower().EndsWith("mpg"))
-                                                        .ToArray();
-
-                        listBox_File.Items.Clear();
-
-                        foreach (string videoFile in videoFiles)
-                        {
-                            listBox_File.Items.Add(Path.GetFileName(videoFile));
-                        }
+                        fileExtensions = new List<string> { "mp4", "mkv", "flv", "mov", "wmv", "m4v", "mpeg", "mpg" };
                         break;
                     case "AUDIO To WAV":
-                        // Get all audio files in the selected directory that can be converted to WAV
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
                         checkBox_Name.Enabled = false;
                         checkBox_Date.Enabled = false;
                         checkBox_Size.Enabled = false;
-
-                        string[] audioFiles = Directory.EnumerateFiles(selectedPath)
-                                                        .Where(file => file.ToLower().EndsWith("mp3") || file.ToLower().EndsWith("aac") || file.ToLower().EndsWith("flac") || file.ToLower().EndsWith("m4a") || file.ToLower().EndsWith("ogg") || file.ToLower().EndsWith("wma"))
-                                                        .ToArray();
-
-                        listBox_File.Items.Clear();
-
-                        foreach (string audioFile in audioFiles)
-                        {
-                            listBox_File.Items.Add(Path.GetFileName(audioFile));
-                        }
+                        fileExtensions = new List<string> { "mp3", "aac", "flac", "m4a", "ogg", "wma", "mpeg", "mpg" };
                         break;
                     default:
                         listBox_File.Items.Clear();
@@ -246,11 +135,20 @@ namespace Project__Filter
                         checkBox_Date.Enabled = false;
                         checkBox_Size.Enabled = false;
                         break;
+
                 }
-            }
-            else
-            {
-                MessageBox.Show("Path not selected");
+
+                // Get all image files in the selected directory that can be converted to the selected format
+                string[] imageFiles = Directory.EnumerateFiles(selectedPath)
+                                               .Where(file => fileExtensions.Any(ext => file.ToLower().EndsWith(ext)))
+                                               .ToArray();
+
+                listBox_File.Items.Clear();
+
+                foreach (string imageFile in imageFiles)
+                {
+                    listBox_File.Items.Add(Path.GetFileName(imageFile));
+                }
             }
         }
 
@@ -267,7 +165,7 @@ namespace Project__Filter
                         PDFTitle();
                         break;
                     case "IMAGE To PDF (NO TITLE)":
-                        PDFNoTitle();
+                        CreatedPDF();
                         break;
                     case "IMAGE To ICO":
                         ImageIcon();
@@ -751,8 +649,6 @@ namespace Project__Filter
                 }
             });
         }
-
-
 
         private void AudioWav()
         {
