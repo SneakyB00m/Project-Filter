@@ -7,6 +7,7 @@ namespace Project__Filter
     public partial class Opt_Sort : UserControl
     {
 
+        // Declare a list to store the order of checked checkboxes
         List<string> checkedOrder = new List<string>();
         string selectedPath;
         int initialFileCount;
@@ -60,88 +61,54 @@ namespace Project__Filter
 
         private void button_Filter_Click(object sender, EventArgs e)
         {
+            // Call SortFiles first
             if (File.Exists("Folders.json"))
             {
                 SortFiles("Folders.json", selectedPath);
             }
-            foreach (string checkboxName in checkedOrder)
+
+            // Then check the checkboxes
+            foreach (string checkBoxName in checkedOrder)
             {
-                switch (checkboxName)
+                switch (checkBoxName)
                 {
+                    case "checkBox_Include":
+                        // Call the function related to 'Include'
+                        break;
                     case "checkBox_Resolution":
-                        SortByResolution(selectedPath);
+                        // Call the function related to 'Resolution'
                         break;
                     case "checkBox_Duration":
-                        if (File.Exists("Duration.json"))
-                        {
-                            SortByDuration("Duration.json", selectedPath);
-                        }
-                        break;
-                    case "checkBox_Include":
-                        SortBySimilar(selectedPath);
+                        // Call the function related to 'Duration'
                         break;
                     case "checkBox_Size":
-                        SortBySize(selectedPath);
+                        // Call the function related to 'Size'
                         break;
                     case "checkBox_Alphabet":
-                        SortAlphabetically(selectedPath);
+                        // Call the function related to 'Alphabet'
                         break;
                 }
             }
-
-            // Clear the checkedOrder list and uncheck all checkboxes
-            checkedOrder.Clear();
-            checkBox_Resolution.Checked = false;
-            checkBox_Duration.Checked = false;
-            checkBox_Include.Checked = false;
-            checkBox_Size.Checked = false;
-            checkBox_Alphabet.Checked = false;
         }
 
-
-        private void checkBox_Include_CheckedChanged(object sender, EventArgs e)
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateCheckedOrder(sender as CheckBox);
-        }
+            // Get the checkbox that triggered the event
+            CheckBox checkBox = sender as CheckBox;
 
-        private void checkBox_Resolution_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateCheckedOrder(sender as CheckBox);
-        }
-
-        private void checkBox_Duration_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateCheckedOrder(sender as CheckBox);
-        }
-
-        private void checkBox_Size_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateCheckedOrder(sender as CheckBox);
-        }
-
-        private void checkBox_Alphabet_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateCheckedOrder(sender as CheckBox);
-        }
-
-
-        // Functions
-        private void UpdateCheckedOrder(CheckBox checkBox)
-        {
-            if (checkBox != null)
+            if (checkBox.Checked)
             {
-                if (checkBox.Checked)
-                {
-                    // Add the checkbox's name to the list when it's checked
-                    checkedOrder.Add(checkBox.Name);
-                }
-                else
-                {
-                    // Remove the checkbox's name from the list when it's unchecked
-                    checkedOrder.Remove(checkBox.Name);
-                }
+                // If the checkbox was checked, add it to the end of the list
+                checkedOrder.Add(checkBox.Name);
+            }
+            else
+            {
+                // If the checkbox was unchecked, remove it from the list
+                checkedOrder.Remove(checkBox.Name);
             }
         }
+
+        // Functions
 
         private void PopulateTreeView(string directoryValue, TreeNode parentNode)
         {
