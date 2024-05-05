@@ -273,7 +273,10 @@ namespace Project__Filter
             // Get all directories
             var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
 
-            foreach (var directory in directories)
+            // Filter directories to only include those with the name "Videos"
+            var videoDirectories = directories.Where(dir => new DirectoryInfo(dir).Name == "Videos");
+
+            foreach (var directory in videoDirectories)
             {
                 // Walk through the directory
                 foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.TopDirectoryOnly))
