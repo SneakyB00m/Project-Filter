@@ -191,9 +191,20 @@ namespace Project__Filter
                 string srcPath = file;
                 string destPath = Path.Combine(destinationDirectory, Path.GetFileName(file));
 
-                // Move the file
-                File.Move(srcPath, destPath);
+                // Check if the file already exists in the destination directory
+                if (!File.Exists(destPath))
+                {
+                    // Move the file
+                    File.Move(srcPath, destPath);
+                }
             }
+
+            if (checkBox_Delete.Checked)
+            {
+                DeleteFolders(rootPath);
+            }
+
+            ScanFiles(rootPath);
 
             // Clear the TreeView
             treeView1.Nodes.Clear();
@@ -207,8 +218,6 @@ namespace Project__Filter
 
             // Expand the root node
             rootNode.Expand();
-
-            ScanFiles(rootPath);
         }
 
         public void ScanFiles(string rootPath)
@@ -220,6 +229,45 @@ namespace Project__Filter
             if (initialFileCount != finalFileCount)
             {
                 MessageBox.Show("Some files were lost during the sorting operation.");
+            }
+        }
+
+        public void DeleteFolders(string rootPath)
+        {
+            // Get all directories
+            var directories = Directory.GetDirectories(rootPath, "*.*", SearchOption.AllDirectories);
+
+            // List to store all empty directories
+            List<string> emptyDirectories = new List<string>();
+
+            foreach (var dir in directories)
+            {
+                // Check if the directory is empty
+                if (!Directory.EnumerateFileSystemEntries(dir).Any())
+                {
+                    // Add the empty directory to the list
+                    emptyDirectories.Add(dir);
+                }
+            }
+
+            // If there are any empty directories, ask for confirmation to delete them all
+            if (emptyDirectories.Any())
+            {
+                string message = $"There are {emptyDirectories.Count} empty directories. Do you want to delete them all?";
+                DialogResult result = MessageBox.Show(message, "Confirmation", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    foreach (var dir in emptyDirectories)
+                    {
+                        Directory.Delete(dir);
+                    }
+                    MessageBox.Show($"Deleted all {emptyDirectories.Count} empty directories.");
+                }
+                else
+                {
+                    MessageBox.Show("Skipped deleting empty directories.");
+                }
             }
         }
 
