@@ -366,9 +366,9 @@ namespace Project__Filter
                         MessageBox.Show($"An error occurred while sorting the file {file}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                ScanFiles(rootPath);
             }
 
-            ScanFiles(rootPath);
             RepopulateTreeView(rootPath);
         }
 
@@ -449,16 +449,16 @@ namespace Project__Filter
                 foreach (var file in files)
                 {
                     // Get the first letter of the file name
-                    char firstLetter = Path.GetFileName(file)[0];
+                    char firstLetter = Char.ToUpper(Path.GetFileName(file)[0]);
 
                     // If the first letter is not a letter, get the next character that is a letter
-                    if (!char.IsLetter(firstLetter))
+                    if (!Char.IsLetter(firstLetter))
                     {
                         foreach (char c in Path.GetFileName(file))
                         {
-                            if (char.IsLetter(c))
+                            if (Char.IsLetter(c))
                             {
-                                firstLetter = c;
+                                firstLetter = Char.ToUpper(c);
                                 break;
                             }
                         }
@@ -467,19 +467,30 @@ namespace Project__Filter
                     // Get the directory of the file
                     string fileDirectory = Path.GetDirectoryName(file);
 
-                    // Create a new folder for the first letter if it doesn't exist
-                    string letterFolder = Path.Combine(fileDirectory, firstLetter.ToString());
-                    Directory.CreateDirectory(letterFolder);
+                    // Determine the destination folder based on the first letter
+                    string letterFolder;
+                    if (firstLetter < 128)  // ASCII characters
+                    {
+                        letterFolder = firstLetter.ToString();
+                    }
+                    else  // Non-ASCII characters
+                    {
+                        letterFolder = "Special Characters";
+                    }
+
+                    // Create the destination folder if it doesn't exist
+                    string destinationDirectory = Path.Combine(fileDirectory, letterFolder);
+                    Directory.CreateDirectory(destinationDirectory);
 
                     // Construct the destination path
-                    string destPath = Path.Combine(letterFolder, Path.GetFileName(file));
+                    string destPath = Path.Combine(destinationDirectory, Path.GetFileName(file));
 
                     // Move the file
                     File.Move(file, destPath);
                 }
+                ScanFiles(rootPath);
             }
 
-            ScanFiles(rootPath);
             RepopulateTreeView(rootPath);
         }
 
@@ -512,9 +523,9 @@ namespace Project__Filter
                     string destPath = Path.Combine(similarFolder, Path.GetFileName(file));
                     File.Move(file, destPath);
                 }
+                ScanFiles(rootPath);
             }
 
-            ScanFiles(rootPath);
             RepopulateTreeView(rootPath);
         }
     }
