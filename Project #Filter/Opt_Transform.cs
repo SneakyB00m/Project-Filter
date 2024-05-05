@@ -70,7 +70,6 @@ namespace Project__Filter
                         fileExtensions = new List<string> { "jpg", "jpeg", "png", "bmp", "gif", "svg" };
                         break;
                     case "IMAGE To WEBP":
-                        // Get all image files in the selected directory that can be converted to WEBP
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
                         checkBox_Name.Enabled = false;
@@ -79,7 +78,6 @@ namespace Project__Filter
                         fileExtensions = new List<string> { "jpg", "jpeg", "png", "bmp", "gif", "svg", "tiff" };
                         break;
                     case "IMAGE To BMP":
-                        // Get all image files in the selected directory that can be converted to WEBP
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
                         checkBox_Name.Enabled = false;
