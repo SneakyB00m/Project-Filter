@@ -255,7 +255,7 @@ namespace Project__Filter
         }
 
         // Add sorts
-        public void SortByDuration(string DurationJson, string rootPath)  // Duration
+        public void SortByDuration(string DurationJson, string rootPath)
         {
             // Load the JSON file
             var durations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, int>>>(File.ReadAllText(DurationJson));
@@ -319,7 +319,7 @@ namespace Project__Filter
             RepopulateTreeView(rootPath);
         }
 
-        public void SortByResolution(string rootPath)  // Resolution
+        public void SortByResolution(string rootPath)
         {
             // Initialize FFProbe
             var ffProbe = new FFProbe();
@@ -352,8 +352,11 @@ namespace Project__Filter
                     var videoInfo = ffProbe.GetMediaInfo(file);
                     string resolution = $"{videoInfo.Streams[0].Width}x{videoInfo.Streams[0].Height}";
 
+                    // Get the directory of the file
+                    string fileDirectory = Path.GetDirectoryName(file);
+
                     // Create a new folder for the resolution if it doesn't exist
-                    string resolutionFolder = Path.Combine(directory, resolution);
+                    string resolutionFolder = Path.Combine(fileDirectory, resolution);
                     Directory.CreateDirectory(resolutionFolder);
 
                     // Construct the destination path
@@ -412,8 +415,11 @@ namespace Project__Filter
                         destinationFolder = "Above 1 GB";
                     }
 
+                    // Get the directory of the file
+                    string fileDirectory = Path.GetDirectoryName(file);
+
                     // Create the destination folder if it doesn't exist
-                    string destinationDirectory = Path.Combine(directory, destinationFolder);
+                    string destinationDirectory = Path.Combine(fileDirectory, destinationFolder);
                     Directory.CreateDirectory(destinationDirectory);
 
                     // Construct the source and destination paths
@@ -426,7 +432,6 @@ namespace Project__Filter
             }
 
             ScanFiles(rootPath);
-
             RepopulateTreeView(rootPath);
         }
 
@@ -447,7 +452,11 @@ namespace Project__Filter
                 for (int i = 0; i < sortedFiles.Count; i++)
                 {
                     string oldPath = sortedFiles[i];
-                    string newPath = Path.Combine(directory, $"{i}_{Path.GetFileName(oldPath)}");
+
+                    // Get the directory of the file
+                    string fileDirectory = Path.GetDirectoryName(oldPath);
+
+                    string newPath = Path.Combine(fileDirectory, $"{i}_{Path.GetFileName(oldPath)}");
 
                     // Rename the file
                     File.Move(oldPath, newPath);
@@ -455,7 +464,6 @@ namespace Project__Filter
             }
 
             ScanFiles(rootPath);
-
             RepopulateTreeView(rootPath);
         }
 
@@ -491,7 +499,6 @@ namespace Project__Filter
             }
 
             ScanFiles(rootPath);
-
             RepopulateTreeView(rootPath);
         }
     }
