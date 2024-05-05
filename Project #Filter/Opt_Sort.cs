@@ -73,19 +73,26 @@ namespace Project__Filter
                 switch (checkBoxName)
                 {
                     case "checkBox_Include":
-                        // Call the function related to 'Include'
+                        SortBySimilar(selectedPath);
                         break;
                     case "checkBox_Resolution":
-                        // Call the function related to 'Resolution'
+                        SortByResolution(selectedPath);
                         break;
                     case "checkBox_Duration":
-                        // Call the function related to 'Duration'
+                        if (File.Exists("Duration.json"))
+                        {
+                            SortByDuration("Duration.json", selectedPath);
+                        }
+                        else
+                        {
+                            MessageBox.Show("The configuration file 'Duration.json' does not exist.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                         break;
                     case "checkBox_Size":
-                        // Call the function related to 'Size'
+                        SortBySize(selectedPath);
                         break;
                     case "checkBox_Alphabet":
-                        // Call the function related to 'Alphabet'
+                        SortAlphabetically(selectedPath);
                         break;
                 }
             }
