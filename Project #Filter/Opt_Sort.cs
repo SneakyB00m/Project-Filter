@@ -88,7 +88,16 @@ namespace Project__Filter
                         break;
                 }
             }
+
+            // Clear the checkedOrder list and uncheck all checkboxes
+            checkedOrder.Clear();
+            checkBox_Resolution.Checked = false;
+            checkBox_Duration.Checked = false;
+            checkBox_Include.Checked = false;
+            checkBox_Size.Checked = false;
+            checkBox_Alphabet.Checked = false;
         }
+
 
         private void checkBox_Include_CheckedChanged(object sender, EventArgs e)
         {
@@ -243,12 +252,16 @@ namespace Project__Filter
 
                         if (fileDuration >= minDuration && fileDuration <= maxDuration)
                         {
-                            // Get the directory of the file
-                            string fileDirectory = Path.GetDirectoryName(file);
+                            // Get the parent directory of the file
+                            string fileDirectory = Directory.GetParent(file).FullName;
 
                             // Construct the source and destination paths
                             string srcPath = file;
                             string destPath = Path.Combine(fileDirectory, duration.Key, Path.GetFileName(file));
+
+                            // Skip if the file is already in the correct directory
+                            if (Path.GetDirectoryName(srcPath) == Path.GetDirectoryName(destPath))
+                                continue;
 
                             // Create the destination folder if it doesn't exist
                             Directory.CreateDirectory(Path.GetDirectoryName(destPath));
@@ -277,6 +290,7 @@ namespace Project__Filter
             // Expand the root node
             rootNode.Expand();
         }
+
 
         public void SortByResolution(string rootPath)  // Resolution
         {
