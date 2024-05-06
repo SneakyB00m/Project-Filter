@@ -172,7 +172,8 @@ namespace Project__Filter
                         PDFTitle();
                         break;
                     case "IMAGE To PDF (NO TITLE)":
-                        PathSelectedFiles(selectedPath);
+                        //PathSelectedFiles(selectedPath);
+                        PDFNoTitle();
                         break;
                     case "IMAGE To ICO":
                         ImageIcon();
@@ -398,17 +399,26 @@ namespace Project__Filter
 
                 foreach (string imageFile in imageFiles)
                 {
-                    XImage image = XImage.FromFile(imageFile);
+                    try
+                    {
+                        XImage image = XImage.FromFile(imageFile);
 
-                    // Create a new page with the dimensions of the image
-                    PdfSharp.Pdf.PdfPage page = document.AddPage();
-                    page.Width = image.PointWidth;
-                    page.Height = image.PointHeight;
+                        // Create a new page with the dimensions of the image
+                        PdfSharp.Pdf.PdfPage page = document.AddPage();
+                        page.Width = image.PointWidth;
+                        page.Height = image.PointHeight;
 
-                    XGraphics gfx = XGraphics.FromPdfPage(page);
+                        XGraphics gfx = XGraphics.FromPdfPage(page);
 
-                    // Draw the image to fit the page
-                    gfx.DrawImage(image, 0, 0, page.Width, page.Height);
+                        // Draw the image to fit the page
+                        gfx.DrawImage(image, 0, 0, page.Width, page.Height);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log the error or handle it as needed
+                        Console.WriteLine($"Error processing image {imageFile}: {ex.Message}");
+                        continue;
+                    }
                 }
 
                 // Save the document
