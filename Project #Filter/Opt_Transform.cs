@@ -172,7 +172,7 @@ namespace Project__Filter
                         PDFTitle();
                         break;
                     case "IMAGE To PDF (NO TITLE)":
-                        Test();
+                        PathSelectedFiles(selectedPath);
                         break;
                     case "IMAGE To ICO":
                         ImageIcon();
@@ -215,20 +215,6 @@ namespace Project__Filter
                 MessageBox.Show("Path not selected");
             }
         }
-
-        private void Test()
-        {
-            // Get the selected items in the ListBox
-            var selectedItems = listBox_File.SelectedItems;
-
-            // Iterate through the selected items
-            foreach (var item in selectedItems)
-            {
-                // Display the selected item
-                Debug.WriteLine(item.ToString());
-            }
-        }
-
 
         private void PDFTitle()
         {
@@ -695,76 +681,82 @@ namespace Project__Filter
         }
 
 
-        private void CreatedPDF()
+        private void PathSelectedFiles(string rootpath)
+        {
+            // Get the selected items in the ListBox
+            var selectedItems = listBox_File.SelectedItems;
+
+            // Convert the selected items to a list of strings
+            List<string> selectedFiles = selectedItems.Cast<string>().ToList();
+
+            // Create a list to hold the full paths of the selected files
+            List<string> fullPaths = new List<string>();
+
+            // Get the full path of each selected file
+            foreach (string file in selectedFiles)
+            {
+                string fullPath = Path.Combine(rootpath, file);
+                fullPaths.Add(fullPath);
+            }
+
+            //// Call the CreatedPDF method with the full paths of the selected files
+            CreatedPDF(fullPaths);
+        }
+
+        private void CreatedPDF(List<string> imageFiles)
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-            // Create a FolderBrowserDialog to request the path of the folder containing the images.
-            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
-            folderBrowserDialog1.Description = "Select the folder containing the images";
-            folderBrowserDialog1.ShowDialog();
+            // Create a PDF document
+            PdfSharp.Pdf.PdfDocument doc = new PdfSharp.Pdf.PdfDocument();
 
-            // If the folder path is not an empty string, get all image files in the folder.
-            if (folderBrowserDialog1.SelectedPath != "")
+            // Add an image to each page of the PDF document
+            foreach (string imageFile in imageFiles)
             {
-                string[] imageFiles = Directory.EnumerateFiles(folderBrowserDialog1.SelectedPath)
-                    .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("png"))
-                    .ToArray();
-
-                // Create a PDF document
-                PdfSharp.Pdf.PdfDocument doc = new PdfSharp.Pdf.PdfDocument();
-
-                // Add an image to each page of the PDF document
-                foreach (string imageFile in imageFiles)
+                PdfSharp.Pdf.PdfPage page = doc.AddPage();
+                XGraphics gfx = XGraphics.FromPdfPage(page);
+                using (XImage image = XImage.FromFile(imageFile))
                 {
-                    PdfSharp.Pdf.PdfPage page = doc.AddPage();
-                    XGraphics gfx = XGraphics.FromPdfPage(page);
-                    using (XImage image = XImage.FromFile(imageFile))
-                    {
-                        // Get the size of the PDF page
-                        double pageWidth = page.Width;
-                        double pageHeight = page.Height;
+                    // Get the size of the PDF page
+                    double pageWidth = page.Width;
+                    double pageHeight = page.Height;
 
-                        // Get the size of the image
-                        double imageWidth = image.PixelWidth;
-                        double imageHeight = image.PixelHeight;
+                    // Get the size of the image
+                    double imageWidth = image.PixelWidth;
+                    double imageHeight = image.PixelHeight;
 
-                        // Calculate the scaling factor to fit the image within the page
-                        double scale = Math.Min(pageWidth / imageWidth, pageHeight / imageHeight);
+                    // Calculate the scaling factor to fit the image within the page
+                    double scale = Math.Min(pageWidth / imageWidth, pageHeight / imageHeight);
 
-                        // Calculate the new size of the image
-                        double scaledImageWidth = imageWidth * scale;
-                        double scaledImageHeight = imageHeight * scale;
+                    // Calculate the new size of the image
+                    double scaledImageWidth = imageWidth * scale;
+                    double scaledImageHeight = imageHeight * scale;
 
-                        // Draw the image centered on the page
-                        gfx.DrawImage(image, (pageWidth - scaledImageWidth) / 2, (pageHeight - scaledImageHeight) / 2, scaledImageWidth, scaledImageHeight);
-                    }
-
-
-                }
-
-                // Save and close the PDF document
-                string pdfFileName = Path.Combine(folderBrowserDialog1.SelectedPath, "images.pdf");
-                doc.Save(pdfFileName);
-                doc.Close();
-
-                // Ask before deleting the images from the selected folder
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete all images?", "Confirm Delete", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    foreach (string imageFile in imageFiles)
-                    {
-                        File.Delete(imageFile);
-                    }
-                    MessageBox.Show($"Done! Successfully moved {imageFiles.Length} images to {pdfFileName} and deleted them.");
-                }
-                else
-                {
-                    MessageBox.Show($"Done! Successfully moved {imageFiles.Length} images to {pdfFileName}. The images were not deleted.");
+                    // Draw the image centered on the page
+                    gfx.DrawImage(image, (pageWidth - scaledImageWidth) / 2, (pageHeight - scaledImageHeight) / 2, scaledImageWidth, scaledImageHeight);
                 }
             }
-        }
 
+            // Save and close the PDF document
+            string pdfFileName = Path.Combine(Path.GetDirectoryName(imageFiles[0]), "images.pdf");
+            doc.Save(pdfFileName);
+            doc.Close();
+
+            // Ask before deleting the images from the selected folder
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete all images?", "Confirm Delete", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                foreach (string imageFile in imageFiles)
+                {
+                    File.Delete(imageFile);
+                }
+                MessageBox.Show($"Done! Successfully moved {imageFiles.Count} images to {pdfFileName} and deleted them.");
+            }
+            else
+            {
+                MessageBox.Show($"Done! Successfully moved {imageFiles.Count} images to {pdfFileName}. The images were not deleted.");
+            }
+        }
     }
 }
 
