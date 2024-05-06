@@ -4,6 +4,7 @@ using iTextSharp.text.pdf;
 using iTextSharp.text;
 using PdfSharp.Drawing;
 using ImageMagick;
+using System.Diagnostics;
 
 namespace Project__Filter
 {
@@ -14,6 +15,7 @@ namespace Project__Filter
         public Opt_Transform()
         {
             InitializeComponent();
+            listBox_File.SelectionMode = SelectionMode.MultiExtended;
         }
 
         private void button_Path_Click(object sender, EventArgs e)
@@ -26,6 +28,7 @@ namespace Project__Filter
                 {
                     selectedPath = fbd.SelectedPath;
                     textBox_Path.Text = selectedPath;
+
                     comboBox_Select.Enabled = true;
                     button_Convert.Enabled = true;
                 }
@@ -141,6 +144,12 @@ namespace Project__Filter
                                                .Where(file => fileExtensions.Any(ext => file.ToLower().EndsWith(ext)))
                                                .ToArray();
 
+                // Count the files
+                int initialFileCount = imageFiles.Length;
+
+                // Display just the count in label_Count
+                label_Count.Text = initialFileCount.ToString();
+
                 listBox_File.Items.Clear();
 
                 foreach (string imageFile in imageFiles)
@@ -163,7 +172,7 @@ namespace Project__Filter
                         PDFTitle();
                         break;
                     case "IMAGE To PDF (NO TITLE)":
-                        CreatedPDF();
+                        Test();
                         break;
                     case "IMAGE To ICO":
                         ImageIcon();
@@ -206,6 +215,20 @@ namespace Project__Filter
                 MessageBox.Show("Path not selected");
             }
         }
+
+        private void Test()
+        {
+            // Get the selected items in the ListBox
+            var selectedItems = listBox_File.SelectedItems;
+
+            // Iterate through the selected items
+            foreach (var item in selectedItems)
+            {
+                // Display the selected item
+                Debug.WriteLine(item.ToString());
+            }
+        }
+
 
         private void PDFTitle()
         {
