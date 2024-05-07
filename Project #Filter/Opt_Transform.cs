@@ -1,10 +1,5 @@
 ﻿using System.Data;
-using System.Text;
-using iTextSharp.text.pdf;
-using iTextSharp.text;
 using PdfSharp.Drawing;
-using ImageMagick;
-using System.Diagnostics;
 
 namespace Project__Filter
 {
@@ -92,7 +87,7 @@ namespace Project__Filter
                         listBox_File.Items.Clear();
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
-                        checkBox_Name.Enabled = false;
+                        checkBox_Alphabetical.Enabled = false;
                         checkBox_Date.Enabled = false;
                         checkBox_Size.Enabled = false;
                         break;
@@ -114,7 +109,7 @@ namespace Project__Filter
 
                 foreach (string imageFile in imageFiles)
                 {
-                    listBox_File.Items.Add(Path.GetFileName(imageFile));
+                    listBox_File.Items.Add(System.IO.Path.GetFileName(imageFile));
                 }
             }
         }
@@ -129,9 +124,28 @@ namespace Project__Filter
                 switch (selectedItem)
                 {
                     case "IMAGE To PDF (TITLE)":
-
                         break;
                     case "IMAGE To PDF (NO TITLE)":
+                        PdfSharp.Pdf.PdfDocument document = PDFBuilder(selectedPath);
+                        string baseFileName = "Untitle";
+                        string extension = ".pdf";
+                        int counter = 1;
+
+                        // Create the initial file path
+                        string pdfPath = Path.Combine(selectedPath, baseFileName + extension);
+
+                        // If a file with the same name already exists, append a number to the filename
+                        while (File.Exists(pdfPath))
+                        {
+                            pdfPath = Path.Combine(selectedPath, $"{baseFileName} {counter}{extension}");
+                            counter++;
+                        }
+
+                        // Save and close the document
+                        document.Save(pdfPath);
+                        document.Close();
+
+                        MessageBox.Show($"PDF created successfully at: {pdfPath}");
                         break;
                     case "IMAGE To ICO":
                         break;
@@ -174,21 +188,21 @@ namespace Project__Filter
                 case "IMAGE To PDF (TITLE)":
                     radioButton_Custom.Enabled = true;
                     radioButton_Folder.Enabled = true;
-                    checkBox_Name.Enabled = true;
+                    checkBox_Alphabetical.Enabled = true;
                     checkBox_Date.Enabled = true;
                     checkBox_Size.Enabled = true;
                     break;
                 case "IMAGE To PDF (NO TITLE)":
                     radioButton_Custom.Enabled = false;
                     radioButton_Folder.Enabled = false;
-                    checkBox_Name.Enabled = true;
+                    checkBox_Alphabetical.Enabled = true;
                     checkBox_Date.Enabled = true;
                     checkBox_Size.Enabled = true;
                     break;
                 default:
                     radioButton_Custom.Enabled = false;
                     radioButton_Folder.Enabled = false;
-                    checkBox_Name.Enabled = false;
+                    checkBox_Alphabetical.Enabled = false;
                     checkBox_Date.Enabled = false;
                     checkBox_Size.Enabled = false;
                     break;
@@ -212,13 +226,55 @@ namespace Project__Filter
                 string fullPath = Path.Combine(rootpath, file);
                 fullPaths.Add(fullPath);
             }
+
+            if (checkBox_Alphabetical.Checked)
+            {
+                fullPaths.Sort();
+            }
+            else if (checkBox_Size.Checked)
+            {
+                fullPaths.Sort((path1, path2) => new FileInfo(path1).Length.CompareTo(new FileInfo(path2).Length));
+            }
+            else if (checkBox_Date.Checked)
+            {
+                fullPaths.Sort((path1, path2) => new FileInfo(path1).CreationTime.CompareTo(new FileInfo(path2).CreationTime));
+            }
+
             return fullPaths;
         }
 
-        private void PDFBuilder()
+        private PdfSharp.Pdf.PdfDocument PDFBuilder(string rootpath)
         {
+            PdfSharp.Pdf.PdfDocument document = new PdfSharp.Pdf.PdfDocument();
 
+            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
+
+            // Iterate through the list of selected file paths
+            foreach (string filePath in selectedFilePaths)
+            {
+                try
+                {
+                    XImage image = XImage.FromFile(filePath);
+                    // Create a new page with the dimensions of the image
+                    PdfSharp.Pdf.PdfPage page = document.AddPage();
+                    page.Width = image.PointWidth;
+                    page.Height = image.PointHeight;
+                    XGraphics gfx = XGraphics.FromPdfPage(page);
+                    // Draw the image to fit the page
+                    gfx.DrawImage(image, 0, 0, page.Width, page.Height);
+                }
+                catch (Exception ex)
+                {
+                    // Log the error or handle it as needed
+                    Console.WriteLine($"Error processing image {filePath}: {ex.Message}");
+                    continue;
+                }
+            }
+
+            // Return the PdfDocument object
+            return document;
         }
+
     }
 }
 
