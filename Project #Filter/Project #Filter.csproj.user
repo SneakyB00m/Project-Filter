@@ -13,9 +13,6 @@
     <Compile Update="Menu_Sizes.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Opt_Transform.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="Opt_Extract.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -32,6 +29,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Opt_Encrypt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Opt_Transform.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
