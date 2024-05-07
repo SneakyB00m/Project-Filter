@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using PdfSharp.Drawing;
+using PdfSharp.Fonts;
 
 namespace Project__Filter
 {
@@ -124,29 +125,39 @@ namespace Project__Filter
                 switch (selectedItem)
                 {
                     case "IMAGE To PDF (TITLE)":
-                        break;
-                    case "IMAGE To PDF (NO TITLE)":
-                        PdfSharp.Pdf.PdfDocument document = PDFBuilder(selectedPath);
-                        string baseFileName = "Untitle";
-                        string extension = ".pdf";
-                        int counter = 1;
-
-                        // Create the initial file path
-                        string pdfPath = Path.Combine(selectedPath, baseFileName + extension);
-
-                        // If a file with the same name already exists, append a number to the filename
-                        while (File.Exists(pdfPath))
                         {
-                            pdfPath = Path.Combine(selectedPath, $"{baseFileName} {counter}{extension}");
-                            counter++;
+                            PdfSharp.Pdf.PdfDocument documentTitle = PDFBuilder(selectedPath);
+                            AddTitle(documentTitle, "Your Title Here");
+                            string pdfPathTitle = Path.Combine(selectedPath, $"Title.pdf");
+                            documentTitle.Save(pdfPathTitle);
+                            documentTitle.Close();
+                            MessageBox.Show($"PDF created successfully at: {pdfPathTitle}");
+                            break;
                         }
+                    case "IMAGE To PDF (NO TITLE)":
+                        {
+                            PdfSharp.Pdf.PdfDocument documentNoTitle = PDFBuilder(selectedPath);
+                            string baseFileName = "Untitle";
+                            string extension = ".pdf";
+                            int counter = 1;
 
-                        // Save and close the document
-                        document.Save(pdfPath);
-                        document.Close();
+                            // Create the initial file path
+                            string pdfPathNoTitle = Path.Combine(selectedPath, baseFileName + extension);
 
-                        MessageBox.Show($"PDF created successfully at: {pdfPath}");
-                        break;
+                            // If a file with the same name already exists, append a number to the filename
+                            while (File.Exists(pdfPathNoTitle))
+                            {
+                                pdfPathNoTitle = Path.Combine(selectedPath, $"{baseFileName} {counter}{extension}");
+                                counter++;
+                            }
+
+                            // Save and close the document
+                            documentNoTitle.Save(pdfPathNoTitle);
+                            documentNoTitle.Close();
+
+                            MessageBox.Show($"PDF created successfully at: {pdfPathNoTitle}");
+                            break;
+                        }
                     case "IMAGE To ICO":
                         break;
                     case "IMAGE To WEBP":
@@ -275,6 +286,53 @@ namespace Project__Filter
             return document;
         }
 
+        private void AddTitle(PdfSharp.Pdf.PdfDocument document, string Title)
+        {
+            // Create a new page
+            PdfSharp.Pdf.PdfPage titlePage = document.InsertPage(0);
+
+            // Set the dimensions of the title page
+            titlePage.Width = XUnit.FromMillimeter(210);
+            titlePage.Height = XUnit.FromMillimeter(297);
+
+            // Create graphics for the title page
+            XGraphics titleGfx = XGraphics.FromPdfPage(titlePage);
+
+            GlobalFontSettings.FontResolver = new CustomFontResolver();
+
+            // Create a font
+            XFont font = new XFont("Arial", 20);
+
+            // Draw the title
+            titleGfx.DrawString(Title, font, XBrushes.Black, new XRect(0, 0, titlePage.Width, titlePage.Height), XStringFormats.Center);
+        }
+    }
+
+    public class CustomFontResolver : IFontResolver
+    {
+        public string DefaultFontName => "Arial";
+
+        public byte[] GetFont(string faceName)
+        {
+            // Replace "path_to_your_font_file" with the actual path to your Arial font file.
+            var fontData = File.ReadAllBytes("path_to_your_font_file");
+            return fontData;
+        }
+
+        public FontResolverInfo ResolveTypeface(string familyName, bool isBold, bool isItalic)
+        {
+            if (familyName.Equals(DefaultFontName, StringComparison.OrdinalIgnoreCase))
+            {
+                string style = isBold && isItalic ? "BoldItalic" :
+                               isBold ? "Bold" :
+                               isItalic ? "Italic" : "";
+
+                return new FontResolverInfo(DefaultFontName + style);
+            }
+
+            // Return null or throw an exception if the font is not supported.
+            return null;
+        }
     }
 }
 
