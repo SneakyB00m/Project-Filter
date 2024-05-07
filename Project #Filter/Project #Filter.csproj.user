@@ -4,31 +4,31 @@
     <_LastSelectedProfileId>E:\ReposVisualStudio\Project #Filter\Project #Filter\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="Menu_Folders.cs">
-      <SubType>UserControl</SubType>
+    <Compile Update="Main.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Menu_Config.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Menu_Folders.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Menu_Sizes.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Opt_Extract.cs">
+    <Compile Update="Opt_Encrypt.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Opt_Sort.cs">
+    <Compile Update="Opt_Extract.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Opt_Home.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Main.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Opt_Merge.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Opt_Encrypt.cs">
+    <Compile Update="Opt_Sort.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Opt_Transform.cs">
