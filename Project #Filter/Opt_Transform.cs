@@ -129,6 +129,8 @@ namespace Project__Filter
                 {
                     case "IMAGE To PDF (TITLE)":
                         {
+                            byte[] pdfBytes = PDFBuilder(selectedPath);
+                            AddTitle(pdfBytes);
 
                             break;
                         }
@@ -286,48 +288,55 @@ namespace Project__Filter
             }
         }
 
-        //public void ConvertImagesToPdf(string folderPath)
-        //{
-        //    // Define the PDF file path
-        //    string pdfFile = Path.Combine(folderPath, "Album.pdf");
+        private byte[] AddTitle(byte[] pdfBytes, string Title)
+        {
+            // Create a new PDF document
+            Document document = new Document();
+            using (MemoryStream stream = new MemoryStream())
+            {
+                // Create a new PdfWriter object, pointing it to our MemoryStream
+                PdfWriter writer = PdfWriter.GetInstance(document, stream);
 
-        //    // Get all image files in the directory and its subdirectories
-        //    string[] imageFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)
-        //        .Where(file => file.EndsWith(".png") || file.EndsWith(".jpg") || file.EndsWith(".jpeg") || file.EndsWith(".bmp")).ToArray();
+                // Open the Document for writing
+                document.Open();
 
-        //    // Check if the PDF file already exists
-        //    if (File.Exists(pdfFile))
-        //    {
-        //        // Create a new PDF file with a unique name
-        //        int count = 1;
-        //        while (File.Exists(pdfFile))
-        //        {
-        //            pdfFile = Path.Combine(folderPath, $"Album ({count}).pdf");
-        //            count++;
-        //        }
-        //    }
+                // Add some space before the title
+                for (int i = 0; i < 20; i++) // Adjust this value to move the title up or down
+                {
+                    document.Add(new Paragraph("\n"));
+                }
 
-        //    using (FileStream stream = new FileStream(pdfFile, FileMode.Create, FileAccess.Write, FileShare.None))
-        //    {
-        //        using (Document document = new Document())
-        //        {
-        //            PdfWriter.GetInstance(document, stream);
-        //            document.Open();
+                // Create a new Paragraph with the title
+                Paragraph title = new Paragraph(Title, FontFactory.GetFont(FontFactory.HELVETICA, 50f, iTextSharp.text.Font.BOLD));
+                title.Alignment = Element.ALIGN_CENTER;
 
-        //            foreach (string imageFile in imageFiles)
-        //            {
-        //                if (File.Exists(imageFile))
-        //                {
-        //                    iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageFile);
-        //                    document.SetPageSize(new Rectangle(0, 0, image.Width, image.Height));
-        //                    document.NewPage();
-        //                    image.SetAbsolutePosition(0, 0);
-        //                    document.Add(image);
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+                // Add the title to the document
+                document.Add(title);
+
+                // Add some space after the title
+                for (int i = 0; i < 10; i++) // Adjust this value to move the title up or down
+                {
+                    document.Add(new Paragraph("\n"));
+                }
+
+                // Create a reader for the existing PDF document
+                PdfReader reader = new PdfReader(pdfBytes);
+
+                // Add the pages from the existing PDF document to the new document
+                for (int i = 1; i <= reader.NumberOfPages; i++)
+                {
+                    document.NewPage();
+                    PdfImportedPage page = writer.GetImportedPage(reader, i);
+                    writer.DirectContent.AddTemplate(page, 0, 0);
+                }
+
+                // Close the Document - this saves it to the MemoryStream
+                document.Close();
+
+                // Convert the MemoryStream to an array and return it
+                return stream.ToArray();
+            }
+        }
     }
 }
 
