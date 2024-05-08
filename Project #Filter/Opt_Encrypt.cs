@@ -12,31 +12,29 @@ namespace Project__Filter
 {
     public partial class Opt_Encrypt : UserControl
     {
-       
+
+        string selectedPath = string.Empty;
 
         public Opt_Encrypt()
         {
             InitializeComponent();
         }
 
-        private void button_FilePath_Click(object sender, EventArgs e)
+        private void button_Path_Click(object sender, EventArgs e)
         {
-         
-        }
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
 
-        private void button_Filter_Click(object sender, EventArgs e)
-        {
-          
-        }
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    selectedPath = fbd.SelectedPath;
+                    textBox_Path.Text = selectedPath;
 
-        private void checkBox_Encrypt_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox_Decrypt_CheckedChanged(object sender, EventArgs e)
-        {
-           
+                    comboBox_Select.Enabled = true;
+                    button_Start.Enabled = true;
+                }
+            }
         }
     }
 }

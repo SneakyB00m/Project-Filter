@@ -44,7 +44,7 @@
             panel_Footer = new Panel();
             label2 = new Label();
             checkBox_Delete = new CheckBox();
-            button_Merge = new Button();
+            button_Start = new Button();
             progressBar_Time = new ProgressBar();
             panel_Header = new Panel();
             label1 = new Label();
@@ -187,7 +187,7 @@
             comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             comboBox_Select.ForeColor = Color.White;
             comboBox_Select.FormattingEnabled = true;
-            comboBox_Select.Items.AddRange(new object[] { "TEXT", "WORD", "PDF", "HTML" });
+            comboBox_Select.Items.AddRange(new object[] { "SANATIZE", "ENCRYPT", "DECRYPT" });
             comboBox_Select.Location = new Point(139, 9);
             comboBox_Select.Name = "comboBox_Select";
             comboBox_Select.Size = new Size(333, 36);
@@ -242,7 +242,7 @@
             // 
             panel_Footer.Controls.Add(label2);
             panel_Footer.Controls.Add(checkBox_Delete);
-            panel_Footer.Controls.Add(button_Merge);
+            panel_Footer.Controls.Add(button_Start);
             panel_Footer.Controls.Add(progressBar_Time);
             panel_Footer.Dock = DockStyle.Bottom;
             panel_Footer.Location = new Point(0, 412);
@@ -273,21 +273,21 @@
             checkBox_Delete.TabIndex = 27;
             checkBox_Delete.UseVisualStyleBackColor = true;
             // 
-            // button_Merge
+            // button_Start
             // 
-            button_Merge.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button_Merge.BackColor = Color.Teal;
-            button_Merge.Enabled = false;
-            button_Merge.FlatAppearance.BorderSize = 0;
-            button_Merge.FlatStyle = FlatStyle.Flat;
-            button_Merge.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
-            button_Merge.ForeColor = Color.White;
-            button_Merge.Location = new Point(490, 8);
-            button_Merge.Name = "button_Merge";
-            button_Merge.Size = new Size(266, 35);
-            button_Merge.TabIndex = 28;
-            button_Merge.Text = "Merge";
-            button_Merge.UseVisualStyleBackColor = false;
+            button_Start.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_Start.BackColor = Color.Teal;
+            button_Start.Enabled = false;
+            button_Start.FlatAppearance.BorderSize = 0;
+            button_Start.FlatStyle = FlatStyle.Flat;
+            button_Start.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            button_Start.ForeColor = Color.White;
+            button_Start.Location = new Point(490, 8);
+            button_Start.Name = "button_Start";
+            button_Start.Size = new Size(266, 35);
+            button_Start.TabIndex = 28;
+            button_Start.Text = "START";
+            button_Start.UseVisualStyleBackColor = false;
             // 
             // progressBar_Time
             // 
@@ -386,6 +386,7 @@
             button_Path.Size = new Size(29, 33);
             button_Path.TabIndex = 0;
             button_Path.UseVisualStyleBackColor = false;
+            button_Path.Click += button_Path_Click;
             // 
             // Opt_Encrypt
             // 
@@ -430,7 +431,7 @@
         private Panel panel_Footer;
         private Label label2;
         private CheckBox checkBox_Delete;
-        private Button button_Merge;
+        private Button button_Start;
         private ProgressBar progressBar_Time;
         private Panel panel_Header;
         private Label label1;

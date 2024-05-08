@@ -10,7 +10,7 @@ namespace Project__Filter
 {
     public partial class Opt_Transform : UserControl
     {
-        string selectedPath;
+        string selectedPath = string.Empty;
 
         public Opt_Transform()
         {

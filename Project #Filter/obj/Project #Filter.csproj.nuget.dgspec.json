@@ -57,6 +57,14 @@
               "target": "Package",
               "version": "[3.0.2, )"
             },
+            "GroupDocs.Conversion": {
+              "target": "Package",
+              "version": "[24.4.0, )"
+            },
+            "GroupDocs.Metadata": {
+              "target": "Package",
+              "version": "[24.5.0, )"
+            },
             "HtmlAgilityPack": {
               "target": "Package",
               "version": "[1.11.61, )"
