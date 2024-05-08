@@ -49,6 +49,10 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows7.0",
           "dependencies": {
+            "Aspose.Words": {
+              "target": "Package",
+              "version": "[24.5.0, )"
+            },
             "Bunifu.UI.WinForms": {
               "target": "Package",
               "version": "[6.1.0, )"
