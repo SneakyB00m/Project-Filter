@@ -225,7 +225,9 @@ namespace Project__Filter
             // Write the bytes to a file
             File.WriteAllBytes(pdfPathNoTitle, pdfBytes);
 
-            MessageBox.Show($"PDF created successfully at: {pdfPathNoTitle}");
+
+            string pdfFileName = Path.GetFileName(pdfPathNoTitle);
+            MessageBox.Show($"PDF '{pdfFileName}' created successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         // Functions - General
