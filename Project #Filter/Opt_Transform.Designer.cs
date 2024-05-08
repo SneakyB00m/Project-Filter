@@ -253,9 +253,9 @@
             comboBox_Select.ForeColor = Color.White;
             comboBox_Select.FormattingEnabled = true;
             comboBox_Select.Items.AddRange(new object[] { "IMAGE To PDF [TITLE]", "IMAGE To PDF [NO TITLE]", "IMAGE To ICO", "IMAGE To WEBP", "IMAGE To BMP", "VIDEO To GIF", "VIDEO To WEBM", "VIDEO To AVI", "VIDEO To AUDIO", "AUDIO To WAV" });
-            comboBox_Select.Location = new Point(129, 9);
+            comboBox_Select.Location = new Point(139, 9);
             comboBox_Select.Name = "comboBox_Select";
-            comboBox_Select.Size = new Size(343, 36);
+            comboBox_Select.Size = new Size(333, 36);
             comboBox_Select.TabIndex = 40;
             comboBox_Select.SelectedIndexChanged += comboBox_Select_SelectedIndexChanged;
             // 
