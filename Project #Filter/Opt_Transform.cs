@@ -1,6 +1,9 @@
 ﻿using System.Data;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using PdfSharp.Drawing;
 using PdfSharp.Fonts;
+using Rectangle = iTextSharp.text.Rectangle;
 
 namespace Project__Filter
 {
@@ -126,17 +129,14 @@ namespace Project__Filter
                 {
                     case "IMAGE To PDF (TITLE)":
                         {
-                            PdfSharp.Pdf.PdfDocument documentTitle = PDFBuilder(selectedPath);
-                            AddTitle(documentTitle, "Your Title Here");
-                            string pdfPathTitle = Path.Combine(selectedPath, $"Title.pdf");
-                            documentTitle.Save(pdfPathTitle);
-                            documentTitle.Close();
-                            MessageBox.Show($"PDF created successfully at: {pdfPathTitle}");
+
                             break;
                         }
                     case "IMAGE To PDF (NO TITLE)":
                         {
-                            PdfSharp.Pdf.PdfDocument documentNoTitle = PDFBuilder(selectedPath);
+                            // Call the PDFBuilder method to create the PDF document
+                            byte[] pdfBytes = PDFBuilder(selectedPath);
+
                             string baseFileName = "Untitle";
                             string extension = ".pdf";
                             int counter = 1;
@@ -151,9 +151,8 @@ namespace Project__Filter
                                 counter++;
                             }
 
-                            // Save and close the document
-                            documentNoTitle.Save(pdfPathNoTitle);
-                            documentNoTitle.Close();
+                            // Write the bytes to a file
+                            File.WriteAllBytes(pdfPathNoTitle, pdfBytes);
 
                             MessageBox.Show($"PDF created successfully at: {pdfPathNoTitle}");
                             break;
@@ -254,85 +253,81 @@ namespace Project__Filter
             return fullPaths;
         }
 
-        private PdfSharp.Pdf.PdfDocument PDFBuilder(string rootpath)
+        private byte[] PDFBuilder(string rootpath)
         {
-            PdfSharp.Pdf.PdfDocument document = new PdfSharp.Pdf.PdfDocument();
-
-            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
-
-            // Iterate through the list of selected file paths
-            foreach (string filePath in selectedFilePaths)
+            // Create a new PDF document
+            Document document = new Document();
+            using (MemoryStream stream = new MemoryStream())
             {
-                try
+                // Create a new PdfWriter object, pointing it to our MemoryStream
+                PdfWriter.GetInstance(document, stream);
+
+                // Open the Document for writing
+                document.Open();
+
+                List<string> selectedFilePaths = PathSelectedFiles(rootpath);
+
+                // Iterate through the list of selected file paths
+                foreach (string filePath in selectedFilePaths)
                 {
-                    XImage image = XImage.FromFile(filePath);
-                    // Create a new page with the dimensions of the image
-                    PdfSharp.Pdf.PdfPage page = document.AddPage();
-                    page.Width = image.PointWidth;
-                    page.Height = image.PointHeight;
-                    XGraphics gfx = XGraphics.FromPdfPage(page);
-                    // Draw the image to fit the page
-                    gfx.DrawImage(image, 0, 0, page.Width, page.Height);
+                    // Add the image to the document
+                    iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(filePath);
+                    document.SetPageSize(new Rectangle(0, 0, image.Width, image.Height));
+                    document.NewPage();
+                    image.SetAbsolutePosition(0, 0);
+                    document.Add(image);
                 }
-                catch (Exception ex)
-                {
-                    // Log the error or handle it as needed
-                    Console.WriteLine($"Error processing image {filePath}: {ex.Message}");
-                    continue;
-                }
+
+                // Close the Document - this saves it to the MemoryStream
+                document.Close();
+
+                // Convert the MemoryStream to an array and return it
+                return stream.ToArray();
             }
-
-            // Return the PdfDocument object
-            return document;
         }
 
-        private void AddTitle(PdfSharp.Pdf.PdfDocument document, string Title)
-        {
-            // Create a new page
-            PdfSharp.Pdf.PdfPage titlePage = document.InsertPage(0);
+        //public void ConvertImagesToPdf(string folderPath)
+        //{
+        //    // Define the PDF file path
+        //    string pdfFile = Path.Combine(folderPath, "Album.pdf");
 
-            // Set the dimensions of the title page
-            titlePage.Width = XUnit.FromMillimeter(210);
-            titlePage.Height = XUnit.FromMillimeter(297);
+        //    // Get all image files in the directory and its subdirectories
+        //    string[] imageFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)
+        //        .Where(file => file.EndsWith(".png") || file.EndsWith(".jpg") || file.EndsWith(".jpeg") || file.EndsWith(".bmp")).ToArray();
 
-            // Create graphics for the title page
-            XGraphics titleGfx = XGraphics.FromPdfPage(titlePage);
+        //    // Check if the PDF file already exists
+        //    if (File.Exists(pdfFile))
+        //    {
+        //        // Create a new PDF file with a unique name
+        //        int count = 1;
+        //        while (File.Exists(pdfFile))
+        //        {
+        //            pdfFile = Path.Combine(folderPath, $"Album ({count}).pdf");
+        //            count++;
+        //        }
+        //    }
 
-            GlobalFontSettings.FontResolver = new CustomFontResolver();
+        //    using (FileStream stream = new FileStream(pdfFile, FileMode.Create, FileAccess.Write, FileShare.None))
+        //    {
+        //        using (Document document = new Document())
+        //        {
+        //            PdfWriter.GetInstance(document, stream);
+        //            document.Open();
 
-            // Create a font
-            XFont font = new XFont("Arial", 20);
-
-            // Draw the title
-            titleGfx.DrawString(Title, font, XBrushes.Black, new XRect(0, 0, titlePage.Width, titlePage.Height), XStringFormats.Center);
-        }
-    }
-
-    public class CustomFontResolver : IFontResolver
-    {
-        public string DefaultFontName => "Arial";
-
-        public byte[] GetFont(string faceName)
-        {
-            // Replace "path_to_your_font_file" with the actual path to your Arial font file.
-            var fontData = File.ReadAllBytes(Properties.Resources.);
-            return fontData;
-        }
-
-        public FontResolverInfo ResolveTypeface(string familyName, bool isBold, bool isItalic)
-        {
-            if (familyName.Equals(DefaultFontName, StringComparison.OrdinalIgnoreCase))
-            {
-                string style = isBold && isItalic ? "BoldItalic" :
-                               isBold ? "Bold" :
-                               isItalic ? "Italic" : "";
-
-                return new FontResolverInfo(DefaultFontName + style);
-            }
-
-            // Return null or throw an exception if the font is not supported.
-            return null;
-        }
+        //            foreach (string imageFile in imageFiles)
+        //            {
+        //                if (File.Exists(imageFile))
+        //                {
+        //                    iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageFile);
+        //                    document.SetPageSize(new Rectangle(0, 0, image.Width, image.Height));
+        //                    document.NewPage();
+        //                    image.SetAbsolutePosition(0, 0);
+        //                    document.Add(image);
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
 
