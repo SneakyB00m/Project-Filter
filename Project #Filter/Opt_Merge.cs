@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using DocumentFormat.OpenXml.Packaging;
 using HtmlAgilityPack;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -9,7 +8,7 @@ namespace Project__Filter
 {
     public partial class Opt_Merge : UserControl
     {
-        string selectedPath;
+        string selectedPath = string.Empty;
 
         public Opt_Merge()
         {
