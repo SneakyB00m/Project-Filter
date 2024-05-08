@@ -315,7 +315,7 @@ namespace Project__Filter
         public byte[] GetFont(string faceName)
         {
             // Replace "path_to_your_font_file" with the actual path to your Arial font file.
-            var fontData = File.ReadAllBytes("path_to_your_font_file");
+            var fontData = File.ReadAllBytes(Properties.Resources.);
             return fontData;
         }
 
