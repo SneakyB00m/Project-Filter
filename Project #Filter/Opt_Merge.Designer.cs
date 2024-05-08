@@ -339,9 +339,9 @@
             comboBox_Select.ForeColor = Color.White;
             comboBox_Select.FormattingEnabled = true;
             comboBox_Select.Items.AddRange(new object[] { "TEXT", "WORD", "PDF", "HTML" });
-            comboBox_Select.Location = new Point(129, 9);
+            comboBox_Select.Location = new Point(139, 9);
             comboBox_Select.Name = "comboBox_Select";
-            comboBox_Select.Size = new Size(343, 36);
+            comboBox_Select.Size = new Size(333, 36);
             comboBox_Select.TabIndex = 42;
             comboBox_Select.SelectedIndexChanged += comboBox_Select_SelectedIndexChanged;
             // 
@@ -390,7 +390,7 @@
             listBox_File.Size = new Size(266, 224);
             listBox_File.TabIndex = 1;
             // 
-            // Merge
+            // Opt_Merge
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -402,7 +402,7 @@
             Controls.Add(panel_Bottom);
             Controls.Add(panel_Top);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "Merge";
+            Name = "Opt_Merge";
             Size = new Size(799, 540);
             panel_Footer.ResumeLayout(false);
             panel_Footer.PerformLayout();
