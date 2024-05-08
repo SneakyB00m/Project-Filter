@@ -307,7 +307,6 @@ C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Merge.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Sort.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Transform.resources
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Spammer.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Menu_Config.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Menu_Folders.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Menu_Sizes.resources
@@ -318,3 +317,4 @@ E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Sort.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Transform.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.sourcelink.json
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.sourcelink.json

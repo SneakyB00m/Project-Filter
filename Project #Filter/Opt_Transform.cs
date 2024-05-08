@@ -1,10 +1,6 @@
 ﻿using System.Data;
-using System.Text;
-using iTextSharp.text.pdf;
-using iTextSharp.text;
 using PdfSharp.Drawing;
-using ImageMagick;
-using System.Diagnostics;
+using PdfSharp.Fonts;
 
 namespace Project__Filter
 {
@@ -49,90 +45,50 @@ namespace Project__Filter
                 switch (selectedItem)
                 {
                     case "IMAGE To PDF (TITLE)":
-                        radioButton_Custom.Enabled = true;
-                        radioButton_Folder.Enabled = true;
-                        checkBox_Name.Enabled = true;
-                        checkBox_Date.Enabled = true;
-                        checkBox_Size.Enabled = true;
-                        fileExtensions = new List<string> { "jpg", "jpeg", "png", "gif", "tiff", "bmp" };
+                        EnableOptions(selectedItem);
+                        fileExtensions = new List<string> { "jpg", "jpeg", "png", "tiff", "bmp" };
                         break;
                     case "IMAGE To PDF (NO TITLE)":
-                        radioButton_Custom.Enabled = false;
-                        radioButton_Folder.Enabled = false;
-                        checkBox_Name.Enabled = true;
-                        checkBox_Date.Enabled = true;
-                        checkBox_Size.Enabled = true;
-                        fileExtensions = new List<string> { "jpg", "jpeg", "png", "gif", "tiff", "bmp" };
+                        EnableOptions(selectedItem);
+                        fileExtensions = new List<string> { "jpg", "jpeg", "png", "tiff", "bmp" };
                         break;
                     case "IMAGE To ICO":
-                        radioButton_Custom.Enabled = false;
-                        radioButton_Folder.Enabled = false;
-                        checkBox_Name.Enabled = false;
-                        checkBox_Date.Enabled = false;
-                        checkBox_Size.Enabled = false;
+                        EnableOptions(selectedItem);
                         fileExtensions = new List<string> { "jpg", "jpeg", "png", "bmp", "gif", "svg" };
                         break;
                     case "IMAGE To WEBP":
-                        radioButton_Custom.Enabled = false;
-                        radioButton_Folder.Enabled = false;
-                        checkBox_Name.Enabled = false;
-                        checkBox_Date.Enabled = false;
-                        checkBox_Size.Enabled = false;
+                        EnableOptions(selectedItem);
                         fileExtensions = new List<string> { "jpg", "jpeg", "png", "bmp", "gif", "svg", "tiff" };
                         break;
                     case "IMAGE To BMP":
-                        radioButton_Custom.Enabled = false;
-                        radioButton_Folder.Enabled = false;
-                        checkBox_Name.Enabled = false;
-                        checkBox_Date.Enabled = false;
-                        checkBox_Size.Enabled = false;
+                        EnableOptions(selectedItem);
                         fileExtensions = new List<string> { "jpg", "jpeg", "png", "bmp", "gif", "svg", "tiff", "webp" };
                         break;
                     case "IMAGE To ASCII":
-                        radioButton_Custom.Enabled = false;
-                        radioButton_Folder.Enabled = false;
-                        checkBox_Name.Enabled = false;
-                        checkBox_Date.Enabled = false;
-                        checkBox_Size.Enabled = false;
+                        EnableOptions(selectedItem);
                         fileExtensions = new List<string> { "jpg", "jpeg", "png" };
                         break;
                     case "VIDEO To AUDIO":
-                        radioButton_Custom.Enabled = false;
-                        radioButton_Folder.Enabled = false;
-                        checkBox_Name.Enabled = false;
-                        checkBox_Date.Enabled = false;
-                        checkBox_Size.Enabled = false;
+                        EnableOptions(selectedItem);
                         fileExtensions = new List<string> { "mp4", "avi", "mkv", "flv", "mov", "wmv" };
                         break;
                     case "VIDEO To WEBM":
-                        radioButton_Custom.Enabled = false;
-                        radioButton_Folder.Enabled = false;
-                        checkBox_Name.Enabled = false;
-                        checkBox_Date.Enabled = false;
-                        checkBox_Size.Enabled = false;
+                        EnableOptions(selectedItem);
                         fileExtensions = new List<string> { "mp4", "avi", "mkv", "flv", "mov", "wmv", "m4v", "mpeg", "mpg" };
                         break;
                     case "VIDEO To AVI":
-                        radioButton_Custom.Enabled = false;
-                        radioButton_Folder.Enabled = false;
-                        checkBox_Name.Enabled = false;
-                        checkBox_Date.Enabled = false;
-                        checkBox_Size.Enabled = false;
+                        EnableOptions(selectedItem);
                         fileExtensions = new List<string> { "mp4", "mkv", "flv", "mov", "wmv", "m4v", "mpeg", "mpg" };
                         break;
                     case "AUDIO To WAV":
-                        radioButton_Custom.Enabled = false;
-                        radioButton_Folder.Enabled = false;
-                        checkBox_Name.Enabled = false;
-                        checkBox_Date.Enabled = false;
-                        checkBox_Size.Enabled = false;
+                        EnableOptions(selectedItem);
                         fileExtensions = new List<string> { "mp3", "aac", "flac", "m4a", "ogg", "wma", "mpeg", "mpg" };
                         break;
                     default:
                         listBox_File.Items.Clear();
                         radioButton_Custom.Enabled = false;
                         radioButton_Folder.Enabled = false;
-                        checkBox_Name.Enabled = false;
+                        checkBox_Alphabetical.Enabled = false;
                         checkBox_Date.Enabled = false;
                         checkBox_Size.Enabled = false;
                         break;
@@ -154,7 +110,7 @@ namespace Project__Filter
 
                 foreach (string imageFile in imageFiles)
                 {
-                    listBox_File.Items.Add(Path.GetFileName(imageFile));
+                    listBox_File.Items.Add(System.IO.Path.GetFileName(imageFile));
                 }
             }
         }
@@ -169,38 +125,56 @@ namespace Project__Filter
                 switch (selectedItem)
                 {
                     case "IMAGE To PDF (TITLE)":
-                        PDFTitle();
-                        break;
+                        {
+                            PdfSharp.Pdf.PdfDocument documentTitle = PDFBuilder(selectedPath);
+                            AddTitle(documentTitle, "Your Title Here");
+                            string pdfPathTitle = Path.Combine(selectedPath, $"Title.pdf");
+                            documentTitle.Save(pdfPathTitle);
+                            documentTitle.Close();
+                            MessageBox.Show($"PDF created successfully at: {pdfPathTitle}");
+                            break;
+                        }
                     case "IMAGE To PDF (NO TITLE)":
-                        //PathSelectedFiles(selectedPath);
-                        PDFNoTitle();
-                        break;
+                        {
+                            PdfSharp.Pdf.PdfDocument documentNoTitle = PDFBuilder(selectedPath);
+                            string baseFileName = "Untitle";
+                            string extension = ".pdf";
+                            int counter = 1;
+
+                            // Create the initial file path
+                            string pdfPathNoTitle = Path.Combine(selectedPath, baseFileName + extension);
+
+                            // If a file with the same name already exists, append a number to the filename
+                            while (File.Exists(pdfPathNoTitle))
+                            {
+                                pdfPathNoTitle = Path.Combine(selectedPath, $"{baseFileName} {counter}{extension}");
+                                counter++;
+                            }
+
+                            // Save and close the document
+                            documentNoTitle.Save(pdfPathNoTitle);
+                            documentNoTitle.Close();
+
+                            MessageBox.Show($"PDF created successfully at: {pdfPathNoTitle}");
+                            break;
+                        }
                     case "IMAGE To ICO":
-                        ImageIcon();
                         break;
                     case "IMAGE To WEBP":
-                        ImageWebp();
                         break;
                     case "IMAGE To BMP":
-                        ImageBMP();
                         break;
                     case "IMAGE To ASCII":
-                        ImageAscii();
                         break;
                     case "VIDEO To AUDIO":
-                        VideoAudio();
                         break;
                     case "VIDEO To WEBM":
-                        VideoWebm();
                         break;
                     case "VIDEO To AVI":
-                        VideoAvi();
                         break;
                     case "VIDEO To GIF":
-                        VideoGif();
                         break;
                     case "AUDIO To WAV":
-                        AudioWav();
                         break;
                     default:
                         MessageBox.Show("Invalid selection");
@@ -217,481 +191,36 @@ namespace Project__Filter
             }
         }
 
-        private void PDFTitle()
+        // Functions
+        private void EnableOptions(string Option)
         {
-            Task.Run(() =>
+            switch (Option)
             {
-                if (radioButton_Custom.Checked)
-                {
-                    // Get all image files in the selected directory and its subdirectories
-                    List<string> imageFiles = Directory.EnumerateFiles(selectedPath, "*.*", SearchOption.AllDirectories)
-                        .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png"))
-                        .ToList();
-
-                    if (checkBox_Name.Checked)
-                    {
-                        // Order files by name
-                        imageFiles.Sort();
-                    }
-                    else if (checkBox_Size.Checked)
-                    {
-                        // Order files by size
-                        imageFiles = imageFiles.OrderBy(file => new FileInfo(file).Length).ToList();
-                    }
-                    else if (checkBox_Date.Checked)
-                    {
-                        // Order files by date
-                        imageFiles = imageFiles.OrderBy(file => new FileInfo(file).CreationTime).ToList();
-                    }
-
-                    string Title = Microsoft.VisualBasic.Interaction.InputBox("Enter the title for:", "Title Text", "Default", -1, -1);
-
-                    string pdfPath = Path.Combine(selectedPath, $"{Title}.pdf");
-
-                    // Create a Document object
-                    Document document = new Document();
-
-                    // Create a PdfWriter object
-                    PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(pdfPath, FileMode.Create));
-
-                    // Open the Document
-                    document.Open();
-
-                    // Add a title page
-                    document.NewPage();
-                    for (int i = 0; i < 20; i++) // Adjust this value to move the title up or down
-                    {
-                        document.Add(new Paragraph("\n"));
-                    }
-                    Paragraph title = new Paragraph(Title, FontFactory.GetFont(FontFactory.HELVETICA, 50f, iTextSharp.text.Font.BOLD));
-                    title.Alignment = Element.ALIGN_CENTER;
-                    document.Add(title);
-                    for (int i = 0; i < 10; i++) // Adjust this value to move the title up or down
-                    {
-                        document.Add(new Paragraph("\n"));
-                    }
-
-                    foreach (string imageFile in imageFiles)
-                    {
-                        iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageFile);
-
-                        // Set the page size to the image size
-                        document.SetPageSize(new iTextSharp.text.Rectangle(0, 0, image.Width, image.Height));
-
-                        // Add a new page
-                        document.NewPage();
-
-                        // Add the image to the document
-                        document.Add(image);
-                    }
-
-                    // Close the Document
-                    document.Close();
-
-                    MessageBox.Show($"PDF created successfully at: {pdfPath}");
-                }
-                else if (radioButton_Folder.Checked)
-                {
-                    // Get the name of the folder that the file is in
-                    string folderName = new DirectoryInfo(selectedPath).Name;
-
-                    string pdfPath = Path.Combine(selectedPath, $"{folderName}.pdf");
-
-                    // Create a Document object
-                    Document document = new Document();
-
-                    // Create a PdfWriter object
-                    PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(pdfPath, FileMode.Create));
-
-                    // Open the Document
-                    document.Open();
-
-                    // Add a title page
-                    document.NewPage();
-                    for (int i = 0; i < 20; i++) // Adjust this value to move the title up or down
-                    {
-                        document.Add(new Paragraph("\n"));
-                    }
-                    Paragraph title = new Paragraph(folderName, FontFactory.GetFont(FontFactory.HELVETICA, 50f, iTextSharp.text.Font.BOLD)); // Increase the font size here
-                    title.Alignment = Element.ALIGN_CENTER;
-                    document.Add(title);
-                    for (int i = 0; i < 10; i++) // Adjust this value to move the title up or down
-                    {
-                        document.Add(new Paragraph("\n"));
-                    }
-                    // Get all image files in the selected directory and its subdirectories
-                    List<string> imageFiles = Directory.EnumerateFiles(selectedPath, "*.*", SearchOption.AllDirectories)
-                        .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png"))
-                        .ToList();
-
-                    if (checkBox_Name.Checked)
-                    {
-                        // Order files by name
-                        imageFiles.Sort();
-                    }
-                    else if (checkBox_Size.Checked)
-                    {
-                        // Order files by size
-                        imageFiles = imageFiles.OrderBy(file => new FileInfo(file).Length).ToList();
-                    }
-                    else if (checkBox_Date.Checked)
-                    {
-                        // Order files by date
-                        imageFiles = imageFiles.OrderBy(file => new FileInfo(file).CreationTime).ToList();
-                    }
-
-                    foreach (string imageFile in imageFiles)
-                    {
-                        iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageFile);
-
-                        // Set the page size to the image size
-                        document.SetPageSize(new iTextSharp.text.Rectangle(0, 0, image.Width, image.Height));
-
-                        // Add a new page
-                        document.NewPage();
-
-                        // Add the image to the document
-                        document.Add(image);
-                    }
-
-                    // Close the Document
-                    document.Close();
-
-                    MessageBox.Show($"PDF created successfully at: {pdfPath}");
-
-                }
-                else
-                {
-                    MessageBox.Show("No radio button is checked.");
-                }
-            });
+                case "IMAGE To PDF (TITLE)":
+                    radioButton_Custom.Enabled = true;
+                    radioButton_Folder.Enabled = true;
+                    checkBox_Alphabetical.Enabled = true;
+                    checkBox_Date.Enabled = true;
+                    checkBox_Size.Enabled = true;
+                    break;
+                case "IMAGE To PDF (NO TITLE)":
+                    radioButton_Custom.Enabled = false;
+                    radioButton_Folder.Enabled = false;
+                    checkBox_Alphabetical.Enabled = true;
+                    checkBox_Date.Enabled = true;
+                    checkBox_Size.Enabled = true;
+                    break;
+                default:
+                    radioButton_Custom.Enabled = false;
+                    radioButton_Folder.Enabled = false;
+                    checkBox_Alphabetical.Enabled = false;
+                    checkBox_Date.Enabled = false;
+                    checkBox_Size.Enabled = false;
+                    break;
+            }
         }
 
-        private void PDFNoTitle()
-        {
-            Task.Run(() =>
-            {
-                // Get all image files in the selected directory and its subdirectories
-                List<string> imageFiles = Directory.EnumerateFiles(selectedPath, "*.*", SearchOption.AllDirectories)
-                    .Where(file => file.ToLower().EndsWith("jpg") || file.ToLower().EndsWith("jpeg") || file.ToLower().EndsWith("png"))
-                    .ToList();
-
-                if (checkBox_Name.Checked)
-                {
-                    // Order files by name
-                    imageFiles.Sort();
-                }
-                else if (checkBox_Size.Checked)
-                {
-                    // Order files by size
-                    imageFiles = imageFiles.OrderBy(file => new FileInfo(file).Length).ToList();
-                }
-                else if (checkBox_Date.Checked)
-                {
-                    // Order files by date
-                    imageFiles = imageFiles.OrderBy(file => new FileInfo(file).CreationTime).ToList();
-                }
-
-                string pdfPath = Path.Combine(selectedPath, $"Notitle.pdf");
-
-                // Create a PdfDocument object
-                PdfSharp.Pdf.PdfDocument document = new PdfSharp.Pdf.PdfDocument();
-
-                foreach (string imageFile in imageFiles)
-                {
-                    try
-                    {
-                        XImage image = XImage.FromFile(imageFile);
-
-                        // Create a new page with the dimensions of the image
-                        PdfSharp.Pdf.PdfPage page = document.AddPage();
-                        page.Width = image.PointWidth;
-                        page.Height = image.PointHeight;
-
-                        XGraphics gfx = XGraphics.FromPdfPage(page);
-
-                        // Draw the image to fit the page
-                        gfx.DrawImage(image, 0, 0, page.Width, page.Height);
-                    }
-                    catch (Exception ex)
-                    {
-                        // Log the error or handle it as needed
-                        Console.WriteLine($"Error processing image {imageFile}: {ex.Message}");
-                        continue;
-                    }
-                }
-
-                // Save the document
-                document.Save(pdfPath);
-
-                MessageBox.Show($"PDF created successfully at: {pdfPath}");
-            });
-        }
-
-        private void ImageIcon()
-        {
-            Task.Run(() =>
-            {
-                // Get the selected image file
-                string selectedImage = listBox_File.SelectedItem.ToString();
-
-                // Create the full path to the image file
-                string imagePath = Path.Combine(selectedPath, selectedImage);
-
-                // Load the image file
-                using (Bitmap bitmap = new Bitmap(imagePath))
-                {
-                    // Get an Hicon for the Bitmap
-                    IntPtr hIcon = bitmap.GetHicon();
-
-                    // Create a new icon from the handle
-                    Icon icon = Icon.FromHandle(hIcon);
-
-                    // Create the full path to the ICO file
-                    string icoPath = Path.Combine(selectedPath, Path.GetFileNameWithoutExtension(imagePath) + ".ico");
-
-                    // Write the Icon to a File Stream
-                    using (FileStream fs = new FileStream(icoPath, FileMode.OpenOrCreate))
-                    {
-                        icon.Save(fs);
-                    }
-
-                    MessageBox.Show($"ICO created successfully at: {icoPath}");
-                }
-            });
-        }
-
-        private void ImageWebp()
-        {
-            Task.Run(() =>
-            {
-                // Get the selected image file
-                string selectedImage = listBox_File.SelectedItem.ToString();
-
-                // Create the full path to the image file
-                string imagePath = Path.Combine(selectedPath, selectedImage);
-
-                // Create the full path to the WEBP file
-                string webpPath = Path.Combine(selectedPath, Path.GetFileNameWithoutExtension(imagePath) + ".webp");
-
-                // Load the image file
-                using (MagickImage image = new MagickImage(imagePath))
-                {
-                    // Convert the image to WEBP and save it
-                    image.Format = MagickFormat.WebP;
-                    image.Write(webpPath);
-                }
-
-                MessageBox.Show($"WEBP created successfully at: {webpPath}");
-            });
-        }
-
-        private void ImageBMP()
-        {
-            Task.Run(() =>
-            {
-                // Get the selected image file
-                string selectedImage = listBox_File.SelectedItem.ToString();
-
-                // Create the full path to the image file
-                string imagePath = Path.Combine(selectedPath, selectedImage);
-
-                // Create the full path to the BMP file
-                string bmpPath = Path.Combine(selectedPath, Path.GetFileNameWithoutExtension(imagePath) + ".bmp");
-
-                // Load the image file
-                using (MagickImage image = new MagickImage(imagePath))
-                {
-                    // Convert the image to BMP and save it
-                    image.Format = MagickFormat.Bmp;
-                    image.Write(bmpPath);
-                }
-
-                MessageBox.Show($"BMP created successfully at: {bmpPath}");
-            });
-        }
-
-        private void ImageAscii()
-        {
-            Task.Run(() =>
-            {
-                // Get the selected image file
-                string selectedImage = listBox_File.SelectedItem.ToString();
-
-                // Create the full path to the image file
-                string imagePath = Path.Combine(selectedPath, selectedImage);
-
-                // Load the image file
-                Bitmap originalImage = new Bitmap(imagePath);
-
-                // Resize the image to 150x100
-                Bitmap image = new Bitmap(originalImage, new Size(150, 100));
-
-                // Define the ASCII characters for the index
-                string asciiChars = " .:-=+*#%@";
-
-                StringBuilder asciiArt = new StringBuilder();
-
-                for (int h = 0; h < image.Height; h++)
-                {
-                    for (int w = 0; w < image.Width; w++)
-                    {
-                        // Get the pixel color at (w, h)
-                        Color pixelColor = image.GetPixel(w, h);
-
-                        // Calculate the grayscale value
-                        int grayScale = (int)((pixelColor.R + pixelColor.G + pixelColor.B) / 3);
-
-                        // Convert the grayscale value back into a color
-                        Color color = Color.FromArgb(grayScale, grayScale, grayScale);
-
-                        // Calculate the index for the ASCII characters
-                        int index = grayScale * 10 / 255;
-
-                        // Append the ASCII character to the ASCII art
-                        asciiArt.Append(asciiChars[index]);
-                    }
-
-                    // Append a new line after each row
-                    asciiArt.Append("\n");
-                }
-
-                // Write the ASCII art to a text file
-                string asciiArtPath = Path.Combine(selectedPath, "asciiArt_" + Path.GetFileNameWithoutExtension(selectedImage) + ".txt");
-                System.IO.File.WriteAllText(asciiArtPath, asciiArt.ToString());
-
-                MessageBox.Show($"ASCII art created successfully at: {asciiArtPath}");
-            });
-        }
-
-        private void VideoAudio()
-        {
-            Task.Run(() =>
-            {
-                // Get the selected video file
-                string selectedVideo = listBox_File.SelectedItem.ToString();
-
-                // Create the full path to the video file
-                string videoPath = Path.Combine(selectedPath, selectedVideo);
-
-                // Define the output path for the MP3
-                string mp3Path = Path.Combine(selectedPath, Path.GetFileNameWithoutExtension(selectedVideo) + ".mp3");
-
-                // Create a new instance of the converter
-                var converter = new NReco.VideoConverter.FFMpegConverter();
-
-                // Convert the video to an MP3
-                converter.ConvertMedia(videoPath, mp3Path, "mp3");
-
-                MessageBox.Show($"MP3 created successfully at: {mp3Path}");
-            });
-        }
-
-        private void VideoWebm()
-        {
-            Task.Run(() =>
-            {
-                // Get the selected video file
-                string selectedVideo = listBox_File.SelectedItem.ToString();
-
-                // Create the full path to the video file
-                string videoPath = Path.Combine(selectedPath, selectedVideo);
-
-                // Define the output path for the WebM
-                string webmPath = Path.Combine(selectedPath, Path.GetFileNameWithoutExtension(selectedVideo) + ".webm");
-
-                // Create a new instance of the converter
-                var converter = new NReco.VideoConverter.FFMpegConverter();
-
-                // Convert the video to a WebM
-                converter.ConvertMedia(videoPath, webmPath, "webm");
-
-                MessageBox.Show($"WebM created successfully at: {webmPath}");
-            });
-        }
-
-        private void VideoAvi()
-        {
-            Task.Run(() =>
-            {
-                // Get the selected video file
-                string selectedVideo = listBox_File.SelectedItem.ToString();
-
-                // Create the full path to the video file
-                string videoPath = Path.Combine(selectedPath, selectedVideo);
-
-                // Define the output path for the AVI
-                string aviPath = Path.Combine(selectedPath, Path.GetFileNameWithoutExtension(selectedVideo) + ".avi");
-
-                // Create a new instance of the converter
-                var converter = new NReco.VideoConverter.FFMpegConverter();
-
-                // Convert the video to an AVI
-                converter.ConvertMedia(videoPath, aviPath, "avi");
-
-                MessageBox.Show($"AVI created successfully at: {aviPath}");
-            });
-        }
-
-        private async Task VideoGif()
-        {
-            await Task.Run(() =>
-            {
-                string selectedVideo = listBox_File.SelectedItem.ToString();
-
-                // Create the full path to the video file
-                string videoPath = Path.Combine(selectedPath, selectedVideo);
-
-                // Get the duration of the video
-                var ffProbe = new NReco.VideoInfo.FFProbe();
-                var videoInfo = ffProbe.GetMediaInfo(videoPath);
-                double videoDuration = videoInfo.Duration.TotalSeconds;
-
-                // Check if the video is 15 seconds or less
-                if (videoDuration <= 15)
-                {
-                    // Create the full path to the output GIF
-                    string gifPath = Path.Combine(selectedPath, Path.GetFileNameWithoutExtension(selectedVideo) + ".gif");
-
-                    // Initialize the converter
-                    var converter = new NReco.VideoConverter.FFMpegConverter();
-
-                    // Convert the video to a GIF
-                    converter.ConvertMedia(videoPath, gifPath, NReco.VideoConverter.Format.gif);
-                }
-                else
-                {
-                    // Show a message box with the error
-                    MessageBox.Show("The video is longer than 15 seconds and cannot be converted to a GIF.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            });
-        }
-
-        private void AudioWav()
-        {
-            Task.Run(() =>
-            {
-                // Get the selected audio file
-                string selectedAudio = listBox_File.SelectedItem.ToString();
-
-                // Create the full path to the audio file
-                string audioPath = Path.Combine(selectedPath, selectedAudio);
-
-                // Define the output path for the WAV
-                string wavPath = Path.Combine(selectedPath, Path.GetFileNameWithoutExtension(selectedAudio) + ".wav");
-
-                // Create a new instance of the converter
-                var converter = new NReco.VideoConverter.FFMpegConverter();
-
-                // Convert the audio to a WAV
-                converter.ConvertMedia(audioPath, wavPath, "wav");
-
-                MessageBox.Show($"WAV created successfully at: {wavPath}");
-            });
-        }
-
-
-        private void PathSelectedFiles(string rootpath)
+        private List<string> PathSelectedFiles(string rootpath)
         {
             // Get the selected items in the ListBox
             var selectedItems = listBox_File.SelectedItems;
@@ -709,63 +238,100 @@ namespace Project__Filter
                 fullPaths.Add(fullPath);
             }
 
-            //// Call the CreatedPDF method with the full paths of the selected files
-            CreatedPDF(fullPaths);
+            if (checkBox_Alphabetical.Checked)
+            {
+                fullPaths.Sort();
+            }
+            else if (checkBox_Size.Checked)
+            {
+                fullPaths.Sort((path1, path2) => new FileInfo(path1).Length.CompareTo(new FileInfo(path2).Length));
+            }
+            else if (checkBox_Date.Checked)
+            {
+                fullPaths.Sort((path1, path2) => new FileInfo(path1).CreationTime.CompareTo(new FileInfo(path2).CreationTime));
+            }
+
+            return fullPaths;
         }
 
-        private void CreatedPDF(List<string> imageFiles)
+        private PdfSharp.Pdf.PdfDocument PDFBuilder(string rootpath)
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            PdfSharp.Pdf.PdfDocument document = new PdfSharp.Pdf.PdfDocument();
 
-            // Create a PDF document
-            PdfSharp.Pdf.PdfDocument doc = new PdfSharp.Pdf.PdfDocument();
+            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
 
-            // Add an image to each page of the PDF document
-            foreach (string imageFile in imageFiles)
+            // Iterate through the list of selected file paths
+            foreach (string filePath in selectedFilePaths)
             {
-                PdfSharp.Pdf.PdfPage page = doc.AddPage();
-                XGraphics gfx = XGraphics.FromPdfPage(page);
-                using (XImage image = XImage.FromFile(imageFile))
+                try
                 {
-                    // Get the size of the PDF page
-                    double pageWidth = page.Width;
-                    double pageHeight = page.Height;
-
-                    // Get the size of the image
-                    double imageWidth = image.PixelWidth;
-                    double imageHeight = image.PixelHeight;
-
-                    // Calculate the scaling factor to fit the image within the page
-                    double scale = Math.Min(pageWidth / imageWidth, pageHeight / imageHeight);
-
-                    // Calculate the new size of the image
-                    double scaledImageWidth = imageWidth * scale;
-                    double scaledImageHeight = imageHeight * scale;
-
-                    // Draw the image centered on the page
-                    gfx.DrawImage(image, (pageWidth - scaledImageWidth) / 2, (pageHeight - scaledImageHeight) / 2, scaledImageWidth, scaledImageHeight);
+                    XImage image = XImage.FromFile(filePath);
+                    // Create a new page with the dimensions of the image
+                    PdfSharp.Pdf.PdfPage page = document.AddPage();
+                    page.Width = image.PointWidth;
+                    page.Height = image.PointHeight;
+                    XGraphics gfx = XGraphics.FromPdfPage(page);
+                    // Draw the image to fit the page
+                    gfx.DrawImage(image, 0, 0, page.Width, page.Height);
+                }
+                catch (Exception ex)
+                {
+                    // Log the error or handle it as needed
+                    Console.WriteLine($"Error processing image {filePath}: {ex.Message}");
+                    continue;
                 }
             }
 
-            // Save and close the PDF document
-            string pdfFileName = Path.Combine(Path.GetDirectoryName(imageFiles[0]), "images.pdf");
-            doc.Save(pdfFileName);
-            doc.Close();
+            // Return the PdfDocument object
+            return document;
+        }
 
-            // Ask before deleting the images from the selected folder
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete all images?", "Confirm Delete", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+        private void AddTitle(PdfSharp.Pdf.PdfDocument document, string Title)
+        {
+            // Create a new page
+            PdfSharp.Pdf.PdfPage titlePage = document.InsertPage(0);
+
+            // Set the dimensions of the title page
+            titlePage.Width = XUnit.FromMillimeter(210);
+            titlePage.Height = XUnit.FromMillimeter(297);
+
+            // Create graphics for the title page
+            XGraphics titleGfx = XGraphics.FromPdfPage(titlePage);
+
+            GlobalFontSettings.FontResolver = new CustomFontResolver();
+
+            // Create a font
+            XFont font = new XFont("Arial", 20);
+
+            // Draw the title
+            titleGfx.DrawString(Title, font, XBrushes.Black, new XRect(0, 0, titlePage.Width, titlePage.Height), XStringFormats.Center);
+        }
+    }
+
+    public class CustomFontResolver : IFontResolver
+    {
+        public string DefaultFontName => "Arial";
+
+        public byte[] GetFont(string faceName)
+        {
+            // Replace "path_to_your_font_file" with the actual path to your Arial font file.
+            var fontData = File.ReadAllBytes("path_to_your_font_file");
+            return fontData;
+        }
+
+        public FontResolverInfo ResolveTypeface(string familyName, bool isBold, bool isItalic)
+        {
+            if (familyName.Equals(DefaultFontName, StringComparison.OrdinalIgnoreCase))
             {
-                foreach (string imageFile in imageFiles)
-                {
-                    File.Delete(imageFile);
-                }
-                MessageBox.Show($"Done! Successfully moved {imageFiles.Count} images to {pdfFileName} and deleted them.");
+                string style = isBold && isItalic ? "BoldItalic" :
+                               isBold ? "Bold" :
+                               isItalic ? "Italic" : "";
+
+                return new FontResolverInfo(DefaultFontName + style);
             }
-            else
-            {
-                MessageBox.Show($"Done! Successfully moved {imageFiles.Count} images to {pdfFileName}. The images were not deleted.");
-            }
+
+            // Return null or throw an exception if the font is not supported.
+            return null;
         }
     }
 }
