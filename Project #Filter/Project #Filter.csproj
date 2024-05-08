@@ -20,7 +20,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NReco.VideoConverter" Version="1.2.1" />
     <PackageReference Include="NReco.VideoInfo" Version="1.2.0" />
-    <PackageReference Include="PDFsharp" Version="6.0.0" />
     <PackageReference Include="SharpCompress" Version="0.37.2" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
     <PackageReference Include="System.Security.Cryptography.Pkcs" Version="8.0.0" />
