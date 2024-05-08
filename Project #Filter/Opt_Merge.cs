@@ -165,55 +165,7 @@ namespace Project__Filter
 
         private void Word_Files(List<string> filePaths)
         {
-            Task.Run(() =>
-            {
-                // Get the directory of the first file in the list
-                string directory = Path.GetDirectoryName(filePaths[0]);
-
-                // Create the output file path
-                string outputFilePath = Path.Combine(directory, "Merged.docx");
-
-                using (WordprocessingDocument myDoc = WordprocessingDocument.Create(outputFilePath, DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
-                {
-                    MainDocumentPart mainPart = myDoc.AddMainDocumentPart();
-
-                    int totalFiles = filePaths.Count;
-                    int processedFiles = 0;
-
-                    foreach (string file in filePaths)
-                    {
-                        using (WordprocessingDocument myWordDoc = WordprocessingDocument.Open(file, true))
-                        {
-                            DocumentFormat.OpenXml.Wordprocessing.Body body = myWordDoc.MainDocumentPart.Document.Body;
-
-                            foreach (var element in body.Elements())
-                            {
-                                mainPart.Document.Body.Append(element.CloneNode(true));
-                            }
-                        }
-
-                        // Calculate the progress percentage
-                        processedFiles++;
-                        int progressPercentage = (int)((double)processedFiles / totalFiles * 100);
-
-                        // Report the progress
-                        Invoke((MethodInvoker)delegate
-                        {
-                            // Running on the UI thread
-                            progressBar_Time.Value = progressPercentage;
-                        });
-                    }
-
-                    mainPart.Document.Save();
-
-                    // Reset the progress bar to 0 when done
-                    Invoke((MethodInvoker)delegate
-                    {
-                        // Running on the UI thread
-                        progressBar_Time.Value = 0;
-                    });
-                }
-            });
+           
         }
 
         private void PDF_Files(List<string> filePaths)
