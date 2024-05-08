@@ -164,10 +164,10 @@ namespace Project__Filter
         }
 
         // Functions - Switch
-        private void Title()
+        private async void Title()
         {
-            string Title = string.Empty; 
-            byte[] pdfBytes = PDFBuilder(selectedPath);
+            string Title = string.Empty;
+            byte[] pdfBytes = await PDFBuilder(selectedPath);
             if (radioButton_Custom.Checked)
             {
                 Title = Microsoft.VisualBasic.Interaction.InputBox("Enter the text to search for:", "Search Text", "", -1, -1);
@@ -177,32 +177,36 @@ namespace Project__Filter
                 Title = Path.GetFileName(selectedPath);
             }
 
-            byte[] pdfBytesWithTitle = AddTitle(pdfBytes, Title);
-
-            string baseFileName = Title;
-            string extension = ".pdf";
-            int counter = 1;
-
-            // Create the initial file path
-            string pdfPath = Path.Combine(selectedPath, baseFileName + extension);
-
-            // If a file with the same name already exists, append a number to the filename
-            while (File.Exists(pdfPath))
+            if (!string.IsNullOrEmpty(Title))
             {
-                pdfPath = Path.Combine(selectedPath, $"{baseFileName} {counter}{extension}");
-                counter++;
+                byte[] pdfBytesWithTitle = AddTitle(pdfBytes, Title);
+
+                string baseFileName = Title;
+                string extension = ".pdf";
+                int counter = 1;
+
+                // Create the initial file path
+                string pdfPath = Path.Combine(selectedPath, baseFileName + extension);
+
+                // If a file with the same name already exists, append a number to the filename
+                while (File.Exists(pdfPath))
+                {
+                    pdfPath = Path.Combine(selectedPath, $"{baseFileName} {counter}{extension}");
+                    counter++;
+                }
+
+                // Write the bytes to a file
+                File.WriteAllBytes(pdfPath, pdfBytesWithTitle);
+
+                string pdfFileName = Path.GetFileName(pdfPath);
+                MessageBox.Show($"PDF '{pdfFileName}' created successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            // Write the bytes to a file
-            File.WriteAllBytes(pdfPath, pdfBytesWithTitle);
-
-            MessageBox.Show($"PDF created successfully at: {pdfPath}");
         }
 
-        private void Untitled()
+        private async void Untitled()
         {
             // Call the PDFBuilder method to create the PDF document
-            byte[] pdfBytes = PDFBuilder(selectedPath);
+            byte[] pdfBytes = await PDFBuilder(selectedPath);
 
             string baseFileName = "Untitled";
             string extension = ".pdf";
@@ -253,7 +257,7 @@ namespace Project__Filter
             }
         }
 
-        private List<string> PathSelectedFiles(string rootpath)
+        private async Task<List<string>> PathSelectedFiles(string rootpath)
         {
             // Get the selected items in the ListBox
             var selectedItems = listBox_File.SelectedItems;
@@ -287,7 +291,7 @@ namespace Project__Filter
             return fullPaths;
         }
 
-        private byte[] PDFBuilder(string rootpath)
+        private async Task<byte[]> PDFBuilder(string rootpath)
         {
             // Create a new PDF document
             Document document = new Document();
@@ -299,7 +303,12 @@ namespace Project__Filter
                 // Open the Document for writing
                 document.Open();
 
-                List<string> selectedFilePaths = PathSelectedFiles(rootpath);
+                List<string> selectedFilePaths = await PathSelectedFiles(rootpath);
+
+                // Initialize the progress bar
+                progressBar_Time.Minimum = 0;
+                progressBar_Time.Maximum = selectedFilePaths.Count;
+                progressBar_Time.Value = 0;
 
                 // Iterate through the list of selected file paths
                 foreach (string filePath in selectedFilePaths)
@@ -310,10 +319,16 @@ namespace Project__Filter
                     document.NewPage();
                     image.SetAbsolutePosition(0, 0);
                     document.Add(image);
+
+                    // Update the progress bar
+                    progressBar_Time.Value++;
                 }
 
                 // Close the Document - this saves it to the MemoryStream
                 document.Close();
+
+                // Reset the progress bar
+                progressBar_Time.Value = 0;
 
                 // Convert the MemoryStream to an array and return it
                 return stream.ToArray();
@@ -374,9 +389,9 @@ namespace Project__Filter
             }
         }
 
-        private void IconBuilder(string rootpath)
+        private async Task IconBuilder(string rootpath)
         {
-            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
+            List<string> selectedFilePaths = await PathSelectedFiles(rootpath);
 
             // Create a new directory for the icons
             string iconDirectory = Path.Combine(rootpath, "Icons");
@@ -422,9 +437,9 @@ namespace Project__Filter
             }
         }
 
-        private void WebpBuilder(string rootpath)
+        private async Task WebpBuilder(string rootpath)
         {
-            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
+            List<string> selectedFilePaths = await PathSelectedFiles(rootpath);
 
             // Create a new directory for the webp images
             string webpDirectory = Path.Combine(rootpath, "Images Webp");
@@ -449,9 +464,9 @@ namespace Project__Filter
             }
         }
 
-        private void BMPBuilder(string rootpath)
+        private async Task BMPBuilder(string rootpath)
         {
-            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
+            List<string> selectedFilePaths = await PathSelectedFiles(rootpath);
 
             // Create a new directory for the bmp images
             string bmpDirectory = Path.Combine(rootpath, "Images BMP");
@@ -476,9 +491,9 @@ namespace Project__Filter
             }
         }
 
-        private void MP3Builder(string rootpath)
+        private async Task MP3Builder(string rootpath)
         {
-            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
+            List<string> selectedFilePaths = await PathSelectedFiles(rootpath);
 
             // Create a new directory for the mp3 files
             string mp3Directory = Path.Combine(rootpath, "Files MP3");
@@ -502,9 +517,9 @@ namespace Project__Filter
             }
         }
 
-        private void WEBMBuilder(string rootpath)
+        private async Task WEBMBuilder(string rootpath)
         {
-            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
+            List<string> selectedFilePaths = await PathSelectedFiles(rootpath);
 
             // Create a new directory for the webm files
             string webmDirectory = Path.Combine(rootpath, "Files WEBM");
@@ -528,9 +543,9 @@ namespace Project__Filter
             }
         }
 
-        private void AVIBuilder(string rootpath)
+        private async Task AVIBuilder(string rootpath)
         {
-            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
+            List<string> selectedFilePaths = await PathSelectedFiles(rootpath);
 
             // Create a new directory for the avi files
             string aviDirectory = Path.Combine(rootpath, "Files AVI");
@@ -554,9 +569,9 @@ namespace Project__Filter
             }
         }
 
-        private void GIFBuilder(string rootpath)
+        private async Task GIFBuilder(string rootpath)
         {
-            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
+            List<string> selectedFilePaths = await PathSelectedFiles(rootpath);
 
             // Create a new directory for the gif files
             string gifDirectory = Path.Combine(rootpath, "Files GIF");
@@ -593,9 +608,9 @@ namespace Project__Filter
             }
         }
 
-        private void WAVBuilder(string rootpath)
+        private async Task WAVBuilder(string rootpath)
         {
-            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
+            List<string> selectedFilePaths = await PathSelectedFiles(rootpath);
 
             // Create a new directory for the wav files
             string wavDirectory = Path.Combine(rootpath, "WAVFiles");
