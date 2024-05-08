@@ -201,6 +201,10 @@ namespace Project__Filter
                 string pdfFileName = Path.GetFileName(pdfPath);
                 MessageBox.Show($"PDF '{pdfFileName}' created successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else
+            {
+                MessageBox.Show($"Title not valid", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private async void Untitled()
@@ -408,6 +412,11 @@ namespace Project__Filter
             // List to hold the file paths of the images that are too large
             List<string> largeImages = new List<string>();
 
+            // Initialize the progress bar
+            progressBar_Time.Minimum = 0;
+            progressBar_Time.Maximum = selectedFilePaths.Count;
+            progressBar_Time.Value = 0;
+
             // Iterate through the list of selected file paths
             foreach (string filePath in selectedFilePaths)
             {
@@ -428,8 +437,14 @@ namespace Project__Filter
                     image.Write(iconPath);
 
                     iconCount++;
+
+                    // Update the progress bar
+                    progressBar_Time.Value++;
                 }
             }
+
+            // Reset the progress bar
+            progressBar_Time.Value = 0;
 
             // If there are any large images, show a MessageBox with their file paths
             if (largeImages.Count > 0)
@@ -449,6 +464,11 @@ namespace Project__Filter
 
             int imageCount = 1;
 
+            // Initialize the progress bar
+            progressBar_Time.Minimum = 0;
+            progressBar_Time.Maximum = selectedFilePaths.Count;
+            progressBar_Time.Value = 0;
+
             // Iterate through the list of selected file paths
             foreach (string filePath in selectedFilePaths)
             {
@@ -462,8 +482,13 @@ namespace Project__Filter
                     image.Write(webpPath);
 
                     imageCount++;
+
+                    // Update the progress bar
+                    progressBar_Time.Value++;
                 }
             }
+            // Reset the progress bar
+            progressBar_Time.Value = 0;
         }
 
         private async Task BMPBuilder(string rootpath)
@@ -475,6 +500,11 @@ namespace Project__Filter
             Directory.CreateDirectory(bmpDirectory);
 
             int imageCount = 1;
+
+            // Initialize the progress bar
+            progressBar_Time.Minimum = 0;
+            progressBar_Time.Maximum = selectedFilePaths.Count;
+            progressBar_Time.Value = 0;
 
             // Iterate through the list of selected file paths
             foreach (string filePath in selectedFilePaths)
@@ -489,8 +519,13 @@ namespace Project__Filter
                     image.Write(bmpPath);
 
                     imageCount++;
+
+                    // Update the progress bar
+                    progressBar_Time.Value++;
                 }
             }
+            // Reset the progress bar
+            progressBar_Time.Value = 0;
         }
 
         private async Task MP3Builder(string rootpath)
@@ -502,6 +537,11 @@ namespace Project__Filter
             Directory.CreateDirectory(mp3Directory);
 
             int fileCount = 1;
+
+            // Initialize the progress bar
+            progressBar_Time.Minimum = 0;
+            progressBar_Time.Maximum = selectedFilePaths.Count;
+            progressBar_Time.Value = 0;
 
             // Iterate through the list of selected file paths
             foreach (string filePath in selectedFilePaths)
@@ -516,7 +556,12 @@ namespace Project__Filter
                 }
 
                 fileCount++;
+
+                // Update the progress bar
+                progressBar_Time.Value++;
             }
+            // Reset the progress bar
+            progressBar_Time.Value = 0;
         }
 
         private async Task WEBMBuilder(string rootpath)
@@ -528,6 +573,11 @@ namespace Project__Filter
             Directory.CreateDirectory(webmDirectory);
 
             int fileCount = 1;
+
+            // Initialize the progress bar
+            progressBar_Time.Minimum = 0;
+            progressBar_Time.Maximum = selectedFilePaths.Count;
+            progressBar_Time.Value = 0;
 
             // Create a new instance of the converter
             var converter = new NReco.VideoConverter.FFMpegConverter();
@@ -542,7 +592,12 @@ namespace Project__Filter
                 converter.ConvertMedia(filePath, webmPath, NReco.VideoConverter.Format.webm);
 
                 fileCount++;
+
+                // Update the progress bar
+                progressBar_Time.Value++;
             }
+            // Reset the progress bar
+            progressBar_Time.Value = 0;
         }
 
         private async Task AVIBuilder(string rootpath)
@@ -554,6 +609,11 @@ namespace Project__Filter
             Directory.CreateDirectory(aviDirectory);
 
             int fileCount = 1;
+
+            // Initialize the progress bar
+            progressBar_Time.Minimum = 0;
+            progressBar_Time.Maximum = selectedFilePaths.Count;
+            progressBar_Time.Value = 0;
 
             // Create a new instance of the converter
             var converter = new NReco.VideoConverter.FFMpegConverter();
@@ -568,7 +628,12 @@ namespace Project__Filter
                 converter.ConvertMedia(filePath, aviPath, NReco.VideoConverter.Format.avi);
 
                 fileCount++;
+
+                // Update the progress bar
+                progressBar_Time.Value++;
             }
+            // Reset the progress bar
+            progressBar_Time.Value = 0;
         }
 
         private async Task GIFBuilder(string rootpath)
@@ -580,6 +645,11 @@ namespace Project__Filter
             Directory.CreateDirectory(gifDirectory);
 
             int fileCount = 1;
+
+            // Initialize the progress bar
+            progressBar_Time.Minimum = 0;
+            progressBar_Time.Maximum = selectedFilePaths.Count;
+            progressBar_Time.Value = 0;
 
             // Create a new instance of FFProbe
             var ffProbe = new NReco.VideoInfo.FFProbe();
@@ -602,12 +672,17 @@ namespace Project__Filter
                     converter.ConvertMedia(filePath, gifPath, NReco.VideoConverter.Format.gif);
 
                     fileCount++;
+
+                    // Update the progress bar
+                    progressBar_Time.Value++;
                 }
                 else
                 {
                     Console.WriteLine($"The video at {filePath} is longer than 15 seconds and will not be converted.");
                 }
             }
+            // Reset the progress bar
+            progressBar_Time.Value = 0;
         }
 
         private async Task WAVBuilder(string rootpath)
@@ -619,6 +694,11 @@ namespace Project__Filter
             Directory.CreateDirectory(wavDirectory);
 
             int fileCount = 1;
+
+            // Initialize the progress bar
+            progressBar_Time.Minimum = 0;
+            progressBar_Time.Maximum = selectedFilePaths.Count;
+            progressBar_Time.Value = 0;
 
             // Iterate through the list of selected file paths
             foreach (string filePath in selectedFilePaths)
@@ -633,7 +713,12 @@ namespace Project__Filter
                 }
 
                 fileCount++;
+
+                // Update the progress bar
+                progressBar_Time.Value++;
             }
+            // Reset the progress bar
+            progressBar_Time.Value = 0;
         }
     }
 }
