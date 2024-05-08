@@ -103,7 +103,7 @@
             button_Privacy.Name = "button_Privacy";
             button_Privacy.Size = new Size(213, 53);
             button_Privacy.TabIndex = 8;
-            button_Privacy.Text = "    ENCRYPT";
+            button_Privacy.Text = "    SECURITY";
             button_Privacy.TextImageRelation = TextImageRelation.ImageBeforeText;
             button_Privacy.UseVisualStyleBackColor = false;
             button_Privacy.Click += button_Privacy_Click;

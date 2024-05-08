@@ -184,7 +184,6 @@ C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\System.Data.SqlClient.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\System.DirectoryServices.AccountManagement.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\System.DirectoryServices.Protocols.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\System.Drawing.Common.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\System.IO.Ports.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\System.Management.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\System.Private.ServiceModel.dll
@@ -243,27 +242,8 @@ C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win-arm64\native\sni.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win-x64\native\sni.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win-x86\native\sni.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\freebsd\lib\net8.0\System.Data.Odbc.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\illumos\lib\net8.0\System.Data.Odbc.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\ios\lib\net8.0\System.Data.Odbc.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\linux\lib\net8.0\System.Data.Odbc.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\osx\lib\net8.0\System.Data.Odbc.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\solaris\lib\net8.0\System.Data.Odbc.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\tvos\lib\net8.0\System.Data.Odbc.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net8.0\System.Data.Odbc.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net8.0\System.Data.OleDb.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net8.0\System.DirectoryServices.AccountManagement.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\unix\lib\net8.0\System.IO.Ports.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net8.0\System.IO.Ports.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net8.0\System.Management.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net8.0\System.ServiceProcess.ServiceController.dll
-C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net8.0\System.Speech.dll
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.csproj.AssemblyReference.cache
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Main.resources
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Properties.Resources.resources
@@ -298,3 +278,22 @@ E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project__Filter.Opt_Transform.resources
 E:\ReposVisualStudio\Project #Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.sourcelink.json
 C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\obj\Debug\net8.0-windows7.0\Project #Filter.sourcelink.json
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\freebsd\lib\net6.0\System.Data.Odbc.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\illumos\lib\net6.0\System.Data.Odbc.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\ios\lib\net6.0\System.Data.Odbc.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\linux\lib\net6.0\System.Data.Odbc.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\osx\lib\net6.0\System.Data.Odbc.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\solaris\lib\net6.0\System.Data.Odbc.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\tvos\lib\net6.0\System.Data.Odbc.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net6.0\System.Data.Odbc.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net6.0\System.Data.OleDb.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net6.0\System.DirectoryServices.AccountManagement.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\linux\lib\net6.0\System.DirectoryServices.Protocols.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\osx\lib\net6.0\System.DirectoryServices.Protocols.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net6.0\System.DirectoryServices.Protocols.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\unix\lib\net6.0\System.IO.Ports.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net6.0\System.IO.Ports.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net6.0\System.Management.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net6.0\System.ServiceProcess.ServiceController.dll
+C:\Users\alan_\source\repos\Clone\Project-Filter\Project #Filter\bin\Debug\net8.0-windows7.0\runtimes\win\lib\net6.0\System.Speech.dll
