@@ -61,6 +61,10 @@
               "target": "Package",
               "version": "[13.7.0, )"
             },
+            "Microsoft.Windows.Compatibility": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
             "NAudio": {
               "target": "Package",
               "version": "[2.2.1, )"
