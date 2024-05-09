@@ -27,6 +27,15 @@
             }
         }
 
-        
+        private void button_Start_Click(object sender, EventArgs e)
+        {
+            string selectedItem = comboBox_Select.SelectedItem.ToString();
+
+            switch (selectedItem)
+            {
+                default:
+                    break;
+            }
+        }
     }
 }
