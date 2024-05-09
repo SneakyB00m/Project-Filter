@@ -1,4 +1,6 @@
 ﻿using ImageMagick;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Project__Filter
 {
@@ -34,19 +36,13 @@ namespace Project__Filter
         {
             string selectedItem = comboBox_Select.SelectedItem.ToString();
 
-            List<string> fileExtensions =
-                          new List<string> { "jpg", "jpeg", "png", "gif", "tif","tiff", "raw", "arw", "cr2", "nef", "orf",
-                            "svg", "heif","heic","mp4","avi","mov","wmv","flv","mkv","doc","docx","xls","xlsx",
-                            "ppt","pptx","pdf","mp3","wav","flac","aac","oog"
-                          };
-
             switch (selectedItem)
             {
                 case "SANATIZE":
-                    Metadata(selectedPath, fileExtensions);
+                    Metadata(selectedPath);
                     break;
                 case "ENCRYPT":
-
+                    Encrypt(selectedPath);
                     break;
                 case "DECRYPT":
 
@@ -107,10 +103,17 @@ namespace Project__Filter
         }
 
         // Function - Actions
-        private void Metadata(string rootpath, List<string> extensions)
+        private void Metadata(string rootpath)
         {
-            List<string> allFilePaths = PathSelectedFiles(rootpath);
-            List<string> selectedFilePaths = allFilePaths.Where(path => extensions.Contains(Path.GetExtension(path).TrimStart('.').ToLower())).ToList();
+            Dictionary<string, List<string>> fileExtensions = new Dictionary<string, List<string>>
+            {
+                { "Images", new List<string> { "jpg", "jpeg", "png", "gif", "tif", "tiff", "raw", "arw", "cr2", "nef", "orf", "svg", "heif", "heic" } },
+                { "Videos", new List<string> { "mp4", "avi", "mov", "wmv", "flv", "mkv" } },
+                { "Documents", new List<string> { "doc", "docx", "xls", "xlsx", "ppt", "pptx", "pdf" } },
+                { "Audio", new List<string> { "mp3", "wav", "flac", "aac", "oog" } }
+            };
+
+            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
 
             string originalPath = Path.Combine(rootpath, "Original");
             string sanitizePath = Path.Combine(rootpath, "Sanitize");
@@ -128,9 +131,12 @@ namespace Project__Filter
                 // Move the original file to the Original folder
                 File.Move(filePath, originalFilePath);
 
-                // Sanitize the file based on its extension and save it to the Sanitize folder
-                string extension = Path.GetExtension(originalFilePath).ToLower();
-                if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif" || extension == ".tif" || extension == ".tiff")
+                // Determine the type of the file
+                string extension = Path.GetExtension(filePath).TrimStart('.').ToLower();
+                string fileType = fileExtensions.FirstOrDefault(pair => pair.Value.Contains(extension)).Key;
+
+                // Sanitize the file based on its type and save it to the Sanitize folder
+                if (fileType == "Images")
                 {
                     // Use Magick.NET for image files
                     using (MagickImage image = new MagickImage(originalFilePath))
@@ -139,30 +145,80 @@ namespace Project__Filter
                         image.Write(sanitizeFilePath);
                     }
                 }
-                else if (extension == ".pdf")
+                else if (fileType == "Videos")
+                {
+                    // TODO: Add your code to sanitize video files here
+                }
+                else if (fileType == "Documents")
                 {
                     // Use iTextSharp for PDF files
-                    // TODO: Add your code to sanitize PDF files here
+                    // TODO: Add your code to sanitize document files here
                 }
-                else if (extension == ".mp3" || extension == ".wav" || extension == ".flac" || extension == ".aac" || extension == ".oog")
+                else if (fileType == "Audio")
                 {
                     // Use NAudio for audio files
                     // TODO: Add your code to sanitize audio files here
                 }
-                // TODO: Add more else if blocks for other file types as needed
             }
         }
 
         private void Encrypt(string rootpath)
         {
+            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
 
+            string originalPath = Path.Combine(rootpath, "Original");
+            string encryptedPath = Path.Combine(rootpath, "Encrypted");
+
+            // Create the directories if they don't exist
+            Directory.CreateDirectory(originalPath);
+            Directory.CreateDirectory(encryptedPath);
+
+            // Ask the user for a password
+            string password = Microsoft.VisualBasic.Interaction.InputBox("Enter the password for encryption:", "Encryption Password", "", -1, -1);
+
+            foreach (string filePath in selectedFilePaths)
+            {
+                string fileName = Path.GetFileName(filePath);
+                string originalFilePath = Path.Combine(originalPath, fileName);
+                string encryptedFilePath = Path.Combine(encryptedPath, fileName);
+
+                // Move the original file to the Original folder
+                File.Move(filePath, originalFilePath);
+
+                // Generate a key and IV from the password
+                using (Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 }, 1000)) // Use a constant salt for simplicity
+                {
+                    byte[] key = pbkdf2.GetBytes(32); // 256 bits
+                    byte[] iv = pbkdf2.GetBytes(16); // 128 bits
+
+                    // Encrypt the file
+                    using (Aes aes = Aes.Create())
+                    {
+                        aes.Key = key;
+                        aes.IV = iv;
+
+                        // Create an encryptor to encrypt the file
+                        ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+
+                        using (FileStream inputFileStream = new FileStream(originalFilePath, FileMode.Open))
+                        using (FileStream outputFileStream = new FileStream(encryptedFilePath, FileMode.Create))
+                        using (CryptoStream cryptoStream = new CryptoStream(outputFileStream, encryptor, CryptoStreamMode.Write))
+                        {
+                            inputFileStream.CopyTo(cryptoStream);
+                        }
+                    }
+                }
+            }
         }
 
         private void Decrypt(string rootpath)
         {
+            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
 
+            foreach (string filePath in selectedFilePaths)
+            {
+
+            }
         }
-
-
     }
 }
