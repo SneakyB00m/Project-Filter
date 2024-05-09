@@ -45,7 +45,7 @@ namespace Project__Filter
                     Encrypt(selectedPath);
                     break;
                 case "DECRYPT":
-
+                    Decrypt(selectedPath);
                     break;
                 default:
                     MessageBox.Show("Invalid select", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -62,22 +62,68 @@ namespace Project__Filter
             "ppt","pptx","pdf","mp3","wav","flac","aac","oog"
                 };
 
-            string[] imageFiles = Directory.EnumerateFiles(selectedPath)
-                                             .Where(file => fileExtensions.Any(ext => file.ToLower().EndsWith(ext)))
-                                             .ToArray();
+            ComboBox comboBox = sender as ComboBox;
 
-            // Count the files
-            int initialFileCount = imageFiles.Length;
+            // Get the selected item
+            string selectedItem = comboBox.SelectedItem.ToString();
 
-            // Display just the count in label_Count
-            label_Count.Text = initialFileCount.ToString();
-
-            listBox_File.Items.Clear();
-
-            foreach (string imageFile in imageFiles)
+            switch (selectedItem)
             {
-                listBox_File.Items.Add(Path.GetFileName(imageFile));
+                case "SANATIZE":
+                case "ENCRYPT":
+                    {
+                        string[] imageFiles = Directory.EnumerateFiles(selectedPath)
+                                                .Where(file => fileExtensions.Any(ext => file.ToLower().EndsWith(ext)))
+                                                .ToArray();
+
+                        // Count the files
+                        int initialFileCount = imageFiles.Length;
+
+                        // Display just the count in label_Count
+                        label_Count.Text = initialFileCount.ToString();
+
+                        listBox_File.Items.Clear();
+
+                        foreach (string imageFile in imageFiles)
+                        {
+                            listBox_File.Items.Add(Path.GetFileName(imageFile));
+                        }
+                    }
+                    break;
+                case "DECRYPT":
+                    {
+                        string encryptedPath = Path.Combine(selectedPath, "Encrypted");
+
+                        if (!Directory.Exists(encryptedPath))
+                        {
+                            MessageBox.Show("Error: The folder Encrypted does not exist.", "Folder Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            string[] imageFiles = Directory.EnumerateFiles(encryptedPath)
+                                                   .Where(file => fileExtensions.Any(ext => file.ToLower().EndsWith(ext)))
+                                                   .ToArray();
+
+                            // Count the files
+                            int initialFileCount = imageFiles.Length;
+
+                            // Display just the count in label_Count
+                            label_Count.Text = initialFileCount.ToString();
+
+                            listBox_File.Items.Clear();
+
+                            foreach (string imageFile in imageFiles)
+                            {
+                                listBox_File.Items.Add(Path.GetFileName(imageFile));
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
+
+           
         }
 
         // Functions - General
@@ -213,12 +259,50 @@ namespace Project__Filter
 
         private void Decrypt(string rootpath)
         {
-            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
+            string encryptedPath = Path.Combine(rootpath, "Encrypted");
+            string decryptedPath = Path.Combine(rootpath, "Decrypted");
 
-            foreach (string filePath in selectedFilePaths)
+            // Create the Decrypted directory if it doesn't exist
+            Directory.CreateDirectory(decryptedPath);
+
+            // Ask the user for the decryption password
+            string password = Microsoft.VisualBasic.Interaction.InputBox("Enter the password for decryption:", "Decryption Password", "", -1, -1);
+
+            // Get all files in the Encrypted directory
+            string[] encryptedFiles = Directory.GetFiles(encryptedPath);
+
+
+
+            foreach (string encryptedFilePath in encryptedFiles)
             {
+                string fileName = Path.GetFileName(encryptedFilePath);
+                string decryptedFilePath = Path.Combine(decryptedPath, fileName);
 
+                // Generate a key and IV from the password
+                using (Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 }, 1000)) // Use a constant salt for simplicity
+                {
+                    byte[] key = pbkdf2.GetBytes(32); // 256 bits
+                    byte[] iv = pbkdf2.GetBytes(16); // 128 bits
+
+                    // Decrypt the file
+                    using (Aes aes = Aes.Create())
+                    {
+                        aes.Key = key;
+                        aes.IV = iv;
+
+                        // Create a decryptor to decrypt the file
+                        ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+
+                        using (FileStream inputFileStream = new FileStream(encryptedFilePath, FileMode.Open))
+                        using (FileStream outputFileStream = new FileStream(decryptedFilePath, FileMode.Create))
+                        using (CryptoStream cryptoStream = new CryptoStream(inputFileStream, decryptor, CryptoStreamMode.Read))
+                        {
+                            cryptoStream.CopyTo(outputFileStream);
+                        }
+                    }
+                }
             }
         }
+
     }
 }
