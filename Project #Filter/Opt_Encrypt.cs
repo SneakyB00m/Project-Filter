@@ -33,6 +33,12 @@
 
             switch (selectedItem)
             {
+                case "SANATIZE":
+                    break;
+                case "ENCRYPT":
+                    break;
+                case "DECRYPT":
+                    break;
                 default:
                     break;
             }
