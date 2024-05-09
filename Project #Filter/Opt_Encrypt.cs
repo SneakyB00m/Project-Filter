@@ -1,4 +1,6 @@
-﻿namespace Project__Filter
+﻿using ImageMagick;
+
+namespace Project__Filter
 {
     public partial class Opt_Encrypt : UserControl
     {
@@ -31,11 +33,13 @@
         private void button_Start_Click(object sender, EventArgs e)
         {
             string selectedItem = comboBox_Select.SelectedItem.ToString();
+
             List<string> fileExtensions =
                           new List<string> { "jpg", "jpeg", "png", "gif", "tif","tiff", "raw", "arw", "cr2", "nef", "orf",
                             "svg", "heif","heic","mp4","avi","mov","wmv","flv","mkv","doc","docx","xls","xlsx",
                             "ppt","pptx","pdf","mp3","wav","flac","aac","oog"
                           };
+
             switch (selectedItem)
             {
                 case "SANATIZE":
@@ -51,26 +55,34 @@
                     MessageBox.Show("Invalid select", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
+        }
 
-            // Get all image files in the selected directory that can be converted to the selected format
-            string[] Files = Directory.EnumerateFiles(selectedPath)
-                                           .Where(file => fileExtensions.Any(ext => file.ToLower().EndsWith(ext)))
-                                           .ToArray();
+        private void comboBox_Select_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Check if the selected extension is in the list of allowed extensions
+            List<string> fileExtensions =
+                new List<string> { "jpg", "jpeg", "png", "gif", "tif","tiff", "raw", "arw", "cr2", "nef", "orf",
+            "svg", "heif","heic","mp4","avi","mov","wmv","flv","mkv","doc","docx","xls","xlsx",
+            "ppt","pptx","pdf","mp3","wav","flac","aac","oog"
+                };
+
+            string[] imageFiles = Directory.EnumerateFiles(selectedPath)
+                                             .Where(file => fileExtensions.Any(ext => file.ToLower().EndsWith(ext)))
+                                             .ToArray();
 
             // Count the files
-            int initialFileCount = Files.Length;
+            int initialFileCount = imageFiles.Length;
 
             // Display just the count in label_Count
             label_Count.Text = initialFileCount.ToString();
 
             listBox_File.Items.Clear();
 
-            foreach (string File in Files)
+            foreach (string imageFile in imageFiles)
             {
-                listBox_File.Items.Add(Path.GetFileName(File));
+                listBox_File.Items.Add(Path.GetFileName(imageFile));
             }
         }
-
 
         // Functions - General
         private List<string> PathSelectedFiles(string rootpath)
@@ -116,12 +128,30 @@
                 // Move the original file to the Original folder
                 File.Move(filePath, originalFilePath);
 
-                // TODO: Sanitize the file and save it to the Sanitize folder
-                // For now, we'll just copy the original file as a placeholder
-                File.Copy(originalFilePath, sanitizeFilePath);
+                // Sanitize the file based on its extension and save it to the Sanitize folder
+                string extension = Path.GetExtension(originalFilePath).ToLower();
+                if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif" || extension == ".tif" || extension == ".tiff")
+                {
+                    // Use Magick.NET for image files
+                    using (MagickImage image = new MagickImage(originalFilePath))
+                    {
+                        image.Strip(); // This removes all profiles and comments
+                        image.Write(sanitizeFilePath);
+                    }
+                }
+                else if (extension == ".pdf")
+                {
+                    // Use iTextSharp for PDF files
+                    // TODO: Add your code to sanitize PDF files here
+                }
+                else if (extension == ".mp3" || extension == ".wav" || extension == ".flac" || extension == ".aac" || extension == ".oog")
+                {
+                    // Use NAudio for audio files
+                    // TODO: Add your code to sanitize audio files here
+                }
+                // TODO: Add more else if blocks for other file types as needed
             }
         }
-
 
         private void Encrypt(string rootpath)
         {
@@ -132,5 +162,7 @@
         {
 
         }
+
+
     }
 }

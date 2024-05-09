@@ -92,7 +92,6 @@ namespace Project__Filter
                         checkBox_Date.Enabled = false;
                         checkBox_Size.Enabled = false;
                         break;
-
                 }
 
                 // Get all image files in the selected directory that can be converted to the selected format
