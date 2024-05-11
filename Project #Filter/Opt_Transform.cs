@@ -92,7 +92,6 @@ namespace Project__Filter
                         checkBox_Date.Enabled = false;
                         checkBox_Size.Enabled = false;
                         break;
-
                 }
 
                 // Get all image files in the selected directory that can be converted to the selected format
@@ -110,7 +109,7 @@ namespace Project__Filter
 
                 foreach (string imageFile in imageFiles)
                 {
-                    listBox_File.Items.Add(System.IO.Path.GetFileName(imageFile));
+                    listBox_File.Items.Add(Path.GetFileName(imageFile));
                 }
             }
         }
@@ -153,7 +152,7 @@ namespace Project__Filter
                     WAVBuilder(selectedPath);
                     break;
                 default:
-                    MessageBox.Show("Invalid selection");
+                    MessageBox.Show("Invalid select", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
             if (checkBox_Delete.Checked)
