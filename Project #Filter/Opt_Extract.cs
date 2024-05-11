@@ -102,7 +102,7 @@ namespace Project__Filter
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Please select a valid option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -142,7 +142,18 @@ namespace Project__Filter
                     // If the file exists, move it to the duplicated folder
                     // Ensure the destination folder exists
                     Directory.CreateDirectory(duplicatedFolder);
-                    File.Move(file, destPathDuplicated);
+
+                    // Check if the file already exists in the duplicated folder
+                    int count = 1;
+                    string fileNameOnly = Path.GetFileNameWithoutExtension(fileName);
+                    string extension = Path.GetExtension(fileName);
+                    string newFullPath = destPathDuplicated;
+                    while (File.Exists(newFullPath))
+                    {
+                        string tempFileName = $"{fileNameOnly} ({count++}){extension}";
+                        newFullPath = Path.Combine(duplicatedFolder, tempFileName);
+                    }
+                    File.Move(file, newFullPath);
                 }
                 else
                 {
@@ -153,6 +164,7 @@ namespace Project__Filter
                 }
             }
         }
+
 
         public void UncompressRar(string rootPath)
         {

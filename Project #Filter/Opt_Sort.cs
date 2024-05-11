@@ -296,6 +296,9 @@ namespace Project__Filter
             // Run the sorting operation in a separate thread
             await Task.Run(() =>
             {
+                int totalFiles = videoDirectories.Sum(dir => Directory.EnumerateFiles(dir, "*.*", SearchOption.TopDirectoryOnly).Count());
+                int processedFiles = 0;
+
                 for (int i = 0; i < videoDirectories.Count; i++)
                 {
                     var directory = videoDirectories[i];
@@ -334,6 +337,9 @@ namespace Project__Filter
                                     // Move the file
                                     File.Move(srcPath, destPath);
 
+                                    // Report progress
+                                    processedFiles++;
+                                    ((IProgress<int>)progress).Report((int)((double)processedFiles / totalFiles * 100));
                                     break;
                                 }
                             }
@@ -344,9 +350,6 @@ namespace Project__Filter
                             MessageBox.Show($"An error occurred while sorting the file {file}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-
-                    // Report progress
-                    ((IProgress<int>)progress).Report((i + 1) * 100 / videoDirectories.Count);
                 }
             });
             progressBar_Time.Value = 0;
@@ -354,6 +357,7 @@ namespace Project__Filter
             ScanFiles(rootPath);
             RepopulateTreeView(rootPath);
         }
+
 
         public async Task SortByResolution(string rootPath)
         {
