@@ -283,8 +283,10 @@ namespace Project__Filter
             // Get all directories
             var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
 
-            // Filter directories to only include those with the name "Videos"
-            var videoDirectories = directories.Where(dir => new DirectoryInfo(dir).Name == "Videos").ToList();
+            // Filter directories to only include those with the name "Videos"                                                                                                                                // Newton
+            var videoDirectories = directories.Where(dir => new DirectoryInfo(dir).Name == "Videos").ToList();                                                                                                //    Serialize
+                                                                                                                                                                                                              //    Unserialize
+
 
             // Create a Progress<T> object to report progress from the background task to the UI thread
             var progress = new Progress<int>(value =>
