@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "E:\\ReposVisualStudio\\Project #Filter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\bin\\Debug\\net8.0-windows7.0\\Duration.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project #Filter\\bin\\Debug\\net8.0-windows7.0\\Duration.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|e:\\reposvisualstudio\\project #filter\\project #filter\\opt_transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\opt_transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|e:\\reposvisualstudio\\project #filter\\project #filter\\opt_sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|E:\\ReposVisualStudio\\Project #Filter\\project #filter\\opt_sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\opt_sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -39,15 +39,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Duration.json",
-              "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\bin\\Debug\\net8.0-windows7.0\\Duration.json",
-              "RelativeDocumentMoniker": "Project #Filter\\bin\\Debug\\net8.0-windows7.0\\Duration.json",
-              "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\bin\\Debug\\net8.0-windows7.0\\Duration.json",
-              "RelativeToolTip": "Project #Filter\\bin\\Debug\\net8.0-windows7.0\\Duration.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-05-12T04:36:16.451Z",
-              "EditorCaption": ""
+              "Title": "Opt_Transform.cs [Design]",
+              "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Opt_Transform.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\Opt_Transform.cs",
+              "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Opt_Transform.cs [Design]",
+              "RelativeToolTip": "Project #Filter\\Opt_Transform.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-12T04:56:25.86Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -57,7 +56,7 @@
               "RelativeDocumentMoniker": "Project #Filter\\Opt_Sort.cs",
               "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Opt_Sort.cs",
               "RelativeToolTip": "Project #Filter\\Opt_Sort.cs",
-              "ViewState": "AQIAAFEAAAAAAAAAAAAwwB4BAADdAAAA",
+              "ViewState": "AQIAAGQCAAAAAAAAAAAAAB4BAADdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-11T01:10:00.622Z",
               "EditorCaption": ""
@@ -71,7 +70,8 @@
               "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Opt_Sort.cs [Design]",
               "RelativeToolTip": "Project #Filter\\Opt_Sort.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T01:09:59.258Z"
+              "WhenOpened": "2024-05-11T01:09:59.258Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
