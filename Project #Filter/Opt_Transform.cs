@@ -68,6 +68,10 @@ namespace Project__Filter
                         EnableOptions(selectedItem);
                         fileExtensions = new List<string> { "jpg", "jpeg", "png", "bmp", "gif", "svg", "tiff", "webp" };
                         break;
+                    case "VIDEO To GIF":
+                        EnableOptions(selectedItem);
+                        fileExtensions = new List<string> { "mp4", "avi", "mkv", "flv", "mov", "wmv" };
+                        break;
                     case "VIDEO To AUDIO":
                         EnableOptions(selectedItem);
                         fileExtensions = new List<string> { "mp4", "avi", "mkv", "flv", "mov", "wmv" };

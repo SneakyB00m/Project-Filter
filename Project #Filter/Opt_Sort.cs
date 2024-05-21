@@ -283,8 +283,10 @@ namespace Project__Filter
             // Get all directories
             var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
 
-            // Filter directories to only include those with the name "Videos"
-            var videoDirectories = directories.Where(dir => new DirectoryInfo(dir).Name == "Videos").ToList();
+            // Filter directories to only include those with the name "Videos"                                                                                                                                // Newton
+            var videoDirectories = directories.Where(dir => new DirectoryInfo(dir).Name == "Videos").ToList();                                                                                                //    Serialize
+                                                                                                                                                                                                              //    Unserialize
+
 
             // Create a Progress<T> object to report progress from the background task to the UI thread
             var progress = new Progress<int>(value =>
@@ -296,6 +298,9 @@ namespace Project__Filter
             // Run the sorting operation in a separate thread
             await Task.Run(() =>
             {
+                int totalFiles = videoDirectories.Sum(dir => Directory.EnumerateFiles(dir, "*.*", SearchOption.TopDirectoryOnly).Count());
+                int processedFiles = 0;
+
                 for (int i = 0; i < videoDirectories.Count; i++)
                 {
                     var directory = videoDirectories[i];
@@ -334,6 +339,9 @@ namespace Project__Filter
                                     // Move the file
                                     File.Move(srcPath, destPath);
 
+                                    // Report progress
+                                    processedFiles++;
+                                    ((IProgress<int>)progress).Report((int)((double)processedFiles / totalFiles * 100));
                                     break;
                                 }
                             }
@@ -344,9 +352,6 @@ namespace Project__Filter
                             MessageBox.Show($"An error occurred while sorting the file {file}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-
-                    // Report progress
-                    ((IProgress<int>)progress).Report((i + 1) * 100 / videoDirectories.Count);
                 }
             });
             progressBar_Time.Value = 0;
@@ -363,12 +368,19 @@ namespace Project__Filter
             // Get all directories
             var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories).ToList();
 
+            // Filter directories to only include those with the name "Videos"
+            directories = directories.Where(dir => new DirectoryInfo(dir).Name == "Videos").ToList();
+
             // Create a Progress<T> object to report progress from the background task to the UI thread
             var progress = new Progress<int>(value =>
             {
                 // Update your progress bar here
                 progressBar_Time.Value = value;
             });
+
+            // Calculate total number of files
+            int totalFiles = directories.Sum(dir => Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Count());
+            int processedFiles = 0;
 
             // Run the sorting operation in a separate thread
             await Task.Run(() =>
@@ -378,7 +390,7 @@ namespace Project__Filter
                     var directory = directories[i];
 
                     // Walk through the directory
-                    foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.TopDirectoryOnly))
+                    foreach (var file in Directory.EnumerateFiles(directory, "*.*", SearchOption.AllDirectories))
                     {
                         try
                         {
@@ -400,6 +412,13 @@ namespace Project__Filter
 
                             // Move the file
                             File.Move(file, destPath);
+
+                            // Increment processed files count
+                            processedFiles++;
+
+                            // Report progress
+                            int progressValue = (int)((double)processedFiles / totalFiles * 100);
+                            ((IProgress<int>)progress).Report(Math.Min(progressValue, 100));
                         }
                         catch (Exception ex)
                         {
@@ -407,9 +426,6 @@ namespace Project__Filter
                             MessageBox.Show($"An error occurred while sorting the file {file}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-
-                    // Report progress
-                    ((IProgress<int>)progress).Report((i + 1) * 100 / directories.Count);
                 }
             });
             progressBar_Time.Value = 0;
@@ -417,6 +433,7 @@ namespace Project__Filter
             ScanFiles(rootPath);
             RepopulateTreeView(rootPath);
         }
+
 
         public async Task SortBySize(string rootPath)
         {
