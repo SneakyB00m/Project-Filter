@@ -31,51 +31,14 @@ namespace Project__Filter
             }
         }
 
-        private void button_Merge_Click(object sender, EventArgs e)
-        {
-            List<string> selectedItems = new List<string>();
-            foreach (var item in listBox_File.SelectedItems)
-            {
-                selectedItems.Add(item.ToString());
-            }
-
-            if (!string.IsNullOrEmpty(selectedPath))
-            {
-                string selectedItem = comboBox_Select.SelectedItem.ToString();
-
-                switch (selectedItem)
-                {
-                    case "TEXT":
-                        Text_Files(selectedItems);
-                        break;
-                    case "WORD":
-                        Word_Files(selectedItems);
-                        break;
-                    case "PDF":
-                        PDF_Files(selectedItems);
-                        break;
-                    case "HTML":
-                        HTML_Files(selectedItems);
-                        break;
-                    default:
-                        MessageBox.Show("Invalid selection");
-                        break;
-                }
-                if (checkBox_Delete.Checked)
-                {
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("Path not selected");
-            }
-        }
-
         private void comboBox_Select_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedItem = comboBox_Select.SelectedItem.ToString();
             PopulateFiles(selectedItem);
+        }
+        private void button_Merge_Click(object sender, EventArgs e)
+        {
+
         }
 
         //Function
@@ -117,9 +80,13 @@ namespace Project__Filter
                     {
                         listBox_File.Items.Add(filePath);
                     }
+
+                    // Display the count of files in textBox_Path
+                    label_Count.Text = filePaths.Count.ToString();
                 });
             });
         }
+
 
         private void Text_Files(List<string> filePaths)
         {
@@ -163,10 +130,6 @@ namespace Project__Filter
             });
         }
 
-        private void Word_Files(List<string> filePaths)
-        {
-           
-        }
 
         private void PDF_Files(List<string> filePaths)
         {
