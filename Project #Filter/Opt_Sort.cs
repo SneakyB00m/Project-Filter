@@ -283,10 +283,8 @@ namespace Project__Filter
             // Get all directories
             var directories = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
 
-            // Filter directories to only include those with the name "Videos"                                                                                                                                // Newton
-            var videoDirectories = directories.Where(dir => new DirectoryInfo(dir).Name == "Videos").ToList();                                                                                                //    Serialize
-                                                                                                                                                                                                              //    Unserialize
-
+            // Filter directories to only include those with the name "Videos"
+            var videoDirectories = directories.Where(dir => new DirectoryInfo(dir).Name == "Videos").ToList();
 
             // Create a Progress<T> object to report progress from the background task to the UI thread
             var progress = new Progress<int>(value =>
@@ -295,12 +293,16 @@ namespace Project__Filter
                 progressBar_Time.Value = value;
             });
 
+            // Calculate total number of files
+            int totalFiles = videoDirectories.Sum(dir => Directory.EnumerateFiles(dir, "*.*", SearchOption.TopDirectoryOnly).Count());
+            int processedFiles = 0;
+
+            // Create a list to store files that caused exceptions
+            List<string> exceptionFiles = new List<string>();
+
             // Run the sorting operation in a separate thread
             await Task.Run(() =>
             {
-                int totalFiles = videoDirectories.Sum(dir => Directory.EnumerateFiles(dir, "*.*", SearchOption.TopDirectoryOnly).Count());
-                int processedFiles = 0;
-
                 for (int i = 0; i < videoDirectories.Count; i++)
                 {
                     var directory = videoDirectories[i];
@@ -348,13 +350,19 @@ namespace Project__Filter
                         }
                         catch (Exception ex)
                         {
-                            // Show a message box with the error
-                            MessageBox.Show($"An error occurred while sorting the file {file}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            // Add the file to the exception list
+                            exceptionFiles.Add(file);
                         }
                     }
                 }
             });
             progressBar_Time.Value = 0;
+
+            // Show a message box with all the files that caused exceptions
+            if (exceptionFiles.Count > 0)
+            {
+                MessageBox.Show($"An error occurred while sorting the following files:\n{string.Join("\n", exceptionFiles)}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             ScanFiles(rootPath);
             RepopulateTreeView(rootPath);
