@@ -117,7 +117,6 @@ namespace Project__Filter
         }
 
         // Functions
-
         private void PopulateTreeView(string directoryValue, TreeNode parentNode)
         {
             string[] directories = Directory.GetDirectories(directoryValue);
@@ -441,7 +440,6 @@ namespace Project__Filter
             ScanFiles(rootPath);
             RepopulateTreeView(rootPath);
         }
-
 
         public async Task SortBySize(string rootPath)
         {
