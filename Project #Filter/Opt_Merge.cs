@@ -57,10 +57,10 @@ namespace Project__Filter
                         // Call your method for handling Word files here
                         break;
                     case "FILES PDF":
-                        PDF_Files(selectedFiles);
+                        Pdf_Files(selectedFiles);
                         break;
                     case "FILES HTML":
-                        HTML_Files(selectedFiles);
+                        Html_Files(selectedFiles);
                         break;
                     default:
                         MessageBox.Show("Incorrect option selected.");
@@ -159,7 +159,7 @@ namespace Project__Filter
             });
         }
 
-        private void PDF_Files(List<string> filePaths)
+        private void Pdf_Files(List<string> filePaths)
         {
             Task.Run(() =>
             {
@@ -214,7 +214,7 @@ namespace Project__Filter
             });
         }
 
-        public void HTML_Files(List<string> filePaths)
+        public void Html_Files(List<string> filePaths)
         {
             Task.Run(() =>
             {
@@ -268,5 +268,48 @@ namespace Project__Filter
                 });
             });
         }
+
+        public void Docs_Files(List<string> filePaths)
+        {
+            Task.Run(() =>
+            {
+                // Create a blank document
+                Aspose.Words.Document mainDoc = new Aspose.Words.Document();
+
+                int totalFiles = filePaths.Count;
+                int processedFiles = 0;
+
+                foreach (string filePath in filePaths)
+                {
+                    // Load the document from file
+                    Aspose.Words.Document subDoc = new Aspose.Words.Document(filePath);
+
+                    // Append the document to the main document
+                    mainDoc.AppendDocument(subDoc, Aspose.Words.ImportFormatMode.KeepSourceFormatting);
+
+                    // Calculate the progress percentage
+                    processedFiles++;
+                    int progressPercentage = (int)((double)processedFiles / totalFiles * 100);
+
+                    // Report the progress
+                    Invoke((MethodInvoker)delegate
+                    {
+                        // Running on the UI thread
+                        progressBar_Time.Value = progressPercentage;
+                    });
+                }
+
+                // Save the merged document
+                mainDoc.Save(Path.Combine(selectedPath, "Merge.docx"));
+
+                // Reset the progress bar to 0 when done
+                Invoke((MethodInvoker)delegate
+                {
+                    // Running on the UI thread
+                    progressBar_Time.Value = 0;
+                });
+            });
+        }
+
     }
 }
