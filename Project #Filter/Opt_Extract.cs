@@ -89,10 +89,10 @@ namespace Project__Filter
                         UncompressRar(selectedPath);
                         break;
                     case "Uncompress TAR":
-                        UncompressTar(selectedItem);
+                        UncompressTar(selectedPath);
                         break;
                     case "Uncompress ZIP":
-                        UnzipDirectory(selectedItem);
+                        UnzipDirectory(selectedPath);
                         break;
                     default:
                         // Handle the case where no valid option is selected
