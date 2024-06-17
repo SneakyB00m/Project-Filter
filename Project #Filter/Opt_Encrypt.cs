@@ -208,53 +208,56 @@ namespace Project__Filter
             }
         }
 
-        private void Encrypt(string rootpath)
+        public async Task Encrypt(string rootPath)
         {
-            List<string> selectedFilePaths = PathSelectedFiles(rootpath);
-
-            string originalPath = Path.Combine(rootpath, "Original");
-            string encryptedPath = Path.Combine(rootpath, "Encrypted");
-
-            // Create the directories if they don't exist
-            Directory.CreateDirectory(originalPath);
-            Directory.CreateDirectory(encryptedPath);
-
-            // Ask the user for a password
-            string password = Microsoft.VisualBasic.Interaction.InputBox("Enter the password for encryption:", "Encryption Password", "", -1, -1);
-
-            foreach (string filePath in selectedFilePaths)
+            await Task.Run(() =>
             {
-                string fileName = Path.GetFileName(filePath);
-                string originalFilePath = Path.Combine(originalPath, fileName);
-                string encryptedFilePath = Path.Combine(encryptedPath, fileName);
+                List<string> selectedFilePaths = PathSelectedFiles(rootPath);
 
-                // Move the original file to the Original folder
-                File.Move(filePath, originalFilePath);
+                string originalPath = Path.Combine(rootPath, "Original");
+                string encryptedPath = Path.Combine(rootPath, "Encrypted");
 
-                // Generate a key and IV from the password
-                using (Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 }, 1000)) // Use a constant salt for simplicity
+                // Create the directories if they don't exist
+                Directory.CreateDirectory(originalPath);
+                Directory.CreateDirectory(encryptedPath);
+
+                // Ask the user for a password
+                string password = Microsoft.VisualBasic.Interaction.InputBox("Enter the password for encryption:", "Encryption Password", "", -1, -1);
+
+                foreach (string filePath in selectedFilePaths)
                 {
-                    byte[] key = pbkdf2.GetBytes(32); // 256 bits
-                    byte[] iv = pbkdf2.GetBytes(16); // 128 bits
+                    string fileName = Path.GetFileName(filePath);
+                    string originalFilePath = Path.Combine(originalPath, fileName);
+                    string encryptedFilePath = Path.Combine(encryptedPath, fileName);
 
-                    // Encrypt the file
-                    using (Aes aes = Aes.Create())
+                    // Move the original file to the Original folder
+                    File.Move(filePath, originalFilePath);
+
+                    // Generate a key and IV from the password
+                    using (Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 }, 1000)) // Use a constant salt for simplicity
                     {
-                        aes.Key = key;
-                        aes.IV = iv;
+                        byte[] key = pbkdf2.GetBytes(32); // 256 bits
+                        byte[] iv = pbkdf2.GetBytes(16); // 128 bits
 
-                        // Create an encryptor to encrypt the file
-                        ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
-
-                        using (FileStream inputFileStream = new FileStream(originalFilePath, FileMode.Open))
-                        using (FileStream outputFileStream = new FileStream(encryptedFilePath, FileMode.Create))
-                        using (CryptoStream cryptoStream = new CryptoStream(outputFileStream, encryptor, CryptoStreamMode.Write))
+                        // Encrypt the file
+                        using (Aes aes = Aes.Create())
                         {
-                            inputFileStream.CopyTo(cryptoStream);
+                            aes.Key = key;
+                            aes.IV = iv;
+
+                            // Create an encryptor to encrypt the file
+                            ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+
+                            using (FileStream inputFileStream = new FileStream(originalFilePath, FileMode.Open))
+                            using (FileStream outputFileStream = new FileStream(encryptedFilePath, FileMode.Create))
+                            using (CryptoStream cryptoStream = new CryptoStream(outputFileStream, encryptor, CryptoStreamMode.Write))
+                            {
+                                inputFileStream.CopyTo(cryptoStream);
+                            }
                         }
                     }
                 }
-            }
+            });
         }
 
         private void Decrypt(string rootpath)
