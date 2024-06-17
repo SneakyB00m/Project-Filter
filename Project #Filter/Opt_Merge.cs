@@ -39,7 +39,25 @@ namespace Project__Filter
 
         private void button_Merge_Click(object sender, EventArgs e)
         {
+            string selectedItem = comboBox_Select.SelectedItem.ToString();
 
+            switch (selectedItem)
+            {
+                case "FILES TEXT":
+
+                    break;
+                case "FILES WORD":
+
+                    break;
+                case "FILES PDF":
+
+                    break;
+                case "FILES HTML":
+
+                    break;
+                default:
+                    break;
+            }
         }
 
         //Function
