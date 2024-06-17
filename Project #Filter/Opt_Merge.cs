@@ -54,7 +54,7 @@ namespace Project__Filter
                         Text_Files(selectedFiles);
                         break;
                     case "FILES WORD":
-                        // Call your method for handling Word files here
+                        Docs_Files(selectedFiles);
                         break;
                     case "FILES PDF":
                         Pdf_Files(selectedFiles);
@@ -310,6 +310,5 @@ namespace Project__Filter
                 });
             });
         }
-
     }
 }
