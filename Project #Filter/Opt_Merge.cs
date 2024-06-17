@@ -36,6 +36,7 @@ namespace Project__Filter
             string selectedItem = comboBox_Select.SelectedItem.ToString();
             PopulateFiles(selectedItem);
         }
+
         private void button_Merge_Click(object sender, EventArgs e)
         {
 
@@ -87,7 +88,6 @@ namespace Project__Filter
             });
         }
 
-
         private void Text_Files(List<string> filePaths)
         {
             Task.Run(() =>
@@ -129,7 +129,6 @@ namespace Project__Filter
                 });
             });
         }
-
 
         private void PDF_Files(List<string> filePaths)
         {

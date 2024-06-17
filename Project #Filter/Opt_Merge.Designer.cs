@@ -338,7 +338,7 @@
             comboBox_Select.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             comboBox_Select.ForeColor = Color.White;
             comboBox_Select.FormattingEnabled = true;
-            comboBox_Select.Items.AddRange(new object[] { "TEXT", "WORD", "PDF", "HTML" });
+            comboBox_Select.Items.AddRange(new object[] { "FILES TEXT", "FILES WORD", "FILES PDF", "FILES HTML" });
             comboBox_Select.Location = new Point(139, 9);
             comboBox_Select.Name = "comboBox_Select";
             comboBox_Select.Size = new Size(333, 36);
