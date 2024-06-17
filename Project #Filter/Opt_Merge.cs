@@ -70,17 +70,17 @@ namespace Project__Filter
                 // Use the Directory class from System.IO to get all files of the specified type recursively
                 switch (fileType)
                 {
-                    case "TEXT":
+                    case "FILES TEXT":
                         filePaths.AddRange(Directory.GetFiles(selectedPath, "*.txt", SearchOption.AllDirectories));
                         break;
-                    case "WORD":
+                    case "FILES WORD":
                         filePaths.AddRange(Directory.GetFiles(selectedPath, "*.doc", SearchOption.AllDirectories));
                         filePaths.AddRange(Directory.GetFiles(selectedPath, "*.docx", SearchOption.AllDirectories));
                         break;
-                    case "PDF":
+                    case "FILES PDF":
                         filePaths.AddRange(Directory.GetFiles(selectedPath, "*.pdf", SearchOption.AllDirectories));
                         break;
-                    case "HTML":
+                    case "FILES HTML":
                         filePaths.AddRange(Directory.GetFiles(selectedPath, "*.html", SearchOption.AllDirectories));
                         break;
                     default:
