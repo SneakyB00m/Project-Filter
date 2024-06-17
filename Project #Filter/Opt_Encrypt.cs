@@ -260,51 +260,52 @@ namespace Project__Filter
             });
         }
 
-        private void Decrypt(string rootpath)
+        public async Task Decrypt(string rootPath)
         {
-            string encryptedPath = Path.Combine(rootpath, "Encrypted");
-            string decryptedPath = Path.Combine(rootpath, "Decrypted");
-
-            // Create the Decrypted directory if it doesn't exist
-            Directory.CreateDirectory(decryptedPath);
-
-            // Ask the user for the decryption password
-            string password = Microsoft.VisualBasic.Interaction.InputBox("Enter the password for decryption:", "Decryption Password", "", -1, -1);
-
-            // Get all files in the Encrypted directory
-            string[] encryptedFiles = Directory.GetFiles(encryptedPath);
-
-
-
-            foreach (string encryptedFilePath in encryptedFiles)
+            await Task.Run(() =>
             {
-                string fileName = Path.GetFileName(encryptedFilePath);
-                string decryptedFilePath = Path.Combine(decryptedPath, fileName);
+                string encryptedPath = Path.Combine(rootPath, "Encrypted");
+                string decryptedPath = Path.Combine(rootPath, "Decrypted");
 
-                // Generate a key and IV from the password
-                using (Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 }, 1000)) // Use a constant salt for simplicity
+                // Create the Decrypted directory if it doesn't exist
+                Directory.CreateDirectory(decryptedPath);
+
+                // Ask the user for the decryption password
+                string password = Microsoft.VisualBasic.Interaction.InputBox("Enter the password for decryption:", "Decryption Password", "", -1, -1);
+
+                // Get all files in the Encrypted directory
+                string[] encryptedFiles = Directory.GetFiles(encryptedPath);
+
+                foreach (string encryptedFilePath in encryptedFiles)
                 {
-                    byte[] key = pbkdf2.GetBytes(32); // 256 bits
-                    byte[] iv = pbkdf2.GetBytes(16); // 128 bits
+                    string fileName = Path.GetFileName(encryptedFilePath);
+                    string decryptedFilePath = Path.Combine(decryptedPath, fileName);
 
-                    // Decrypt the file
-                    using (Aes aes = Aes.Create())
+                    // Generate a key and IV from the password
+                    using (Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 }, 1000)) // Use a constant salt for simplicity
                     {
-                        aes.Key = key;
-                        aes.IV = iv;
+                        byte[] key = pbkdf2.GetBytes(32); // 256 bits
+                        byte[] iv = pbkdf2.GetBytes(16); // 128 bits
 
-                        // Create a decryptor to decrypt the file
-                        ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-
-                        using (FileStream inputFileStream = new FileStream(encryptedFilePath, FileMode.Open))
-                        using (FileStream outputFileStream = new FileStream(decryptedFilePath, FileMode.Create))
-                        using (CryptoStream cryptoStream = new CryptoStream(inputFileStream, decryptor, CryptoStreamMode.Read))
+                        // Decrypt the file
+                        using (Aes aes = Aes.Create())
                         {
-                            cryptoStream.CopyTo(outputFileStream);
+                            aes.Key = key;
+                            aes.IV = iv;
+
+                            // Create a decryptor to decrypt the file
+                            ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+
+                            using (FileStream inputFileStream = new FileStream(encryptedFilePath, FileMode.Open))
+                            using (FileStream outputFileStream = new FileStream(decryptedFilePath, FileMode.Create))
+                            using (CryptoStream cryptoStream = new CryptoStream(inputFileStream, decryptor, CryptoStreamMode.Read))
+                            {
+                                cryptoStream.CopyTo(outputFileStream);
+                            }
                         }
                     }
                 }
-            }
+            });
         }
     }
 }
