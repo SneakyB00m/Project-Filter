@@ -40,27 +40,36 @@ namespace Project__Filter
         private void button_Merge_Click(object sender, EventArgs e)
         {
             string selectedItem = comboBox_Select.SelectedItem.ToString();
+            List<string> selectedFiles = listBox_File.SelectedItems.Cast<string>().ToList();
 
-            switch (selectedItem)
+            if (selectedFiles.Count < 2)
             {
-                case "FILES TEXT":
-
-                    break;
-                case "FILES WORD":
-
-                    break;
-                case "FILES PDF":
-
-                    break;
-                case "FILES HTML":
-
-                    break;
-                default:
-                    break;
+                MessageBox.Show("Not enough files selected.");
+            }
+            else
+            {
+                switch (selectedItem)
+                {
+                    case "FILES TEXT":
+                        Text_Files(selectedFiles);
+                        break;
+                    case "FILES WORD":
+                        // Call your method for handling Word files here
+                        break;
+                    case "FILES PDF":
+                        PDF_Files(selectedFiles);
+                        break;
+                    case "FILES HTML":
+                        HTML_Files(selectedFiles);
+                        break;
+                    default:
+                        MessageBox.Show("Incorrect option selected.");
+                        break;
+                }
             }
         }
 
-        //Function
+        // Extra
         private void PopulateFiles(string fileType)
         {
             Task.Run(() =>
@@ -106,6 +115,7 @@ namespace Project__Filter
             });
         }
 
+        // Functions
         private void Text_Files(List<string> filePaths)
         {
             Task.Run(() =>
