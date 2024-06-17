@@ -120,6 +120,7 @@ namespace Project__Filter
         {
             Task.Run(() =>
             {
+                // Change the output file name to "Merge"
                 using (StreamWriter fileDest = new StreamWriter(Path.Combine(selectedPath, "Merge.txt"), true))
                 {
                     int totalFiles = filePaths.Count;
