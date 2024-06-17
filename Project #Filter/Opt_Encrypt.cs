@@ -306,6 +306,5 @@ namespace Project__Filter
                 }
             }
         }
-
     }
 }
