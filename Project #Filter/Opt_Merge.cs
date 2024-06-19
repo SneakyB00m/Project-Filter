@@ -36,12 +36,40 @@ namespace Project__Filter
             string selectedItem = comboBox_Select.SelectedItem.ToString();
             PopulateFiles(selectedItem);
         }
+
         private void button_Merge_Click(object sender, EventArgs e)
         {
+            string selectedItem = comboBox_Select.SelectedItem.ToString();
+            List<string> selectedFiles = listBox_File.SelectedItems.Cast<string>().ToList();
 
+            if (selectedFiles.Count < 2)
+            {
+                MessageBox.Show("Not enough files selected.");
+            }
+            else
+            {
+                switch (selectedItem)
+                {
+                    case "FILES TEXT":
+                        Text_Files(selectedFiles);
+                        break;
+                    case "FILES WORD":
+                        Docs_Files(selectedFiles);
+                        break;
+                    case "FILES PDF":
+                        Pdf_Files(selectedFiles);
+                        break;
+                    case "FILES HTML":
+                        Html_Files(selectedFiles);
+                        break;
+                    default:
+                        MessageBox.Show("Incorrect option selected.");
+                        break;
+                }
+            }
         }
 
-        //Function
+        // Extra
         private void PopulateFiles(string fileType)
         {
             Task.Run(() =>
@@ -51,17 +79,17 @@ namespace Project__Filter
                 // Use the Directory class from System.IO to get all files of the specified type recursively
                 switch (fileType)
                 {
-                    case "TEXT":
+                    case "FILES TEXT":
                         filePaths.AddRange(Directory.GetFiles(selectedPath, "*.txt", SearchOption.AllDirectories));
                         break;
-                    case "WORD":
+                    case "FILES WORD":
                         filePaths.AddRange(Directory.GetFiles(selectedPath, "*.doc", SearchOption.AllDirectories));
                         filePaths.AddRange(Directory.GetFiles(selectedPath, "*.docx", SearchOption.AllDirectories));
                         break;
-                    case "PDF":
+                    case "FILES PDF":
                         filePaths.AddRange(Directory.GetFiles(selectedPath, "*.pdf", SearchOption.AllDirectories));
                         break;
-                    case "HTML":
+                    case "FILES HTML":
                         filePaths.AddRange(Directory.GetFiles(selectedPath, "*.html", SearchOption.AllDirectories));
                         break;
                     default:
@@ -87,11 +115,12 @@ namespace Project__Filter
             });
         }
 
-
+        // Functions
         private void Text_Files(List<string> filePaths)
         {
             Task.Run(() =>
             {
+                // Change the output file name to "Merge"
                 using (StreamWriter fileDest = new StreamWriter(Path.Combine(selectedPath, "Merge.txt"), true))
                 {
                     int totalFiles = filePaths.Count;
@@ -130,8 +159,7 @@ namespace Project__Filter
             });
         }
 
-
-        private void PDF_Files(List<string> filePaths)
+        private void Pdf_Files(List<string> filePaths)
         {
             Task.Run(() =>
             {
@@ -186,7 +214,7 @@ namespace Project__Filter
             });
         }
 
-        public void HTML_Files(List<string> filePaths)
+        public void Html_Files(List<string> filePaths)
         {
             Task.Run(() =>
             {
@@ -231,6 +259,48 @@ namespace Project__Filter
                 doc.DocumentNode.AppendChild(bodyNode);
                 string outputFilePath = Path.Combine(Path.GetDirectoryName(filePaths[0]), "Merged.html");
                 File.WriteAllText(outputFilePath, doc.DocumentNode.OuterHtml, Encoding.UTF8);
+
+                // Reset the progress bar to 0 when done
+                Invoke((MethodInvoker)delegate
+                {
+                    // Running on the UI thread
+                    progressBar_Time.Value = 0;
+                });
+            });
+        }
+
+        public void Docs_Files(List<string> filePaths)
+        {
+            Task.Run(() =>
+            {
+                // Create a blank document
+                Aspose.Words.Document mainDoc = new Aspose.Words.Document();
+
+                int totalFiles = filePaths.Count;
+                int processedFiles = 0;
+
+                foreach (string filePath in filePaths)
+                {
+                    // Load the document from file
+                    Aspose.Words.Document subDoc = new Aspose.Words.Document(filePath);
+
+                    // Append the document to the main document
+                    mainDoc.AppendDocument(subDoc, Aspose.Words.ImportFormatMode.KeepSourceFormatting);
+
+                    // Calculate the progress percentage
+                    processedFiles++;
+                    int progressPercentage = (int)((double)processedFiles / totalFiles * 100);
+
+                    // Report the progress
+                    Invoke((MethodInvoker)delegate
+                    {
+                        // Running on the UI thread
+                        progressBar_Time.Value = progressPercentage;
+                    });
+                }
+
+                // Save the merged document
+                mainDoc.Save(Path.Combine(selectedPath, "Merge.docx"));
 
                 // Reset the progress bar to 0 when done
                 Invoke((MethodInvoker)delegate
