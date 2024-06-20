@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\opt_transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\opt_transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\opt_transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\opt_transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,7 +38,32 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Opt_Transform.cs",
+              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Transform.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\Opt_Transform.cs",
+              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Transform.cs",
+              "RelativeToolTip": "Project #Filter\\Opt_Transform.cs",
+              "ViewState": "AQIAAHgAAAAAAAAAAAA4wC4BAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T22:26:37.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Opt_Transform.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Transform.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\Opt_Transform.cs",
+              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Transform.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Project #Filter\\Opt_Transform.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T22:26:35.334Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Main.cs",
               "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Main.cs",
               "RelativeDocumentMoniker": "Project #Filter\\Main.cs",
@@ -43,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Main.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Main.cs",
               "RelativeDocumentMoniker": "Project #Filter\\Main.cs",
