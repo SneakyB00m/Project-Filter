@@ -96,8 +96,12 @@ namespace Project__Filter
                         break;
                 }
             }
-        }
 
+            if (checkBox_Delete.Checked)
+            {
+                DeleteFolders(selectedPath);
+            }
+        }
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -215,41 +219,24 @@ namespace Project__Filter
             }
         }
 
-        public void DeleteFolders(string rootPath)
+        public static void DeleteFolders(string rootPath)
         {
-            // Get all directories
-            var directories = Directory.GetDirectories(rootPath, "*.*", SearchOption.AllDirectories);
-
-            // List to store all empty directories
-            List<string> emptyDirectories = new List<string>();
-
-            foreach (var dir in directories)
+            foreach (var directory in Directory.GetDirectories(rootPath))
             {
-                // Check if the directory is empty
-                if (!Directory.EnumerateFileSystemEntries(dir).Any())
-                {
-                    // Add the empty directory to the list
-                    emptyDirectories.Add(dir);
-                }
-            }
+                DeleteFolders(directory);  // Recursively call the function for all subdirectories
 
-            // If there are any empty directories, ask for confirmation to delete them all
-            if (emptyDirectories.Any())
-            {
-                string message = $"There are {emptyDirectories.Count} empty directories. Do you want to delete them all?";
-                DialogResult result = MessageBox.Show(message, "Confirmation", MessageBoxButtons.YesNo);
-
-                if (result == DialogResult.Yes)
+                if (Directory.GetFiles(directory).Length == 0 &&
+                    Directory.GetDirectories(directory).Length == 0)  // If directory is empty
                 {
-                    foreach (var dir in emptyDirectories)
+                    try
                     {
-                        Directory.Delete(dir);
+                        Directory.Delete(directory);  // Delete the directory
+                        Console.WriteLine($"Deleted: {directory}");
                     }
-                    MessageBox.Show($"Deleted all {emptyDirectories.Count} empty directories.");
-                }
-                else
-                {
-                    MessageBox.Show("Skipped deleting empty directories.");
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"An error occurred while deleting the directory. Details: {ex.Message}");
+                    }
                 }
             }
         }
