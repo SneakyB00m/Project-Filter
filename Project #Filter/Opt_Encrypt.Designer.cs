@@ -93,6 +93,7 @@
             comboBox_Select.Name = "comboBox_Select";
             comboBox_Select.Size = new Size(420, 36);
             comboBox_Select.TabIndex = 42;
+            comboBox_Select.SelectedIndexChanged += comboBox_Select_SelectedIndexChanged;
             // 
             // panel2
             // 
