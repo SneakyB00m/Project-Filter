@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\ReposVisualStudio\\Project #Filter\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\obj\\Debug\\net6.0-windows\\Project #Filter.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Project #Filter\\obj\\Debug\\net6.0-windows\\Project #Filter.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|e:\\reposvisualstudio\\project #filter\\project #filter\\opt_extract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\opt_extract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -27,12 +31,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Project #Filter.AssemblyInfo.cs",
+              "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\obj\\Debug\\net6.0-windows\\Project #Filter.AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\obj\\Debug\\net6.0-windows\\Project #Filter.AssemblyInfo.cs",
+              "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\obj\\Debug\\net6.0-windows\\Project #Filter.AssemblyInfo.cs",
+              "RelativeToolTip": "Project #Filter\\obj\\Debug\\net6.0-windows\\Project #Filter.AssemblyInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T01:46:46.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Opt_Extract.cs",
               "DocumentMoniker": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Opt_Extract.cs",
               "RelativeDocumentMoniker": "Project #Filter\\Opt_Extract.cs",
               "ToolTip": "E:\\ReposVisualStudio\\Project #Filter\\Project #Filter\\Opt_Extract.cs",
               "RelativeToolTip": "Project #Filter\\Opt_Extract.cs",
-              "ViewState": "AQIAAGYAAAAAAAAAAAAiwKMAAAA3AAAA",
+              "ViewState": "AQIAAGYAAAAAAAAAAAAiwJQAAABVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-19T05:55:00.294Z",
               "EditorCaption": ""
