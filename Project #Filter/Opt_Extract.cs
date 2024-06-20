@@ -122,50 +122,68 @@ namespace Project__Filter
             string extractedFolder = Path.Combine(rootPath, "Extracted");
             string duplicatedFolder = Path.Combine(rootPath, "Duplicated");
 
-            // Get all files in the root path and its subdirectories
-            string[] files = Directory.GetFiles(rootPath, "*.*", SearchOption.AllDirectories);
-
-            foreach (string file in files)
+            // Create a Progress<T> object to report progress from the background task to the UI thread
+            var progress = new Progress<int>(value =>
             {
-                // Skip if the file is in the destination folders
-                if (file.StartsWith(extractedFolder) || file.StartsWith(duplicatedFolder))
-                    continue;
+                // Update your progress bar here
+                progressBar_Time.Value = value;
+            });
 
-                // Get the file name
-                string fileName = Path.GetFileName(file);
+            await Task.Run(() =>
+            {
+                // Get all files in the root path and its subdirectories
+                var files = Directory.EnumerateFiles(rootPath, "*.*", SearchOption.AllDirectories).ToList();
 
-                // Construct the destination paths
-                string destPathExtracted = Path.Combine(extractedFolder, fileName);
-                string destPathDuplicated = Path.Combine(duplicatedFolder, fileName);
-
-                // Check if the file already exists in the extracted folder
-                if (File.Exists(destPathExtracted))
-
+                for (int i = 0; i < files.Count; i++)
                 {
-                    // If the file exists, move it to the duplicated folder
-                    // Ensure the destination folder exists
-                    Directory.CreateDirectory(duplicatedFolder);
+                    var file = files[i];
 
-                    // Check if the file already exists in the duplicated folder
-                    int count = 1;
-                    string fileNameOnly = Path.GetFileNameWithoutExtension(fileName);
-                    string extension = Path.GetExtension(fileName);
-                    string newFullPath = destPathDuplicated;
-                    while (File.Exists(newFullPath))
+                    // Skip if the file is in the destination folders
+                    if (file.StartsWith(extractedFolder) || file.StartsWith(duplicatedFolder))
                     {
-                        string tempFileName = $"{fileNameOnly} ({count++}){extension}";
-                        newFullPath = Path.Combine(duplicatedFolder, tempFileName);
+                        continue;
                     }
-                    File.Move(file, newFullPath);
+
+                    // Get the file name
+                    string fileName = Path.GetFileName(file);
+
+                    // Construct the destination paths
+                    string destPathExtracted = Path.Combine(extractedFolder, fileName);
+                    string destPathDuplicated = Path.Combine(duplicatedFolder, fileName);
+
+                    // Check if the file already exists in the extracted folder
+                    if (File.Exists(destPathExtracted))
+                    {
+                        {
+                            // If the file exists, move it to the duplicated folder
+                            // Ensure the destination folder exists
+                            Directory.CreateDirectory(duplicatedFolder);
+
+                            // Check if the file already exists in the duplicated folder
+                            int count = 1;
+                            string fileNameOnly = Path.GetFileNameWithoutExtension(fileName);
+                            string extension = Path.GetExtension(fileName);
+                            string newFullPath = destPathDuplicated;
+                            while (File.Exists(newFullPath))
+                            {
+                                string tempFileName = $"{fileNameOnly} ({count++}){extension}";
+                                newFullPath = Path.Combine(duplicatedFolder, tempFileName);
+                            }
+                            File.Move(file, newFullPath);
+                        }
+                    }
+                    else
+                    {
+                        // If the file does not exist, move it to the extracted folder
+                        // Ensure the destination folder exists
+                        Directory.CreateDirectory(extractedFolder);
+                        File.Move(file, destPathExtracted);
+                    }
+                    // Report progress
+                    ((IProgress<int>)progress).Report((i + 1) * 100 / files.Count);
                 }
-                else
-                {
-                    // If the file does not exist, move it to the extracted folder
-                    // Ensure the destination folder exists
-                    Directory.CreateDirectory(extractedFolder);
-                    File.Move(file, destPathExtracted);
-                }
-            }
+            });
+            progressBar_Time.Value = 0;
         }
 
         public void UncompressRar(string rootPath)
