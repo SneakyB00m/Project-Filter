@@ -154,28 +154,24 @@ namespace Project__Filter
                     // Check if the file already exists in the extracted folder
                     if (File.Exists(destPathExtracted))
                     {
-                        {
-                            // If the file exists, move it to the duplicated folder
-                            // Ensure the destination folder exists
-                            Directory.CreateDirectory(duplicatedFolder);
+                        // If the file exists, move it to the duplicated folder, Ensure the destination folder exists
+                        Directory.CreateDirectory(duplicatedFolder);
 
-                            // Check if the file already exists in the duplicated folder
-                            int count = 1;
-                            string fileNameOnly = Path.GetFileNameWithoutExtension(fileName);
-                            string extension = Path.GetExtension(fileName);
-                            string newFullPath = destPathDuplicated;
-                            while (File.Exists(newFullPath))
-                            {
-                                string tempFileName = $"{fileNameOnly} ({count++}){extension}";
-                                newFullPath = Path.Combine(duplicatedFolder, tempFileName);
-                            }
-                            File.Move(file, newFullPath);
+                        // Check if the file already exists in the duplicated folder
+                        int count = 1;
+                        string fileNameOnly = Path.GetFileNameWithoutExtension(fileName);
+                        string extension = Path.GetExtension(fileName);
+                        string newFullPath = destPathDuplicated;
+                        while (File.Exists(newFullPath))
+                        {
+                            string tempFileName = $"{fileNameOnly} ({count++}){extension}";
+                            newFullPath = Path.Combine(duplicatedFolder, tempFileName);
                         }
+                        File.Move(file, newFullPath);
                     }
                     else
                     {
-                        // If the file does not exist, move it to the extracted folder
-                        // Ensure the destination folder exists
+                        // If the file does not exist, move it to the extracted folder, Ensure the destination folder exists
                         Directory.CreateDirectory(extractedFolder);
                         File.Move(file, destPathExtracted);
                     }
