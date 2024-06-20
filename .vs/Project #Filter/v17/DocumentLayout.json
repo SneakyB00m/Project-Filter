@@ -18,22 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Opt_Sort.cs",
-              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Sort.cs",
-              "RelativeDocumentMoniker": "Project #Filter\\Opt_Sort.cs",
-              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Sort.cs",
-              "RelativeToolTip": "Project #Filter\\Opt_Sort.cs",
-              "ViewState": "AQIAAF4CAAAAAAAAAIAwwIICAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T05:47:45.122Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -42,9 +28,23 @@
               "RelativeDocumentMoniker": "Project #Filter\\Opt_Extract.cs",
               "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Extract.cs",
               "RelativeToolTip": "Project #Filter\\Opt_Extract.cs",
-              "ViewState": "AQIAAJ8AAAAAAAAAAAAwwK4AAAAVAAAA",
+              "ViewState": "AQIAADMAAAAAAAAAAAAYwCwAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-20T05:47:53.739Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Opt_Sort.cs",
+              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Sort.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\Opt_Sort.cs",
+              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Sort.cs",
+              "RelativeToolTip": "Project #Filter\\Opt_Sort.cs",
+              "ViewState": "AQIAAI4AAAAAAAAAAAAswL0AAABTAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T05:47:45.122Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
