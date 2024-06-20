@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\opt_extract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\opt_extract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\opt_encrypt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\opt_encrypt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\opt_extract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\opt_extract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\opt_encrypt.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\opt_encrypt.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|c:\\users\\alan_\\source\\repos\\clone\\project-filter\\project #filter\\opt_encrypt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{762D0436-7F01-4C49-996C-1867D67ECFA2}|Project #Filter\\Project #Filter.csproj|solutionrelative:project #filter\\opt_encrypt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,22 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Opt_Extract.cs",
-              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Extract.cs",
-              "RelativeDocumentMoniker": "Project #Filter\\Opt_Extract.cs",
-              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Extract.cs",
-              "RelativeToolTip": "Project #Filter\\Opt_Extract.cs",
-              "ViewState": "AQIAAFUAAAAAAAAAAAArwGUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T05:47:53.739Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -45,13 +35,39 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Opt_Extract.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Extract.cs",
-              "RelativeDocumentMoniker": "Project #Filter\\Opt_Extract.cs",
-              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Extract.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Project #Filter\\Opt_Extract.cs [Dise\u00F1o]",
+              "Title": "Opt_Encrypt.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Encrypt.Designer.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\Opt_Encrypt.Designer.cs",
+              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Encrypt.Designer.cs",
+              "RelativeToolTip": "Project #Filter\\Opt_Encrypt.Designer.cs",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAgwF8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T20:33:24.223Z",
+              "WhenOpened": "2024-06-20T20:47:10.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Opt_Encrypt.cs",
+              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Encrypt.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\Opt_Encrypt.cs",
+              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Encrypt.cs",
+              "RelativeToolTip": "Project #Filter\\Opt_Encrypt.cs",
+              "ViewState": "AQIAAIgAAAAAAAAAAAAYwNIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T20:42:59.687Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Opt_Encrypt.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Encrypt.cs",
+              "RelativeDocumentMoniker": "Project #Filter\\Opt_Encrypt.cs",
+              "ToolTip": "C:\\Users\\alan_\\source\\repos\\Clone\\Project-Filter\\Project #Filter\\Opt_Encrypt.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Project #Filter\\Opt_Encrypt.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T20:42:57.117Z",
               "EditorCaption": " [Dise\u00F1o]"
             }
           ]
