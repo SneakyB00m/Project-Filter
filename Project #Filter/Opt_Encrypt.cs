@@ -8,10 +8,7 @@ namespace Project__Filter
 {
     public partial class Opt_Encrypt : UserControl
     {
-
         string selectedPath = string.Empty;
-
-
 
         public Opt_Encrypt()
         {
