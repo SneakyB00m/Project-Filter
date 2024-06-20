@@ -114,7 +114,9 @@ namespace Project__Filter
             }
         }
 
-        public void MoveFiles(string rootPath)
+
+        // Functions
+        public async Task MoveFiles(string rootPath)
         {
             // Construct the destination folder paths
             string extractedFolder = Path.Combine(rootPath, "Extracted");
