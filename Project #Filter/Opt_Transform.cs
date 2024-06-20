@@ -477,7 +477,6 @@ namespace Project__Filter
             }
         }
 
-
         private async Task WebpBuilder(string rootpath)
         {
             List<string> selectedFilePaths = await PathSelectedFiles(rootpath);
