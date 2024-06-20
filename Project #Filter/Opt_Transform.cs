@@ -402,52 +402,72 @@ namespace Project__Filter
         {
             List<string> selectedFilePaths = await PathSelectedFiles(rootpath);
 
-            // Create a new directory for the icons
-            string iconDirectory = Path.Combine(rootpath, "Icons");
-            Directory.CreateDirectory(iconDirectory);
+            // List to hold the file paths of the images that are too large
+            List<string> largeImages = new List<string>();
 
-            int iconCount = 1;
+            // Flag to indicate if at least one image meets the size requirements
+            bool validImageFound = false;
 
             // Define the maximum width and height
             int maxWidth = 256; // Change this to your desired maximum width
             int maxHeight = 256; // Change this to your desired maximum height
 
-            // List to hold the file paths of the images that are too large
-            List<string> largeImages = new List<string>();
-
-            // Initialize the progress bar
-            progressBar_Time.Minimum = 0;
-            progressBar_Time.Maximum = selectedFilePaths.Count;
-            progressBar_Time.Value = 0;
-
-            // Iterate through the list of selected file paths
+            // Check if any image meets the size requirements
             foreach (string filePath in selectedFilePaths)
             {
                 using (MagickImage image = new MagickImage(filePath))
                 {
-                    // Check if the image dimensions exceed the maximum
-                    if (image.Width > maxWidth || image.Height > maxHeight)
+                    if (image.Width <= maxWidth && image.Height <= maxHeight)
                     {
-                        largeImages.Add(filePath);
-                        continue;
+                        validImageFound = true;
+                        break;
                     }
-
-                    // Convert the image to .ico format
-                    image.Format = MagickFormat.Icon;
-
-                    // Save the .ico file in the new directory
-                    string iconPath = Path.Combine(iconDirectory, $"Icon {iconCount}.ico");
-                    image.Write(iconPath);
-
-                    iconCount++;
-
-                    // Update the progress bar
-                    progressBar_Time.Value++;
                 }
             }
 
-            // Reset the progress bar
-            progressBar_Time.Value = 0;
+            // If a valid image is found, create the directory and process the images
+            if (validImageFound)
+            {
+                // Create a new directory for the icons
+                string iconDirectory = Path.Combine(rootpath, "Icons");
+                Directory.CreateDirectory(iconDirectory);
+
+                int iconCount = 1;
+
+                // Initialize the progress bar
+                progressBar_Time.Minimum = 0;
+                progressBar_Time.Maximum = selectedFilePaths.Count;
+                progressBar_Time.Value = 0;
+
+                // Iterate through the list of selected file paths again to process them
+                foreach (string filePath in selectedFilePaths)
+                {
+                    using (MagickImage image = new MagickImage(filePath))
+                    {
+                        // Check if the image dimensions exceed the maximum
+                        if (image.Width > maxWidth || image.Height > maxHeight)
+                        {
+                            largeImages.Add(filePath);
+                            continue;
+                        }
+
+                        // Convert the image to .ico format
+                        image.Format = MagickFormat.Icon;
+
+                        // Save the .ico file in the new directory
+                        string iconPath = Path.Combine(iconDirectory, $"Icon {iconCount}.ico");
+                        image.Write(iconPath);
+
+                        iconCount++;
+
+                        // Update the progress bar
+                        progressBar_Time.Value++;
+                    }
+                }
+
+                // Reset the progress bar
+                progressBar_Time.Value = 0;
+            }
 
             // If there are any large images, show a MessageBox with their file paths
             if (largeImages.Count > 0)
@@ -456,6 +476,7 @@ namespace Project__Filter
                 MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private async Task WebpBuilder(string rootpath)
         {
