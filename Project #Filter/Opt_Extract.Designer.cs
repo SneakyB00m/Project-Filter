@@ -184,7 +184,6 @@
             checkBox_Delete.Size = new Size(15, 14);
             checkBox_Delete.TabIndex = 44;
             checkBox_Delete.UseVisualStyleBackColor = true;
-            checkBox_Delete.CheckedChanged += checkBox_Delete_CheckedChanged;
             // 
             // button_Extract
             // 
