@@ -12,6 +12,7 @@ namespace Project__Filter
             Panel_Index.Height = button_Home.Height;
             Panel_Index.Top = button_Home.Top;
             home1.BringToFront();
+            this.Text = "Tool Kit 2.0";
         }
 
         private void button_Exit_Click(object sender, EventArgs e)
