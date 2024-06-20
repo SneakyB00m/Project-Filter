@@ -8,10 +8,7 @@ namespace Project__Filter
 {
     public partial class Opt_Encrypt : UserControl
     {
-
         string selectedPath = string.Empty;
-
-
 
         public Opt_Encrypt()
         {
@@ -331,6 +328,7 @@ namespace Project__Filter
 
             workbook.Save(outputFilePath);
         }
+
         private void RemovePowerPointMetadata(string inputFilePath, string outputFilePath)
         {
             var presentation = new Aspose.Slides.Presentation(inputFilePath);
