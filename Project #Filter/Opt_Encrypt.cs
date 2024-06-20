@@ -57,6 +57,11 @@ namespace Project__Filter
                     MessageBox.Show("Invalid select", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
+
+            if (checkBox_Delete.Checked)
+            {
+                DeleteFolders(selectedPath);
+            }
         }
 
         // Function
@@ -337,6 +342,28 @@ namespace Project__Filter
             presentation.DocumentProperties.ClearCustomProperties();
 
             presentation.Save(outputFilePath, Aspose.Slides.Export.SaveFormat.Pptx);
+        }
+
+        public static void DeleteFolders(string rootPath)
+        {
+            foreach (var directory in Directory.GetDirectories(rootPath))
+            {
+                DeleteFolders(directory);  // Recursively call the function for all subdirectories
+
+                if (Directory.GetFiles(directory).Length == 0 &&
+                    Directory.GetDirectories(directory).Length == 0)  // If directory is empty
+                {
+                    try
+                    {
+                        Directory.Delete(directory);  // Delete the directory
+                        Console.WriteLine($"Deleted: {directory}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"An error occurred while deleting the directory. Details: {ex.Message}");
+                    }
+                }
+            }
         }
     }
 }
