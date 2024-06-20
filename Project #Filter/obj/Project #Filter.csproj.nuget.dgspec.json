@@ -50,14 +50,6 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows7.0",
           "dependencies": {
-            "Aspose.Cells": {
-              "target": "Package",
-              "version": "[24.6.0, )"
-            },
-            "Aspose.Slides.NET": {
-              "target": "Package",
-              "version": "[24.6.0, )"
-            },
             "Aspose.Words": {
               "target": "Package",
               "version": "[24.6.0, )"
@@ -74,13 +66,13 @@
               "target": "Package",
               "version": "[13.9.1, )"
             },
-            "MediaToolkit": {
-              "target": "Package",
-              "version": "[1.1.0.1, )"
-            },
             "Microsoft.Windows.Compatibility": {
               "target": "Package",
               "version": "[8.0.6, )"
+            },
+            "NAudio": {
+              "target": "Package",
+              "version": "[2.2.1, )"
             },
             "NReco.VideoConverter": {
               "target": "Package",
@@ -94,10 +86,6 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
-            "PDFsharp": {
-              "target": "Package",
-              "version": "[6.1.0, )"
-            },
             "SharpCompress": {
               "target": "Package",
               "version": "[0.37.2, )"
@@ -105,10 +93,6 @@
             "iTextSharp": {
               "target": "Package",
               "version": "[5.5.13.4, )"
-            },
-            "taglib-sharp-netstandard2.0": {
-              "target": "Package",
-              "version": "[2.1.0, )"
             }
           },
           "imports": [
