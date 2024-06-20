@@ -67,6 +67,11 @@ namespace Project__Filter
                         break;
                 }
             }
+
+            if (checkBox_Delete.Checked)
+            {
+                DeleteFolders(selectedPath);
+            }
         }
 
         // Extra
@@ -113,6 +118,28 @@ namespace Project__Filter
                     label_Count.Text = filePaths.Count.ToString();
                 });
             });
+        }
+
+        public static void DeleteFolders(string rootPath)
+        {
+            foreach (var directory in Directory.GetDirectories(rootPath))
+            {
+                DeleteFolders(directory);  // Recursively call the function for all subdirectories
+
+                if (Directory.GetFiles(directory).Length == 0 &&
+                    Directory.GetDirectories(directory).Length == 0)  // If directory is empty
+                {
+                    try
+                    {
+                        Directory.Delete(directory);  // Delete the directory
+                        Console.WriteLine($"Deleted: {directory}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"An error occurred while deleting the directory. Details: {ex.Message}");
+                    }
+                }
+            }
         }
 
         // Functions
