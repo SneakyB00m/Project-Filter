@@ -161,12 +161,11 @@ namespace Project__Filter
             }
             if (checkBox_Delete.Checked)
             {
-
+                DeleteFolders(selectedPath);
             }
-
         }
 
-        // Functions - Switch
+        // Functions - Extras
         private async void Title()
         {
             string Title = string.Empty;
@@ -235,6 +234,28 @@ namespace Project__Filter
 
             string pdfFileName = Path.GetFileName(pdfPathNoTitle);
             MessageBox.Show($"PDF '{pdfFileName}' created successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static void DeleteFolders(string rootPath)
+        {
+            foreach (var directory in Directory.GetDirectories(rootPath))
+            {
+                DeleteFolders(directory);  // Recursively call the function for all subdirectories
+
+                if (Directory.GetFiles(directory).Length == 0 &&
+                    Directory.GetDirectories(directory).Length == 0)  // If directory is empty
+                {
+                    try
+                    {
+                        Directory.Delete(directory);  // Delete the directory
+                        Console.WriteLine($"Deleted: {directory}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"An error occurred while deleting the directory. Details: {ex.Message}");
+                    }
+                }
+            }
         }
 
         // Functions - General
