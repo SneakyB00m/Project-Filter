@@ -73,7 +73,7 @@ namespace Project__Filter
             }
         }
 
-        private void button_Extract_Click(object sender, EventArgs e)
+        private async void button_Extract_Click(object sender, EventArgs e)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace Project__Filter
                 switch (selectedItem)
                 {
                     case "Extract Files":
-                        MoveFiles(selectedPath);
+                        await MoveFiles(selectedPath);
                         break;
                     case "Uncompress RAR":
                         UncompressRar(selectedPath);
@@ -99,21 +99,17 @@ namespace Project__Filter
                         MessageBox.Show("Please select a valid option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                 }
+
+                if (checkBox_Delete.Checked)
+                {
+                    DeleteFolders(selectedPath);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void checkBox_Delete_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_Delete.Checked)
-            {
-                DeleteFolders(selectedPath);
-            }
-        }
-
 
         // Functions
         public async Task MoveFiles(string rootPath)
