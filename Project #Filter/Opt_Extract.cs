@@ -79,35 +79,41 @@ namespace Project__Filter
             {
                 // Get the selected item from the ComboBox
                 string selectedItem = comboBox_Select.SelectedItem.ToString();
-
-                switch (selectedItem)
+                if (!string.IsNullOrEmpty(selectedItem))
                 {
-                    case "Extract Files":
-                        await MoveFiles(selectedPath);
-                        break;
-                    case "Uncompress RAR":
-                        UncompressRar(selectedPath);
-                        break;
-                    case "Uncompress TAR":
-                        UncompressTar(selectedPath);
-                        break;
-                    case "Uncompress ZIP":
-                        UnzipDirectory(selectedPath);
-                        break;
-                    default:
-                        // Handle the case where no valid option is selected
-                        MessageBox.Show("Please select a valid option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
+                    switch (selectedItem)
+                    {
+                        case "Extract Files":
+                            await MoveFiles(selectedPath);
+                            break;
+                        case "Uncompress RAR":
+                            UncompressRar(selectedPath);
+                            break;
+                        case "Uncompress TAR":
+                            UncompressTar(selectedPath);
+                            break;
+                        case "Uncompress ZIP":
+                            UnzipDirectory(selectedPath);
+                            break;
+                        default:
+                            // Handle the case where no valid option is selected
+                            MessageBox.Show("Please select a valid option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                    }
+
+                    if (checkBox_Delete.Checked)
+                    {
+                        DeleteFolders(selectedPath);
+                    }
                 }
-
-                if (checkBox_Delete.Checked)
+                else
                 {
-                    DeleteFolders(selectedPath);
+                    MessageBox.Show("Please select a valid option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select a valid option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
